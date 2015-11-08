@@ -1,3 +1,15 @@
+open Pocamon
+
+type moveName : string
+type damage : int
+type playerName : string
+type pocamonName : string
+
+type battle_status :
+| bNormal of pocamon * moveName * pEffect * damage * pStatus
+| bChangePocamon of playerName * pocamonName
+| bFaint of pocamonName
+
 (*
 * Takes in an action and returns the state of the game after that action
 * has taken place
