@@ -1,0 +1,340 @@
+
+HOME
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* What will <name> do?						 Fight		 |     Bag
+* 											 Pocamon	 |	   Run
+*
+*
+***************************************************************************
+|> Fight | Bag | Pocamon | Run
+
+CHOOSE ATTACK
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* Tackle              (32/35) FLYING					
+* Gust		          (32/35) FLYING									
+* Sand-Attack         (32/35) FLYING	
+*     - 					-
+***************************************************************************
+|> <Move> | Back
+
+BAG
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* Picture 			A picture of ...		
+* Cellphone 		There's a time and a place for everything, but not now							
+*  	   _        
+*      -
+***************************************************************************
+|> 
+
+Pocamon Switch Screen (top)
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* Charmander 		Lv15	(140/140)	SPosion	 TFire
+* Pikachu			Lv15	(120/140)	SNormal	 TElectric
+* Chansey			Lv15	(120/140)	SNormal	 TNormal       
+* ...
+***************************************************************************
+|> <Item> | '' | Up | Down | Back
+
+Pocamon Switch Screen (middle)
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* Pikachu			Lv15	(120/140)	SNormal	 TElectric
+* Chansey			Lv15	(120/140)	SNormal	 TNormal       
+* Diglett			Lv15	(120/140)	SNormal	 TNormal       
+* ...
+***************************************************************************
+|> <Item> | '' | Up | Down | Back
+
+Pocamon Switch Screen (end)
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* ...
+* Pikachu			Lv15	(120/140)	SNormal	 TElectric
+* Chansey			Lv15	(120/140)	SNormal	 TNormal       
+* Diglett			Lv15	(120/140)	SNormal	 TNormal       
+***************************************************************************
+|> <Item> | '' | Up | Down | Back
+
+
+DO BATTLE 1/2
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[========          ]  80/100 PSN           [==========       ] 100/100
+***************************************************************************
+* Foe <pokemon> used <move>
+* (optional) It's <Super/Not Very> Effective!			
+* <pokemon> took <#> damage and is POSIONED/ <pokemon> took <#> damage.	
+* ...
+***************************************************************************
+|> ''
+
+DO BATTLE 2/2
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[============     ]  80/100 PSN           [=======          ] 50/100	SLP
+***************************************************************************
+* <pokemon> used <move>
+* (optional) It's <Super/Not Very> Effective!			
+* <pokemon> took <#> damage and is ASLEEP/ <pokemon> took <#> damage.	
+* ...
+***************************************************************************
+|> ''
+
+DO BATTLE 3/2
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[                      ] 0/100	           [==========             ] 100/100
+***************************************************************************
+* <pokemon> fainted!
+* ...									 
+*
+*
+***************************************************************************
+|> ''
+
+DO BATTLE 4/2 Pick new Pocamon
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[                      ] 0/100	           [==========             ] 100/100
+***************************************************************************
+* Charmander 		Lv15	(0 /100)	SPosion	 TFire
+* Pikachu			Lv15	(120/140)	SNormal	 TElectric
+* Chansey			Lv15	(120/140)	SNormal	 TNormal       
+* ...
+***************************************************************************
+|> <Item> | '' | Up | Down | Back
+
+Win/Lose 1/2
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[                      ] 0/100	           [==========             ] 100/100
+***************************************************************************
+* Player defeated CLARKSON!
+* ...
+* 
+* 
+***************************************************************************
+|>  '' 
+
+Win/Lose 2/2
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[                      ] 0/100	           [==========             ] 100/100
+***************************************************************************
+* CLARKSON: catch phrase
+* ...
+* 
+* 
+***************************************************************************
+|>  '' (quit after this)
+
+INVALID COMMAND
+***************************************************************************
+MMMMMMMMMMMMM7$=====?I?IO$NMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM88MMMMMMM$===~87$$=I?$OMMMMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~~~ZZ====++O===M====??O$7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMZ====$777=+++++7M===??7O7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMM~===~77===+77++7D=I??777O7MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM87~+==$7=+~$O.~877M8777$7O7NMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ:.$===7~==7.OO ~7787D$77O77MMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MZ+O7+++++++7O??:77777788777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+M8N+++++++++++++777777777877MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MM8.OO++++$8NN.Z777877788778MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM77$$????777$M7777777777MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
+[==========            ] 100/100	      [==========             ] 100/100
+***************************************************************************
+* Invalid Command. Avaliable commands:					
+* <Move>  | Back | ...									
+* 	
+* Press ENTER to continue
+***************************************************************************
+|> ''
+
