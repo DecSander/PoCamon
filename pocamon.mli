@@ -58,4 +58,9 @@ type pocamon = {
       stats : poca_stats;
       art : string
       }
-     
+
+(* Returns pocamon if pocamon with given name exists. Returns None otherwise *)
+val getPocamon: string -> pocamon option
+
+(* Returns move if move with given name exists. Returns None otherwise *)
+val getMove: string -> move option
