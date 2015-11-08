@@ -2,7 +2,7 @@
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
 *)
-type action = Move of move | Switch of pocamon
+type action = Move of move | Switch of pocamon * pocamon
 
 (*
 * Current state information about a player
