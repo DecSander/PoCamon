@@ -63,6 +63,6 @@ val gen_initial_state : unit -> game_state
 
 (*
 * Calls gen_initial_state then passes it into do_battle to start the game
-* ALso requests player names and game mode from the user
+* Also requests player names and game mode from the user
 *)
 val start  : unit -> unit
