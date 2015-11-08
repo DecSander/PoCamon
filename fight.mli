@@ -5,9 +5,9 @@
 val do_single_move : player_state -> action -> game_state -> game_state
 
 (*
-* Calculates the damage from a particular move
+* Applys the single attack to the game state
 *)
-val calculate_damage : move -> game_state -> int
+val apply_attack : player_state -> move -> game_state -> game_state
 
 (*
 * Switches the active pocamon of the player making the move
