@@ -6,9 +6,9 @@ type pStatus = SNormal | SPoison | SBurn | SSleep | SParalyze | SFreeze
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
 *)
-type pType = TNormal | TFire | TWater | TElectric | TGrass | TIce
-            | TFighting | TPoison | TGround | TFlying | TPsychic | TBug
-            | TRock | TGhost | TDragon
+type pType = TNormal | TFire | TWater | TElectric | TGrass 
+            | TIce | TFighting | TPoison | TGround | TFlying 
+            | TPsychic | TBug | TRock | TGhost | TDragon
 
 (*
 * The effectiveness of a move
@@ -31,9 +31,20 @@ type move = {
           status_probability : float;
           accuracy : float;
           damage : int;
-          pp_max : int;
-          pp : int
+          max_PP : int;
+          PP : int
 }
+
+(* the stats of a pocamon that show how powerful it is *)
+type poca_stats = {
+            max_HP : int;
+            attack : int;
+            defense : int; 
+            sp_defense: int;
+            sp_attack: int;
+            speed: int
+}
+            
 
 (*
 * A pocamon and associated information
@@ -43,6 +54,8 @@ type pocamon = {
       status : status;
       moves : move list;
       poca_type : poca_type list;
-      max_health: int;
-      health : int
+      health : int;
+      stats : poca_stats
+      
       }
+     
