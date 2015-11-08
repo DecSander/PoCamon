@@ -1,16 +1,16 @@
 (*
 * An action that the player can take as his/her turn -
-* Use a pocamon's move, use an item, or switch pocamon
+* Use a pocamon's move, or switch pocamon
 *)
-type action = Move of move | Item of item | Switch of pocamon * pocamon
+type action = Move of move | Switch of pocamon * pocamon
 
 (*
 * Current state information about a player
 *)
 type player_state = {
         name : bytes;
-        pocamon_list = pocamon list;
-        item_list = item list
+        pocamon_list : pocamon list;
+        is_computer : bool
   }
 
 (*
@@ -62,5 +62,6 @@ val gen_initial_state : unit -> game_state
 
 (*
 * Calls gen_initial_state then passes it into do_battle to start the game
+* ALso requests player names and game mode from the user
 *)
 val start  : unit -> unit
