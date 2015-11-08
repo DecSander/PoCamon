@@ -55,7 +55,7 @@ type pocamon = {
       moves : move list;
       poca_type : poca_type list;
       health : int;
-      stats : poca_stats
-      
+      stats : poca_stats;
+      art : string
       }
      
