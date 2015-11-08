@@ -2,7 +2,7 @@
 * Takes in an action and returns the state of the game after that action
 * has taken place
 *)
-val battle : player_state -> action -> game_state -> game_state
+val fight : player_state -> action -> game_state -> game_state
 
 (*
 * Calculates the damage from a particular move
