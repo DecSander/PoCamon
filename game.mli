@@ -2,7 +2,7 @@
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
 *)
-type action = Move of move | Switch of pocamon
+type action = Move of move | Switch of pocamon * pocamon
 
 (*
 * Current state information about a player
@@ -53,7 +53,7 @@ val fight : game_state -> action -> action -> game_state
 *
 * Tail recursive
 *)
-val do_battle: game_state -> game_state
+val run_game_turn : game_state -> game_state
 
 (*
 * Generates the initial state of the game using information from various text
