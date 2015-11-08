@@ -6,8 +6,8 @@ type pStatus = SNormal | SPoison | SBurn | SSleep | SParalyze | SFreeze
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
 *)
-type pType = TNormal | TFire | TWater | TElectric | TGrass 
-            | TIce | TFighting | TPoison | TGround | TFlying 
+type pType = TNormal | TFire | TWater | TElectric | TGrass
+            | TIce | TFighting | TPoison | TGround | TFlying
             | TPsychic | TBug | TRock | TGhost | TDragon
 
 (*
@@ -39,12 +39,12 @@ type move = {
 type poca_stats = {
             max_HP : int;
             attack : int;
-            defense : int; 
+            defense : int;
             sp_defense: int;
             sp_attack: int;
             speed: int
 }
-            
+
 
 (*
 * A pocamon and associated information
@@ -56,11 +56,13 @@ type pocamon = {
       poca_type : poca_type list;
       health : int;
       stats : poca_stats;
-      art : string
+      ascii : bytes;
+      moves : move list;
       }
 
-(* Returns pocamon if pocamon with given name exists. Returns None otherwise *)
-val getPocamon: string -> pocamon option
+(* Returns pocamon if pocamon with given name exists. Raises failure otherwise *)
+val get_pocamon: string -> pocamon 
 
-(* Returns move if move with given name exists. Returns None otherwise *)
-val getMove: string -> move option
+(* Returns move if move with given name exists.Raises failure otherwise *)
+val get_move: string -> move 
+
