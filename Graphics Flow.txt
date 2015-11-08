@@ -175,7 +175,7 @@ MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [========          ]  80/100 PSN           [==========       ] 100/100
 ***************************************************************************
-* Foe <pokemon> used <move>
+* <pokemon> used <move>
 * (optional) It's <Super/Not Very> Effective!			
 * <pokemon> took <#> damage and is POSIONED/ <pokemon> took <#> damage.	
 * ...
