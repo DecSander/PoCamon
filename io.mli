@@ -1,7 +1,7 @@
 open Pocamon
 
 type command = Up | Down | Enter | Action of action | Fight | Bag | Pocamon
-| Run | Back
+| Run | Back | Save | Load
 
 (*
  * Takes a string and parses it using regex to return the command corresponding
