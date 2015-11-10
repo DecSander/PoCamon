@@ -1,4 +1,4 @@
-open Pocamon
+open Types
 
 type command = Up | Down | Enter | Action of action | Fight | Bag | Pocamon
 | Run | Back | Save | Load
