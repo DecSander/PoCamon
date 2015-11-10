@@ -26,13 +26,13 @@ val effect_to_float : pEffect -> float
 *)
 type move = {
           name : bytes;
-          move_type : poca_type;
-          status_effect : status;
+          move_type : pType;
+          status_effect : pStatus;
           status_probability : float;
           accuracy : float;
           damage : int;
           max_PP : int;
-          PP : int
+          pp : int
 }
 
 (* the stats of a pocamon that show how powerful it is *)
@@ -51,27 +51,72 @@ type poca_stats = {
 *)
 type pocamon = {
       name : bytes;
-      status : status;
+      status : pStatus;
       moves : move list;
-      poca_type : poca_type list;
+      poca_type : pType list;
       health : int;
       stats : poca_stats;
       ascii : bytes;
       }
-      
+
  type dex_pocamon = {
       name : bytes;
-      status : status;
+      status : pStatus;
       learnable_moves : move list;
-      poca_type : poca_type list;
+      poca_type : pType list;
       health : int;
       stats : poca_stats;
       ascii : bytes;
-      }      
+      }
 
 (* Returns pocamon if pocamon with given name exists. Raises failure otherwise *)
-val get_pocamon: string -> pocamon 
+val get_pocamon: string -> pocamon
 
 (* Returns move if move with given name exists.Raises failure otherwise *)
-val get_move: string -> move 
+val get_move: string -> move
 
+(*
+* An action that the player can take as his/her turn -
+* Use a pocamon's move, or switch pocamon
+*)
+type action = Move of move | Switch of pocamon * pocamon
+
+(*
+* Current state information about a player
+*)
+type player_state = {
+        name : bytes;
+        active_pocamon : pocamon;
+        pocamon_list : pocamon list;
+        is_computer : bool
+  }
+
+(*
+* Info that is available to both players during each of their turns
+*)
+type public_info = {
+      player_one_active_pocamon : pocamon;
+      player_two_active_pocamon : pocamon;
+      player_one_remaining_pocamon : int;
+      player_two_remaining_pocamon : int
+}
+
+(*
+* The overall state of the game, containing information on both players and
+* the general state of the battle
+*)
+type game_state = {
+      player_one : player_state;
+      player_two : player_state;
+      battle_info : public_info
+      }
+
+type moveName = string
+type damage = int
+type playerName = string
+type pocamonName = string
+
+type battle_status =
+| BNormal of pocamon * moveName * pEffect * damage * pStatus
+| BChangePocamon of playerName * pocamonName
+| BFaint of pocamonName
