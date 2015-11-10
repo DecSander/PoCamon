@@ -69,12 +69,6 @@ type pocamon = {
       ascii : bytes;
       }
 
-(* Returns pocamon if pocamon with given name exists. Raises failure otherwise *)
-val get_pocamon: string -> pocamon
-
-(* Returns move if move with given name exists.Raises failure otherwise *)
-val get_move: string -> move
-
 (*
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
