@@ -1,38 +1,7 @@
-(*
-* An action that the player can take as his/her turn -
-* Use a pocamon's move, or switch pocamon
-*)
-type action = Move of move | Switch of pocamon * pocamon
-
-(*
-* Current state information about a player
-*)
-type player_state = {
-        name : bytes;
-        active_pocamon : pocamon;
-        pocamon_list : pocamon list;
-        is_computer : bool
-  }
-
-(*
-* Info that is available to both players during each of their turns
-*)
-type public_info = {
-      player_one_active_pocamon : pocamon;
-      player_two_active_pocamon : pocamon;
-      player_one_remaining_pocamon : int;
-      player_two_remaining_pocamon : int
-}
-
-(*
-* The overall state of the game, containing information on both players and
-* the general state of the battle
-*)
-type game_state = {
-      player_one : player_state;
-      player_two : player_state;
-      battle_info : public_info
-      }
+open Types
+open Io
+open Ai
+open Fight
 
 (*
 * Prompts the user for an action to be taken. Player can also request
@@ -47,9 +16,9 @@ val get_player_action : player_state -> public_info -> action
 val fight : game_state -> action -> action -> game_state
 
 (*
-* After both players have gone, this function applies status debuffs such as burn 
+* After both players have gone, this function applies status debuffs such as burn
 *)
-val apply_status_debuffs : game_state -> game_state 
+val apply_status_debuffs : game_state -> game_state
 
 (*
 * The recursive driver for the game - takes in the initial game state at first,
