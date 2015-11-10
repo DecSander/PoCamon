@@ -2,6 +2,7 @@ open Types
 open Io
 open Ai
 open Fight
+open Poca_list
 
 (*
 * Prompts the user for an action to be taken. Player can also request
