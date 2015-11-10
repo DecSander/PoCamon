@@ -57,8 +57,17 @@ type pocamon = {
       health : int;
       stats : poca_stats;
       ascii : bytes;
-      moves : move list;
       }
+      
+ type dex_pocamon = {
+      name : bytes;
+      status : status;
+      learnable_moves : move list;
+      poca_type : poca_type list;
+      health : int;
+      stats : poca_stats;
+      ascii : bytes;
+      }      
 
 (* Returns pocamon if pocamon with given name exists. Raises failure otherwise *)
 val get_pocamon: string -> pocamon 
