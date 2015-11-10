@@ -1,3 +1,5 @@
+open Types
+
 type ai_player = P1 | P2
 
 (*
