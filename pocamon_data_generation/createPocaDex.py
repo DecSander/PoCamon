@@ -1,3 +1,5 @@
+## NOTE Some of the files were slightly modified from their orignal form before running this script
+
 '''
 DATA FORMAT:
 
@@ -64,7 +66,7 @@ def scrap_ascii(lines, data):
             i += 1
             ascii = ''
             while i <len(lines) and len(lines[i].replace(" ", "")) > 1:  # we are not still looking at a line with art
-                ascii += str(lines[i])
+                ascii += str(lines[i]).replace("M"," ")
                 i += 1
             ascii = ascii[:-1] # remove last new line
             data[name]["ascii"] = ascii
