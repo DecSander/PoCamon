@@ -2,7 +2,7 @@
 * A status that a pocamon can have - each pocamon defaults to normal status
 * which can be changed via moves and each have different effects
 *)
-type pStatus = SNormal | SPoison | SBurn | SSleep | SParalyze | SFreeze
+type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze | SFreeze of int
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
 *)
