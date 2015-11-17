@@ -2,7 +2,7 @@ module Pocamon = Map.make(pocamon)
 let pocadex = Pocamon.empty
 let pocadex = Pocamon.add "ELECTABUZZ" {
 name="ELECTABUZZ"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLASH";get_move "THUNDERBOLT";get_move "LEER";get_move "THUNDERPUNCH";get_move "THUNDERPUNCH";get_move "LIGHT_SCREEN";get_move "SWIFT";get_move "SCREECH";get_move "THUNDERBOLT";get_move "THUNDER";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"PSYCHIC";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SWIFT";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLASH";"THUNDERBOLT";"LEER";"THUNDERPUNCH";"THUNDERPUNCH";"LIGHT_SCREEN";"SWIFT";"SCREECH";"THUNDERBOLT";"THUNDER";];
 stats={max_hp=65; attack=83; defense=57; speed=105; sp_attack=95;sp_defense=85;}; 
 ascii="   N====   8N =N     N78=7     
    ===7N == ?7=  =N   ==77     
@@ -22,7 +22,7 @@ ascii="   N====   8N =N     N78=7
 
 let pocadex = Pocamon.add "STARMIE" {
 name="STARMIE"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "NIGHTMARE";get_move "SURF";get_move "FLASH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "RAPID_SPIN";get_move "RECOVER";get_move "BUBBLEBEAM";get_move "CONFUSE_RAY";];
+learnable_moves=["CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DREAM_EATER";"REST";"ATTRACT";"NIGHTMARE";"SURF";"FLASH";"WHIRLPOOL";"WATERFALL";"THUNDERBOLT";"ICE_BEAM";"RAPID_SPIN";"RECOVER";"BUBBLEBEAM";"CONFUSE_RAY";];
 stats={max_hp=60; attack=75; defense=85; speed=115; sp_attack=100;sp_defense=85;}; 
 ascii="              :?               
         $O   ::?   O?$         
@@ -42,7 +42,7 @@ ascii="              :?
 
 let pocadex = Pocamon.add "DODRIO" {
 name="DODRIO"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "GROWL";get_move "PURSUIT";get_move "FURY_ATTACK";get_move "PURSUIT";get_move "FURY_ATTACK";get_move "TRI_ATTACK";get_move "RAGE";get_move "DRILL_PECK";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"GROWL";"PURSUIT";"FURY_ATTACK";"PURSUIT";"FURY_ATTACK";"TRI_ATTACK";"RAGE";"DRILL_PECK";"AGILITY";];
 stats={max_hp=60; attack=110; defense=70; speed=100; sp_attack=60;sp_defense=60;}; 
 ascii="          8?? ??7    OI  OII   
            : 7 ?7       O      
@@ -62,7 +62,7 @@ ascii="          8?? ??7    OI  OII
 
 let pocadex = Pocamon.add "SLOWPOKE" {
 name="SLOWPOKE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "NIGHTMARE";get_move "SURF";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "ICE_BEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DREAM_EATER";"REST";"ATTRACT";"NIGHTMARE";"SURF";"STRENGTH";"FLASH";"FLAMETHROWER";"ICE_BEAM";];
 stats={max_hp=90; attack=65; defense=65; speed=15; sp_attack=40;sp_defense=40;}; 
 ascii="                               
                                
@@ -82,7 +82,7 @@ ascii="
 
 let pocadex = Pocamon.add "BULBASAUR" {
 name="BULBASAUR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FURY_CUTTER";get_move "CUT";get_move "FLASH";get_move "TACKLE";get_move "GROWL";get_move "LEECH_SEED";get_move "VINE_WHIP";get_move "POISONPOWDER";get_move "SLEEP_POWDER";get_move "RAZOR_LEAF";get_move "SWEET_SCENT";get_move "GROWTH";get_move "SYNTHESIS";get_move "SOLARBEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"FURY_CUTTER";"CUT";"FLASH";"TACKLE";"GROWL";"LEECH_SEED";"VINE_WHIP";"POISONPOWDER";"SLEEP_POWDER";"RAZOR_LEAF";"SWEET_SCENT";"GROWTH";"SYNTHESIS";"SOLARBEAM";];
 stats={max_hp=45; attack=49; defense=49; speed=45; sp_attack=65;sp_defense=65;}; 
 ascii="                               
                                
@@ -102,7 +102,7 @@ ascii="
 
 let pocadex = Pocamon.add "SANDSLASH" {
 name="SANDSLASH"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "STRENGTH";get_move "DEFENSE_CURL";get_move "SAND_ATTACK";get_move "DEFENSE_CURL";get_move "SAND_ATTACK";get_move "POISON_STING";get_move "SLASH";get_move "SWIFT";get_move "FURY_SWIPES";get_move "SANDSTORM";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"SWIFT";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"STRENGTH";"DEFENSE_CURL";"SAND_ATTACK";"DEFENSE_CURL";"SAND_ATTACK";"POISON_STING";"SLASH";"SWIFT";"FURY_SWIPES";"SANDSTORM";];
 stats={max_hp=75; attack=100; defense=110; speed=65; sp_attack=45;sp_defense=55;}; 
 ascii="             8  88             
             877878ZZN          
@@ -122,7 +122,7 @@ ascii="             8  88
 
 let pocadex = Pocamon.add "DRATINI" {
 name="DRATINI"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WATERFALL";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "WRAP";get_move "LEER";get_move "THUNDER_WAVE";get_move "TWISTER";get_move "DRAGON_RAGE";get_move "SLAM";get_move "AGILITY";get_move "SAFEGUARD";get_move "OUTRAGE";get_move "HYPER_BEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DETECT";"REST";"ATTRACT";"SURF";"WATERFALL";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"WRAP";"LEER";"THUNDER_WAVE";"TWISTER";"DRAGON_RAGE";"SLAM";"AGILITY";"SAFEGUARD";"OUTRAGE";"HYPER_BEAM";];
 stats={max_hp=41; attack=64; defense=45; speed=50; sp_attack=50;sp_defense=50;}; 
 ascii="                               
                   ?            
@@ -142,7 +142,7 @@ ascii="
 
 let pocadex = Pocamon.add "POLIWAG" {
 name="POLIWAG"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "SURF";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "BUBBLE";get_move "HYPNOSIS";get_move "WATER_GUN";get_move "DOUBLESLAP";get_move "RAIN_DANCE";get_move "BODY_SLAM";get_move "BELLY_DRUM";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"THIEF";"SURF";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"BUBBLE";"HYPNOSIS";"WATER_GUN";"DOUBLESLAP";"RAIN_DANCE";"BODY_SLAM";"BELLY_DRUM";"HYDRO_PUMP";];
 stats={max_hp=40; attack=50; defense=40; speed=90; sp_attack=40;sp_defense=40;}; 
 ascii="                               
                                
@@ -162,7 +162,7 @@ ascii="
 
 let pocadex = Pocamon.add "SPEAROW" {
 name="SPEAROW"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "PECK";get_move "GROWL";get_move "LEER";get_move "FURY_ATTACK";get_move "PURSUIT";get_move "MIRROR_MOVE";get_move "DRILL_PECK";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"PECK";"GROWL";"LEER";"FURY_ATTACK";"PURSUIT";"MIRROR_MOVE";"DRILL_PECK";"AGILITY";];
 stats={max_hp=40; attack=60; defense=30; speed=70; sp_attack=31;sp_defense=31;}; 
 ascii="                               
                                
@@ -182,7 +182,7 @@ ascii="
 
 let pocadex = Pocamon.add "IVYSAUR" {
 name="IVYSAUR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FURY_CUTTER";get_move "CUT";get_move "FLASH";get_move "TACKLE";get_move "GROWL";get_move "LEECH_SEED";get_move "GROWL";get_move "LEECH_SEED";get_move "VINE_WHIP";get_move "POISONPOWDER";get_move "SLEEP_POWDER";get_move "RAZOR_LEAF";get_move "SWEET_SCENT";get_move "GROWTH";get_move "SYNTHESIS";get_move "SOLARBEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"FURY_CUTTER";"CUT";"FLASH";"TACKLE";"GROWL";"LEECH_SEED";"GROWL";"LEECH_SEED";"VINE_WHIP";"POISONPOWDER";"SLEEP_POWDER";"RAZOR_LEAF";"SWEET_SCENT";"GROWTH";"SYNTHESIS";"SOLARBEAM";];
 stats={max_hp=60; attack=62; defense=63; speed=60; sp_attack=80;sp_defense=80;}; 
 ascii="                               
              O7O+~             
@@ -202,7 +202,7 @@ ascii="
 
 let pocadex = Pocamon.add "LAPRAS" {
 name="LAPRAS"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "NIGHTMARE";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "GROWL";get_move "SING";get_move "MIST";get_move "BODY_SLAM";get_move "CONFUSE_RAY";get_move "PERISH_SONG";get_move "ICE_BEAM";get_move "RAIN_DANCE";get_move "SAFEGUARD";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"THUNDER";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DREAM_EATER";"REST";"ATTRACT";"NIGHTMARE";"SURF";"STRENGTH";"WHIRLPOOL";"THUNDERBOLT";"ICE_BEAM";"GROWL";"SING";"MIST";"BODY_SLAM";"CONFUSE_RAY";"PERISH_SONG";"ICE_BEAM";"RAIN_DANCE";"SAFEGUARD";"HYDRO_PUMP";];
 stats={max_hp=130; attack=85; defense=80; speed=60; sp_attack=85;sp_defense=95;}; 
 ascii="      ?7==???777               
       7??= 77                  
@@ -222,7 +222,7 @@ ascii="      ?7==???777
 
 let pocadex = Pocamon.add "GYARADOS" {
 name="GYARADOS"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "DRAGONBREATH";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "BITE";get_move "DRAGON_RAGE";get_move "LEER";get_move "TWISTER";get_move "HYDRO_PUMP";get_move "RAIN_DANCE";get_move "HYPER_BEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"DRAGONBREATH";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"REST";"ATTRACT";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"BITE";"DRAGON_RAGE";"LEER";"TWISTER";"HYDRO_PUMP";"RAIN_DANCE";"HYPER_BEAM";];
 stats={max_hp=95; attack=125; defense=79; speed=81; sp_attack=60;sp_defense=100;}; 
 ascii="       7,,+++::+:+::N    Z,ZO7O
       ..,,,+Z:+77+77N     OOZZ 
@@ -242,7 +242,7 @@ N,787+::+++7N7       7.7
 
 let pocadex = Pocamon.add "FEAROW" {
 name="FEAROW"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "GROWL";get_move "LEER";get_move "FURY_ATTACK";get_move "LEER";get_move "FURY_ATTACK";get_move "PURSUIT";get_move "MIRROR_MOVE";get_move "DRILL_PECK";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"GROWL";"LEER";"FURY_ATTACK";"LEER";"FURY_ATTACK";"PURSUIT";"MIRROR_MOVE";"DRILL_PECK";"AGILITY";];
 stats={max_hp=65; attack=90; defense=65; speed=100; sp_attack=61;sp_defense=61;}; 
 ascii="      ?8?????:     Z?$88$Z$?   
       8787???Z     ?$$$$$$8Z?Z 
@@ -262,7 +262,7 @@ ascii="      ?8?????:     Z?$88$Z$?
 
 let pocadex = Pocamon.add "SHELLDER" {
 name="SHELLDER"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "TACKLE";get_move "WITHDRAW";get_move "SUPERSONIC";get_move "AURORA_BEAM";get_move "PROTECT";get_move "LEER";get_move "CLAMP";get_move "ICE_BEAM";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"ICE_BEAM";"TACKLE";"WITHDRAW";"SUPERSONIC";"AURORA_BEAM";"PROTECT";"LEER";"CLAMP";"ICE_BEAM";];
 stats={max_hp=30; attack=65; defense=100; speed=40; sp_attack=45;sp_defense=25;}; 
 ascii="                               
                                
@@ -282,7 +282,7 @@ ascii="
 
 let pocadex = Pocamon.add "OMASTAR" {
 name="OMASTAR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "WITHDRAW";get_move "BITE";get_move "BITE";get_move "WATER_GUN";get_move "LEER";get_move "PROTECT";get_move "SPIKE_CANNON";get_move "ANCIENTPOWER";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"REST";"ATTRACT";"THIEF";"SURF";"WHIRLPOOL";"ICE_BEAM";"WITHDRAW";"BITE";"BITE";"WATER_GUN";"LEER";"PROTECT";"SPIKE_CANNON";"ANCIENTPOWER";"HYDRO_PUMP";];
 stats={max_hp=70; attack=60; defense=125; speed=55; sp_attack=115;sp_defense=70;}; 
 ascii="                               
                ~  ~            
@@ -302,7 +302,7 @@ ascii="
 
 let pocadex = Pocamon.add "PERSIAN" {
 name="PERSIAN"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "THUNDERBOLT";get_move "GROWL";get_move "BITE";get_move "BITE";get_move "PAY_DAY";get_move "FAINT_ATTACK";get_move "SCREECH";get_move "FURY_SWIPES";get_move "SLASH";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"THUNDERBOLT";"GROWL";"BITE";"BITE";"PAY_DAY";"FAINT_ATTACK";"SCREECH";"FURY_SWIPES";"SLASH";];
 stats={max_hp=65; attack=70; defense=60; speed=115; sp_attack=65;sp_defense=65;}; 
 ascii="     NNO   N$IN                
      N$N~~~~+I                 
@@ -322,7 +322,7 @@ ascii="     NNO   N$IN
 
 let pocadex = Pocamon.add "EXEGGUTOR" {
 name="EXEGGUTOR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "HYPNOSIS";get_move "CONFUSION";get_move "STOMP";get_move "EGG_BOMB";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"STRENGTH";"FLASH";"HYPNOSIS";"CONFUSION";"STOMP";"EGG_BOMB";];
 stats={max_hp=95; attack=95; defense=85; speed=55; sp_attack=125;sp_defense=65;}; 
 ascii="    O????O N?OO7 ?7    OO      
         N??77??7?7  O??N       
@@ -342,7 +342,7 @@ ascii="    O????O N?OO7 ?7    OO
 
 let pocadex = Pocamon.add "KRABBY" {
 name="KRABBY"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "BUBBLE";get_move "LEER";get_move "VICEGRIP";get_move "HARDEN";get_move "STOMP";get_move "GUILLOTINE";get_move "PROTECT";get_move "CRABHAMMER";];
+learnable_moves=["CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"SURF";"STRENGTH";"WHIRLPOOL";"ICE_BEAM";"BUBBLE";"LEER";"VICEGRIP";"HARDEN";"STOMP";"GUILLOTINE";"PROTECT";"CRABHAMMER";];
 stats={max_hp=30; attack=105; defense=90; speed=50; sp_attack=25;sp_defense=25;}; 
 ascii="                               
                                
@@ -362,7 +362,7 @@ ascii="
 
 let pocadex = Pocamon.add "MAGNEMITE" {
 name="MAGNEMITE"; 
-learnable_moves=[get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "FLASH";get_move "THUNDERBOLT";get_move "TACKLE";get_move "THUNDERSHOCK";get_move "SUPERSONIC";get_move "SONICBOOM";get_move "THUNDER_WAVE";get_move "LOCK_ON";get_move "SWIFT";get_move "SCREECH";get_move "ZAP_CANNON";];
+learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"FLASH";"THUNDERBOLT";"TACKLE";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDER_WAVE";"LOCK_ON";"SWIFT";"SCREECH";"ZAP_CANNON";];
 stats={max_hp=25; attack=35; defense=70; speed=45; sp_attack=95;sp_defense=55;}; 
 ascii="                               
                                
@@ -382,7 +382,7 @@ ascii="
 
 let pocadex = Pocamon.add "KANGASKHAN" {
 name="KANGASKHAN"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "LEER";get_move "BITE";get_move "TAIL_WHIP";get_move "MEGA_PUNCH";get_move "RAGE";get_move "ENDURE";get_move "DIZZY_PUNCH";get_move "REVERSAL";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROAR";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"THUNDERPUNCH";"REST";"ATTRACT";"FIRE_PUNCH";"FURY_CUTTER";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"LEER";"BITE";"TAIL_WHIP";"MEGA_PUNCH";"RAGE";"ENDURE";"DIZZY_PUNCH";"REVERSAL";];
 stats={max_hp=105; attack=95; defense=80; speed=90; sp_attack=40;sp_defense=80;}; 
 ascii="      ~???II$I::I~             
       $??II$$8~I~8             
@@ -402,7 +402,7 @@ $N~NNN++:::::::~~~I++++IIIII
 
 let pocadex = Pocamon.add "RHYDON" {
 name="RHYDON"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "STOMP";get_move "FURY_ATTACK";get_move "STOMP";get_move "FURY_ATTACK";get_move "SCARY_FACE";get_move "HORN_DRILL";get_move "TAKE_DOWN";get_move "EARTHQUAKE";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"ROAR";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"THUNDERPUNCH";"REST";"ATTRACT";"FIRE_PUNCH";"FURY_CUTTER";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"TAIL_WHIP";"STOMP";"FURY_ATTACK";"STOMP";"FURY_ATTACK";"SCARY_FACE";"HORN_DRILL";"TAKE_DOWN";"EARTHQUAKE";];
 stats={max_hp=105; attack=130; defense=120; speed=40; sp_attack=45;sp_defense=45;}; 
 ascii="      IIZZZZI                  
     N,,~~~~II~~Z,N             
@@ -422,7 +422,7 @@ NIIIII  ~Z?~~?~Z~~IN~~N NZ~~IZ
 
 let pocadex = Pocamon.add "CLEFABLE" {
 name="CLEFABLE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "DOUBLESLAP";get_move "METRONOME";get_move "MOONLIGHT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"IRON_TAIL";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"FIRE_PUNCH";"NIGHTMARE";"STRENGTH";"FLASH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"DOUBLESLAP";"METRONOME";"MOONLIGHT";];
 stats={max_hp=95; attack=70; defense=73; speed=60; sp_attack=85;sp_defense=90;}; 
 ascii="                               
      N$O              O$O      
@@ -442,7 +442,7 @@ ascii="
 
 let pocadex = Pocamon.add "ARBOK" {
 name="ARBOK"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STRENGTH";get_move "LEER";get_move "POISON_STING";get_move "BITE";get_move "POISON_STING";get_move "BITE";get_move "GLARE";get_move "SCREECH";get_move "ACID";get_move "HAZE";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"STRENGTH";"LEER";"POISON_STING";"BITE";"POISON_STING";"BITE";"GLARE";"SCREECH";"ACID";"HAZE";];
 stats={max_hp=60; attack=85; defense=69; speed=80; sp_attack=65;sp_defense=79;}; 
 ascii="           NN88+IIIIIZ         
           +++??+IINIIII        
@@ -462,7 +462,7 @@ ascii="           NN88+IIIIIZ
 
 let pocadex = Pocamon.add "ODDISH" {
 name="ODDISH"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "FLASH";get_move "ABSORB";get_move "SWEET_SCENT";get_move "POISONPOWDER";get_move "STUN_SPORE";get_move "SLEEP_POWDER";get_move "ACID";get_move "MOONLIGHT";get_move "PETAL_DANCE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"FLASH";"ABSORB";"SWEET_SCENT";"POISONPOWDER";"STUN_SPORE";"SLEEP_POWDER";"ACID";"MOONLIGHT";"PETAL_DANCE";];
 stats={max_hp=45; attack=50; defense=55; speed=30; sp_attack=75;sp_defense=65;}; 
 ascii="                               
                                
@@ -482,7 +482,7 @@ ascii="
 
 let pocadex = Pocamon.add "PSYDUCK" {
 name="PSYDUCK"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "STRENGTH";get_move "FLASH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "SCRATCH";get_move "TAIL_WHIP";get_move "DISABLE";get_move "CONFUSION";get_move "SCREECH";get_move "PSYCH_UP";get_move "FURY_SWIPES";get_move "HYDRO_PUMP";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"STRENGTH";"FLASH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"SCRATCH";"TAIL_WHIP";"DISABLE";"CONFUSION";"SCREECH";"PSYCH_UP";"FURY_SWIPES";"HYDRO_PUMP";];
 stats={max_hp=50; attack=52; defense=48; speed=55; sp_attack=65;sp_defense=50;}; 
 ascii="                               
                  N7            
@@ -502,7 +502,7 @@ ascii="
 
 let pocadex = Pocamon.add "CHARIZARD" {
 name="CHARIZARD"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "STEEL_WING";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "CUT";get_move "FLY";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "GROWL";get_move "EMBER";get_move "SMOKESCREEN";get_move "EMBER";get_move "SMOKESCREEN";get_move "RAGE";get_move "SCARY_FACE";get_move "FLAMETHROWER";get_move "WING_ATTACK";get_move "SLASH";get_move "DRAGON_RAGE";get_move "FIRE_SPIN";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"SWIFT";"DEFENSE_CURL";"REST";"ATTRACT";"STEEL_WING";"FIRE_PUNCH";"FURY_CUTTER";"CUT";"FLY";"STRENGTH";"FLAMETHROWER";"GROWL";"EMBER";"SMOKESCREEN";"EMBER";"SMOKESCREEN";"RAGE";"SCARY_FACE";"FLAMETHROWER";"WING_ATTACK";"SLASH";"DRAGON_RAGE";"FIRE_SPIN";];
 stats={max_hp=78; attack=84; defense=78; speed=100; sp_attack=109;sp_defense=85;}; 
 ascii="   I  II   I++I$  I88$$$$8++   
  II8888 O  $+$    I88$$$$$8I   
@@ -522,7 +522,7 @@ O IIIIO IIIII7 788887  $    87$
 
 let pocadex = Pocamon.add "ONIX" {
 name="ONIX"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "REST";get_move "ATTRACT";get_move "STRENGTH";get_move "TACKLE";get_move "SCREECH";get_move "BIND";get_move "ROCK_THROW";get_move "HARDEN";get_move "RAGE";get_move "SANDSTORM";get_move "SLAM";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"REST";"ATTRACT";"STRENGTH";"TACKLE";"SCREECH";"BIND";"ROCK_THROW";"HARDEN";"RAGE";"SANDSTORM";"SLAM";];
 stats={max_hp=35; attack=45; defense=160; speed=70; sp_attack=30;sp_defense=45;}; 
 ascii="     :=   7::::::N7==7==       
      :=  ::::::::=N====7O      
@@ -542,7 +542,7 @@ ascii="     :=   7::::::N7==7==
 
 let pocadex = Pocamon.add "BEEDRILL" {
 name="BEEDRILL"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FURY_CUTTER";get_move "CUT";get_move "FURY_ATTACK";get_move "FOCUS_ENERGY";get_move "TWINEEDLE";get_move "RAGE";get_move "PURSUIT";get_move "PIN_MISSILE";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"SWIFT";"REST";"ATTRACT";"FURY_CUTTER";"CUT";"FURY_ATTACK";"FOCUS_ENERGY";"TWINEEDLE";"RAGE";"PURSUIT";"PIN_MISSILE";"AGILITY";];
 stats={max_hp=65; attack=80; defense=40; speed=75; sp_attack=45;sp_defense=80;}; 
 ascii="               I,      ==      
                 =,   I    =    
@@ -562,7 +562,7 @@ ascii="               I,      ==
 
 let pocadex = Pocamon.add "GROWLITHE" {
 name="GROWLITHE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "BITE";get_move "ROAR";get_move "EMBER";get_move "LEER";get_move "TAKE_DOWN";get_move "FLAME_WHEEL";get_move "AGILITY";get_move "FLAMETHROWER";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"BITE";"ROAR";"EMBER";"LEER";"TAKE_DOWN";"FLAME_WHEEL";"AGILITY";"FLAMETHROWER";];
 stats={max_hp=55; attack=70; defense=45; speed=60; sp_attack=70;sp_defense=50;}; 
 ascii="                               
                    ZZZ         
@@ -582,7 +582,7 @@ ascii="
 
 let pocadex = Pocamon.add "ELECTRODE" {
 name="ELECTRODE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "FLASH";get_move "THUNDERBOLT";get_move "SCREECH";get_move "SONICBOOM";get_move "SELFDESTRUCT";get_move "SCREECH";get_move "SONICBOOM";get_move "SELFDESTRUCT";get_move "ROLLOUT";get_move "LIGHT_SCREEN";get_move "SWIFT";get_move "EXPLOSION";get_move "MIRROR_COAT";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"FLASH";"THUNDERBOLT";"SCREECH";"SONICBOOM";"SELFDESTRUCT";"SCREECH";"SONICBOOM";"SELFDESTRUCT";"ROLLOUT";"LIGHT_SCREEN";"SWIFT";"EXPLOSION";"MIRROR_COAT";];
 stats={max_hp=60; attack=50; defense=70; speed=140; sp_attack=80;sp_defense=80;}; 
 ascii="                               
             Z:,,,:N            
@@ -602,7 +602,7 @@ ascii="
 
 let pocadex = Pocamon.add "GRIMER" {
 name="GRIMER"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "POISON_GAS";get_move "POUND";get_move "HARDEN";get_move "DISABLE";get_move "SLUDGE";get_move "MINIMIZE";get_move "SCREECH";get_move "ACID_ARMOR";get_move "SLUDGE_BOMB";];
+learnable_moves=["DYNAMICPUNCH";"CURSE";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"FIRE_BLAST";"THUNDERPUNCH";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"FLAMETHROWER";"THUNDERBOLT";"POISON_GAS";"POUND";"HARDEN";"DISABLE";"SLUDGE";"MINIMIZE";"SCREECH";"ACID_ARMOR";"SLUDGE_BOMB";];
 stats={max_hp=80; attack=80; defense=50; speed=25; sp_attack=40;sp_defense=50;}; 
 ascii="                               
                                
@@ -622,7 +622,7 @@ ascii="
 
 let pocadex = Pocamon.add "FLAREON" {
 name="FLAREON"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "TAIL_WHIP";get_move "SAND_ATTACK";get_move "EMBER";get_move "QUICK_ATTACK";get_move "BITE";get_move "FIRE_SPIN";get_move "SMOG";get_move "LEER";get_move "FLAMETHROWER";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DETECT";"REST";"ATTRACT";"FLAMETHROWER";"TAIL_WHIP";"SAND_ATTACK";"EMBER";"QUICK_ATTACK";"BITE";"FIRE_SPIN";"SMOG";"LEER";"FLAMETHROWER";];
 stats={max_hp=65; attack=130; defense=60; speed=65; sp_attack=95;sp_defense=110;}; 
 ascii="                               
                          ?     
@@ -642,7 +642,7 @@ ascii="
 
 let pocadex = Pocamon.add "PIDGEOT" {
 name="PIDGEOT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "SAND_ATTACK";get_move "GUST";get_move "QUICK_ATTACK";get_move "SAND_ATTACK";get_move "GUST";get_move "QUICK_ATTACK";get_move "WHIRLWIND";get_move "WING_ATTACK";get_move "AGILITY";get_move "MIRROR_MOVE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"SAND_ATTACK";"GUST";"QUICK_ATTACK";"SAND_ATTACK";"GUST";"QUICK_ATTACK";"WHIRLWIND";"WING_ATTACK";"AGILITY";"MIRROR_MOVE";];
 stats={max_hp=83; attack=80; defense=75; speed=91; sp_attack=70;sp_defense=70;}; 
 ascii="     N::INZZZ+ZZZN             
       NZ NNINZZ+ZZ             
@@ -662,7 +662,7 @@ ascii="     N::INZZZ+ZZZN
 
 let pocadex = Pocamon.add "DRAGONITE" {
 name="DRAGONITE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "SWIFT";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "STEEL_WING";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "FLY";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "LEER";get_move "THUNDER_WAVE";get_move "TWISTER";get_move "THUNDER_WAVE";get_move "TWISTER";get_move "DRAGON_RAGE";get_move "SLAM";get_move "AGILITY";get_move "SAFEGUARD";get_move "WING_ATTACK";get_move "OUTRAGE";get_move "HYPER_BEAM";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"SWIFT";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"STEEL_WING";"FIRE_PUNCH";"FURY_CUTTER";"FLY";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"LEER";"THUNDER_WAVE";"TWISTER";"THUNDER_WAVE";"TWISTER";"DRAGON_RAGE";"SLAM";"AGILITY";"SAFEGUARD";"WING_ATTACK";"OUTRAGE";"HYPER_BEAM";];
 stats={max_hp=91; attack=134; defense=95; speed=80; sp_attack=100;sp_defense=100;}; 
 ascii="      II ???  I   8?IOOOOO     
    I  OOO++? II   IO$$O        
@@ -682,7 +682,7 @@ ascii="      II ???  I   8?IOOOOO
 
 let pocadex = Pocamon.add "RHYHORN" {
 name="RHYHORN"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "REST";get_move "ATTRACT";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "HORN_ATTACK";get_move "TAIL_WHIP";get_move "STOMP";get_move "FURY_ATTACK";get_move "SCARY_FACE";get_move "HORN_DRILL";get_move "TAKE_DOWN";get_move "EARTHQUAKE";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"ROAR";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"REST";"ATTRACT";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"HORN_ATTACK";"TAIL_WHIP";"STOMP";"FURY_ATTACK";"SCARY_FACE";"HORN_DRILL";"TAKE_DOWN";"EARTHQUAKE";];
 stats={max_hp=80; attack=85; defense=95; speed=25; sp_attack=30;sp_defense=30;}; 
 ascii="                ~~~            
            $~N  ,~~N    ?      
@@ -702,7 +702,7 @@ ascii="                ~~~
 
 let pocadex = Pocamon.add "CHARMELEON" {
 name="CHARMELEON"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "CUT";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "SCRATCH";get_move "GROWL";get_move "EMBER";get_move "EMBER";get_move "SMOKESCREEN";get_move "RAGE";get_move "SCARY_FACE";get_move "FLAMETHROWER";get_move "SLASH";get_move "DRAGON_RAGE";get_move "FIRE_SPIN";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DEFENSE_CURL";"REST";"ATTRACT";"FIRE_PUNCH";"FURY_CUTTER";"CUT";"STRENGTH";"FLAMETHROWER";"SCRATCH";"GROWL";"EMBER";"EMBER";"SMOKESCREEN";"RAGE";"SCARY_FACE";"FLAMETHROWER";"SLASH";"DRAGON_RAGE";"FIRE_SPIN";];
 stats={max_hp=58; attack=64; defense=58; speed=80; sp_attack=80;sp_defense=65;}; 
 ascii="              $+               
           OIIIIO               
@@ -722,7 +722,7 @@ ascii="              $+
 
 let pocadex = Pocamon.add "KADABRA" {
 name="KADABRA"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DIG";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "FLASH";get_move "TELEPORT";get_move "KINESIS";get_move "CONFUSION";get_move "CONFUSION";get_move "DISABLE";get_move "PSYBEAM";get_move "RECOVER";get_move "FUTURE_SIGHT";get_move "PSYCHIC_M";get_move "REFLECT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DIG";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"NIGHTMARE";"FLASH";"TELEPORT";"KINESIS";"CONFUSION";"CONFUSION";"DISABLE";"PSYBEAM";"RECOVER";"FUTURE_SIGHT";"PSYCHIC_M";"REFLECT";];
 stats={max_hp=40; attack=35; defense=30; speed=105; sp_attack=120;sp_defense=70;}; 
 ascii="        Z       =              
         Z=8   8,=              
@@ -742,7 +742,7 @@ ascii="        Z       =
 
 let pocadex = Pocamon.add "METAPOD" {
 name="METAPOD"; 
-learnable_moves=[get_move "";get_move "HARDEN";get_move "HARDEN";];
+learnable_moves=["";"HARDEN";"HARDEN";];
 stats={max_hp=50; attack=20; defense=55; speed=30; sp_attack=25;sp_defense=25;}; 
 ascii="                               
                                
@@ -762,7 +762,7 @@ ascii="
 
 let pocadex = Pocamon.add "EEVEE" {
 name="EEVEE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FIRE_STONE";get_move "TR_MORNDAY";get_move "TR_NITE";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"FIRE_STONE";"TR_MORNDAY";"TR_NITE";];
 stats={max_hp=55; attack=55; defense=50; speed=55; sp_attack=45;sp_defense=65;}; 
 ascii="           Z?                  
            7                   
@@ -782,7 +782,7 @@ ascii="           Z?
 
 let pocadex = Pocamon.add "VILEPLUME" {
 name="VILEPLUME"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "FLASH";get_move "SWEET_SCENT";get_move "STUN_SPORE";get_move "PETAL_DANCE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"FLASH";"SWEET_SCENT";"STUN_SPORE";"PETAL_DANCE";];
 stats={max_hp=75; attack=80; defense=85; speed=50; sp_attack=100;sp_defense=90;}; 
 ascii="                               
           8++++N8++??NN        
@@ -802,7 +802,7 @@ ascii="
 
 let pocadex = Pocamon.add "POLIWRATH" {
 name="POLIWRATH"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "PSYCHIC";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "HYPNOSIS";get_move "DOUBLESLAP";get_move "SUBMISSION";get_move "SUBMISSION";get_move "MIND_READER";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"PSYCHIC";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"HYPNOSIS";"DOUBLESLAP";"SUBMISSION";"SUBMISSION";"MIND_READER";];
 stats={max_hp=90; attack=85; defense=95; speed=70; sp_attack=70;sp_defense=90;}; 
 ascii="         ZOIN   OIIII          
         ZZ II==III  NN         
@@ -822,7 +822,7 @@ ascii="         ZOIN   OIIII
 
 let pocadex = Pocamon.add "HAUNTER" {
 name="HAUNTER"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "THUNDERBOLT";get_move "HYPNOSIS";get_move "LICK";get_move "SPITE";get_move "SPITE";get_move "MEAN_LOOK";get_move "CURSE";get_move "NIGHT_SHADE";get_move "CONFUSE_RAY";get_move "DREAM_EATER";get_move "DESTINY_BOND";];
+learnable_moves=["CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"THUNDERBOLT";"HYPNOSIS";"LICK";"SPITE";"SPITE";"MEAN_LOOK";"CURSE";"NIGHT_SHADE";"CONFUSE_RAY";"DREAM_EATER";"DESTINY_BOND";];
 stats={max_hp=45; attack=50; defense=45; speed=95; sp_attack=115;sp_defense=55;}; 
 ascii="         $+          Z=$N      
          +=Z      $+==$N       
@@ -842,7 +842,7 @@ ascii="         $+          Z=$N
 
 let pocadex = Pocamon.add "DUGTRIO" {
 name="DUGTRIO"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "CUT";get_move "SCRATCH";get_move "GROWL";get_move "MAGNITUDE";get_move "GROWL";get_move "MAGNITUDE";get_move "DIG";get_move "SAND_ATTACK";get_move "SLASH";get_move "EARTHQUAKE";get_move "FISSURE";];
+learnable_moves=["CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"CUT";"SCRATCH";"GROWL";"MAGNITUDE";"GROWL";"MAGNITUDE";"DIG";"SAND_ATTACK";"SLASH";"EARTHQUAKE";"FISSURE";];
 stats={max_hp=35; attack=80; defense=50; speed=120; sp_attack=50;sp_defense=70;}; 
 ascii="                               
                                
@@ -862,7 +862,7 @@ ascii="
 
 let pocadex = Pocamon.add "NIDORINO" {
 name="NIDORINO"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STRENGTH";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "LEER";get_move "TACKLE";get_move "HORN_ATTACK";get_move "DOUBLE_KICK";get_move "POISON_STING";get_move "FOCUS_ENERGY";get_move "FURY_ATTACK";get_move "HORN_DRILL";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"STRENGTH";"THUNDERBOLT";"ICE_BEAM";"LEER";"TACKLE";"HORN_ATTACK";"DOUBLE_KICK";"POISON_STING";"FOCUS_ENERGY";"FURY_ATTACK";"HORN_DRILL";];
 stats={max_hp=61; attack=72; defense=57; speed=65; sp_attack=55;sp_defense=55;}; 
 ascii="        Z=      ==             
         =ZI   Z== Z            
@@ -882,7 +882,7 @@ ascii="        Z=      ==
 
 let pocadex = Pocamon.add "NIDORINA" {
 name="NIDORINA"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STRENGTH";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "GROWL";get_move "TACKLE";get_move "SCRATCH";get_move "DOUBLE_KICK";get_move "POISON_STING";get_move "TAIL_WHIP";get_move "BITE";get_move "FURY_SWIPES";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"STRENGTH";"THUNDERBOLT";"ICE_BEAM";"GROWL";"TACKLE";"SCRATCH";"DOUBLE_KICK";"POISON_STING";"TAIL_WHIP";"BITE";"FURY_SWIPES";];
 stats={max_hp=70; attack=62; defense=67; speed=56; sp_attack=55;sp_defense=55;}; 
 ascii="        I                      
         =I=      II            
@@ -902,7 +902,7 @@ ascii="        I
 
 let pocadex = Pocamon.add "DIGLETT" {
 name="DIGLETT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "CUT";get_move "SCRATCH";get_move "GROWL";get_move "MAGNITUDE";get_move "DIG";get_move "SAND_ATTACK";get_move "SLASH";get_move "EARTHQUAKE";get_move "FISSURE";];
+learnable_moves=["CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"CUT";"SCRATCH";"GROWL";"MAGNITUDE";"DIG";"SAND_ATTACK";"SLASH";"EARTHQUAKE";"FISSURE";];
 stats={max_hp=10; attack=55; defense=25; speed=95; sp_attack=35;sp_defense=45;}; 
 ascii="                               
                                
@@ -922,7 +922,7 @@ ascii="
 
 let pocadex = Pocamon.add "MACHOKE" {
 name="MACHOKE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "LOW_KICK";get_move "LEER";get_move "FOCUS_ENERGY";get_move "FOCUS_ENERGY";get_move "KARATE_CHOP";get_move "SEISMIC_TOSS";get_move "FORESIGHT";get_move "VITAL_THROW";get_move "CROSS_CHOP";get_move "SCARY_FACE";get_move "SUBMISSION";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"LOW_KICK";"LEER";"FOCUS_ENERGY";"FOCUS_ENERGY";"KARATE_CHOP";"SEISMIC_TOSS";"FORESIGHT";"VITAL_THROW";"CROSS_CHOP";"SCARY_FACE";"SUBMISSION";];
 stats={max_hp=80; attack=100; defense=70; speed=45; sp_attack=50;sp_defense=60;}; 
 ascii="                   ~+~~O       
       $~~++    D     ~~O7~     
@@ -942,7 +942,7 @@ ascii="                   ~+~~O
 
 let pocadex = Pocamon.add "NIDORANF" {
 name="NIDORANF"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "THUNDERBOLT";get_move "GROWL";get_move "TACKLE";get_move "SCRATCH";get_move "DOUBLE_KICK";get_move "POISON_STING";get_move "TAIL_WHIP";get_move "BITE";get_move "FURY_SWIPES";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"THUNDERBOLT";"GROWL";"TACKLE";"SCRATCH";"DOUBLE_KICK";"POISON_STING";"TAIL_WHIP";"BITE";"FURY_SWIPES";];
 stats={max_hp=55; attack=47; defense=52; speed=41; sp_attack=40;sp_defense=40;}; 
 ascii="                               
                                
@@ -962,7 +962,7 @@ ascii="
 
 let pocadex = Pocamon.add "CUBONE" {
 name="CUBONE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "ICE_BEAM";get_move "GROWL";get_move "TAIL_WHIP";get_move "BONE_CLUB";get_move "HEADBUTT";get_move "LEER";get_move "FOCUS_ENERGY";get_move "BONEMERANG";get_move "RAGE";get_move "FALSE_SWIPE";get_move "THRASH";get_move "BONE_RUSH";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"ICE_BEAM";"GROWL";"TAIL_WHIP";"BONE_CLUB";"HEADBUTT";"LEER";"FOCUS_ENERGY";"BONEMERANG";"RAGE";"FALSE_SWIPE";"THRASH";"BONE_RUSH";];
 stats={max_hp=50; attack=50; defense=95; speed=35; sp_attack=40;sp_defense=50;}; 
 ascii="                               
                                
@@ -982,7 +982,7 @@ ascii="
 
 let pocadex = Pocamon.add "NIDORANM" {
 name="NIDORANM"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "THUNDERBOLT";get_move "LEER";get_move "TACKLE";get_move "HORN_ATTACK";get_move "DOUBLE_KICK";get_move "POISON_STING";get_move "FOCUS_ENERGY";get_move "FURY_ATTACK";get_move "HORN_DRILL";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"THUNDERBOLT";"LEER";"TACKLE";"HORN_ATTACK";"DOUBLE_KICK";"POISON_STING";"FOCUS_ENERGY";"FURY_ATTACK";"HORN_DRILL";];
 stats={max_hp=46; attack=57; defense=40; speed=50; sp_attack=40;sp_defense=40;}; 
 ascii="                               
                                
@@ -1002,7 +1002,7 @@ ascii="
 
 let pocadex = Pocamon.add "MAGNETON" {
 name="MAGNETON"; 
-learnable_moves=[get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "FLASH";get_move "THUNDERBOLT";get_move "THUNDERSHOCK";get_move "SUPERSONIC";get_move "SONICBOOM";get_move "THUNDERSHOCK";get_move "SUPERSONIC";get_move "SONICBOOM";get_move "THUNDER_WAVE";get_move "LOCK_ON";get_move "SWIFT";get_move "SCREECH";get_move "ZAP_CANNON";];
+learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"FLASH";"THUNDERBOLT";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDER_WAVE";"LOCK_ON";"SWIFT";"SCREECH";"ZAP_CANNON";];
 stats={max_hp=50; attack=60; defense=95; speed=70; sp_attack=120;sp_defense=70;}; 
 ascii="        OZN      8=I           
         Z?88N$~,+N             
@@ -1022,7 +1022,7 @@ ascii="        OZN      8=I
 
 let pocadex = Pocamon.add "DITTO" {
 name="DITTO"; 
-learnable_moves=[get_move "";];
+learnable_moves=["";];
 stats={max_hp=48; attack=48; defense=48; speed=48; sp_attack=48;sp_defense=48;}; 
 ascii="                               
                                
@@ -1042,7 +1042,7 @@ ascii="
 
 let pocadex = Pocamon.add "KOFFING" {
 name="KOFFING"; 
-learnable_moves=[get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "FIRE_BLAST";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "POISON_GAS";get_move "TACKLE";get_move "SMOG";get_move "SELFDESTRUCT";get_move "SLUDGE";get_move "SMOKESCREEN";get_move "HAZE";get_move "EXPLOSION";get_move "DESTINY_BOND";];
+learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"FIRE_BLAST";"REST";"ATTRACT";"THIEF";"FLAMETHROWER";"THUNDERBOLT";"POISON_GAS";"TACKLE";"SMOG";"SELFDESTRUCT";"SLUDGE";"SMOKESCREEN";"HAZE";"EXPLOSION";"DESTINY_BOND";];
 stats={max_hp=40; attack=65; defense=95; speed=35; sp_attack=60;sp_defense=45;}; 
 ascii="       =:::                    
       ==::==     :=            
@@ -1062,7 +1062,7 @@ ascii="       =:::
 
 let pocadex = Pocamon.add "GASTLY" {
 name="GASTLY"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "THUNDERBOLT";get_move "HYPNOSIS";get_move "LICK";get_move "SPITE";get_move "MEAN_LOOK";get_move "CURSE";get_move "NIGHT_SHADE";get_move "CONFUSE_RAY";get_move "DREAM_EATER";get_move "DESTINY_BOND";];
+learnable_moves=["CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"THUNDERBOLT";"HYPNOSIS";"LICK";"SPITE";"MEAN_LOOK";"CURSE";"NIGHT_SHADE";"CONFUSE_RAY";"DREAM_EATER";"DESTINY_BOND";];
 stats={max_hp=30; attack=35; defense=30; speed=80; sp_attack=100;sp_defense=35;}; 
 ascii="                  ~+~          
         +~   ~~~  ~~    ~      
@@ -1082,7 +1082,7 @@ ascii="                  ~+~
 
 let pocadex = Pocamon.add "CATERPIE" {
 name="CATERPIE"; 
-learnable_moves=[get_move "";get_move "TACKLE";get_move "STRING_SHOT";];
+learnable_moves=["";"TACKLE";"STRING_SHOT";];
 stats={max_hp=45; attack=30; defense=35; speed=45; sp_attack=20;sp_defense=20;}; 
 ascii="                               
                                
@@ -1102,7 +1102,7 @@ ascii="
 
 let pocadex = Pocamon.add "PARAS" {
 name="PARAS"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "FLASH";get_move "SCRATCH";get_move "STUN_SPORE";get_move "POISONPOWDER";get_move "LEECH_LIFE";get_move "SPORE";get_move "SLASH";get_move "GROWTH";get_move "GIGA_DRAIN";];
+learnable_moves=["CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"FLASH";"SCRATCH";"STUN_SPORE";"POISONPOWDER";"LEECH_LIFE";"SPORE";"SLASH";"GROWTH";"GIGA_DRAIN";];
 stats={max_hp=35; attack=70; defense=55; speed=25; sp_attack=45;sp_defense=55;}; 
 ascii="                               
                                
@@ -1122,7 +1122,7 @@ ascii="
 
 let pocadex = Pocamon.add "NIDOKING" {
 name="NIDOKING"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "HORN_ATTACK";get_move "DOUBLE_KICK";get_move "POISON_STING";get_move "THRASH";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"FURY_CUTTER";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"HORN_ATTACK";"DOUBLE_KICK";"POISON_STING";"THRASH";];
 stats={max_hp=81; attack=92; defense=77; speed=85; sp_attack=85;sp_defense=75;}; 
 ascii="    $ON N  NOI$$$$I            
     $8~NOIII~$$$I$N O          
@@ -1142,7 +1142,7 @@ OIIO   N$    ====IIIIIO=IIO I~I
 
 let pocadex = Pocamon.add "VENOMOTH" {
 name="VENOMOTH"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FLASH";get_move "DISABLE";get_move "FORESIGHT";get_move "SUPERSONIC";get_move "SUPERSONIC";get_move "CONFUSION";get_move "POISONPOWDER";get_move "LEECH_LIFE";get_move "STUN_SPORE";get_move "GUST";get_move "PSYBEAM";get_move "SLEEP_POWDER";get_move "PSYCHIC_M";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"SWIFT";"REST";"ATTRACT";"THIEF";"FLASH";"DISABLE";"FORESIGHT";"SUPERSONIC";"SUPERSONIC";"CONFUSION";"POISONPOWDER";"LEECH_LIFE";"STUN_SPORE";"GUST";"PSYBEAM";"SLEEP_POWDER";"PSYCHIC_M";];
 stats={max_hp=70; attack=65; defense=60; speed=90; sp_attack=90;sp_defense=75;}; 
 ascii="  ,,+             +....+..     
   $+,+           $.......N     
@@ -1162,7 +1162,7 @@ ascii="  ,,+             +....+..
 
 let pocadex = Pocamon.add "MACHAMP" {
 name="MACHAMP"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "LEER";get_move "FOCUS_ENERGY";get_move "FOCUS_ENERGY";get_move "KARATE_CHOP";get_move "SEISMIC_TOSS";get_move "FORESIGHT";get_move "VITAL_THROW";get_move "CROSS_CHOP";get_move "SCARY_FACE";get_move "SUBMISSION";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"LEER";"FOCUS_ENERGY";"FOCUS_ENERGY";"KARATE_CHOP";"SEISMIC_TOSS";"FORESIGHT";"VITAL_THROW";"CROSS_CHOP";"SCARY_FACE";"SUBMISSION";];
 stats={max_hp=90; attack=130; defense=80; speed=55; sp_attack=65;sp_defense=85;}; 
 ascii="  IZI +   88I:$88   +ZZ+I      
   IIII   ZZZ88:II ZZ  III      
@@ -1182,7 +1182,7 @@ ascii="  IZI +   88I:$88   +ZZ+I
 
 let pocadex = Pocamon.add "VENONAT" {
 name="VENONAT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "TACKLE";get_move "DISABLE";get_move "FORESIGHT";get_move "SUPERSONIC";get_move "CONFUSION";get_move "POISONPOWDER";get_move "LEECH_LIFE";get_move "STUN_SPORE";get_move "PSYBEAM";get_move "SLEEP_POWDER";get_move "PSYCHIC_M";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"SWIFT";"REST";"ATTRACT";"THIEF";"TACKLE";"DISABLE";"FORESIGHT";"SUPERSONIC";"CONFUSION";"POISONPOWDER";"LEECH_LIFE";"STUN_SPORE";"PSYBEAM";"SLEEP_POWDER";"PSYCHIC_M";];
 stats={max_hp=60; attack=55; defense=50; speed=45; sp_attack=40;sp_defense=55;}; 
 ascii="                     N         
                      :         
@@ -1202,7 +1202,7 @@ ascii="                     N
 
 let pocadex = Pocamon.add "PIKACHU" {
 name="PIKACHU"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "STRENGTH";get_move "FLASH";get_move "THUNDERBOLT";get_move "THUNDERSHOCK";get_move "GROWL";get_move "TAIL_WHIP";get_move "THUNDER_WAVE";get_move "QUICK_ATTACK";get_move "DOUBLE_TEAM";get_move "SLAM";get_move "THUNDERBOLT";get_move "AGILITY";get_move "THUNDER";get_move "LIGHT_SCREEN";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"STRENGTH";"FLASH";"THUNDERBOLT";"THUNDERSHOCK";"GROWL";"TAIL_WHIP";"THUNDER_WAVE";"QUICK_ATTACK";"DOUBLE_TEAM";"SLAM";"THUNDERBOLT";"AGILITY";"THUNDER";"LIGHT_SCREEN";];
 stats={max_hp=35; attack=55; defense=30; speed=90; sp_attack=50;sp_defense=40;}; 
 ascii="                               
                                
@@ -1222,7 +1222,7 @@ ascii="
 
 let pocadex = Pocamon.add "TANGELA" {
 name="TANGELA"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "CUT";get_move "FLASH";get_move "SLEEP_POWDER";get_move "ABSORB";get_move "POISONPOWDER";get_move "VINE_WHIP";get_move "BIND";get_move "MEGA_DRAIN";get_move "STUN_SPORE";get_move "SLAM";get_move "GROWTH";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"CUT";"FLASH";"SLEEP_POWDER";"ABSORB";"POISONPOWDER";"VINE_WHIP";"BIND";"MEGA_DRAIN";"STUN_SPORE";"SLAM";"GROWTH";];
 stats={max_hp=65; attack=55; defense=115; speed=60; sp_attack=100;sp_defense=40;}; 
 ascii="                               
                                
@@ -1242,7 +1242,7 @@ ascii="
 
 let pocadex = Pocamon.add "TAUROS" {
 name="TAUROS"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "RAGE";get_move "HORN_ATTACK";get_move "SCARY_FACE";get_move "PURSUIT";get_move "REST";get_move "THRASH";get_move "TAKE_DOWN";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"REST";"ATTRACT";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"TAIL_WHIP";"RAGE";"HORN_ATTACK";"SCARY_FACE";"PURSUIT";"REST";"THRASH";"TAKE_DOWN";];
 stats={max_hp=75; attack=100; defense=95; speed=110; sp_attack=40;sp_defense=70;}; 
 ascii="                        8+8    
                     ++    8    
@@ -1262,7 +1262,7 @@ ascii="                        8+8
 
 let pocadex = Pocamon.add "TENTACRUEL" {
 name="TENTACRUEL"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "SUPERSONIC";get_move "CONSTRICT";get_move "SUPERSONIC";get_move "CONSTRICT";get_move "ACID";get_move "BUBBLEBEAM";get_move "WRAP";get_move "BARRIER";get_move "SCREECH";get_move "HYDRO_PUMP";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"SURF";"WHIRLPOOL";"ICE_BEAM";"SUPERSONIC";"CONSTRICT";"SUPERSONIC";"CONSTRICT";"ACID";"BUBBLEBEAM";"WRAP";"BARRIER";"SCREECH";"HYDRO_PUMP";];
 stats={max_hp=80; attack=70; defense=65; speed=100; sp_attack=80;sp_defense=120;}; 
 ascii="          Z Z==IZ~I8           
         ZIZZZ==ZZZ~~I          
@@ -1282,7 +1282,7 @@ N         ZII   ZZ?7 ?N
 
 let pocadex = Pocamon.add "BELLSPROUT" {
 name="BELLSPROUT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "FLASH";get_move "VINE_WHIP";get_move "GROWTH";get_move "WRAP";get_move "SLEEP_POWDER";get_move "POISONPOWDER";get_move "STUN_SPORE";get_move "ACID";get_move "SWEET_SCENT";get_move "RAZOR_LEAF";get_move "SLAM";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"FLASH";"VINE_WHIP";"GROWTH";"WRAP";"SLEEP_POWDER";"POISONPOWDER";"STUN_SPORE";"ACID";"SWEET_SCENT";"RAZOR_LEAF";"SLAM";];
 stats={max_hp=50; attack=75; defense=35; speed=40; sp_attack=70;sp_defense=30;}; 
 ascii="                               
              777               
@@ -1302,7 +1302,7 @@ ascii="
 
 let pocadex = Pocamon.add "VAPOREON" {
 name="VAPOREON"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "SAND_ATTACK";get_move "WATER_GUN";get_move "QUICK_ATTACK";get_move "BITE";get_move "AURORA_BEAM";get_move "HAZE";get_move "ACID_ARMOR";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"TAIL_WHIP";"SAND_ATTACK";"WATER_GUN";"QUICK_ATTACK";"BITE";"AURORA_BEAM";"HAZE";"ACID_ARMOR";"HYDRO_PUMP";];
 stats={max_hp=130; attack=65; defense=60; speed=65; sp_attack=110;sp_defense=95;}; 
 ascii="                ZO             
                N: N    N       
@@ -1322,7 +1322,7 @@ ascii="                ZO
 
 let pocadex = Pocamon.add "POLIWHIRL" {
 name="POLIWHIRL"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "PSYCHIC";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"PSYCHIC";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";];
 stats={max_hp=65; attack=65; defense=65; speed=90; sp_attack=50;sp_defense=50;}; 
 ascii="                               
            Z      ZO           
@@ -1342,7 +1342,7 @@ ascii="
 
 let pocadex = Pocamon.add "GOLBAT" {
 name="GOLBAT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "SCREECH";get_move "LEECH_LIFE";get_move "SUPERSONIC";get_move "SUPERSONIC";get_move "BITE";get_move "CONFUSE_RAY";get_move "WING_ATTACK";get_move "MEAN_LOOK";get_move "HAZE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"SCREECH";"LEECH_LIFE";"SUPERSONIC";"SUPERSONIC";"BITE";"CONFUSE_RAY";"WING_ATTACK";"MEAN_LOOK";"HAZE";];
 stats={max_hp=75; attack=80; defense=70; speed=90; sp_attack=65;sp_defense=75;}; 
 ascii="  IIO:?              :OIIIII   
    IIIO+           ::IIIIII    
@@ -1362,7 +1362,7 @@ ascii="  IIO:?              :OIIIII
 
 let pocadex = Pocamon.add "MANKEY" {
 name="MANKEY"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "THUNDERBOLT";get_move "SCRATCH";get_move "LEER";get_move "LOW_KICK";get_move "KARATE_CHOP";get_move "FURY_SWIPES";get_move "FOCUS_ENERGY";get_move "SEISMIC_TOSS";get_move "CROSS_CHOP";get_move "SCREECH";get_move "THRASH";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"THUNDERBOLT";"SCRATCH";"LEER";"LOW_KICK";"KARATE_CHOP";"FURY_SWIPES";"FOCUS_ENERGY";"SEISMIC_TOSS";"CROSS_CHOP";"SCREECH";"THRASH";];
 stats={max_hp=40; attack=80; defense=35; speed=70; sp_attack=35;sp_defense=45;}; 
 ascii="                               
                       ~~I      
@@ -1382,7 +1382,7 @@ ascii="
 
 let pocadex = Pocamon.add "HITMONCHAN" {
 name="HITMONCHAN"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "AGILITY";get_move "PURSUIT";get_move "THUNDERPUNCH";get_move "ICE_PUNCH";get_move "FIRE_PUNCH";get_move "MACH_PUNCH";get_move "MEGA_PUNCH";get_move "DETECT";get_move "COUNTER";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SWIFT";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"AGILITY";"PURSUIT";"THUNDERPUNCH";"ICE_PUNCH";"FIRE_PUNCH";"MACH_PUNCH";"MEGA_PUNCH";"DETECT";"COUNTER";];
 stats={max_hp=50; attack=105; defense=79; speed=76; sp_attack=35;sp_defense=110;}; 
 ascii="             ++++8I            
             +I~~8~NIN          
@@ -1402,7 +1402,7 @@ ascii="             ++++8I
 
 let pocadex = Pocamon.add "GOLEM" {
 name="GOLEM"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "DEFENSE_CURL";get_move "ROCK_THROW";get_move "MAGNITUDE";get_move "DEFENSE_CURL";get_move "ROCK_THROW";get_move "MAGNITUDE";get_move "SELFDESTRUCT";get_move "HARDEN";get_move "ROLLOUT";get_move "EARTHQUAKE";get_move "EXPLOSION";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"REST";"ATTRACT";"FIRE_PUNCH";"FURY_CUTTER";"STRENGTH";"FLAMETHROWER";"DEFENSE_CURL";"ROCK_THROW";"MAGNITUDE";"DEFENSE_CURL";"ROCK_THROW";"MAGNITUDE";"SELFDESTRUCT";"HARDEN";"ROLLOUT";"EARTHQUAKE";"EXPLOSION";];
 stats={max_hp=80; attack=110; defense=130; speed=45; sp_attack=55;sp_defense=65;}; 
 ascii="             88 8?O            
           888OO7?????          
@@ -1422,7 +1422,7 @@ ascii="             88 8?O
 
 let pocadex = Pocamon.add "RAICHU" {
 name="RAICHU"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STRENGTH";get_move "FLASH";get_move "THUNDERBOLT";get_move "TAIL_WHIP";get_move "QUICK_ATTACK";get_move "THUNDERBOLT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"STRENGTH";"FLASH";"THUNDERBOLT";"TAIL_WHIP";"QUICK_ATTACK";"THUNDERBOLT";];
 stats={max_hp=60; attack=90; defense=55; speed=100; sp_attack=90;sp_defense=80;}; 
 ascii="           8ZO    8ZZ??        
 =          ZZ????ZOO?=Z        
@@ -1442,7 +1442,7 @@ Z=Z      8??OO??==I O
 
 let pocadex = Pocamon.add "PIDGEY" {
 name="PIDGEY"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "TACKLE";get_move "SAND_ATTACK";get_move "GUST";get_move "QUICK_ATTACK";get_move "WHIRLWIND";get_move "WING_ATTACK";get_move "AGILITY";get_move "MIRROR_MOVE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"TACKLE";"SAND_ATTACK";"GUST";"QUICK_ATTACK";"WHIRLWIND";"WING_ATTACK";"AGILITY";"MIRROR_MOVE";];
 stats={max_hp=40; attack=45; defense=40; speed=56; sp_attack=35;sp_defense=35;}; 
 ascii="                               
                                
@@ -1462,7 +1462,7 @@ ascii="
 
 let pocadex = Pocamon.add "MEWTWO" {
 name="MEWTWO"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "DISABLE";get_move "BARRIER";get_move "SWIFT";get_move "PSYCH_UP";get_move "FUTURE_SIGHT";get_move "MIST";get_move "PSYCHIC_M";get_move "AMNESIA";get_move "RECOVER";get_move "SAFEGUARD";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"IRON_TAIL";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"THUNDERPUNCH";"DREAM_EATER";"DETECT";"REST";"FIRE_PUNCH";"NIGHTMARE";"STRENGTH";"FLASH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"DISABLE";"BARRIER";"SWIFT";"PSYCH_UP";"FUTURE_SIGHT";"MIST";"PSYCHIC_M";"AMNESIA";"RECOVER";"SAFEGUARD";];
 stats={max_hp=106; attack=110; defense=90; speed=130; sp_attack=154;sp_defense=90;}; 
 ascii="           I:I:::=     I    $  
            I,,,:==    $      $ 
@@ -1482,7 +1482,7 @@ ascii="           I:I:::=     I    $
 
 let pocadex = Pocamon.add "ARCANINE" {
 name="ARCANINE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "LEER";get_move "TAKE_DOWN";get_move "FLAME_WHEEL";get_move "EXTREMESPEED";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"LEER";"TAKE_DOWN";"FLAME_WHEEL";"EXTREMESPEED";];
 stats={max_hp=90; attack=110; defense=80; speed=95; sp_attack=100;sp_defense=80;}; 
 ascii=" +NO:::+OI+N+     :::::::N     
  O7+:+++O+:N+    O::::::::+    
@@ -1502,7 +1502,7 @@ ascii=" +NO:::+OI+N+     :::::::N
 
 let pocadex = Pocamon.add "HORSEA" {
 name="HORSEA"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "DRAGONBREATH";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "BUBBLE";get_move "SMOKESCREEN";get_move "LEER";get_move "WATER_GUN";get_move "TWISTER";get_move "AGILITY";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"DRAGONBREATH";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"BUBBLE";"SMOKESCREEN";"LEER";"WATER_GUN";"TWISTER";"AGILITY";"HYDRO_PUMP";];
 stats={max_hp=30; attack=40; defense=70; speed=60; sp_attack=70;sp_defense=25;}; 
 ascii="                               
                                
@@ -1522,7 +1522,7 @@ ascii="
 
 let pocadex = Pocamon.add "DRAGONAIR" {
 name="DRAGONAIR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WATERFALL";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "WRAP";get_move "LEER";get_move "THUNDER_WAVE";get_move "TWISTER";get_move "THUNDER_WAVE";get_move "TWISTER";get_move "DRAGON_RAGE";get_move "SLAM";get_move "AGILITY";get_move "SAFEGUARD";get_move "OUTRAGE";get_move "HYPER_BEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DETECT";"REST";"ATTRACT";"SURF";"WATERFALL";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"WRAP";"LEER";"THUNDER_WAVE";"TWISTER";"THUNDER_WAVE";"TWISTER";"DRAGON_RAGE";"SLAM";"AGILITY";"SAFEGUARD";"OUTRAGE";"HYPER_BEAM";];
 stats={max_hp=61; attack=84; defense=65; speed=70; sp_attack=70;sp_defense=70;}; 
 ascii="           ==??? ::            
           Z =???::             
@@ -1542,7 +1542,7 @@ ascii="           ==??? ::
 
 let pocadex = Pocamon.add "VENUSAUR" {
 name="VENUSAUR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FURY_CUTTER";get_move "CUT";get_move "FLASH";get_move "GROWL";get_move "LEECH_SEED";get_move "VINE_WHIP";get_move "GROWL";get_move "LEECH_SEED";get_move "VINE_WHIP";get_move "POISONPOWDER";get_move "SLEEP_POWDER";get_move "RAZOR_LEAF";get_move "SWEET_SCENT";get_move "GROWTH";get_move "SYNTHESIS";get_move "SOLARBEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"FURY_CUTTER";"CUT";"FLASH";"GROWL";"LEECH_SEED";"VINE_WHIP";"GROWL";"LEECH_SEED";"VINE_WHIP";"POISONPOWDER";"SLEEP_POWDER";"RAZOR_LEAF";"SWEET_SCENT";"GROWTH";"SYNTHESIS";"SOLARBEAM";];
 stats={max_hp=80; attack=82; defense=83; speed=80; sp_attack=100;sp_defense=100;}; 
 ascii="   7+:++8+++++88++++N+++::+8   
   877 7++::+:N887++++++N7+77   
@@ -1562,7 +1562,7 @@ Z 7778NN888ZZZZZN  8+7++++N888+
 
 let pocadex = Pocamon.add "CHARMANDER" {
 name="CHARMANDER"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "CUT";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "SCRATCH";get_move "GROWL";get_move "EMBER";get_move "SMOKESCREEN";get_move "RAGE";get_move "SCARY_FACE";get_move "FLAMETHROWER";get_move "SLASH";get_move "DRAGON_RAGE";get_move "FIRE_SPIN";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DEFENSE_CURL";"REST";"ATTRACT";"FIRE_PUNCH";"FURY_CUTTER";"CUT";"STRENGTH";"FLAMETHROWER";"SCRATCH";"GROWL";"EMBER";"SMOKESCREEN";"RAGE";"SCARY_FACE";"FLAMETHROWER";"SLASH";"DRAGON_RAGE";"FIRE_SPIN";];
 stats={max_hp=39; attack=52; defense=43; speed=65; sp_attack=60;sp_defense=50;}; 
 ascii="                               
                                
@@ -1582,7 +1582,7 @@ ascii="
 
 let pocadex = Pocamon.add "ARTICUNO" {
 name="ARTICUNO"; 
-learnable_moves=[get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "STEEL_WING";get_move "FLY";get_move "ICE_BEAM";get_move "POWDER_SNOW";get_move "MIST";get_move "AGILITY";get_move "MIND_READER";get_move "ICE_BEAM";get_move "REFLECT";get_move "BLIZZARD";];
+learnable_moves=["CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"SWIFT";"DETECT";"REST";"STEEL_WING";"FLY";"ICE_BEAM";"POWDER_SNOW";"MIST";"AGILITY";"MIND_READER";"ICE_BEAM";"REFLECT";"BLIZZARD";];
 stats={max_hp=90; attack=85; defense=100; speed=85; sp_attack=95;sp_defense=125;}; 
 ascii=" D ~++O             ++++++DO~~ 
  ~~+I++     OO      ++++++~~   
@@ -1602,7 +1602,7 @@ ascii=" D ~++O             ++++++DO~~
 
 let pocadex = Pocamon.add "MUK" {
 name="MUK"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "POUND";get_move "HARDEN";get_move "HARDEN";get_move "DISABLE";get_move "SLUDGE";get_move "MINIMIZE";get_move "SCREECH";get_move "ACID_ARMOR";get_move "SLUDGE_BOMB";];
+learnable_moves=["DYNAMICPUNCH";"CURSE";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"FIRE_BLAST";"THUNDERPUNCH";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"FLAMETHROWER";"THUNDERBOLT";"POUND";"HARDEN";"HARDEN";"DISABLE";"SLUDGE";"MINIMIZE";"SCREECH";"ACID_ARMOR";"SLUDGE_BOMB";];
 stats={max_hp=105; attack=105; defense=75; speed=50; sp_attack=65;sp_defense=100;}; 
 ascii="                      Z+:::::=N
                    Z::=+===::==
@@ -1622,7 +1622,7 @@ ascii="                      Z+:::::=N
 
 let pocadex = Pocamon.add "NIDOQUEEN" {
 name="NIDOQUEEN"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "SCRATCH";get_move "DOUBLE_KICK";get_move "TAIL_WHIP";get_move "BODY_SLAM";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"FURY_CUTTER";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"SCRATCH";"DOUBLE_KICK";"TAIL_WHIP";"BODY_SLAM";];
 stats={max_hp=90; attack=82; defense=87; speed=76; sp_attack=75;sp_defense=85;}; 
 ascii="        I~~~I:??ZZ?IN          
         ~I~?II???N?N           
@@ -1642,7 +1642,7 @@ ascii="        I~~~I:??ZZ?IN
 
 let pocadex = Pocamon.add "GOLDUCK" {
 name="GOLDUCK"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FURY_CUTTER";get_move "SURF";get_move "STRENGTH";get_move "FLASH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "DISABLE";get_move "CONFUSION";get_move "TAIL_WHIP";get_move "DISABLE";get_move "CONFUSION";get_move "SCREECH";get_move "PSYCH_UP";get_move "FURY_SWIPES";get_move "HYDRO_PUMP";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"FURY_CUTTER";"SURF";"STRENGTH";"FLASH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"TAIL_WHIP";"DISABLE";"CONFUSION";"TAIL_WHIP";"DISABLE";"CONFUSION";"SCREECH";"PSYCH_UP";"FURY_SWIPES";"HYDRO_PUMP";];
 stats={max_hp=80; attack=82; defense=78; speed=85; sp_attack=95;sp_defense=80;}; 
 ascii="           I O+ ++             
            I~+O++N             
@@ -1662,7 +1662,7 @@ ascii="           I O+ ++
 
 let pocadex = Pocamon.add "PINSIR" {
 name="PINSIR"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "STRENGTH";get_move "FOCUS_ENERGY";get_move "BIND";get_move "SEISMIC_TOSS";get_move "HARDEN";get_move "GUILLOTINE";get_move "SUBMISSION";get_move "SWORDS_DANCE";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"STRENGTH";"FOCUS_ENERGY";"BIND";"SEISMIC_TOSS";"HARDEN";"GUILLOTINE";"SUBMISSION";"SWORDS_DANCE";];
 stats={max_hp=65; attack=125; defense=100; speed=85; sp_attack=55;sp_defense=70;}; 
 ascii="        ~,,O     7,,,          
         ,7+7O     ,~,O         
@@ -1682,7 +1682,7 @@ I        IO$$$OO$$$   OI
 
 let pocadex = Pocamon.add "GOLDEEN" {
 name="GOLDEEN"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WATERFALL";get_move "ICE_BEAM";get_move "PECK";get_move "TAIL_WHIP";get_move "SUPERSONIC";get_move "HORN_ATTACK";get_move "FLAIL";get_move "FURY_ATTACK";get_move "WATERFALL";get_move "HORN_DRILL";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"WATERFALL";"ICE_BEAM";"PECK";"TAIL_WHIP";"SUPERSONIC";"HORN_ATTACK";"FLAIL";"FURY_ATTACK";"WATERFALL";"HORN_DRILL";"AGILITY";];
 stats={max_hp=45; attack=67; defense=60; speed=63; sp_attack=35;sp_defense=50;}; 
 ascii="                               
                                
@@ -1702,7 +1702,7 @@ ascii="
 
 let pocadex = Pocamon.add "HYPNO" {
 name="HYPNO"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "FLASH";get_move "HYPNOSIS";get_move "DISABLE";get_move "CONFUSION";get_move "DISABLE";get_move "CONFUSION";get_move "HEADBUTT";get_move "POISON_GAS";get_move "MEDITATE";get_move "PSYCHIC_M";get_move "PSYCH_UP";get_move "FUTURE_SIGHT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"FIRE_PUNCH";"NIGHTMARE";"FLASH";"HYPNOSIS";"DISABLE";"CONFUSION";"DISABLE";"CONFUSION";"HEADBUTT";"POISON_GAS";"MEDITATE";"PSYCHIC_M";"PSYCH_UP";"FUTURE_SIGHT";];
 stats={max_hp=85; attack=73; defense=70; speed=67; sp_attack=73;sp_defense=115;}; 
 ascii="           ~~~????7            
           I~~~???Z   Z~Z       
@@ -1722,7 +1722,7 @@ ascii="           ~~~????7
 
 let pocadex = Pocamon.add "MOLTRES" {
 name="MOLTRES"; 
-learnable_moves=[get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "STEEL_WING";get_move "FLY";get_move "FLAMETHROWER";get_move "EMBER";get_move "FIRE_SPIN";get_move "AGILITY";get_move "ENDURE";get_move "FLAMETHROWER";get_move "SAFEGUARD";get_move "SKY_ATTACK";];
+learnable_moves=["CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"SWIFT";"DETECT";"REST";"STEEL_WING";"FLY";"FLAMETHROWER";"EMBER";"FIRE_SPIN";"AGILITY";"ENDURE";"FLAMETHROWER";"SAFEGUARD";"SKY_ATTACK";];
 stats={max_hp=90; attack=100; defense=90; speed=90; sp_attack=125;sp_defense=85;}; 
 ascii="OO             II +OOO         
 I            +OI==IIOO         
@@ -1742,7 +1742,7 @@ I8   O$ OOO   I$
 
 let pocadex = Pocamon.add "WEEPINBELL" {
 name="WEEPINBELL"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "FLASH";get_move "VINE_WHIP";get_move "GROWTH";get_move "WRAP";get_move "GROWTH";get_move "WRAP";get_move "SLEEP_POWDER";get_move "POISONPOWDER";get_move "STUN_SPORE";get_move "ACID";get_move "SWEET_SCENT";get_move "RAZOR_LEAF";get_move "SLAM";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"FLASH";"VINE_WHIP";"GROWTH";"WRAP";"GROWTH";"WRAP";"SLEEP_POWDER";"POISONPOWDER";"STUN_SPORE";"ACID";"SWEET_SCENT";"RAZOR_LEAF";"SLAM";];
 stats={max_hp=65; attack=90; defense=50; speed=55; sp_attack=85;sp_defense=45;}; 
 ascii="             7OO               
            +~+O+               
@@ -1762,7 +1762,7 @@ ascii="             7OO
 
 let pocadex = Pocamon.add "PONYTA" {
 name="PONYTA"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "TACKLE";get_move "GROWL";get_move "TAIL_WHIP";get_move "EMBER";get_move "STOMP";get_move "FIRE_SPIN";get_move "TAKE_DOWN";get_move "AGILITY";get_move "FIRE_BLAST";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"TACKLE";"GROWL";"TAIL_WHIP";"EMBER";"STOMP";"FIRE_SPIN";"TAKE_DOWN";"AGILITY";"FIRE_BLAST";];
 stats={max_hp=50; attack=85; defense=55; speed=90; sp_attack=65;sp_defense=65;}; 
 ascii="         7?77                  
         7===?77  7             
@@ -1782,7 +1782,7 @@ ascii="         7?77
 
 let pocadex = Pocamon.add "MEOWTH" {
 name="MEOWTH"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "THUNDERBOLT";get_move "SCRATCH";get_move "GROWL";get_move "BITE";get_move "PAY_DAY";get_move "FAINT_ATTACK";get_move "SCREECH";get_move "FURY_SWIPES";get_move "SLASH";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"THUNDERBOLT";"SCRATCH";"GROWL";"BITE";"PAY_DAY";"FAINT_ATTACK";"SCREECH";"FURY_SWIPES";"SLASH";];
 stats={max_hp=40; attack=45; defense=35; speed=90; sp_attack=40;sp_defense=40;}; 
 ascii="                               
            ZZ   ~              
@@ -1802,7 +1802,7 @@ ascii="
 
 let pocadex = Pocamon.add "BLASTOISE" {
 name="BLASTOISE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "BUBBLE";get_move "WITHDRAW";get_move "TAIL_WHIP";get_move "BUBBLE";get_move "WITHDRAW";get_move "WATER_GUN";get_move "BITE";get_move "RAPID_SPIN";get_move "PROTECT";get_move "RAIN_DANCE";get_move "SKULL_BASH";get_move "HYDRO_PUMP";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"TAIL_WHIP";"BUBBLE";"WITHDRAW";"TAIL_WHIP";"BUBBLE";"WITHDRAW";"WATER_GUN";"BITE";"RAPID_SPIN";"PROTECT";"RAIN_DANCE";"SKULL_BASH";"HYDRO_PUMP";];
 stats={max_hp=79; attack=83; defense=100; speed=78; sp_attack=85;sp_defense=105;}; 
 ascii="   N?:8??????O?888             
     ?????=?8???N  $$N8??       
@@ -1822,7 +1822,7 @@ ascii="   N?:8??????O?888
 
 let pocadex = Pocamon.add "BUTTERFREE" {
 name="BUTTERFREE"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "NIGHTMARE";get_move "FLASH";get_move "CONFUSION";get_move "POISONPOWDER";get_move "STUN_SPORE";get_move "SLEEP_POWDER";get_move "SUPERSONIC";get_move "WHIRLWIND";get_move "GUST";get_move "PSYBEAM";get_move "SAFEGUARD";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"NIGHTMARE";"FLASH";"CONFUSION";"POISONPOWDER";"STUN_SPORE";"SLEEP_POWDER";"SUPERSONIC";"WHIRLWIND";"GUST";"PSYBEAM";"SAFEGUARD";];
 stats={max_hp=60; attack=45; defense=50; speed=70; sp_attack=80;sp_defense=80;}; 
 ascii="                               
      8?..I           Z...8     
@@ -1842,7 +1842,7 @@ ascii="
 
 let pocadex = Pocamon.add "WEEDLE" {
 name="WEEDLE"; 
-learnable_moves=[get_move "";get_move "POISON_STING";get_move "STRING_SHOT";];
+learnable_moves=["";"POISON_STING";"STRING_SHOT";];
 stats={max_hp=40; attack=35; defense=30; speed=50; sp_attack=20;sp_defense=20;}; 
 ascii="                               
                                
@@ -1862,7 +1862,7 @@ ascii="
 
 let pocadex = Pocamon.add "GRAVELER" {
 name="GRAVELER"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "TACKLE";get_move "DEFENSE_CURL";get_move "ROCK_THROW";get_move "DEFENSE_CURL";get_move "ROCK_THROW";get_move "MAGNITUDE";get_move "SELFDESTRUCT";get_move "HARDEN";get_move "ROLLOUT";get_move "EARTHQUAKE";get_move "EXPLOSION";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"REST";"ATTRACT";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"TACKLE";"DEFENSE_CURL";"ROCK_THROW";"DEFENSE_CURL";"ROCK_THROW";"MAGNITUDE";"SELFDESTRUCT";"HARDEN";"ROLLOUT";"EARTHQUAKE";"EXPLOSION";];
 stats={max_hp=55; attack=95; defense=115; speed=35; sp_attack=45;sp_defense=45;}; 
 ascii="                               
                8               
@@ -1882,7 +1882,7 @@ ascii="
 
 let pocadex = Pocamon.add "SEADRA" {
 name="SEADRA"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "DRAGONBREATH";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "BUBBLE";get_move "SMOKESCREEN";get_move "LEER";get_move "WATER_GUN";get_move "SMOKESCREEN";get_move "LEER";get_move "WATER_GUN";get_move "TWISTER";get_move "AGILITY";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"DRAGONBREATH";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"BUBBLE";"SMOKESCREEN";"LEER";"WATER_GUN";"SMOKESCREEN";"LEER";"WATER_GUN";"TWISTER";"AGILITY";"HYDRO_PUMP";];
 stats={max_hp=55; attack=65; defense=95; speed=85; sp_attack=95;sp_defense=45;}; 
 ascii="                               
           ~   Z      +         
@@ -1902,7 +1902,7 @@ ascii="
 
 let pocadex = Pocamon.add "KINGLER" {
 name="KINGLER"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "LEER";get_move "VICEGRIP";get_move "LEER";get_move "VICEGRIP";get_move "HARDEN";get_move "STOMP";get_move "GUILLOTINE";get_move "PROTECT";get_move "CRABHAMMER";];
+learnable_moves=["CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"SURF";"STRENGTH";"WHIRLPOOL";"ICE_BEAM";"LEER";"VICEGRIP";"LEER";"VICEGRIP";"HARDEN";"STOMP";"GUILLOTINE";"PROTECT";"CRABHAMMER";];
 stats={max_hp=55; attack=130; defense=115; speed=75; sp_attack=50;sp_defense=50;}; 
 ascii="                    ~~I?I      
                    ~~?8III     
@@ -1922,7 +1922,7 @@ OI=                      =OO
 
 let pocadex = Pocamon.add "KABUTOPS" {
 name="KABUTOPS"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "HARDEN";get_move "ABSORB";get_move "ABSORB";get_move "LEER";get_move "SAND_ATTACK";get_move "ENDURE";get_move "SLASH";get_move "MEGA_DRAIN";get_move "ANCIENTPOWER";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"SURF";"WHIRLPOOL";"ICE_BEAM";"HARDEN";"ABSORB";"ABSORB";"LEER";"SAND_ATTACK";"ENDURE";"SLASH";"MEGA_DRAIN";"ANCIENTPOWER";];
 stats={max_hp=60; attack=115; defense=105; speed=80; sp_attack=65;sp_defense=70;}; 
 ascii="     ZZ++ +  +8                
     Z,,,  + IIIIIIII ++        
@@ -1942,7 +1942,7 @@ ascii="     ZZ++ +  +8
 
 let pocadex = Pocamon.add "ZAPDOS" {
 name="ZAPDOS"; 
-learnable_moves=[get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "STEEL_WING";get_move "FLY";get_move "FLASH";get_move "THUNDERBOLT";get_move "THUNDERSHOCK";get_move "THUNDER_WAVE";get_move "AGILITY";get_move "DETECT";get_move "DRILL_PECK";get_move "LIGHT_SCREEN";get_move "THUNDER";];
+learnable_moves=["CURSE";"ROAR";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"SWIFT";"DETECT";"REST";"STEEL_WING";"FLY";"FLASH";"THUNDERBOLT";"THUNDERSHOCK";"THUNDER_WAVE";"AGILITY";"DETECT";"DRILL_PECK";"LIGHT_SCREEN";"THUNDER";];
 stats={max_hp=90; attack=90; defense=85; speed=100; sp_attack=125;sp_defense=90;}; 
 ascii="        =   =                  
 =   N   =8 8=             NN 8=
@@ -1962,7 +1962,7 @@ N=====NN8====8==N===========INN
 
 let pocadex = Pocamon.add "DODUO" {
 name="DODUO"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "PECK";get_move "GROWL";get_move "PURSUIT";get_move "FURY_ATTACK";get_move "TRI_ATTACK";get_move "RAGE";get_move "DRILL_PECK";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"PECK";"GROWL";"PURSUIT";"FURY_ATTACK";"TRI_ATTACK";"RAGE";"DRILL_PECK";"AGILITY";];
 stats={max_hp=35; attack=85; defense=45; speed=75; sp_attack=35;sp_defense=35;}; 
 ascii="                  8++8  7      
                  7+NNO::ON     
@@ -1982,7 +1982,7 @@ ascii="                  8++8  7
 
 let pocadex = Pocamon.add "MAROWAK" {
 name="MAROWAK"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "BONE_CLUB";get_move "HEADBUTT";get_move "TAIL_WHIP";get_move "BONE_CLUB";get_move "HEADBUTT";get_move "LEER";get_move "FOCUS_ENERGY";get_move "BONEMERANG";get_move "RAGE";get_move "FALSE_SWIPE";get_move "THRASH";get_move "BONE_RUSH";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"ICE_BEAM";"TAIL_WHIP";"BONE_CLUB";"HEADBUTT";"TAIL_WHIP";"BONE_CLUB";"HEADBUTT";"LEER";"FOCUS_ENERGY";"BONEMERANG";"RAGE";"FALSE_SWIPE";"THRASH";"BONE_RUSH";];
 stats={max_hp=60; attack=80; defense=110; speed=45; sp_attack=50;sp_defense=80;}; 
 ascii="   I O                         
   ,~ ,     OO                  
@@ -2002,7 +2002,7 @@ ascii="   I O
 
 let pocadex = Pocamon.add "PRIMEAPE" {
 name="PRIMEAPE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "THUNDERBOLT";get_move "LEER";get_move "LOW_KICK";get_move "RAGE";get_move "LOW_KICK";get_move "KARATE_CHOP";get_move "FURY_SWIPES";get_move "FOCUS_ENERGY";get_move "RAGE";get_move "SEISMIC_TOSS";get_move "CROSS_CHOP";get_move "SCREECH";get_move "THRASH";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"THUNDERBOLT";"LEER";"LOW_KICK";"RAGE";"LOW_KICK";"KARATE_CHOP";"FURY_SWIPES";"FOCUS_ENERGY";"RAGE";"SEISMIC_TOSS";"CROSS_CHOP";"SCREECH";"THRASH";];
 stats={max_hp=65; attack=105; defense=60; speed=95; sp_attack=60;sp_defense=70;}; 
 ascii="        7 O    O7.O            
          .?  :O..?~            
@@ -2022,7 +2022,7 @@ ascii="        7 O    O7.O
 
 let pocadex = Pocamon.add "AERODACTYL" {
 name="AERODACTYL"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "EARTHQUAKE";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "STEEL_WING";get_move "FLY";get_move "FLAMETHROWER";get_move "AGILITY";get_move "BITE";get_move "SUPERSONIC";get_move "ANCIENTPOWER";get_move "SCARY_FACE";get_move "TAKE_DOWN";get_move "HYPER_BEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"DRAGONBREATH";"EARTHQUAKE";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"SWIFT";"DETECT";"REST";"ATTRACT";"STEEL_WING";"FLY";"FLAMETHROWER";"AGILITY";"BITE";"SUPERSONIC";"ANCIENTPOWER";"SCARY_FACE";"TAKE_DOWN";"HYPER_BEAM";];
 stats={max_hp=80; attack=105; defense=65; speed=130; sp_attack=60;sp_defense=75;}; 
 ascii=":Z:?=    ?Z Z==?     Z:=?7??8  
 77 ?:         ===   Z ??7???   
@@ -2042,7 +2042,7 @@ ascii=":Z:?=    ?Z Z==?     Z:=?7??8
 
 let pocadex = Pocamon.add "CLOYSTER" {
 name="CLOYSTER"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "SUPERSONIC";get_move "AURORA_BEAM";get_move "PROTECT";get_move "SPIKES";get_move "SPIKE_CANNON";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"ICE_BEAM";"SUPERSONIC";"AURORA_BEAM";"PROTECT";"SPIKES";"SPIKE_CANNON";];
 stats={max_hp=50; attack=95; defense=180; speed=70; sp_attack=85;sp_defense=45;}; 
 ascii="  8                 7~~+N      
   ~+8     77 ~+8   +~~+N       
@@ -2062,7 +2062,7 @@ ascii="  8                 7~~+N
 
 let pocadex = Pocamon.add "SLOWBRO" {
 name="SLOWBRO"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "FURY_CUTTER";get_move "NIGHTMARE";get_move "SURF";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "ICE_BEAM";get_move "TACKLE";get_move "GROWL";get_move "WATER_GUN";get_move "GROWL";get_move "WATER_GUN";get_move "CONFUSION";get_move "DISABLE";get_move "HEADBUTT";get_move "WITHDRAW";get_move "AMNESIA";get_move "PSYCHIC_M";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"DREAM_EATER";"REST";"ATTRACT";"FURY_CUTTER";"NIGHTMARE";"SURF";"STRENGTH";"FLASH";"FLAMETHROWER";"ICE_BEAM";"TACKLE";"GROWL";"WATER_GUN";"GROWL";"WATER_GUN";"CONFUSION";"DISABLE";"HEADBUTT";"WITHDRAW";"AMNESIA";"PSYCHIC_M";];
 stats={max_hp=95; attack=75; defense=110; speed=30; sp_attack=100;sp_defense=80;}; 
 ascii="       ??NNNNO==N              
         =~~==?O?N              
@@ -2082,7 +2082,7 @@ ascii="       ??NNNNO==N
 
 let pocadex = Pocamon.add "ALAKAZAM" {
 name="ALAKAZAM"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DIG";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "FLASH";get_move "KINESIS";get_move "CONFUSION";get_move "CONFUSION";get_move "DISABLE";get_move "PSYBEAM";get_move "RECOVER";get_move "FUTURE_SIGHT";get_move "PSYCHIC_M";get_move "REFLECT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DIG";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"NIGHTMARE";"FLASH";"KINESIS";"CONFUSION";"CONFUSION";"DISABLE";"PSYBEAM";"RECOVER";"FUTURE_SIGHT";"PSYCHIC_M";"REFLECT";];
 stats={max_hp=55; attack=50; defense=45; speed=120; sp_attack=135;sp_defense=85;}; 
 ascii=" :        +II    OIN     +=:N  
 ==N       N+O++O++IN     OON   
@@ -2102,7 +2102,7 @@ ascii=" :        +II    OIN     +=:N
 
 let pocadex = Pocamon.add "MEW" {
 name="MEW"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "IRON_TAIL";get_move "DRAGONBREATH";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FIRE_PUNCH";get_move "FURY_CUTTER";get_move "NIGHTMARE";get_move "CUT";get_move "FLY";get_move "SURF";get_move "STRENGTH";get_move "FLASH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "TRANSFORM";get_move "MEGA_PUNCH";get_move "METRONOME";get_move "PSYCHIC_M";get_move "ANCIENTPOWER";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"ROAR";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"IRON_TAIL";"DRAGONBREATH";"THUNDER";"EARTHQUAKE";"RETURN";"DIG";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"SANDSTORM";"FIRE_BLAST";"SWIFT";"DEFENSE_CURL";"THUNDERPUNCH";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FIRE_PUNCH";"FURY_CUTTER";"NIGHTMARE";"CUT";"FLY";"SURF";"STRENGTH";"FLASH";"WHIRLPOOL";"WATERFALL";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"TRANSFORM";"MEGA_PUNCH";"METRONOME";"PSYCHIC_M";"ANCIENTPOWER";];
 stats={max_hp=100; attack=100; defense=100; speed=100; sp_attack=100;sp_defense=100;}; 
 ascii="                               
                                
@@ -2122,7 +2122,7 @@ ascii="
 
 let pocadex = Pocamon.add "SEAKING" {
 name="SEAKING"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WATERFALL";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "TAIL_WHIP";get_move "SUPERSONIC";get_move "HORN_ATTACK";get_move "FLAIL";get_move "FURY_ATTACK";get_move "WATERFALL";get_move "HORN_DRILL";get_move "AGILITY";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"WATERFALL";"ICE_BEAM";"TAIL_WHIP";"TAIL_WHIP";"SUPERSONIC";"HORN_ATTACK";"FLAIL";"FURY_ATTACK";"WATERFALL";"HORN_DRILL";"AGILITY";];
 stats={max_hp=80; attack=92; defense=65; speed=68; sp_attack=65;sp_defense=80;}; 
 ascii="                       II      
               I,,,   I....Z    
@@ -2142,7 +2142,7 @@ ascii="                       II
 
 let pocadex = Pocamon.add "DEWGONG" {
 name="DEWGONG"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "GROWL";get_move "AURORA_BEAM";get_move "GROWL";get_move "AURORA_BEAM";get_move "REST";get_move "TAKE_DOWN";get_move "ICE_BEAM";get_move "SAFEGUARD";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"GROWL";"AURORA_BEAM";"GROWL";"AURORA_BEAM";"REST";"TAKE_DOWN";"ICE_BEAM";"SAFEGUARD";];
 stats={max_hp=90; attack=70; defense=80; speed=70; sp_attack=70;sp_defense=95;}; 
 ascii="                +,:,:          
                 +,,,+:         
@@ -2162,7 +2162,7 @@ ascii="                +,:,:
 
 let pocadex = Pocamon.add "ZUBAT" {
 name="ZUBAT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "LEECH_LIFE";get_move "SUPERSONIC";get_move "BITE";get_move "CONFUSE_RAY";get_move "WING_ATTACK";get_move "MEAN_LOOK";get_move "HAZE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"LEECH_LIFE";"SUPERSONIC";"BITE";"CONFUSE_RAY";"WING_ATTACK";"MEAN_LOOK";"HAZE";];
 stats={max_hp=40; attack=45; defense=35; speed=55; sp_attack=30;sp_defense=40;}; 
 ascii="                               
                                
@@ -2182,7 +2182,7 @@ ascii="
 
 let pocadex = Pocamon.add "SANDSHREW" {
 name="SANDSHREW"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "STRENGTH";get_move "SCRATCH";get_move "DEFENSE_CURL";get_move "SAND_ATTACK";get_move "POISON_STING";get_move "SLASH";get_move "SWIFT";get_move "FURY_SWIPES";get_move "SANDSTORM";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"SWIFT";"DEFENSE_CURL";"DETECT";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"STRENGTH";"SCRATCH";"DEFENSE_CURL";"SAND_ATTACK";"POISON_STING";"SLASH";"SWIFT";"FURY_SWIPES";"SANDSTORM";];
 stats={max_hp=50; attack=75; defense=85; speed=40; sp_attack=20;sp_defense=30;}; 
 ascii="                               
                                
@@ -2202,7 +2202,7 @@ ascii="
 
 let pocadex = Pocamon.add "RATICATE" {
 name="RATICATE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "DIG";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "CUT";get_move "STRENGTH";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "TAIL_WHIP";get_move "QUICK_ATTACK";get_move "QUICK_ATTACK";get_move "HYPER_FANG";get_move "SCARY_FACE";get_move "PURSUIT";get_move "SUPER_FANG";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"DIG";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"REST";"ATTRACT";"THIEF";"CUT";"STRENGTH";"THUNDERBOLT";"ICE_BEAM";"TAIL_WHIP";"QUICK_ATTACK";"QUICK_ATTACK";"HYPER_FANG";"SCARY_FACE";"PURSUIT";"SUPER_FANG";];
 stats={max_hp=55; attack=81; defense=60; speed=97; sp_attack=50;sp_defense=70;}; 
 ascii="                  I~~~I        
                       Z~       
@@ -2222,7 +2222,7 @@ ascii="                  I~~~I
 
 let pocadex = Pocamon.add "RATTATA" {
 name="RATTATA"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "DIG";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "TACKLE";get_move "TAIL_WHIP";get_move "QUICK_ATTACK";get_move "HYPER_FANG";get_move "FOCUS_ENERGY";get_move "PURSUIT";get_move "SUPER_FANG";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"DIG";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DEFENSE_CURL";"REST";"ATTRACT";"THIEF";"TACKLE";"TAIL_WHIP";"QUICK_ATTACK";"HYPER_FANG";"FOCUS_ENERGY";"PURSUIT";"SUPER_FANG";];
 stats={max_hp=30; attack=56; defense=35; speed=72; sp_attack=25;sp_defense=35;}; 
 ascii="                  ~~7          
                   ~+78         
@@ -2242,7 +2242,7 @@ ascii="                  ~~7
 
 let pocadex = Pocamon.add "MACHOP" {
 name="MACHOP"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "LOW_KICK";get_move "LEER";get_move "FOCUS_ENERGY";get_move "KARATE_CHOP";get_move "SEISMIC_TOSS";get_move "FORESIGHT";get_move "VITAL_THROW";get_move "CROSS_CHOP";get_move "SCARY_FACE";get_move "SUBMISSION";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"LOW_KICK";"LEER";"FOCUS_ENERGY";"KARATE_CHOP";"SEISMIC_TOSS";"FORESIGHT";"VITAL_THROW";"CROSS_CHOP";"SCARY_FACE";"SUBMISSION";];
 stats={max_hp=70; attack=80; defense=50; speed=35; sp_attack=35;sp_defense=35;}; 
 ascii="              OO               
             O~I~I              
@@ -2262,7 +2262,7 @@ ascii="              OO
 
 let pocadex = Pocamon.add "FARFETCHD" {
 name="FARFETCHD"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "CUT";get_move "FLY";get_move "SAND_ATTACK";get_move "LEER";get_move "FURY_ATTACK";get_move "SWORDS_DANCE";get_move "AGILITY";get_move "SLASH";get_move "FALSE_SWIPE";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"CUT";"FLY";"SAND_ATTACK";"LEER";"FURY_ATTACK";"SWORDS_DANCE";"AGILITY";"SLASH";"FALSE_SWIPE";];
 stats={max_hp=52; attack=65; defense=55; speed=60; sp_attack=58;sp_defense=62;}; 
 ascii="                               
              Z                 
@@ -2282,7 +2282,7 @@ ascii="
 
 let pocadex = Pocamon.add "EKANS" {
 name="EKANS"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STRENGTH";get_move "WRAP";get_move "LEER";get_move "POISON_STING";get_move "BITE";get_move "GLARE";get_move "SCREECH";get_move "ACID";get_move "HAZE";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"STRENGTH";"WRAP";"LEER";"POISON_STING";"BITE";"GLARE";"SCREECH";"ACID";"HAZE";];
 stats={max_hp=35; attack=60; defense=44; speed=55; sp_attack=40;sp_defense=54;}; 
 ascii="                               
                      7O        
@@ -2302,7 +2302,7 @@ ascii="
 
 let pocadex = Pocamon.add "EXEGGCUTE" {
 name="EXEGGCUTE"; 
-learnable_moves=[get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "BARRAGE";get_move "HYPNOSIS";get_move "REFLECT";get_move "LEECH_SEED";get_move "CONFUSION";get_move "STUN_SPORE";get_move "POISONPOWDER";get_move "SLEEP_POWDER";get_move "SOLARBEAM";];
+learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"STRENGTH";"FLASH";"BARRAGE";"HYPNOSIS";"REFLECT";"LEECH_SEED";"CONFUSION";"STUN_SPORE";"POISONPOWDER";"SLEEP_POWDER";"SOLARBEAM";];
 stats={max_hp=60; attack=40; defense=80; speed=40; sp_attack=60;sp_defense=45;}; 
 ascii="                               
                                
@@ -2322,7 +2322,7 @@ ascii="
 
 let pocadex = Pocamon.add "VOLTORB" {
 name="VOLTORB"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "FLASH";get_move "THUNDERBOLT";get_move "TACKLE";get_move "SCREECH";get_move "SONICBOOM";get_move "SELFDESTRUCT";get_move "ROLLOUT";get_move "LIGHT_SCREEN";get_move "SWIFT";get_move "EXPLOSION";get_move "MIRROR_COAT";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"FLASH";"THUNDERBOLT";"TACKLE";"SCREECH";"SONICBOOM";"SELFDESTRUCT";"ROLLOUT";"LIGHT_SCREEN";"SWIFT";"EXPLOSION";"MIRROR_COAT";];
 stats={max_hp=40; attack=30; defense=50; speed=100; sp_attack=55;sp_defense=55;}; 
 ascii="                               
                                
@@ -2342,7 +2342,7 @@ ascii="
 
 let pocadex = Pocamon.add "SNORLAX" {
 name="SNORLAX"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "AMNESIA";get_move "DEFENSE_CURL";get_move "BELLY_DRUM";get_move "HEADBUTT";get_move "SNORE";get_move "REST";get_move "BODY_SLAM";get_move "ROLLOUT";get_move "HYPER_BEAM";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"EARTHQUAKE";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"REST";"ATTRACT";"FIRE_PUNCH";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"AMNESIA";"DEFENSE_CURL";"BELLY_DRUM";"HEADBUTT";"SNORE";"REST";"BODY_SLAM";"ROLLOUT";"HYPER_BEAM";];
 stats={max_hp=160; attack=110; defense=65; speed=30; sp_attack=65;sp_defense=110;}; 
 ascii="           III?IIZZZZ          
            Z:ZIZ:::ZZZ         
@@ -2362,7 +2362,7 @@ ascii="           III?IIZZZZ
 
 let pocadex = Pocamon.add "JOLTEON" {
 name="JOLTEON"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FLASH";get_move "THUNDERBOLT";get_move "TAIL_WHIP";get_move "SAND_ATTACK";get_move "THUNDERSHOCK";get_move "QUICK_ATTACK";get_move "DOUBLE_KICK";get_move "PIN_MISSILE";get_move "THUNDER_WAVE";get_move "AGILITY";get_move "THUNDER";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"FLASH";"THUNDERBOLT";"TAIL_WHIP";"SAND_ATTACK";"THUNDERSHOCK";"QUICK_ATTACK";"DOUBLE_KICK";"PIN_MISSILE";"THUNDER_WAVE";"AGILITY";"THUNDER";];
 stats={max_hp=65; attack=65; defense=60; speed=130; sp_attack=110;sp_defense=95;}; 
 ascii="                               
          8?                    
@@ -2382,7 +2382,7 @@ ascii="
 
 let pocadex = Pocamon.add "STARYU" {
 name="STARYU"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "FLASH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "TACKLE";get_move "HARDEN";get_move "WATER_GUN";get_move "RAPID_SPIN";get_move "RECOVER";get_move "SWIFT";get_move "BUBBLEBEAM";get_move "MINIMIZE";get_move "LIGHT_SCREEN";get_move "HYDRO_PUMP";];
+learnable_moves=["CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"REST";"ATTRACT";"SURF";"FLASH";"WHIRLPOOL";"WATERFALL";"THUNDERBOLT";"ICE_BEAM";"TACKLE";"HARDEN";"WATER_GUN";"RAPID_SPIN";"RECOVER";"SWIFT";"BUBBLEBEAM";"MINIMIZE";"LIGHT_SCREEN";"HYDRO_PUMP";];
 stats={max_hp=30; attack=45; defense=55; speed=85; sp_attack=70;sp_defense=55;}; 
 ascii="                               
                  +             
@@ -2402,7 +2402,7 @@ ascii="
 
 let pocadex = Pocamon.add "WIGGLYTUFF" {
 name="WIGGLYTUFF"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "DISABLE";get_move "DEFENSE_CURL";get_move "DOUBLESLAP";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"FIRE_PUNCH";"NIGHTMARE";"STRENGTH";"FLASH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"DISABLE";"DEFENSE_CURL";"DOUBLESLAP";];
 stats={max_hp=140; attack=70; defense=45; speed=45; sp_attack=75;sp_defense=50;}; 
 ascii="       N 7            ON       
         , +   I     ~NN        
@@ -2422,7 +2422,7 @@ ascii="       N 7            ON
 
 let pocadex = Pocamon.add "HITMONLEE" {
 name="HITMONLEE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STRENGTH";get_move "MEDITATE";get_move "ROLLING_KICK";get_move "JUMP_KICK";get_move "FOCUS_ENERGY";get_move "HI_JUMP_KICK";get_move "MIND_READER";get_move "FORESIGHT";get_move "ENDURE";get_move "MEGA_KICK";get_move "REVERSAL";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STRENGTH";"MEDITATE";"ROLLING_KICK";"JUMP_KICK";"FOCUS_ENERGY";"HI_JUMP_KICK";"MIND_READER";"FORESIGHT";"ENDURE";"MEGA_KICK";"REVERSAL";];
 stats={max_hp=50; attack=120; defense=53; speed=87; sp_attack=35;sp_defense=110;}; 
 ascii="   I::++D                      
    I:+I:                       
@@ -2442,7 +2442,7 @@ ascii="   I::++D
 
 let pocadex = Pocamon.add "PARASECT" {
 name="PARASECT"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FURY_CUTTER";get_move "CUT";get_move "FLASH";get_move "STUN_SPORE";get_move "POISONPOWDER";get_move "STUN_SPORE";get_move "POISONPOWDER";get_move "LEECH_LIFE";get_move "SPORE";get_move "SLASH";get_move "GROWTH";get_move "GIGA_DRAIN";];
+learnable_moves=["CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"THIEF";"FURY_CUTTER";"CUT";"FLASH";"STUN_SPORE";"POISONPOWDER";"STUN_SPORE";"POISONPOWDER";"LEECH_LIFE";"SPORE";"SLASH";"GROWTH";"GIGA_DRAIN";];
 stats={max_hp=60; attack=95; defense=80; speed=30; sp_attack=60;sp_defense=80;}; 
 ascii="              7???77D          
              77??7777          
@@ -2462,7 +2462,7 @@ ascii="              7???77D
 
 let pocadex = Pocamon.add "LICKITUNG" {
 name="LICKITUNG"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "EARTHQUAKE";get_move "RETURN";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "CUT";get_move "SURF";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "SUPERSONIC";get_move "DEFENSE_CURL";get_move "STOMP";get_move "WRAP";get_move "DISABLE";get_move "SLAM";get_move "SCREECH";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"EARTHQUAKE";"RETURN";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"NIGHTMARE";"CUT";"SURF";"STRENGTH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"SUPERSONIC";"DEFENSE_CURL";"STOMP";"WRAP";"DISABLE";"SLAM";"SCREECH";];
 stats={max_hp=90; attack=55; defense=75; speed=30; sp_attack=60;sp_defense=75;}; 
 ascii="                               
           7::~~~               
@@ -2482,7 +2482,7 @@ ascii="
 
 let pocadex = Pocamon.add "SEEL" {
 name="SEEL"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "HEADBUTT";get_move "GROWL";get_move "AURORA_BEAM";get_move "REST";get_move "TAKE_DOWN";get_move "ICE_BEAM";get_move "SAFEGUARD";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"REST";"ATTRACT";"SURF";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"HEADBUTT";"GROWL";"AURORA_BEAM";"REST";"TAKE_DOWN";"ICE_BEAM";"SAFEGUARD";];
 stats={max_hp=65; attack=45; defense=55; speed=45; sp_attack=45;sp_defense=70;}; 
 ascii="                               
                                
@@ -2502,7 +2502,7 @@ ascii="
 
 let pocadex = Pocamon.add "SCYTHER" {
 name="SCYTHER"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FURY_CUTTER";get_move "CUT";get_move "QUICK_ATTACK";get_move "LEER";get_move "FOCUS_ENERGY";get_move "PURSUIT";get_move "FALSE_SWIPE";get_move "AGILITY";get_move "WING_ATTACK";get_move "SLASH";get_move "SWORDS_DANCE";get_move "DOUBLE_TEAM";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FURY_CUTTER";"CUT";"QUICK_ATTACK";"LEER";"FOCUS_ENERGY";"PURSUIT";"FALSE_SWIPE";"AGILITY";"WING_ATTACK";"SLASH";"SWORDS_DANCE";"DOUBLE_TEAM";];
 stats={max_hp=70; attack=110; defense=80; speed=105; sp_attack=55;sp_defense=80;}; 
 ascii="             87N               
              7,,     =?7       
@@ -2522,7 +2522,7 @@ ascii="             87N
 
 let pocadex = Pocamon.add "MAGMAR" {
 name="MAGMAR"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "PSYCHIC";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "THUNDERPUNCH";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "LEER";get_move "SMOG";get_move "FIRE_PUNCH";get_move "LEER";get_move "SMOG";get_move "FIRE_PUNCH";get_move "SMOKESCREEN";get_move "SUNNY_DAY";get_move "FLAMETHROWER";get_move "CONFUSE_RAY";get_move "FIRE_BLAST";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"PSYCHIC";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"THUNDERPUNCH";"DETECT";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"LEER";"SMOG";"FIRE_PUNCH";"LEER";"SMOG";"FIRE_PUNCH";"SMOKESCREEN";"SUNNY_DAY";"FLAMETHROWER";"CONFUSE_RAY";"FIRE_BLAST";];
 stats={max_hp=65; attack=95; defense=57; speed=93; sp_attack=100;sp_defense=85;}; 
 ascii="           == Z?=Z             
            == ===Z             
@@ -2542,7 +2542,7 @@ ascii="           == Z?=Z
 
 let pocadex = Pocamon.add "GENGAR" {
 name="GENGAR"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "STRENGTH";get_move "THUNDERBOLT";get_move "LICK";get_move "SPITE";get_move "SPITE";get_move "MEAN_LOOK";get_move "CURSE";get_move "NIGHT_SHADE";get_move "CONFUSE_RAY";get_move "DREAM_EATER";get_move "DESTINY_BOND";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"NIGHTMARE";"STRENGTH";"THUNDERBOLT";"LICK";"SPITE";"SPITE";"MEAN_LOOK";"CURSE";"NIGHT_SHADE";"CONFUSE_RAY";"DREAM_EATER";"DESTINY_BOND";];
 stats={max_hp=60; attack=65; defense=60; speed=110; sp_attack=130;sp_defense=75;}; 
 ascii="               8    +?N        
      $   $ 8 $?8$ ++?$         
@@ -2562,7 +2562,7 @@ ascii="               8    +?N
 
 let pocadex = Pocamon.add "GEODUDE" {
 name="GEODUDE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "EARTHQUAKE";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "STRENGTH";get_move "FLAMETHROWER";get_move "TACKLE";get_move "DEFENSE_CURL";get_move "ROCK_THROW";get_move "MAGNITUDE";get_move "SELFDESTRUCT";get_move "HARDEN";get_move "ROLLOUT";get_move "EARTHQUAKE";get_move "EXPLOSION";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"EARTHQUAKE";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"REST";"ATTRACT";"FIRE_PUNCH";"STRENGTH";"FLAMETHROWER";"TACKLE";"DEFENSE_CURL";"ROCK_THROW";"MAGNITUDE";"SELFDESTRUCT";"HARDEN";"ROLLOUT";"EARTHQUAKE";"EXPLOSION";];
 stats={max_hp=40; attack=80; defense=100; speed=20; sp_attack=30;sp_defense=30;}; 
 ascii="                               
                                
@@ -2582,7 +2582,7 @@ ascii="
 
 let pocadex = Pocamon.add "PIDGEOTTO" {
 name="PIDGEOTTO"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "STEEL_WING";get_move "FLY";get_move "TACKLE";get_move "SAND_ATTACK";get_move "GUST";get_move "SAND_ATTACK";get_move "GUST";get_move "QUICK_ATTACK";get_move "WHIRLWIND";get_move "WING_ATTACK";get_move "AGILITY";get_move "MIRROR_MOVE";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DETECT";"REST";"ATTRACT";"THIEF";"STEEL_WING";"FLY";"TACKLE";"SAND_ATTACK";"GUST";"SAND_ATTACK";"GUST";"QUICK_ATTACK";"WHIRLWIND";"WING_ATTACK";"AGILITY";"MIRROR_MOVE";];
 stats={max_hp=63; attack=60; defense=55; speed=71; sp_attack=50;sp_defense=50;}; 
 ascii="I++++I             ZI:::::N    
  Z+++ZIZ           IZ:ZZ:N::   
@@ -2602,7 +2602,7 @@ ascii="I++++I             ZI:::::N
 
 let pocadex = Pocamon.add "GLOOM" {
 name="GLOOM"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "FLASH";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"FLASH";];
 stats={max_hp=60; attack=65; defense=70; speed=40; sp_attack=85;sp_defense=75;}; 
 ascii="                               
                DN              
@@ -2622,7 +2622,7 @@ ascii="
 
 let pocadex = Pocamon.add "TENTACOOL" {
 name="TENTACOOL"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "POISON_STING";get_move "SUPERSONIC";get_move "CONSTRICT";get_move "ACID";get_move "BUBBLEBEAM";get_move "WRAP";get_move "BARRIER";get_move "SCREECH";get_move "HYDRO_PUMP";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"SURF";"WHIRLPOOL";"ICE_BEAM";"POISON_STING";"SUPERSONIC";"CONSTRICT";"ACID";"BUBBLEBEAM";"WRAP";"BARRIER";"SCREECH";"HYDRO_PUMP";];
 stats={max_hp=40; attack=40; defense=35; speed=70; sp_attack=50;sp_defense=100;}; 
 ascii="           I++IZ               
           Z+++~ZZZ             
@@ -2642,7 +2642,7 @@ ascii="           I++IZ
 
 let pocadex = Pocamon.add "JIGGLYPUFF" {
 name="JIGGLYPUFF"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "SING";get_move "DEFENSE_CURL";get_move "POUND";get_move "DISABLE";get_move "ROLLOUT";get_move "DOUBLESLAP";get_move "REST";get_move "BODY_SLAM";get_move "DOUBLE_EDGE";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"FIRE_PUNCH";"NIGHTMARE";"STRENGTH";"FLASH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"SING";"DEFENSE_CURL";"POUND";"DISABLE";"ROLLOUT";"DOUBLESLAP";"REST";"BODY_SLAM";"DOUBLE_EDGE";];
 stats={max_hp=115; attack=45; defense=20; speed=20; sp_attack=45;sp_defense=25;}; 
 ascii="                               
                                
@@ -2662,7 +2662,7 @@ ascii="
 
 let pocadex = Pocamon.add "MAGIKARP" {
 name="MAGIKARP"; 
-learnable_moves=[get_move "";get_move "SPLASH";get_move "TACKLE";get_move "FLAIL";];
+learnable_moves=["";"SPLASH";"TACKLE";"FLAIL";];
 stats={max_hp=20; attack=10; defense=55; speed=80; sp_attack=15;sp_defense=20;}; 
 ascii="           :        $          
         :$$:++     7Z          
@@ -2682,7 +2682,7 @@ ascii="           :        $
 
 let pocadex = Pocamon.add "JYNX" {
 name="JYNX"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SWEET_SCENT";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "NIGHTMARE";get_move "ICE_BEAM";get_move "LICK";get_move "LOVELY_KISS";get_move "POWDER_SNOW";get_move "LOVELY_KISS";get_move "POWDER_SNOW";get_move "DOUBLESLAP";get_move "ICE_PUNCH";get_move "MEAN_LOOK";get_move "BODY_SLAM";get_move "PERISH_SONG";get_move "BLIZZARD";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"PSYCH_UP";"HIDDEN_POWER";"SWEET_SCENT";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"NIGHTMARE";"ICE_BEAM";"LICK";"LOVELY_KISS";"POWDER_SNOW";"LOVELY_KISS";"POWDER_SNOW";"DOUBLESLAP";"ICE_PUNCH";"MEAN_LOOK";"BODY_SLAM";"PERISH_SONG";"BLIZZARD";];
 stats={max_hp=65; attack=50; defense=35; speed=95; sp_attack=115;sp_defense=95;}; 
 ascii="          ,=?==,,,?            
          ,,?N??Z,,,=     N     
@@ -2702,7 +2702,7 @@ ascii="          ,=?==,,,?
 
 let pocadex = Pocamon.add "KAKUNA" {
 name="KAKUNA"; 
-learnable_moves=[get_move "";get_move "HARDEN";get_move "HARDEN";];
+learnable_moves=["";"HARDEN";"HARDEN";];
 stats={max_hp=45; attack=25; defense=50; speed=35; sp_attack=25;sp_defense=25;}; 
 ascii="                               
                                
@@ -2722,7 +2722,7 @@ ascii="
 
 let pocadex = Pocamon.add "MRMIME" {
 name="MRMIME"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "FLASH";get_move "THUNDERBOLT";get_move "CONFUSION";get_move "SUBSTITUTE";get_move "MEDITATE";get_move "DOUBLESLAP";get_move "LIGHT_SCREEN";get_move "REFLECT";get_move "ENCORE";get_move "PSYBEAM";get_move "BATON_PASS";get_move "SAFEGUARD";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"NIGHTMARE";"FLASH";"THUNDERBOLT";"CONFUSION";"SUBSTITUTE";"MEDITATE";"DOUBLESLAP";"LIGHT_SCREEN";"REFLECT";"ENCORE";"PSYBEAM";"BATON_PASS";"SAFEGUARD";];
 stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;}; 
 ascii="          OOI                  
            NOO OOO DIID        
@@ -2742,7 +2742,7 @@ ascii="          OOI
 
 let pocadex = Pocamon.add "NINETALES" {
 name="NINETALES"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROAR";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "QUICK_ATTACK";get_move "CONFUSE_RAY";get_move "SAFEGUARD";get_move "FIRE_SPIN";];
+learnable_moves=["HEADBUTT";"CURSE";"ROAR";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"QUICK_ATTACK";"CONFUSE_RAY";"SAFEGUARD";"FIRE_SPIN";];
 stats={max_hp=73; attack=76; defense=75; speed=100; sp_attack=81;sp_defense=100;}; 
 ascii="      ~~~~~~Z~~~Z    ~N~~~~++Z 
      N~~~~~~~~~~~Z NN+N++~++N++
@@ -2762,7 +2762,7 @@ ascii="      ~~~~~~Z~~~Z    ~N~~~~++Z
 
 let pocadex = Pocamon.add "WEEZING" {
 name="WEEZING"; 
-learnable_moves=[get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "THUNDER";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "FIRE_BLAST";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "TACKLE";get_move "SMOG";get_move "SELFDESTRUCT";get_move "SMOG";get_move "SELFDESTRUCT";get_move "SLUDGE";get_move "SMOKESCREEN";get_move "HAZE";get_move "EXPLOSION";get_move "DESTINY_BOND";];
+learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"FIRE_BLAST";"REST";"ATTRACT";"THIEF";"FLAMETHROWER";"THUNDERBOLT";"TACKLE";"SMOG";"SELFDESTRUCT";"SMOG";"SELFDESTRUCT";"SLUDGE";"SMOKESCREEN";"HAZE";"EXPLOSION";"DESTINY_BOND";];
 stats={max_hp=65; attack=90; defense=120; speed=60; sp_attack=85;sp_defense=70;}; 
 ascii=" ::I::=I     =? I I =::==:=    
  ::=:::=   I==?Z     ====:=I   
@@ -2782,7 +2782,7 @@ ascii=" ::I::=I     =? I I =::==:=
 
 let pocadex = Pocamon.add "VICTREEBEL" {
 name="VICTREEBEL"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SWEET_SCENT";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SLUDGE_BOMB";get_move "REST";get_move "ATTRACT";get_move "CUT";get_move "FLASH";get_move "SLEEP_POWDER";get_move "SWEET_SCENT";get_move "RAZOR_LEAF";];
+learnable_moves=["CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SWEET_SCENT";"SNORE";"HYPER_BEAM";"PROTECT";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"REST";"ATTRACT";"CUT";"FLASH";"SLEEP_POWDER";"SWEET_SCENT";"RAZOR_LEAF";];
 stats={max_hp=80; attack=105; defense=65; speed=70; sp_attack=100;sp_defense=60;}; 
 ascii="         87??????77 O          
            7???778   O         
@@ -2802,7 +2802,7 @@ ascii="         87??????77 O
 
 let pocadex = Pocamon.add "WARTORTLE" {
 name="WARTORTLE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "TACKLE";get_move "TAIL_WHIP";get_move "BUBBLE";get_move "TAIL_WHIP";get_move "BUBBLE";get_move "WITHDRAW";get_move "WATER_GUN";get_move "BITE";get_move "RAPID_SPIN";get_move "PROTECT";get_move "RAIN_DANCE";get_move "SKULL_BASH";get_move "HYDRO_PUMP";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"TACKLE";"TAIL_WHIP";"BUBBLE";"TAIL_WHIP";"BUBBLE";"WITHDRAW";"WATER_GUN";"BITE";"RAPID_SPIN";"PROTECT";"RAIN_DANCE";"SKULL_BASH";"HYDRO_PUMP";];
 stats={max_hp=59; attack=63; defense=80; speed=58; sp_attack=65;sp_defense=80;}; 
 ascii="       =~        = O           
        OIN       =~            
@@ -2822,7 +2822,7 @@ ascii="       =~        = O
 
 let pocadex = Pocamon.add "SQUIRTLE" {
 name="SQUIRTLE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DIG";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "DEFENSE_CURL";get_move "REST";get_move "ATTRACT";get_move "SURF";get_move "STRENGTH";get_move "WHIRLPOOL";get_move "WATERFALL";get_move "ICE_BEAM";get_move "TACKLE";get_move "TAIL_WHIP";get_move "BUBBLE";get_move "WITHDRAW";get_move "WATER_GUN";get_move "BITE";get_move "RAPID_SPIN";get_move "PROTECT";get_move "RAIN_DANCE";get_move "SKULL_BASH";get_move "HYDRO_PUMP";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DIG";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"DEFENSE_CURL";"REST";"ATTRACT";"SURF";"STRENGTH";"WHIRLPOOL";"WATERFALL";"ICE_BEAM";"TACKLE";"TAIL_WHIP";"BUBBLE";"WITHDRAW";"WATER_GUN";"BITE";"RAPID_SPIN";"PROTECT";"RAIN_DANCE";"SKULL_BASH";"HYDRO_PUMP";];
 stats={max_hp=44; attack=48; defense=65; speed=43; sp_attack=50;sp_defense=64;}; 
 ascii="                               
                                
@@ -2842,7 +2842,7 @@ ascii="
 
 let pocadex = Pocamon.add "OMANYTE" {
 name="OMANYTE"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "SURF";get_move "WHIRLPOOL";get_move "ICE_BEAM";get_move "CONSTRICT";get_move "WITHDRAW";get_move "BITE";get_move "WATER_GUN";get_move "LEER";get_move "PROTECT";get_move "ANCIENTPOWER";get_move "HYDRO_PUMP";];
+learnable_moves=["HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"REST";"ATTRACT";"THIEF";"SURF";"WHIRLPOOL";"ICE_BEAM";"CONSTRICT";"WITHDRAW";"BITE";"WATER_GUN";"LEER";"PROTECT";"ANCIENTPOWER";"HYDRO_PUMP";];
 stats={max_hp=35; attack=40; defense=100; speed=35; sp_attack=90;sp_defense=55;}; 
 ascii="                               
                                
@@ -2862,7 +2862,7 @@ ascii="
 
 let pocadex = Pocamon.add "PORYGON" {
 name="PORYGON"; 
-learnable_moves=[get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SWIFT";get_move "DREAM_EATER";get_move "REST";get_move "THIEF";get_move "NIGHTMARE";get_move "FLASH";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "CONVERSION2";get_move "TACKLE";get_move "CONVERSION";get_move "AGILITY";get_move "PSYBEAM";get_move "RECOVER";get_move "SHARPEN";get_move "LOCK_ON";get_move "TRI_ATTACK";get_move "ZAP_CANNON";];
+learnable_moves=["CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"IRON_TAIL";"THUNDER";"RETURN";"PSYCHIC";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SWIFT";"DREAM_EATER";"REST";"THIEF";"NIGHTMARE";"FLASH";"THUNDERBOLT";"ICE_BEAM";"CONVERSION2";"TACKLE";"CONVERSION";"AGILITY";"PSYBEAM";"RECOVER";"SHARPEN";"LOCK_ON";"TRI_ATTACK";"ZAP_CANNON";];
 stats={max_hp=65; attack=60; defense=70; speed=40; sp_attack=85;sp_defense=75;}; 
 ascii="                               
                                
@@ -2882,7 +2882,7 @@ ascii="
 
 let pocadex = Pocamon.add "DROWZEE" {
 name="DROWZEE"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "FLASH";get_move "POUND";get_move "HYPNOSIS";get_move "DISABLE";get_move "CONFUSION";get_move "HEADBUTT";get_move "POISON_GAS";get_move "MEDITATE";get_move "PSYCHIC_M";get_move "PSYCH_UP";get_move "FUTURE_SIGHT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"FIRE_PUNCH";"NIGHTMARE";"FLASH";"POUND";"HYPNOSIS";"DISABLE";"CONFUSION";"HEADBUTT";"POISON_GAS";"MEDITATE";"PSYCHIC_M";"PSYCH_UP";"FUTURE_SIGHT";];
 stats={max_hp=60; attack=48; defense=45; speed=42; sp_attack=43;sp_defense=90;}; 
 ascii="           ?? $$$ $$O          
       I?O  O~~???O8ZZ          
@@ -2902,7 +2902,7 @@ ascii="           ?? $$$ $$O
 
 let pocadex = Pocamon.add "KABUTO" {
 name="KABUTO"; 
-learnable_moves=[get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ROCK_SMASH";get_move "HIDDEN_POWER";get_move "SNORE";get_move "BLIZZARD";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "GIGA_DRAIN";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "ICE_BEAM";get_move "SCRATCH";get_move "HARDEN";get_move "ABSORB";get_move "LEER";get_move "SAND_ATTACK";get_move "ENDURE";get_move "MEGA_DRAIN";get_move "ANCIENTPOWER";];
+learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"ROCK_SMASH";"HIDDEN_POWER";"SNORE";"BLIZZARD";"ICY_WIND";"PROTECT";"RAIN_DANCE";"GIGA_DRAIN";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"REST";"ATTRACT";"THIEF";"ICE_BEAM";"SCRATCH";"HARDEN";"ABSORB";"LEER";"SAND_ATTACK";"ENDURE";"MEGA_DRAIN";"ANCIENTPOWER";];
 stats={max_hp=30; attack=80; defense=90; speed=55; sp_attack=55;sp_defense=45;}; 
 ascii="                               
                                
@@ -2922,7 +2922,7 @@ ascii="
 
 let pocadex = Pocamon.add "VULPIX" {
 name="VULPIX"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DIG";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "EMBER";get_move "TAIL_WHIP";get_move "QUICK_ATTACK";get_move "ROAR";get_move "CONFUSE_RAY";get_move "SAFEGUARD";get_move "FLAMETHROWER";get_move "FIRE_SPIN";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DIG";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"EMBER";"TAIL_WHIP";"QUICK_ATTACK";"ROAR";"CONFUSE_RAY";"SAFEGUARD";"FLAMETHROWER";"FIRE_SPIN";];
 stats={max_hp=38; attack=41; defense=40; speed=65; sp_attack=50;sp_defense=65;}; 
 ascii="                               
                                
@@ -2942,7 +2942,7 @@ ascii="
 
 let pocadex = Pocamon.add "CHANSEY" {
 name="CHANSEY"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "ROCK_SMASH";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "HYPER_BEAM";get_move "ICY_WIND";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "SANDSTORM";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "POUND";get_move "GROWL";get_move "TAIL_WHIP";get_move "SOFTBOILED";get_move "DOUBLESLAP";get_move "MINIMIZE";get_move "SING";get_move "EGG_BOMB";get_move "DEFENSE_CURL";get_move "LIGHT_SCREEN";get_move "DOUBLE_EDGE";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"ROCK_SMASH";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"HYPER_BEAM";"ICY_WIND";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"IRON_TAIL";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SANDSTORM";"FIRE_BLAST";"DEFENSE_CURL";"DREAM_EATER";"REST";"ATTRACT";"STRENGTH";"FLASH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"POUND";"GROWL";"TAIL_WHIP";"SOFTBOILED";"DOUBLESLAP";"MINIMIZE";"SING";"EGG_BOMB";"DEFENSE_CURL";"LIGHT_SCREEN";"DOUBLE_EDGE";];
 stats={max_hp=250; attack=05; defense=05; speed=50; sp_attack=35;sp_defense=105;}; 
 ascii="                               
               ~~?              
@@ -2962,7 +2962,7 @@ ascii="
 
 let pocadex = Pocamon.add "ABRA" {
 name="ABRA"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "REST";get_move "ATTRACT";get_move "THIEF";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "FLASH";get_move "TELEPORT";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"RETURN";"PSYCHIC";"SHADOW_BALL";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"THUNDERPUNCH";"DREAM_EATER";"REST";"ATTRACT";"THIEF";"FIRE_PUNCH";"NIGHTMARE";"FLASH";"TELEPORT";];
 stats={max_hp=25; attack=20; defense=15; speed=90; sp_attack=105;sp_defense=55;}; 
 ascii="                               
               O                
@@ -2982,7 +2982,7 @@ ascii="
 
 let pocadex = Pocamon.add "CLEFAIRY" {
 name="CLEFAIRY"; 
-learnable_moves=[get_move "DYNAMICPUNCH";get_move "HEADBUTT";get_move "CURSE";get_move "ROLLOUT";get_move "TOXIC";get_move "ZAP_CANNON";get_move "PSYCH_UP";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "BLIZZARD";get_move "PROTECT";get_move "RAIN_DANCE";get_move "ENDURE";get_move "FRUSTRATION";get_move "SOLARBEAM";get_move "IRON_TAIL";get_move "THUNDER";get_move "RETURN";get_move "PSYCHIC";get_move "SHADOW_BALL";get_move "MUD_SLAP";get_move "DOUBLE_TEAM";get_move "ICE_PUNCH";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "DEFENSE_CURL";get_move "THUNDERPUNCH";get_move "DREAM_EATER";get_move "DETECT";get_move "REST";get_move "ATTRACT";get_move "FIRE_PUNCH";get_move "NIGHTMARE";get_move "STRENGTH";get_move "FLASH";get_move "FLAMETHROWER";get_move "THUNDERBOLT";get_move "ICE_BEAM";get_move "POUND";get_move "GROWL";get_move "ENCORE";get_move "SING";get_move "DOUBLESLAP";get_move "MINIMIZE";get_move "DEFENSE_CURL";get_move "METRONOME";get_move "MOONLIGHT";get_move "LIGHT_SCREEN";];
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"PSYCH_UP";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"BLIZZARD";"PROTECT";"RAIN_DANCE";"ENDURE";"FRUSTRATION";"SOLARBEAM";"IRON_TAIL";"THUNDER";"RETURN";"PSYCHIC";"SHADOW_BALL";"MUD_SLAP";"DOUBLE_TEAM";"ICE_PUNCH";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"DEFENSE_CURL";"THUNDERPUNCH";"DREAM_EATER";"DETECT";"REST";"ATTRACT";"FIRE_PUNCH";"NIGHTMARE";"STRENGTH";"FLASH";"FLAMETHROWER";"THUNDERBOLT";"ICE_BEAM";"POUND";"GROWL";"ENCORE";"SING";"DOUBLESLAP";"MINIMIZE";"DEFENSE_CURL";"METRONOME";"MOONLIGHT";"LIGHT_SCREEN";];
 stats={max_hp=70; attack=45; defense=48; speed=35; sp_attack=60;sp_defense=65;}; 
 ascii="                               
                                
@@ -3002,7 +3002,7 @@ ascii="
 
 let pocadex = Pocamon.add "RAPIDASH" {
 name="RAPIDASH"; 
-learnable_moves=[get_move "HEADBUTT";get_move "CURSE";get_move "TOXIC";get_move "HIDDEN_POWER";get_move "SUNNY_DAY";get_move "SNORE";get_move "HYPER_BEAM";get_move "PROTECT";get_move "ENDURE";get_move "FRUSTRATION";get_move "IRON_TAIL";get_move "RETURN";get_move "DOUBLE_TEAM";get_move "SWAGGER";get_move "SLEEP_TALK";get_move "FIRE_BLAST";get_move "SWIFT";get_move "REST";get_move "ATTRACT";get_move "FLAMETHROWER";get_move "GROWL";get_move "TAIL_WHIP";get_move "EMBER";get_move "GROWL";get_move "TAIL_WHIP";get_move "EMBER";get_move "STOMP";get_move "FIRE_SPIN";get_move "TAKE_DOWN";get_move "FURY_ATTACK";get_move "AGILITY";get_move "FIRE_BLAST";];
+learnable_moves=["HEADBUTT";"CURSE";"TOXIC";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"HYPER_BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"IRON_TAIL";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"FIRE_BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"GROWL";"TAIL_WHIP";"EMBER";"GROWL";"TAIL_WHIP";"EMBER";"STOMP";"FIRE_SPIN";"TAKE_DOWN";"FURY_ATTACK";"AGILITY";"FIRE_BLAST";];
 stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;}; 
 ascii="   , ??OO==??    7===Z         
   O ,?7O??=?????????7ZZZ7Z7Z   
