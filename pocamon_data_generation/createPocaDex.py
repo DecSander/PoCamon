@@ -86,7 +86,7 @@ data = scrap_evos_attacks(evos_attacks, data)
 data = scrap_ascii(ascii_art, data)
 
 
-with open("pocamontest.ml", 'w') as f:
+with open("pocadex.ml", 'w') as f:
     f.write('module Pocamon = Map.make(pocamon)\n')
     f.write('let pocadex = Pocamon.empty\n')
     for pocamon in data.keys():
@@ -97,4 +97,4 @@ with open("pocamontest.ml", 'w') as f:
         sd = data[pocamon]["stats"]
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
-        f.write('let pocadex = Pocamon.add "{0}" {{name="{0}"; learnable_moves={1};stats=stats; ascii="{2}"}} pocadex\n'.format(pocamon, moves, stats, data[pocamon]['ascii']))
+        f.write('let pocadex = Pocamon.add "{0}" {{name="{0}"; learnable_moves={1};stats={2}; ascii="{3}"}} pocadex\n'.format(pocamon, moves, stats, data[pocamon]['ascii']))
