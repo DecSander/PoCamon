@@ -4,7 +4,7 @@
 DATA FORMAT:
 
 {
-"BULBASAUR": {    
+"BULBASAUR": {
     "stats": {"HP": 45, "ATK", 49, "DEF": 49, "SPD":45, "SAT":65, "SDF":65},
     "types": ["GRASS","POSTION"],
     "moves": ["HEADBUTT", "CURSE", "TOXIC", "HIDDEN_POWER",...],
@@ -94,7 +94,7 @@ with open("pocadex.ml", 'w') as f:
     for pocamon in data.keys():
         moves = '['
         for move in data[pocamon]["moves"]:
-            moves += '"{0}";'.format(move)
+            moves += 'get_move "{0}";'.format(move)
         moves += "]"
         sd = data[pocamon]["stats"]
         #  need double brances because of the .format
