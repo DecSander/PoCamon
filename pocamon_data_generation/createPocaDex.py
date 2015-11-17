@@ -94,7 +94,7 @@ with open("pocadex.ml", 'w') as f:
     for pocamon in data.keys():
         moves = '['
         for move in data[pocamon]["moves"]:
-            moves += 'get_move "{0}";'.format(move)
+            moves += '"{0}";'.format(move)
         moves += "]"
         sd = data[pocamon]["stats"]
         #  need double brances because of the .format
