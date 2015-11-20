@@ -4,7 +4,7 @@
 DATA FORMAT:
 
 {
-"BULBASAUR": {    
+"BULBASAUR": {
     "stats": {"HP": 45, "ATK", 49, "DEF": 49, "SPD":45, "SAT":65, "SDF":65},
     "types": ["GRASS","POSTION"],
     "moves": ["HEADBUTT", "CURSE", "TOXIC", "HIDDEN_POWER",...],
@@ -45,7 +45,7 @@ def scrap_evos_attacks(lines, data):
     i = 0
     while i < len(lines):
         if "EvosAttacks:" in lines[i]:
-            name = lines[i].split("EvosAttacks")[0]
+            name = (lines[i].split("EvosAttacks")[0]).upper()
             if name in data.keys():
                 i += 3
                 newMoves = []
@@ -99,4 +99,4 @@ with open("pocadex.ml", 'w') as f:
         sd = data[pocamon]["stats"]
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
-        f.write('let pocadex = Pocamon.add "{0}" {{name="{0}"; learnable_moves={1};stats={2}; ascii="{3}"}} pocadex\n'.format(pocamon, moves, stats, data[pocamon]['ascii']))
+        f.write('let pocadex = Pocamon.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2}; \nascii="{3}"}} pocadex\n\n'.format(pocamon, moves, stats, data[pocamon]['ascii']))
