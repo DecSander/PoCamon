@@ -3347,14 +3347,14 @@ ascii="   , ??OO==??    7===Z
 let get_move (name: string) : move  =
 	try MoveDex.find name movedex
 	with _ -> failwith ("Can't find move " ^ name)
-  
 
-let get_pocamon (name: string): dex_pocamon  = 
+
+let get_pocamon (name: string): dex_pocamon  =
 	try PokeDex.find name dexmap
 	with _ -> failwith ("Can't find pokemon " ^ name)
 
 
-let type_of_string s : pType = 
+let type_of_string s : pType =
 	match s with
 	| "NORMAL" -> TNormal
 	| "FIRE" -> TFire
@@ -3378,58 +3378,58 @@ let update_stats base_stats  : poca_stats =
 		if points = 0 then stats else
 		let index = Random.int 6 in
 		match index with
-		| 0 -> if stats.max_hp + base_stats.max_hp < 252 
+		| 0 -> if stats.max_hp + base_stats.max_hp < 252
 			   then update_stats' {stats with max_hp = stats.max_hp + 1}
 			   (points - 1)
 			   else  update_stats' stats points
-		| 1 -> if stats.attack + base_stats.attack < 252 
+		| 1 -> if stats.attack + base_stats.attack < 252
 			   then update_stats' {stats with attack = stats.attack + 1}
 			   (points - 1)
 			   else  update_stats' stats points
-		| 2 -> if stats.defense + base_stats.defense < 252 
+		| 2 -> if stats.defense + base_stats.defense < 252
 			   then update_stats' {stats with defense = stats.defense + 1}
 			   (points - 1)
 			   else  update_stats' stats points
-		| 3 -> if stats.speed + base_stats.speed < 252 
+		| 3 -> if stats.speed + base_stats.speed < 252
 			   then update_stats' {stats with speed = stats.speed + 1}
 			   (points - 1)
 			   else  update_stats' stats points
-		| 4 -> if stats.sp_attack + base_stats.sp_attack < 252 
+		| 4 -> if stats.sp_attack + base_stats.sp_attack < 252
 			   then update_stats' {stats with sp_attack = stats.sp_attack + 1}
 			   (points - 1)
 			   else  update_stats' stats points
-		| 5-> if stats.sp_defense + base_stats.sp_defense < 252 
+		| 5-> if stats.sp_defense + base_stats.sp_defense < 252
 			   then update_stats' {stats with sp_defense = stats.sp_defense + 1}
 			   (points - 1)
 			   else  update_stats' stats points
-		| _ -> failwith "error in random number generation" in 
+		| _ -> failwith "error in random number generation" in
 	update_stats' { max_hp = 0; attack = 0; defense = 0 ; sp_defense = 0;
             sp_attack = 0; speed = 0} 500
 
 let get_four_moves (moves: string list): move list =
   Random.self_init ();
-  let mlst = List.map 
-       (fun move -> print_string move; get_move move) moves in 
-		
-	let rec get_four acc: int list = 
+  let mlst = List.map
+       (fun move -> print_string move; get_move move) moves in
+
+	let rec get_four acc: int list =
 			if List.length acc = 4 then acc else
 			let rando: int = Random.int (List.length mlst) in
 			if List.mem rando acc then get_four acc else get_four (rando::acc)  in
 	let randos = get_four [] in
 
 	(* List must contain four elements as defined above*)
-	[List.nth mlst (List.nth randos 0); List.nth mlst (List.nth randos 1); 
+	[List.nth mlst (List.nth randos 0); List.nth mlst (List.nth randos 1);
 	List.nth mlst (List.nth randos 2); List.nth mlst (List.nth randos 4)]
 
 
 
-let get_random_pocamon () : pocamon = 
+let get_random_pocamon () : pocamon =
 	let lst = ["BULBASAUR"; "IVYSAUR"; "VENUSAUR"; "CHARMANDER"; "CHARMELEON"; "CHARIZARD"; "SQUIRTLE"; "WARTORTLE";    "BLASTOISE"; "CATERPIE"; "METAPOD"; "BUTTERFREE"; "WEEDLE"; "KAKUNA"; "BEEDRILL"; "PIDGEY"; "PIDGEOTTO"; "PIDGEOT"; "RATTATA"; "RATICATE"; "SPEAROW"; "FEAROW"; "EKANS"; "ARBOK"; "PIKACHU";"RAICHU"; "SANDSHREW"; "SANDSLASH"; "NIDORAN"; "NIDORINA"; "NIDOQUEEN"; "NIDORAN"; "NIDORINO"; "NIDOKING"; "CLEFAIRY"; "CLEFABLE"; "VULPIX"; "NINETALES"; "JIGGLYPUFF"; "WIGGLYTUFF"; "ZUBAT"; "GOLBAT"; "ODDISH"; "GLOOM"; "VILEPLUME"; "PARAS"; "PARASECT"; "VENONAT"; "VENOMOTH"; "DIGLETT";"DUGTRIO"; "MEOWTH"; "PERSIAN"; "PSYDUCK"; "GOLDUCK"; "MANKEY"; "PRIMEAPE"; "GROWLITHE"; "ARCANINE"; "POLIWAG"; "POLIWHIRL"; "POLIWRATH"; "ABRA"; "KADABRA"; "ALAKAZAM"; "MACHOP"; "MACHOKE"; "MACHAMP"; "BELLSPROUT"; "WEEPINBELL"; "VICTREEBEL"; "TENTACOOL"; "TENTACRUEL"; "GEODUDE"; "GRAVELER"; "GOLEM"; "PONYTA"; "RAPIDASH"; "SLOWPOKE"; "SLOWBRO"; "MAGNEMITE"; "MAGNETON"; "FARFETCHD"; "DODUO"; "DODRIO"; "SEEL"; "DEWGONG"; "GRIMER"; "MUK"; "SHELLDER"; "CLOYSTER"; "GASTLY"; "HAUNTER"; "GENGAR"; "ONIX"; "DROWZEE"; "HYPNO"; "KRABBY"; "KINGLER"; "VOLTORB"; "ELECTRODE"; "EXEGGCUTE"; "EXEGGUTOR"; "CUBONE"; "MAROWAK"; "HITMONLEE"; "HITMONCHAN"; "LICKITUNG"; "KOFFING"; "WEEZING"; "RHYHORN"; "RHYDON"; "CHANSEY"; "TANGELA"; "KANGASKHAN"; "HORSEA"; "SEADRA"; "GOLDEEN"; "SEAKING"; "STARYU"; "STARMIE"; "MR.MIME"; "SCYTHER"; "JYNX"; "ELECTABUZZ"; "MAGMAR"; "PINSIR"; "TAUROS"; "MAGIKARP"; "GYARADOS"; "LAPRAS"; "EEVEE"; "VAPOREON"; "JOLTEON"; "FLAREON"; "PORYGON"; "OMANYTE"; "OMASTAR"; "KABUTO"; "KABUTOPS"; "AERODACTYL"; "SNORLAX"; "ARTICUNO"; "ZAPDOS"; "MOLTRES"; "DRATINI"; "DRAGONAIR"; "DRAGONITE"; "MEWTWO"; "MEW"] in
 	Random.self_init ();
 	let index = Random.int 151 in
 	let pocamon_name = List.nth lst index in
 	let dexmon = get_pocamon pocamon_name in
-	let pType = (type_of_string (fst dexmon.poca_type), 
+	let pType = (type_of_string (fst dexmon.poca_type),
 		         type_of_string (snd dexmon.poca_type)) in
 	{ name = pocamon_name;
 	  status = SNormal;

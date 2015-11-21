@@ -23,19 +23,20 @@ type debuff_state = {
 * Takes in an action and returns the state of the game after that action
 * has taken place
 *)
-val do_single_move : player_state -> action -> game_state -> game_state
+val do_single_move : player_state -> action -> game_state ->
+                     game_state * move_status
 
 (*
 * Applys the single attack to the game state
 *)
 val apply_attack : player_state -> move -> game_state ->
-                   game_state * battle_status
+                   game_state * move_status
 
 (*
 * Switches the active pocamon of the player making the move
 *)
 val switch_pokemon : pocamon -> player_state -> game_state ->
-                      game_state * move_status
+                     game_state * move_status
 
 
 
