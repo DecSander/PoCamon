@@ -26,14 +26,14 @@ let gen_initial_state () : game_state =
   {
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
-    pocamon_list = player_one_pocamon;
+    pocamon_list = List.tl player_one_pocamon;
     is_computer = false
   } in
   let player_two =
   {
     name = player_two_name;
     active_pocamon = player_two_active_pocamon;
-    pocamon_list = player_two_pocamon;
+    pocamon_list = List.tl player_two_pocamon;
     is_computer = false
   } in
   let public_info =
@@ -65,7 +65,7 @@ let process_screen_action comm s_state g_state : screen_state =
   | Some Pocamon, Out -> Pocamon_List 1
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
   | Some Back, Moves -> Out
-  | Some Down, Pocamon_List n -> Pocamon_List (if n < 3 then n + 1 else 3)
+  | Some Down, Pocamon_List n -> Pocamon_List (if n < 2 then n + 1 else 2)
   | Some Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
   | Some Back, Pocamon_List _ -> Out
   | Some Back, Talking _ | Some Enter, Talking _ -> Out
@@ -100,12 +100,12 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
     let poca_option = try Some (List.find (fun (poca:pocamon) -> poca.name = p)
       p_state.pocamon_list) with _ -> None in
     begin match poca_option with
-    | Some poca -> fst (switch_pokemon poca p_state g_state)
+    | Some poca -> fst (switch_pocamon poca p_state g_state)
     | None -> choose_new_pocamon g_state p_state s_state end
   | Some Up -> choose_new_pocamon g_state p_state
             (Pocamon_List (if n > 0 then n - 1 else 0))
   | Some Down -> choose_new_pocamon g_state p_state
-              (Pocamon_List (if n < 3 then n + 1 else 3))
+              (Pocamon_List (if n < 2 then n + 1 else 2))
   | _ -> choose_new_pocamon g_state p_state s_state
 
 
