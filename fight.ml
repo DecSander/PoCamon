@@ -2,7 +2,8 @@ open Types
 
 type attack_status = {
       atk_eff : pEffect;
-      status_change : bool * pStatus;
+      self_status_change : bool * pStatus;
+      opp_status_change : bool * pStatus;
       missed : bool;
 }
 
@@ -113,22 +114,11 @@ let calc_type_effectiveness atk_type def_type =
       | _ -> 1.
 
 let calc_damage atk_poca def_poca move =
-
-(*
-* Applys the single attack to the game state
-*)
-let apply_attack atk_state def_state move g_state * battle_status =
-
-  let atk_poca = atk_state.active_pocamon in
-  let def_poca = def_state.active_pocamon in
-
-  match atk_poca.status with
-  |
   let type_effectiveness =
-    if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
-      calc_type_effectiveness move.move_type (fst def_poca.poca_type)
-    else calc_type_effectiveness move.move_type (fst def_poca.poca_type) *.
-      calc_type_effectiveness move.move_type (snd def_poca.poca_type) in
+      if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
+        calc_type_effectiveness move.move_type (fst def_poca.poca_type)
+      else calc_type_effectiveness move.move_type (fst def_poca.poca_type) *.
+        calc_type_effectiveness move.move_type (snd def_poca.poca_type) in
 
   let STAB_bonus =
     if (fst atk_poca.poca_type) = move.move_type
@@ -144,16 +134,34 @@ let apply_attack atk_state def_state move g_state * battle_status =
 
   let atk_def_multiplier =
     match move.move_category with
-    | EPhysical -> float_of_int(atk_poca.attack) *.
-      float_of_int(atk_poca.attack) /. float_of_int(def_poca.defense)
-    | ESpecial -> float_of_int(atk_poca.sp_attack) *.
-      float_of_int(atk_poca.sp_attack) /. float_of_int(def_poca.sp_defense) in
+    | EPhysical -> float_of_int(atk_poca.stats.attack)
+      /. float_of_int(def_poca.stats.defense)
+    | ESpecial -> float_of_int(atk_poca.stats.sp_attack)
+      /. float_of_int(def_poca.stats.sp_defense) in
+
+  let base_pwr = float_of_int(move.damage) in
 
   let modifiers = burn_multiplier *. STAB_bonus *. type_effectiveness
     (* status effects *)
   let damage =
-    ((2. *. assumed_level +. 10.) /. 250) *. (atk_def_multiplier)  +. 2.)*.
-    modifiers
+    ((2. *. assumed_level +. 10.) /. 250) *.
+    (atk_def_multiplier) *. base_pwr +. 2.)*.
+    modifiers in
+  damage
+
+(*
+* Applys the single attack to the game state
+*)
+let apply_attack atk_state def_state move g_state * battle_status =
+
+  let atk_poca = atk_state.active_pocamon in
+  let def_poca = def_state.active_pocamon in
+
+  match atk_poca.status with
+  | SNormal | SPoison | SBurn  | SParalyze | SSleep 0 | SFreeze 0 ->
+
+  | SSleep t | SFreeze t ->
+    let p_move_status = Attack_Status {atk_eff=ENormal;  }
 
 
 (*
