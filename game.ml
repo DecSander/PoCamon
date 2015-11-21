@@ -214,3 +214,5 @@ let rec run_game_turn g_state : game_state =
 
 let start () : unit =
   ignore (run_game_turn (gen_initial_state ()))
+
+let _ = start ()
