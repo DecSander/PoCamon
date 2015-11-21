@@ -38,8 +38,6 @@ type move = {
           damage : int;
           max_pp : int;
           pp : int;
-          max_PP : int;
-          pp : int;
           move_category: pCategory
 }
 
