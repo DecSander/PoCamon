@@ -19,47 +19,29 @@ let calc_type_effectiveness atk_type def_type =
   match atk_type with
     | TNormal ->
       match def_type with
-      | TRock ->  0.5
-      | TSteel -> 0.5
+      | TRock | TSteel -> 0.5
       | TGhost -> 0
       | _ -> 1.
     | TFire ->
       match def_type with
-      | TFire -> 0.5
-      | TWater -> 0.5
-      | TRock -> 0.5
-      | TDragon -> 0.5
-      | TGrass -> 2.
-      | TIce -> 2.
-      | TBug -> 2.
-      | TSteel -> 2.
+      | TFire | TWater | TRock | TDragon -> 0.5
+      | TGrass TIce | TBug | TSteel -> 2.
       | _ -> 1.
     | TWater ->
       match def_type with
-      | TWater -> 0.5
-      | TGrass -> 0.5
-      | TDragon -> 0.5
-      | TFire -> 2.
-      | TGround -> 2.
-      | TRock -> 2.
+      | TWater | TGrass | TDragon -> 0.5
+      | TFire | TGround | TRock -> 2.
       | _ -> 1.
     | TElectric ->
       match def_type with
-      | TElectric -> 0.5
-      | TGrass -> 0.5
-      | TDragon -> 0.5
-      | TWater -> 2.
-      | TFlying -> 2.
+      | TElectric | TGrass | TDragon -> 0.5
+      | TWater | TFlying -> 2.
       | TGround -> 0.
       | _ -> 1.
     | TGrass ->
       match def_type with
-      | TFire -> 0.5
-      | TGrass -> 0.5
-      | TPoison -> 0.5
-      | TFlying -> 0.5
-      | TBug -> 0.5
-      | TDragon -> 0.5
+      | TFire | TGrass | TPoison | TFlying | TBug | TDragon -> 0.5
+      | TWater | TGround | TRock -> 2.
       | _ -> 1.
     | TIce ->
       match def_type with
@@ -114,6 +96,9 @@ let calc_type_effectiveness atk_type def_type =
       | _ -> 1.
 
 let calc_damage atk_poca def_poca move =
+
+  let () = Random.self_init() in
+
   let type_effectiveness =
       if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
         calc_type_effectiveness move.move_type (fst def_poca.poca_type)
@@ -141,42 +126,158 @@ let calc_damage atk_poca def_poca move =
 
   let base_pwr = float_of_int(move.damage) in
 
-  let modifiers = burn_multiplier *. STAB_bonus *. type_effectiveness
+  let rand_mod = 0.85 +. (Random.float 0.15)
+
+  let modifiers = burn_multiplier *. STAB_bonus *.
+                  type_effectiveness *. rand_mod
     (* status effects *)
   let damage =
     ((2. *. assumed_level +. 10.) /. 250) *.
     (atk_def_multiplier) *. base_pwr +. 2.)*.
     modifiers in
-  damage
+  damage, type_effectiveness
+
+let mStatus_to_pStatus move_status =
+  | MNormal -> SNormal
+  | MPoison -> SPoison
+  | MBurn -> SBurn
+  | MSleep -> SSleep (Random.int 2) + 3
+  | MParalyze -> SParalyze
+  | MFreeze -> SFreeze (Random.int 2) + 3
+
+
 
 (*
 * Applys the single attack to the game state
 *)
-let apply_attack atk_state def_state move g_state * battle_status =
+let apply_attack atk_state def_state move p1_is_atk g_state =
+
+  let () = Random.self_init() in
 
   let atk_poca = atk_state.active_pocamon in
   let def_poca = def_state.active_pocamon in
 
   match atk_poca.status with
   | SNormal | SPoison | SBurn  | SParalyze | SSleep 0 | SFreeze 0 ->
+    let is_paralyzed =
+      match atk_poca.status with
+      | SParalyze -> (Random.float 1.) <= 0.25
+      | _ -> false in
+
+    let new_status_change =
+      match atk_poca.status with
+      | SSleep 0 | SFreeze 0 -> (true, SNormal)
+      | _ -> (false, atk_poca.status) in
+
+     let g_state' =
+      match atk_poca.status with
+      | SSleep 0 | SFreeze 0 ->
+        let atk_poca' = {atk_poca with status=SNormal} in
+        let atk_state' = {atk_state with active_pocamon=atk_poca'} in
+        if p1_is_atk then {g_state with player_one=atk_state'}
+        else {g_state with player_two=atk_state'} in
+      | _ -> g_state in
+
+
+    if is_paralyzed then
+      begin
+      let p_move_status =
+      Attack_Status {atk_eff = ENormal;
+                     self_status_change = (false, SParalyze);
+                     opp_status_change = (false, def_poca.status);
+                     missed = false } in
+      (g_state', p_move_status)
+      end
+    else
+      begin
+
+      let missed = (Random.int 100) > move.accuracy in
+
+      if missed then
+        begin
+        let p_move_status =
+          Attack_Status {atk_eff = ENormal;
+                     self_status_change = new_status_change;
+                     opp_status_change = (false, def_poca.status);
+                     missed = true } in
+        (g_state', p_move_status)
+        end
+      else
+        begin
+
+        let damage, damage_mult = calc_damage atk_poca def_poca move in
+
+        let type_eff = if (damage_mult -. 1) > 0.01 then ESuper
+          else if (damage_mult -. 1) < -0.25 then ENotVery else ENormal in
+
+        let def_poca_health = def_poca.health - int_of_float(damage) in
+
+        let status_eff =
+          (Random.int 100) <= move.status_probability in
+
+        let new_status = if status_eff
+          then mStatus_to_pStatus move.status_effect else def_poca.status in
+
+        let def_poca' =
+          {def_poca with health=def_poca_health; status=new_status} in
+
+
+        let def_state' = {def_state with active_pocamon=def_poca'} in
+        let g_state'' = if not p1_is_atk
+          then {g_state with player_one=def_state'}
+          else {g_state with player_two=def_state'} in
+
+        let p_move_status =
+          Attack_Status {atk_eff = type_eff;
+                     self_status_change = new_status_change;
+                     opp_status_change = (false, def_poca.status);
+                     missed = false } in
+
+        (g_state'', p_move_status)
+        end
+      end
 
   | SSleep t | SFreeze t ->
-    let p_move_status = Attack_Status {atk_eff=ENormal;  }
+    let new_status =
+      match atk_poca.status with
+      | SSleep t -> SSleep (t-1)
+      | SFreeze t -> SFreeze (t-1) in
+      | _ -> failwith "poca status should only be sleep or freeze"
 
+    let p_move_status =
+      Attack_Status {atk_eff = ENormal;
+                     self_status_change = (false, new_status);
+                     opp_status_change = (false, def_poca.status);
+                     missed = false } in
+
+    let atk_poca' = {atk_poca with status=new_status} in
+    let atk_state' = {atk_state with active_pocamon=atk_poca'} in
+    let g_state' = if p1_is_atk then {g_state with player_one=atk_state'}
+      else {g_state with player_two=atk_state'} in
+    (g_state', p_move_status)
 
 (*
 * Switches the active pocamon of the player making the move
 *)
-let switch_pokemon switch_poca p_state =
+let switch_pocamon switch_poca p_state g_state =
+  let p1_switch = p_state = g_state.player_one in
+
+  let active_poca = p_state.active_pocamon in
+  let other_poca =
+    List.filter (fun p -> p <> switch_poca) p_state.pocamon_list in
+  let new_party = active_poca::other_poca in
+
+  let p_state' = {p_state with active_pocamon=switch_poca;
+                               pocamon_list=new_party}
 
 (*
 * Takes in an action and returns the state of the game after that action
 * has taken place
 *)
-let do_single_move player_state foe_state action g_state =
+let do_single_move player_state foe_state action p_state_is_p1 g_state =
   match action with
-  | Move m -> apply_attack player_state foe_state m g_state
-  | Switch s_p -> switch_pokemon s_p p_state
+  | Move m -> apply_attack player_state foe_state m p_state_is_p1 g_state
+  | Switch s_p -> switch_pocamon s_p p_state
 
 let apply_fight_sequnce g_state p1_action p2_action =
 
@@ -210,10 +311,17 @@ let apply_fight_sequnce g_state p1_action p2_action =
 
   if p1_goes_first
   then
-    let new_g_state = do_single_move p1 p2 p1_action g_state in
-    let final_g_state = do_single_move p2 p1 p2_action new_g_state in
+    let new_g_state = do_single_move g_state.player_one
+      g_state.player_two p1_action true g_state in
+
+
+
+    let final_g_state = do_single_move new_g_state.player_two
+      new_g_state.player_one p2_action false new_g_state in
     final_g_state
   else
-    let new_g_state = do_single_move p2 p1 p2_action g_state in
-    let final_g_state = do_single_move p1 p2 p1_action new_g_state in
+    let new_g_state = do_single_move g_state.player_two
+      g_state.player_one p2_action false g_state in
+    let final_g_state = do_single_move new_g_state.player_one
+      new_g_state.player_two p1_action true new_g_state in
     final_g_state
