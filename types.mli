@@ -13,7 +13,7 @@ type pType = TNormal | TFire | TWater | TElectric | TGrass
 (*
 * The effectiveness of a move
 *)
-type pEffect = ESuper | ENormal | ENotVery
+type pEffect = ESuper | ENormal | ENotVery | EImmune
 
 (*
 * The move category (Special, Physical or Status)
@@ -36,8 +36,8 @@ type move = {
           status_probability : int;
           accuracy : int;
           damage : int;
-          max_pp : int;
           pp : int;
+          max_pp : int;
           move_category: pCategory
 }
 
@@ -79,7 +79,7 @@ type pocamon = {
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
 *)
-type action = Move of string | Switch of string * string
+type action = Move of string | Switch of string
 
 (*
 * Current state information about a player
