@@ -1,0 +1,206 @@
+| Aron        | Lairon     : @ Lv. 32          | Aggron     : @ Lv. 42     |
+| Bagon       | Shelgon    : @ Lv. 30          | Salamence  : @ Lv. 50     |
+| Beldum      | Metang     : @ Lv. 20          | Metagross  : @ Lv. 45     |
+| Bulbasaur   | Ivysaur    : @ Lv. 16          | Venusaur   : @ Lv. 32     |
+| Caterpie    | Metapod    : @ Lv. 07          | Butterfree : @ Lv. 10     |
+| Charmander  | Charmeleon : @ Lv. 16          | Charizard  : @ Lv. 36     |
+| Chikorita   | Bayleef    : @ Lv. 16          | Meganium   : @ Lv. 32     |
+| Chimchar    | Monferno   : @ Lv. 14          | Infernape  : @ Lv. 36     |
+| Cyndaquil   | Quilava    : @ Lv. 14          | Typlosion  : @ Lv. 36     |
+| Dratini     | Dragonair  : @ Lv. 30          | Dragonite  : @ Lv. 55     |
+| Gible       | Gabite     : @ Lv. 24          | Garchomp   : @ Lv. 48     |
+| Hoppip      | Skiploom   : @ Lv. 18          | Jumpluff   : @ Lv. 27     |
+| Larvitar    | Pupitar    : @ Lv. 30          | Tyranitar  : @ Lv. 55     |
+| Mareep      | Flaaffy    : @ Lv. 15          | Ampharos   : @ Lv. 30     |
+| Mudkip      | Marshtomp  : @ Lv. 16          | Swampert   : @ Lv. 36     |
+| Pidgey      | Pidgeotto  : @ Lv. 18          | Pidgeot    : @ Lv. 36     |
+| Piplup      | Prinplup   : @ Lv. 16          | Empoleon   : @ Lv. 36     |
+| Shinx       | Luxio      : @ Lv. 15          | Luxray     : @ Lv. 30     |
+| Slakoth     | Vigoroth   : @ Lv. 18          | Slaking    : @ Lv. 36     |
+| Spheal      | Sealeo     : @ Lv. 32          | Walrein    : @ Lv. 44     |
+| Squirtle    | Wartortle  : @ Lv. 16          | Blastoise  : @ Lv. 36     |
+| Starly      | Staravia   : @ Lv. 14          | Staraptor  : @ Lv. 34     |
+| Torchic     | Combusken  : @ Lv. 16          | Blaziken   : @ Lv. 36     |
+| Totodile    | Croconaw   : @ Lv. 18          | Feraligatr : @ Lv. 30     |
+| Trapinch    | Vibrava    : @ Lv. 35          | Flygon     : @ Lv. 45     |
+| Treecko     | Grovyle    : @ Lv. 16          | Sceptile   : @ Lv. 36     |
+| Turtwig     | Grotle     : @ Lv. 18          | Torterra   : @ Lv. 32     |
+| Weedle      | Kakuna     : @ Lv. 07          | Beedrill   : @ Lv. 10     |
+| Whismur     | Loudred    : @ Lv. 20          | Exploud    : @ Lv. 40     |
+| Anorith     | Armaldo    : @ Lv. 40          | * None *                  |
+| Baltoy      | Claydol    : @ Lv. 36          | * None *                  |
+| Barboach    | Whiscash   : @ Lv. 30          | * None *                  |
+| Bidoof      | Bibarel    : @ Lv. 15          | * None *                  |
+| Bronzor     | Bronzong   : @ Lv. 33          | * None *                  |
+| Buizel      | Floatzel   : @ Lv. 26          | * None *                  |
+| Cacnea      | Cacturne   : @ Lv. 32          | * None *                  |
+| Carvanha    | Sharpedo   : @ Lv. 30          | * None *                  |
+| Cherubi     | Cherrim    : @ Lv. 25          | * None *                  |
+| Chinchou    | Lanturn    : @ Lv. 27          | * None *                  |
+| Corphish    | Crawdaunt  : @ Lv. 30          | * None *                  |
+| Cranidos    | Rampardos  : @ Lv. 30          | * None *                  |
+| Croagunk    | Toxicroak  : @ Lv. 37          | * None *                  |
+| Cubone      | Marowak    : @ Lv. 28          | * None *                  |
+| Diglett     | Dugtrio    : @ Lv. 26          | * None *                  |
+| Doduo       | Dodrio     : @ Lv. 31          | * None *                  |
+| Drifloon    | Drifblim   : @ Lv. 28          | * None *                  |
+| Drowzee     | Hypno      : @ Lv. 26          | * None *                  |
+| Ekans       | Arbok      : @ Lv. 22          | * None *                  |
+| Electrike   | Manectric  : @ Lv. 26          | * None *                  |
+| Finneon     | Lumineon   : @ Lv. 31          | * None *                  |
+| Glameow     | Purugly    : @ Lv. 28          | * None *                  |
+| Goldeen     | Seaking    : @ Lv. 33          | * None *                  |
+| Grimer      | Muk        : @ Lv. 38          | * None *                  |
+| Gulpin      | Swalot     : @ Lv. 26          | * None *                  |
+| Hippopotas  | Hippowdon  : @ Lv. 34          | * None *                  |
+| Hondour     | Houndoom   : @ Lv. 24          | * None *                  |
+| HootHoot    | Noctowl    : @ Lv. 20          | * None *                  |
+| Kabuto      | Kabutops   : @ Lv. 40          | * None *                  |
+| Koffing     | Weezing    : @ Lv. 35          | * None *                  |
+| Krabby      | Kingler    : @ Lv. 28          | * None *                  |
+| Kricketot   | Kricketune : @ Lv. 10          | * None *                  |
+| Ledyba      | Ledian     : @ Lv. 18          | * None *                  |
+| Lileep      | Cradily    : @ Lv. 40          | * None *                  |
+| Magikarp    | Gyarados   : @ Lv. 20          | * None *                  |
+| Makuhita    | Hariyama   : @ Lv. 24          | * None *                  |
+| Mankey      | Primape    : @ Lv. 28          | * None *                  |
+| Meditite    | Medicham   : @ Lv. 37          | * None *                  |
+| Meowth      | Persian    : @ Lv. 28          | * None *                  |
+| Natu        | Xatu       : @ Lv. 25          | * None *                  |
+| Numel       | Camerupt   : @ Lv. 33          | * None *                  |
+| Omanyte     | Omastar    : @ Lv. 40          | * None *                  |
+| Paras       | Parasect   : @ Lv. 24          | * None *                  |
+| Phanpy      | Donphan    : @ Lv. 25          | * None *                  |
+| Pineco      | Forretress : @ Lv. 31          | * None *                  |
+| Ponyta      | Rapidash   : @ Lv. 40          | * None *                  |
+| Poochyena   | Mightyena  : @ Lv. 18          | * None *                  |
+| Psyduck     | Golduck    : @ Lv. 33          | * None *                  |
+| Rattata     | Raticate   : @ Lv. 20          | * None *                  |
+| Sandshrew   | Sandslash  : @ Lv. 22          | * None *                  |
+| Seel        | Dewgong    : @ Lv. 34          | * None *                  |
+| Shellos     | Gastrodon  : @ Lv. 30          | * None *                  |
+| Shieldon    | Bastiodon  : @ Lv. 30          | * None *                  |
+| Shroomish   | Breloom    : @ Lv. 23          | * None *                  |
+| Shuppet     | Banette    : @ Lv. 37          | * None *                  |
+| Skorupi     | Drapion    : @ Lv. 40          | * None *                  |
+| Slugma      | Magcargo   : @ Lv. 38          | * None *                  |
+| Smoochum    | Jynx       : @ Lv. 30          | * None *                  |
+| Sentret     | Furret     : @ Lv. 16          | * None *                  |
+| Snowver     | Abomasnow  : @ Lv. 40          | * None *                  |
+| Snubbull    | Granbull   : @ Lv. 23          | * None *                  |
+| Spearow     | Fearow     : @ Lv. 20          | * None *                  |
+| Spinarak    | Ariados    : @ Lv. 22          | * None *                  |
+| Spoink      | Grumpig    : @ Lv. 32          | * None *                  |
+| Stunky      | Skuntank   : @ Lv. 34          | * None *                  |
+| Surskit     | Masquerian : @ Lv. 22          | * None *                  |
+| Swablu      | Altaria    : @ lv. 35          | * None *                  |
+| Taillow     | Swellow    : @ Lv. 22          | * None *                  |
+| Teddiursa   | Ursaring   : @ Lv. 30          | * None *                  |
+| Tentacool   | Tentacruel : @ Lv. 30          | * None *                  |
+| Venonat     | Venomoth   : @ Lv. 31          | * None *                  |
+| Voltorb     | Electrode  : @ Lv. 30          | * None *                  |
+| Wailmer     | Wailord    : @ Lv. 40          | * None *                  |
+| Wingull     | Pelipper   : @ Lv. 25          | * None *                  |
+| Wooper      | Quagsire   : @ Lv. 20          | * None *                  |
+| Wynaut      | Wobuffet   : @ Lv. 15          | * None *                  |
+| Zigzagoon   | Linoone    : @ Lv. 20          | * None *                  |
+| Magnemite   | Magneton   : @ Lv. 30  | Magnezone : Lvl up @ Mt. Coronet  |
+| Nosepass    | * None *               | Probopass : Lvl up @ Mt. Coronet  |
+| Abra        | Kadabra    : @ Lv. 16  | Alakazam   : Trade                |
+| Duskull     | Dusclops   : @ Lv. 37  | Dusknoir   : Trade & Reaper Cloth |
+| Elekid      | Electabuzz : @ Lv. 30  | Electivire : Trade & Electirizer  |
+| Gastly      | Haunter    : @ Lv. 25  | Gengar     : Trade                |
+| Geodude     | Graveler   : @ Lv. 25  | Golem      : Trade                |
+| Horsea      | Seadra     : @ Lv. 32  | Kingdra    : Trade & King's Rock  |
+| Machop      | Machoke    : @ Lv. 28  | Machamp    : Trade                |
+| Magby       | Magmar     : @ Lv. 30  | Magmortar  : Trade & Magmarizer   |
+| Rhyhorn     | Rhydon     : @ Lv. 42  | Rhyperior  : Trade & Protector    |
+| Slowpoke    | Slowbro    : @ Lv. 37  | Slowking   : Trade & King's Rock  |
+| Onix        | Steelix : Trade & Metal Coat   | * None *                  |
+| Scyther     | Scizor  : Trade & Metal Coat   | * None *                  |
+| Porygon     | Porygon2 : Trade & Upgrade     | PorygonZ : Trade & D Disc |
+| Clamperl    | Huntail  : Trade & Deepseatooth| Gorebyss : Trade DS Scale |
+| Budew       | Roselia    : Happiness     | Roserade   : Shiny Stone      |
+| Cleffa      | Clefairy   : Happiness     | Clefable   : Moon Stone       |
+| Igglybuff   | Jigglypuff : Happiness     | Wigglytuff : Moon Stone       |
+| Pichu       | Pikachu    : Happiness     | Raichu     : Thunderstone     |
+| Togepi      | Togetic    : Happiness     | Togekiss   : Shiny Stone      |
+| Buneary     | Lopunny   : Happiness      | * None *                      |
+| Exeggcute   | Exeggutor : Leaf Stone     | * None *                      |
+| Growlithe   | Arcanine  : Fire Stone     | * None *                      |
+| Misdreavus  | Mismagius : Dusk Stone     | * None *                      |
+| Munchlax    | Snorlax   : Happiness      | * None *                      |
+| Murkrow     | Honchkrow : Dusk Stone     | * None *                      |
+| Shellder    | Cloyster  : Water Stone    | * None *                      |
+| Skitty      | Delcatty  : Moon Stone     | * None *                      |
+| Staryu      | Starmie   : Water Stone    | * None *                      |
+| Sunkern     | Sunflora  : Sun Stone      | * None *                      |
+| Vulpix      | Ninetales : Fire Stone     | * None *                      |
+| Bellsprout  | Weepinbell : @ Lv. 21  | Victreebell : Leaf Stone          |
+| Lotad       | Lombre     : @ Lv. 14  | Ludicolo    : Water Stone         |
+| Nidoran F   | Nidorina   : @ Lv. 16  | Nidoqueen   : Moon Stone          |
+| Nidoran M   | Nidorino   : @ Lv, 16  | Nidoking    : Moon Stone          |
+| Seedot      | Nuzleaf    : @ Lv. 14  | Shiftry     : Leaf Stone          |
+| Snorunt     | Glalie     : @ Lv. 42  | Froslass    : Dawn Stone [Female] |
+| Zubat       | Golbat     : @ Lv. 22  | Crobat      : Happiness           |
+| Azurill     | Marill     : Happiness | Azumarill   : @ Lv. 18            |
+| Chingling   | Chimecho : Happiness & Night Time                          |
+| Feebas      | Milotic  : Level up with "Beauty" stat > 240.              |
+| Riolu       | Lucario  : Happiness & Day Time                            |
+| Burmy       | Wormadam   : [Female] @ Lv. 20 | Mothim [Male] @ Lv. 20    |
+| Combee      | Vespiqueen : [Female] @ Lv. 21 | * None *                  |
+| Aipom       | Ambipom      : Level up after learning "Double Attack".    |
+| Bonsly      | Sudowoodo    : Level up after learning "Mimic".            |
+| Lickitung   | Lickylicky   : Level up after learning "Rollout".          |
+| Mime_Jr.    | Mr._Mime     : Level up after learning "Mimic".            |
+| Tangela     | Tangrowth    : Level up after learning "Ancient Power".    |
+| Yanma       | Yanmega      : Level up after learning "Ancient Power".    |
+ ============= ============================================================ 
+ ============= ====================== ===================================== 
+| Basic Form  | Evolved Form 1       | Evolved Form 2                      |
+ ============= ====================== ===================================== 
+| Swinub      | Piloswine @ Lv. 33   | Mamoswine : Ancient Power   Lvl Up  |
+ ============= ====================== ===================================== 
+ 
+
+Evolved Through Equipping Items
+ ============= ============================================================ 
+| Basic Form  | Evolved Form 1                                             |
+ ============= ============================================================ 
+| Sneasel     | Weavile : Level up with Razor Claw equipped.               |
+| Gligar      | Gliscor : Trade with Razor Fang equipped.                  |
+ ============= ============================================================ 
+
+Multiple Evolved Forms
+ ============= ============================================================ 
+| Basic Form  | Evolved Forms                                              |
+ ============= ============================================================ 
+|             | Evolved Form 1 Type 1 : Hitmonlee  : [Atk > Def] @ Lv. 20  |
+| Tyrogue     | Evolved Form 1 Type 2 : Hitmonchan : [Atk < Def] @ Lv. 20  |
+|             | Evolved Form 1 Type 3 : Hitmontop  : [Atk = Def] @ Lv. 20  |
+ ============= ============================================================ 
+|             | Evolved Form 1 : Gloom     : @ Lv. 21                      |
+| Oddish      | Evolved Form 2 : Bellossom : Sun Stone                     |
+|             | Evolved Form 3 : Vileplume : Leaf Stone                    |
+ ============= ============================================================ 
+|             | Evolved Form 1 : Poliwhirl : @ Lv. 25                      |
+| Poliwag     | Evolved Form 2 : Politoed  : Trade & King's Rock           |
+|             | Evolved Form 3 : Poliwrath : Water Stone                   |
+ ============= ============================================================ 
+|             | Evolved Form 1 Type 1 : Vaporeon : Water Stone             |
+|             | Evolved Form 1 Type 2 : Jolteon  : Thunderstone            |
+|             | Evolved Form 1 Type 3 : Flareon  : Fire Stone              |
+| Eevee       | Evolved Form 1 Type 4 : Espeon   : Happiness & Day Time    |
+|             | Evolved Form 1 Type 5 : Umbreon  : Happiness & Night Time  |
+|             | Evolved Form 1 Type 6 : Leafeon  : Level Up @ Moss Rock    |
+|             | Evolved Form 1 Type 7 : Glaceon  : Level Up @ Ice Rock     |
+ ============= ============================================================ 
+|             | Evolved Form 1 : Kirlia    : @ Lv. 20                      |
+| Ralts       | Evolved Form 2 : Gardevoir : @ Lv. 30                      |
+|             | Evolved Form 3 : Gallade   : [Male] & Dawn Stone           |
+ ============= ============================================================ 
+|             | Evolved Form 1 Type 1 : Silcoon   : [Female] @ Lv. 07      |
+|             | Evolved Form 2 Type 1 : Cascoon   : [Male]   @ Lv. 07      |
+| Wurmple     | Evolved Form 1 Type 2 : Beautifly : [Female] @ Lv. 10      |
+|             | Evolved Form 2 Type 2 : Dustox    : [Male]   @ Lv. 10      |
+ ============= ===========================================================
