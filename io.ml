@@ -6,12 +6,9 @@ let match_phrase (str: string) (regex: string) :bool =
 
 let get_switch (str: string) :command option =
   let words = Str.split " " str in
-  if List.length = 3
-  then Some (Action (Switch ((List.nth 1), (List.nth 2))))
-  else if List.length = 4
-  then Some (Action (Switch ((List.nth 2), (List.nth 4))))
-else None
-
+  if List.length words > 2
+  then None
+  else Some (Action (Switch (List.nth 1)))
 
 let process_input (s: string) :command option =
   let trim_s = String.uppercase (String.trim s) in
@@ -19,7 +16,6 @@ let process_input (s: string) :command option =
   else if match_phrase trim_s "^DOWN$" then Some Down
   else if match_phrase trim_s "^$" then Some Enter
   else if match_phrase trim_s "^FIGHT$" then Some Fight
-  else if match_phrase trim_s "^BAG$" then Some Bag
   else if match_phrase trim_s "^POCAMON$" then Some Pocamon
   else if match_phrase trim_s "^RUN$" then Some Run
   else if match_phrase trim_s "^BACK$" then Some Back
@@ -27,6 +23,9 @@ let process_input (s: string) :command option =
   else if match_phrase trim_s "^LOAD$" then Some Load
   else if match_phrase trim_s "^SWITCH" then get_switch trim_s
   else Some (Action of (Move of trim_s))
+
+let string_to_box (s: bytes) :bytes =
+  "* " ^ s
 
 let create_pocamon_ascii (pc: pocamon) :bytes =
   pocamon.ascii
@@ -53,10 +52,8 @@ let create_health_bar (pc: pocamon) :bytes =
   ^ " " ^ (string_of_int pc.health) ^ "/" ^ (string_of_int pc.stats.max_HP)
   ^ " " ^ status_to_string (pc.status) ^ " "
 
-
-
 let art_joiner (art1: bytes) (art2: bytes) :bytes =
-  let rec art_help (art1: bytes list) (art2: bytes list) (result: bytes) :bytes =
+  let rec art_help (art1: bytes list) (art2: bytes list) result :bytes =
     match art1, art2 with
     | h1::t1, h2::t2 -> art_help t1 t2 (result ^ "\n" ^ h1 ^ "    ||    " ^ h2)
     | _, _ -> result in
@@ -72,23 +69,39 @@ let create_help (c_list: command list) :bytes =
     | Down -> "Down"
     | Enter -> "Enter"
     | Fight -> "Fight"
-    | Bag -> "Bag"
     | Pocamon -> "Pocamon"
     | Run -> "Run"
     | Back -> "Back"
     | Save -> "Save"
     | Load -> "Load"
-    | Action -> "<Move> \n Switch <Pocamon> with <Pocamon>" in
+    | Action -> "<Move> \n Switch <Pocamon>" in
 
   let rec help_help (cl: command list) (result: bytes) :bytes =
     match cl with with
     | [] -> result
-    | h::t -> help_help t (result ^ "\n" ^ (command_to_string h)) in
+    | h::t ->
+      help_help t (result ^ "\n" ^ (string_to_box (command_to_string h))) in
 
   help_help c_list ""
 
-let create_available_pocamon (p_list: pocamon_list) (i: int) :bytes =
+(*let create_available_pocamon (p_list: pocamon_list) (i: int) :bytes =
   let start = if List.length p_list <= 4 then 0 else i in
   let ellipses = (List.length p_list > 4) && (i = ((List.length p_list) - 4)) in
   let end = if List.length p_list <= 4 then List.length else
     if ellipses then i + 4 else i + 3
+*)
+let create_available_moves (pc: pocamon) :bytes =
+
+let print_screen (ps: player_state) (pi: public_info) (ss: screen_state) =
+  let final_str = "" in
+  let top_bar = "********************************************"^
+  "*******************************" in
+  let art1 = create_pocamon_ascii pi.player_one_active_pocamon in
+  let art2 = create_pocamon_ascii pi.player_two_active_pocamon in
+  let art = art_joiner art1 art2 in
+  let bar1 = create_health_bar pi.player_one_active_pocamon in
+  let bar2 = create_health_bar pi.player_two_active_pocamon in
+  let bar = bar1 ^ "  " ^ bar2 in
+  let middle_bar = top_bar in
+
+  let end_bar = middle_bar
