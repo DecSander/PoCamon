@@ -17,4 +17,5 @@ val apply_attack : player_state -> move -> game_state -> game_state
 val switch_pokemon : pocamon -> player_state -> game_state
 
 
-val apply_fight_sequence : game_state -> action -> action -> game_state
+val apply_fight_sequence : game_state -> action -> action ->
+                           game_state * battle_status
