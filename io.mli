@@ -3,6 +3,9 @@ open Types
 type command = Up | Down | Enter | Action of action | Fight | Bag | Pocamon
 | Run | Back | Save | Load
 
+type screen_state = Out | Moves of int | Pocamon of int | Bag |
+Result (string * bool * string * pEffect)
+
 (*
  * Takes a string and parses it using regex to return the command corresponding
  * to that string. If the parser is unable to determind the command, None is
@@ -25,8 +28,6 @@ val create_health_bar : pocamon -> bytes
 val create_available_pocamon : pocamon list -> bytes
 
 val create_available_moves : pocamon -> bytes
-
-val create_battle : battle_status -> bytes
 
 val create_help : command list -> bytes
 
