@@ -7,7 +7,7 @@ type attack_status = {
       missed : bool;
 }
 
-type move_status = Attack_Status of attack_status | Switch_Status
+type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
 
 type battle_status = {
       p1_went_first : bool;
@@ -15,6 +15,10 @@ type battle_status = {
       p2_move_status : move_status;
 }
 
+type debuff_state = {
+  p1_debuff : pStatus;
+  p2_debuff : pStatus;
+}
 (*
 * Takes in an action and returns the state of the game after that action
 * has taken place
@@ -30,9 +34,13 @@ val apply_attack : player_state -> move -> game_state ->
 (*
 * Switches the active pocamon of the player making the move
 *)
-val switch_pokemon : pocamon -> player_state -> game_state * battle_status
+val switch_pokemon : pocamon -> player_state -> game_state ->
+                      game_state * move_status
 
 
 
 val apply_fight_sequence : game_state -> action -> action ->
                            game_state * battle_status
+
+
+val apply_status_debuffs : game_state -> game_state * debuff_state
