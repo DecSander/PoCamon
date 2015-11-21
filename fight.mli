@@ -7,7 +7,7 @@ type attack_status = {
       missed : bool;
 }
 
-type move_status = Attack_Status of attack_status | Switch_Status
+type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
 
 type battle_status = {
       p1_went_first : bool;
