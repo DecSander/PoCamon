@@ -4,13 +4,23 @@ open Ai
 open Fight
 open PocaDex
 
+let rec get_new_pocamon p_list : pocamon =
+  let new_poca = get_random_pocamon () in
+  if not (List.mem new_poca p_list) then
+    new_poca
+  else
+    get_new_pocamon p_list
+
+
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
   (* Make sure player cannot get two of the same pocamon *)
   let player_one_name = "PLAYER ONE" in
   let player_two_name = "PLAYER TWO" in
-  let player_one_pocamon = List.map get_random_pocamon [();();();();();()] in
-  let player_two_pocamon = List.map get_random_pocamon [();();();();();()] in
+  let player_one_pocamon = List.fold_left
+    (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
+  let player_two_pocamon = List.fold_left
+    (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_one_active_pocamon = List.hd player_one_pocamon in
   let player_two_active_pocamon = List.hd player_two_pocamon in
   let player_one =
