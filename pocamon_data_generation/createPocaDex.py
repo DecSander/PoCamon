@@ -12,7 +12,6 @@ DATA FORMAT:
 }, ...
 }'''
 
-
 # returns data as described in DATA FORMAT
 def scrap_base_stats(lines):
     i = 0
@@ -83,14 +82,19 @@ with open("evos_attacks.asm") as f:
 with open("ascii_art.txt") as f:
     ascii_art = f.readlines()
 
+with open("battle_moves.s") as f:
+    battle_moves = f.readlines()
+
+
 data = scrap_base_stats(base_stats)
 data = scrap_evos_attacks(evos_attacks, data)
 data = scrap_ascii(ascii_art, data)
 
 
 with open("pocadex.ml", 'w') as f:
-    f.write('module PocaDex = Map.make(pocamon)\n')
-    f.write('let pocadex = PocaDex.empty\n')
+
+    f.write('module PokeDex = Map.Make(String)\n')
+    f.write('let dexmap = PokeDex.empty\n')
     for pocamon in data.keys():
         moves = '['
         for move in data[pocamon]["moves"]:
@@ -100,4 +104,4 @@ with open("pocadex.ml", 'w') as f:
         sd = data[pocamon]["stats"]
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
-        f.write('let pocadex = PocaDex.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2};\ntypes={3} \nascii="{4}"}} pocadex\n\n'.format(pocamon, moves, stats, types, data[pocamon]['ascii']))
+        f.write('let dexmap = PokeDex.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2};\npoca_type={3}; \nascii="{4}"}} dexmap\n\n'.format(pocamon, moves, stats, types, data[pocamon]['ascii']))
