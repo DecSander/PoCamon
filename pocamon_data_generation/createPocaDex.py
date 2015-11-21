@@ -29,7 +29,9 @@ def scrap_base_stats(lines):
             i += 1
             moves = []
             while("; end" not in lines[i]):
-                moves += lines[i].strip().replace("tmhm","").replace(" ", "").split(",")
+                m = lines[i].strip().replace("tmhm","").replace(" ", "").split(",")
+                if len(m) > 1:
+                    moves += m
                 i += 1
             stats = {"HP":HP, "ATK":ATK, "DEF": DEF, "SPD": SPD, "SAT": SAT, "SDP":SDP}
             data[name] = {"stats": stats, "types": types, "moves": moves, "ascii":""}
@@ -49,7 +51,9 @@ def scrap_evos_attacks(lines, data):
                 i += 3
                 newMoves = []
                 while ";" not in lines[i]:
-                    newMoves.append(lines[i].strip().replace(" ","").split(",")[1])
+                    m  = lines[i].strip().replace(" ","").split(",")[1]
+                    if len(m) > 1:
+                        newMoves.append(m)
                     i += 1
                 data[name]["moves"] += newMoves
         i += 1
@@ -90,12 +94,13 @@ data = scrap_base_stats(base_stats)
 data = scrap_evos_attacks(evos_attacks, data)
 data = scrap_ascii(ascii_art, data)
 
-
+allmoves = set()
 with open("pocadex.ml", 'w') as f:
 
     f.write('module PokeDex = Map.Make(String)\n')
     f.write('let dexmap = PokeDex.empty\n')
     for pocamon in data.keys():
+        allmoves = allmoves.union(set(data[pocamon]["moves"]))
         moves = '['
         for move in data[pocamon]["moves"]:
             moves += '"{0}";'.format(move)
@@ -105,3 +110,8 @@ with open("pocadex.ml", 'w') as f:
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
         f.write('let dexmap = PokeDex.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2};\npoca_type={3}; \nascii="{4}"}} dexmap\n\n'.format(pocamon, moves, stats, types, data[pocamon]['ascii']))
+
+print '[',
+for move in allmoves:
+    print '"{0}";'.format(move),
+print "]"

@@ -779,7 +779,7 @@ ascii="        Z       =
 
 let dexmap = PokeDex.add "METAPOD" {
 name="METAPOD"; 
-learnable_moves=["";"HARDEN";"HARDEN";];
+learnable_moves=["HARDEN";"HARDEN";];
 stats={max_hp=50; attack=20; defense=55; speed=30; sp_attack=25;sp_defense=25;};
 poca_type=("BUG", "BUG"); 
 ascii="                               
@@ -1073,7 +1073,7 @@ ascii="        OZN      8=I
 
 let dexmap = PokeDex.add "DITTO" {
 name="DITTO"; 
-learnable_moves=["";];
+learnable_moves=[];
 stats={max_hp=48; attack=48; defense=48; speed=48; sp_attack=48;sp_defense=48;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -1136,7 +1136,7 @@ ascii="                  ~+~
 
 let dexmap = PokeDex.add "CATERPIE" {
 name="CATERPIE"; 
-learnable_moves=["";"TACKLE";"STRING_SHOT";];
+learnable_moves=["TACKLE";"STRING_SHOT";];
 stats={max_hp=45; attack=30; defense=35; speed=45; sp_attack=20;sp_defense=20;};
 poca_type=("BUG", "BUG"); 
 ascii="                               
@@ -1934,7 +1934,7 @@ ascii="
 
 let dexmap = PokeDex.add "WEEDLE" {
 name="WEEDLE"; 
-learnable_moves=["";"POISON_STING";"STRING_SHOT";];
+learnable_moves=["POISON_STING";"STRING_SHOT";];
 stats={max_hp=40; attack=35; defense=30; speed=50; sp_attack=20;sp_defense=20;};
 poca_type=("BUG", "POISON"); 
 ascii="                               
@@ -2795,7 +2795,7 @@ ascii="
 
 let dexmap = PokeDex.add "MAGIKARP" {
 name="MAGIKARP"; 
-learnable_moves=["";"SPLASH";"TACKLE";"FLAIL";];
+learnable_moves=["SPLASH";"TACKLE";"FLAIL";];
 stats={max_hp=20; attack=10; defense=55; speed=80; sp_attack=15;sp_defense=20;};
 poca_type=("WATER", "WATER"); 
 ascii="           :        $          
@@ -2837,7 +2837,7 @@ ascii="          ,=?==,,,?
 
 let dexmap = PokeDex.add "KAKUNA" {
 name="KAKUNA"; 
-learnable_moves=["";"HARDEN";"HARDEN";];
+learnable_moves=["HARDEN";"HARDEN";];
 stats={max_hp=45; attack=25; defense=50; speed=35; sp_attack=25;sp_defense=25;};
 poca_type=("BUG", "POISON"); 
 ascii="                               
