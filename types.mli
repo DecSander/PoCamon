@@ -3,6 +3,7 @@
 * which can be changed via moves and each have different effects
 *)
 type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze | SFreeze of int
+type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
 
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
@@ -33,7 +34,7 @@ val effect_to_float : pEffect -> float
 type move = {
           name : bytes;
           move_type : pType;
-          status_effect : pStatus;
+          status_effect : mStatus;
           status_probability : int;
           accuracy : int;
           damage : int;
@@ -46,7 +47,7 @@ type move = {
 
 (* the stats of a pocamon that show how powerful it is *)
 type poca_stats = {
-            max_HP : int;
+            max_hp : int;
             attack : int;
             defense : int;
             sp_defense: int;
@@ -69,10 +70,8 @@ type pocamon = {
 
  type dex_pocamon = {
       name : bytes;
-      status : pStatus;
-      learnable_moves : move list;
-      poca_type : pType list;
-      health : int;
+      learnable_moves : string list;
+      poca_type : string * string;
       stats : poca_stats;
       ascii : bytes;
       }
