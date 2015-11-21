@@ -2,7 +2,7 @@ mystr = '''
 
 '''
 mystr = ""
-with open("pocamonMoves.asm") as f:
+with open("moves.asm") as f:
   strlst = f.readlines()
 
 for s in strlst:
@@ -11,8 +11,8 @@ for s in strlst:
 def flter(lns):
   newlns = []
   for l in lns:
-    if (l != '') and (l[0] == ' ') and ('db' not in l):
-      newlns.append(l.replace(" ", "").replace("move", "").replace("_", " "))
+    if (l != '') and (l[0] == '\t') and ('db' not in l):
+      newlns.append(l.replace(" ", "").replace("move", "").replace("_", " ").replace("\t", ""))
   return newlns
 
 def breakup(lns):
