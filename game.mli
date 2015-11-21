@@ -2,13 +2,13 @@
   open Io
   open Ai
   open Fight
-  open PocaList
+  open PocaDex
 
 (*
 * Prompts the user for an action to be taken. Player can also request
 * information is printed during this time
 *)
-val get_player_action : player_state -> public_info -> action
+val get_player_action : game_state -> player_state -> screen_state -> action
 
 (*
 * The recursive driver for the game - takes in the initial game state at first,
@@ -31,4 +31,4 @@ val gen_initial_state : unit -> game_state
 *)
 val start  : unit -> unit
 
-val process_screen_action : command -> screen_state -> game_state -> screen_state
+val process_screen_action : command option -> screen_state -> game_state -> screen_state
