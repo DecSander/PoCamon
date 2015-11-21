@@ -246,12 +246,11 @@ def mapType(lsts):
 def gen_command(lsts):
   newlst = []
   for k in lsts:
-    newlst.append("let m = My_Moves.add \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[4] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_PP=" + k[5] + "; PP=" + k[5] + "} m")
+    newlst.append("Hashtbl.add my_hash \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[4] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_PP=" + k[5] + "; pp=" + k[5] + "}")
   return newlst
 
 def start():
-  return '''module My_Moves = Map.make(move)
-let m = My_Moves.empty
+  return '''let my_hash = Hashtbl.create 180
 
 '''
 
@@ -263,4 +262,5 @@ def gen_full(lsts):
 
 lines = gen_full(gen_command(mapType(mapStatus(breakup(flter(mystr.rsplit('\n')))))))
 
-print lines
+f = open("moves.txt", "w")
+f.write(lines)
