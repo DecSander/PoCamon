@@ -28,10 +28,10 @@ type move = {
           name : bytes;
           move_type : pType;
           status_effect : pStatus;
-          status_probability : float;
-          accuracy : float;
+          status_probability : int;
+          accuracy : int;
           damage : int;
-          max_PP : int;
+          max_pp : int;
           pp : int
 }
 
