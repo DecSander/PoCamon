@@ -270,14 +270,20 @@ let switch_pocamon switch_poca p_state g_state =
   let p_state' = {p_state with active_pocamon=switch_poca;
                                pocamon_list=new_party}
 
+  let g_state' = if p1_switch then {g_state with player_one=p_state'}
+      else {g_state with player_two=p_state'} in
+
+  (g_state', Switch_Status)
+
 (*
 * Takes in an action and returns the state of the game after that action
 * has taken place
 *)
 let do_single_move player_state foe_state action p_state_is_p1 g_state =
   match action with
-  | Move m -> apply_attack player_state foe_state m p_state_is_p1 g_state
-  | Switch s_p -> switch_pocamon s_p p_state
+  | FMove m -> apply_attack player_state foe_state m p_state_is_p1 g_state
+  | FSwitch s_p ->
+    switch_pocamon switch_poca player_state g_state
 
 let apply_fight_sequnce g_state p1_action p2_action =
 
@@ -289,8 +295,8 @@ let apply_fight_sequnce g_state p1_action p2_action =
     | _ -> 1. in
   let p1_switch_priority =
     match p1_action with
-    | Move _ -> false
-    | Switch _ -> true in
+    | FMove _ -> false
+    | FSwitch _ -> true in
 
   let p2 = g_state.player_two in
   let p2_poca = p2.active_pocamon in
@@ -300,8 +306,8 @@ let apply_fight_sequnce g_state p1_action p2_action =
     | _ -> 1. in
   let p2_switch_priority =
     match p2_action with
-    | Move _ -> false
-    | Switch _ -> true in
+    | FMove _ -> false
+    | FSwitch _ -> true in
 
   let p1_goes_first =
     if (((float_of_int p1_poca.status.speed)*.p1_status_speed_multiplier >=
@@ -311,17 +317,23 @@ let apply_fight_sequnce g_state p1_action p2_action =
 
   if p1_goes_first
   then
-    let new_g_state = do_single_move g_state.player_one
+    let new_g_state, p1_status = do_single_move g_state.player_one
       g_state.player_two p1_action true g_state in
 
+(*whtat if p2 dies? *)
 
-
-    let final_g_state = do_single_move new_g_state.player_two
+    let final_g_state, p2_status = do_single_move new_g_state.player_two
       new_g_state.player_one p2_action false new_g_state in
-    final_g_state
+    (final_g_state, {p1_went_first=true;
+                    p1_move_status=p1_status;
+                    p2_move_status=p2_status})
   else
-    let new_g_state = do_single_move g_state.player_two
+    let new_g_state, p2_status = do_single_move g_state.player_two
       g_state.player_one p2_action false g_state in
-    let final_g_state = do_single_move new_g_state.player_one
+
+(* what if p1 dies? *)
+    let final_g_state, p1_status = do_single_move new_g_state.player_one
       new_g_state.player_two p1_action true new_g_state in
-    final_g_state
+    (final_g_state, {p1_went_first=true;
+                    p1_move_status=p1_status;
+                    p2_move_status=p2_status})
