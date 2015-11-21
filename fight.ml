@@ -24,54 +24,94 @@ let calc_type_effectiveness atk_type def_type =
       | TWater -> 0.5
       | TGrass -> 0.5
       | TDragon -> 0.5
-      | T
+      | TFire -> 2.
+      | TGround -> 2.
+      | TRock -> 2.
+      | _ -> 1.
     | TElectric ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TElectric -> 0.5
+      | TGrass -> 0.5
+      | TDragon -> 0.5
+      | TWater -> 2.
+      | TFlying -> 2.
+      | TGround -> 0.
+      | _ -> 1.
     | TGrass ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TFire -> 0.5
+      | TGrass -> 0.5
+      | TPoison -> 0.5
+      | TFlying -> 0.5
+      | TBug -> 0.5
+      | TDragon -> 0.5
+      | _ -> 1.
     | TIce ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TFire | TWater| TIce | TSteel -> 0.5
+      | TGrass | TGround | TFlying | TDragon - > 2.
+      | _ -> 1.
     | TFighting ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TNormal | TIce | TRock -> 2.
+      | TPoison | TFlying | TPsychic | TBug -> 0.5
+      | TGhost -> 0.
+      | _ -> 1.
     | TPoison ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TGrass | TBug -> 2.
+      | TPoison | TGround | TRock | TGhost -> 0.5
+      | _ -> 1.
     | TGround ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TFire | TElectric | TPoison | TRock -> 2.
+      | TGrass | TBug -> 0.5
+      | TFlying -> 0.
+      | _ -> 1.
     | TFlying ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TGrass | TFighting | TBug -> 2.
+      | TElectric | TRock -> 0.5
+      | _ -> 1.
     | TPsychic ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TFighting | TPoison -> 2.
+      | TPsychic -> 0.5
+      | _ -> 1.
     | TBug ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TFire | TFighting | TFlying -> 0.5
+      | TGrass | TPoison | TPsychic -> 2.
+      | _ -> 1.
     | TRock ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TFire | TIce | TFlying | TBug -> 2.
+      | TFighting | TGround -> 0.5
+      | _ -> 1.
     | TGhost ->
-      match foe_poca.poca_type with
-      |
+      match def_type with
+      | TNormal | TPsychic -> 0.
+      | TGhost -> 2.
+      | _ -> 1.
     | TDragon ->
-      match foe_poca.poca_type with
-      |
-
+      match def_type with
+      | TDragon -> 2.
+      | _ -> 1.
 
 (*
 * Applys the single attack to the game state
 *)
-let apply_attack p_state foe_state move g_state =
-  let active_poca = p_state.active_pocamon in
-  let foe_poca = foe_state.active_pocamon in
+let apply_attack atk_state def_state move g_state =
+  let atk_poca = atk_state.active_pocamon in
+  let def_poca = def_state.active_pocamon in
 
   let type_effectiveness =
-    calc_type_effectiveness move.move_type foe_poca.poca_type
+    if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
+      calc_type_effectiveness move.move_type (fst def_poca.poca_type)
+    else calc_type_effectiveness move.move_type (fst def_poca.poca_type) *.
+      calc_type_effectiveness move.move_type (snd def_poca.poca_type) in
+
+
 
 
 (*
@@ -86,7 +126,7 @@ let switch_pokemon switch_poca p_state =
 let do_single_move player_state foe_state action g_state =
   match action with
   | Move m -> apply_attack player_state foe_state m g_state
-  | Switch (_, s_p) -> switch_pokemon s_p p_state
+  | Switch s_p -> switch_pokemon s_p p_state
 
 let apply_fight_sequnce g_state p1_action p2_action =
 
