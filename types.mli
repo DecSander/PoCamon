@@ -38,7 +38,7 @@ type move = {
           damage : int;
           max_pp : int;
           pp : int;
-          move_category: pCategoryg
+          move_category: pCategory
 }
 
 (* the stats of a pocamon that show how powerful it is *)
