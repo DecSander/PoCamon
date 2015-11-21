@@ -18,7 +18,7 @@ type pEffect = ESuper | ENormal | ENotVery
 (*
 * The move category (Special, Physical or Status)
 *)
-type pCategory = ESpecial | EStatus | EPhysical
+type pCategory = ESpecial | EPhysical
 
 (*
 * Calculates damage modifier from effectiveness
