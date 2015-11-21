@@ -9,7 +9,7 @@ let calc_type_effectiveness atk_type def_type =
       | TGhost -> 0
       | _ -> 1.
     | TFire ->
-      match foe_poca.poca_type with
+      match def_type with
       | TFire -> 0.5
       | TWater -> 0.5
       | TRock -> 0.5
@@ -20,9 +20,11 @@ let calc_type_effectiveness atk_type def_type =
       | TSteel -> 2.
       | _ -> 1.
     | TWater ->
-      match foe_poca.poca_type with
+      match def_type with
       | TWater -> 0.5
-      | TWater
+      | TGrass -> 0.5
+      | TDragon -> 0.5
+      | T
     | TElectric ->
       match foe_poca.poca_type with
       |
