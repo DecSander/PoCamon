@@ -89,14 +89,15 @@ data = scrap_ascii(ascii_art, data)
 
 
 with open("pocadex.ml", 'w') as f:
-    f.write('module Pocamon = Map.make(pocamon)\n')
-    f.write('let pocadex = Pocamon.empty\n')
+    f.write('module PocaDex = Map.make(pocamon)\n')
+    f.write('let pocadex = PocaDex.empty\n')
     for pocamon in data.keys():
         moves = '['
         for move in data[pocamon]["moves"]:
             moves += '"{0}";'.format(move)
         moves += "]"
+        types = '("{0}", "{1}")'.format(data[pocamon]["types"][0], data[pocamon]["types"][1])
         sd = data[pocamon]["stats"]
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
-        f.write('let pocadex = Pocamon.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2}; \nascii="{3}"}} pocadex\n\n'.format(pocamon, moves, stats, data[pocamon]['ascii']))
+        f.write('let pocadex = PocaDex.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2};\ntypes={3} \nascii="{4}"}} pocadex\n\n'.format(pocamon, moves, stats, types, data[pocamon]['ascii']))

@@ -59,7 +59,7 @@ type pocamon = {
       name : bytes;
       status : pStatus;
       moves : move list;
-      poca_type : pType list;
+      poca_type : pType * pType;
       health : int;
       stats : poca_stats;
       ascii : bytes;
