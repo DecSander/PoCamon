@@ -1,10 +1,10 @@
 open Types
 
-type command = Up | Down | Enter | Action of action | Fight | Bag | Pocamon
+type command = Up | Down | Enter | Action of action | Fight | Pocamon
 | Run | Back | Save | Load
 
-type screen_state = Out | Moves of int | Pocamon of int | Bag |
-Result (string * bool * string * pEffect)
+type screen_state = Out | Moves | Pocamon of int |
+Result (pocamonName * bool * moveName * pEffect) | Talking of string
 
 (*
  * Takes a string and parses it using regex to return the command corresponding
@@ -14,7 +14,7 @@ Result (string * bool * string * pEffect)
 val process_input : string -> command option
 
 (* Prints the appropriate screen for the given command specified *)
-val print_screen : game_state -> screen_state -> unit
+val print_screen : player_state -> public_info -> screen_state -> unit
 
 (* The below functions will be used in creating print_screen, but will
  * be removed from the mli upon implementation because they should
