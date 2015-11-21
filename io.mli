@@ -1,10 +1,10 @@
 open Types
 
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
-| Run | Back
+| Run | Back | Save | Load
 
 type screen_state = Out | Moves | Pocamon_List of int |
-  Result of string * bool * string * pEffect
+  Result of string * bool * string * pEffect | Talking of string
 
 (*
  * Takes a string and parses it using regex to return the command corresponding
