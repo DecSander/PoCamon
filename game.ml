@@ -11,6 +11,18 @@ let rec get_new_pocamon p_list : pocamon =
   else
     get_new_pocamon p_list
 
+let create_public_info g_state: public_info =
+  {
+    player_one_name = g_state.player_one.name;
+    player_two_name = g_state.player_one.name;
+    player_one_active_pocamon = g_state.player_one.active_pocamon;
+    player_two_active_pocamon = g_state.player_two.active_pocamon;
+    player_one_remaining_pocamon =
+      List.length (g_state.player_one.pocamon_list);
+    player_two_remaining_pocamon =
+      List.length (g_state.player_one.pocamon_list);
+  }
+
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
@@ -36,24 +48,16 @@ let gen_initial_state () : game_state =
     pocamon_list = List.tl player_two_pocamon;
     is_computer = false
   } in
-  let public_info =
-  {
-    player_one_name = player_one_rec.name;
-    player_two_name = player_two_rec.name;
-    player_one_active_pocamon = player_one_active_pocamon;
-    player_two_active_pocamon = player_two_active_pocamon;
-    player_one_remaining_pocamon = 6;
-    player_two_remaining_pocamon = 6
-  } in
 
   {
     player_one = player_one_rec;
     player_two = player_two_rec;
-    battle_info = public_info
   }
 
 let rec wait_for_enter g_state p_state s_state : unit =
-  let () = print_screen p_state g_state.battle_info s_state in
+  let () = print_endline "adfdfd" in
+  let () = print_screen p_state (create_public_info g_state) s_state in
+  let () = print_endline "printed after wait for enter" in
   let input = read_line () in
   match (process_input input) with
   | Some Enter -> ()
@@ -74,7 +78,7 @@ let process_screen_action comm s_state g_state : screen_state =
 
 
 let rec get_player_action g_state p_state s_state : fAction =
-  let () = print_screen p_state g_state.battle_info s_state in
+  let () = print_screen p_state (create_public_info g_state) s_state in
   let input = read_line () in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
@@ -92,7 +96,7 @@ let rec get_player_action g_state p_state s_state : fAction =
   | c, _ -> get_player_action g_state p_state (process_screen_action c s_state g_state)
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
-  let () = print_screen p_state g_state.battle_info s_state in
+  let () = print_screen p_state (create_public_info g_state) s_state in
   let input = read_line () in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
   match (process_input input) with
@@ -110,11 +114,11 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
 
 
 let on_faint g_state : game_state =
-  if g_state.player_one.active_pocamon.health = 0 then
+  if g_state.player_one.active_pocamon.health <= 0 then
     let () = wait_for_enter g_state g_state.player_one
       (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
       choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
-  else if g_state.player_two.active_pocamon.health = 0 then
+  else if g_state.player_two.active_pocamon.health <= 0 then
     let () = wait_for_enter g_state g_state.player_two
       (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
       choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
@@ -135,6 +139,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
         (Talking (p_state.active_pocamon.name ^ " became healthy!"))
       else ()) in
 
+    let () = print_endline "self status done" in
+
     begin match snd a.self_status_change with
     | SSleep _ -> wait_for_enter g_state p_state
       (Talking (p_state.name ^ " is asleep!"))
@@ -143,10 +149,13 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | SParalyze -> wait_for_enter g_state p_state
       (Talking (p_state.name ^ " is paralyzed! It can't move!"))
     | _ ->
+      let () = print_endline "using move" in
       (let poca_used_move = Talking (p_state.name ^ "'s " ^
         p_state.active_pocamon.name ^ " used " ^ poca_move.name) in
 
       let () = wait_for_enter g_state p_state poca_used_move in
+
+      let () = print_endline "blank used move" in
 
       let () = if (match a.atk_eff with ENormal -> false | _ -> true) then
         let eff =
@@ -186,22 +195,38 @@ let print_debuff_info g_state p_state p_debuff : unit =
 
 let rec run_game_turn g_state : game_state =
   let p1_action = get_player_action g_state g_state.player_one Out in
+  let () = ignore(List.map (fun (x:move) -> print_endline x.name) g_state.player_two.active_pocamon.moves) in
   let p2_action = get_player_action g_state g_state.player_two Out in
   let new_g_state, printfo = apply_fight_sequence g_state p1_action p2_action in
 
+  let () = print_endline "new game state received" in
+
   let () =
     if printfo.p1_went_first then
+      let () = print_endline "starting p1 move" in
+      let () = match printfo.p1_move_status with
+              | Attack_Status a -> print_endline "attack status"
+              | Faint_Status -> print_endline "faint"
+              | _ -> print_endline "Switch? weird" in
       (print_result p1_action new_g_state new_g_state.player_one
         printfo.p1_move_status new_g_state.player_two;
+      let () = print_endline "first p1 move done" in
       print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one
       )
     else
+      let () = print_endline "starting p2 move" in
+      let () = match printfo.p2_move_status with
+              | Attack_Status a -> print_endline "attack status"
+              | Faint_Status -> print_endline "faint"
+              | _ -> print_endline "Switch? weird" in
       (print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one;
+        let () = print_endline "first p2 move done" in
       print_result p1_action new_g_state new_g_state.player_one
         printfo.p1_move_status new_g_state.player_two) in
 
+  let () = print_endline "ON TO DEATH" in
   let faint_switch_game_state = on_faint new_g_state in
 
   let status_changed_game_state, debuff_info =
