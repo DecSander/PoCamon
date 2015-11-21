@@ -2,7 +2,7 @@ open Types
 open Io
 open Ai
 open Fight
-open PocaList
+open PocaDex
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
@@ -43,11 +43,11 @@ let gen_initial_state () : game_state =
 let process_screen_action comm s_state g_state : s_state =
   match comm, s_state with
   | Fight, Out -> Moves
-  | Pocamon, Out -> Pocamon of 1
+  | Pocamon, Out -> Pocamon_List 1
   | Run, Out -> Talking "You can't run from a trainer battle!"
   | Back, Moves -> Out
-  | Down, Pocamon n -> Pocamon (if n < 3 then n + 1 else 3)
-  | Up, Pocamon n -> Pocamon (if n > 0 then n - 1 else 0)
+  | Down, Pocamon_List n -> Pocamon_List (if n < 3 then n + 1 else 3)
+  | Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
   | Back, Pocamon _ -> Out
   | Back, Talking _ | Enter, Talking _ -> Out
   | _ -> s_state
@@ -62,11 +62,11 @@ let rec get_player_action g_state p_state s_state: command =
       Move x
     else
       get_player_action g_state p_state s_state
-  | Action (Switch x), Pocamon -> Switch x
-    if List.mem x (List.map (fun m -> m.name) p_state.pocamon_list) then
-      Move x
+  | Action (Switch x), Pocamon ->
+    (if List.mem x (List.map (fun m -> m.name) p_state.pocamon_list) then
+      Switch x
     else
-      get_player_action g_state p_state s_state
+      get_player_action g_state p_state s_state)
   | c -> get_player_action g_state (process_screen_action c s_state g_state)
 
 let rec run_game_turn g_state : game_state =
