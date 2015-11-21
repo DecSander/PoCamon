@@ -102,7 +102,8 @@ let print_result action g_state p_state m_status opp_p_state old_p_state
         let () = if fst a.status_change then
           let change_string =
             match snd a.status_change with
-            | SNormal | SPoison | SBurn | SSleep of int | SParalyze | SFreeze of int
+            | SNormal -> " is healthy again!"
+            | SPoison -> " | SBurn | SSleep of int | SParalyze | SFreeze of int
 
 
 
