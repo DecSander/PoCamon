@@ -22,14 +22,14 @@ let gen_initial_state () : game_state =
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_one_active_pocamon = List.hd player_one_pocamon in
   let player_two_active_pocamon = List.hd player_two_pocamon in
-  let player_one =
+  let player_one_rec =
   {
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
     pocamon_list = List.tl player_one_pocamon;
     is_computer = false
   } in
-  let player_two =
+  let player_two_rec =
   {
     name = player_two_name;
     active_pocamon = player_two_active_pocamon;
@@ -38,8 +38,8 @@ let gen_initial_state () : game_state =
   } in
   let public_info =
   {
-    player_one_name = player_one.name;
-    player_two_name = player_two.name;
+    player_one_name = player_one_rec.name;
+    player_two_name = player_two_rec.name;
     player_one_active_pocamon = player_one_active_pocamon;
     player_two_active_pocamon = player_two_active_pocamon;
     player_one_remaining_pocamon = 6;
@@ -47,8 +47,8 @@ let gen_initial_state () : game_state =
   } in
 
   {
-    player_one = player_one;
-    player_two = player_two;
+    player_one = player_one_rec;
+    player_two = player_two_rec;
     battle_info = public_info
   }
 
@@ -214,3 +214,5 @@ let rec run_game_turn g_state : game_state =
 
 let start () : unit =
   ignore (run_game_turn (gen_initial_state ()))
+
+let _ = start ()

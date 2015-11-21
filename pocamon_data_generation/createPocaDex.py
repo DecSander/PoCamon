@@ -29,7 +29,7 @@ def scrap_base_stats(lines):
             i += 1
             moves = []
             while("; end" not in lines[i]):
-                m = lines[i].strip().replace("tmhm","").replace(" ", "").split(",")
+                m = lines[i].strip().replace("tmhm","").replace(" ", "").replace("_"," ").split(",")
                 if len(m) > 1:
                     moves += m
                 i += 1
@@ -51,7 +51,7 @@ def scrap_evos_attacks(lines, data):
                 i += 3
                 newMoves = []
                 while ";" not in lines[i]:
-                    m  = lines[i].strip().replace(" ","").split(",")[1]
+                    m  = lines[i].strip().replace(" ","").split(",")[1].replace("PSYCHIC_M", "PSYCHIC").replace("_", " ")
                     if len(m) > 1:
                         newMoves.append(m)
                     i += 1
@@ -100,7 +100,16 @@ with open("pocadex.ml", 'w') as f:
     f.write('module PokeDex = Map.Make(String)\n')
     f.write('let dexmap = PokeDex.empty\n')
     for pocamon in data.keys():
+        lst = ["IRON TAIL", "THIEF", "STEEL WING", "TR MORNDAY", "TR NITE", 'CURSE',  "FAINT ATTACK", "FIRE STONE", "BELLY DRUM", "PSYCHIC"]
+        for m in lst:
+            try:
+                data[pocamon]["moves"].remove(m)
+            except:
+                pass
+        if 'CURSE' in data[pocamon]["moves"]:
+            data[pocamon]["moves"].remove('CURSE')
         allmoves = allmoves.union(set(data[pocamon]["moves"]))
+        allmoves.remove
         moves = '['
         for move in data[pocamon]["moves"]:
             moves += '"{0}";'.format(move)
@@ -115,3 +124,4 @@ print '[',
 for move in allmoves:
     print '"{0}";'.format(move),
 print "]"
+
