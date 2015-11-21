@@ -483,6 +483,27 @@ ascii="           NN88+IIIIIZ
      ZNNN  Z++++IIIZIINN     Z~
              IIIIIIIIN      Z~I"} dexmap
 
+let dexmap = PokeDex.add "MR.MIME" {
+name="MR.MIME"; 
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"TOXIC";"ZAP CANNON";"PSYCH UP";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"SHADOW BALL";"MUD SLAP";"DOUBLE TEAM";"ICE PUNCH";"SWAGGER";"SLEEP TALK";"THUNDERPUNCH";"DREAM EATER";"REST";"ATTRACT";"FIRE PUNCH";"NIGHTMARE";"FLASH";"THUNDERBOLT";"CONFUSION";"SUBSTITUTE";"MEDITATE";"DOUBLESLAP";"LIGHT SCREEN";"REFLECT";"ENCORE";"PSYBEAM";"BATON PASS";"SAFEGUARD";];
+stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;};
+poca_type=("PSYCHIC", "PSYCHIC"); 
+ascii="          OOI                  
+           NOO OOO DIID        
+            O:..:NOOOODN       
+            : ::O:ON  OOI      
+           N=::O??=O  OOO N    
+          ???:NNNO??7   ::     
+      :N  =77   ?:D7=::=N      
+    INI:::=NI  ~??:            
+      :::: ??:::7:N7           
+          OO77N  7O:N          
+         O =       N:N         
+           =O      ==          
+        ODODO     NOIDO        
+        NOON         NN        
+                               "} dexmap
+
 let dexmap = PokeDex.add "ODDISH" {
 name="ODDISH"; 
 learnable_moves=["TOXIC";"HIDDEN POWER";"SUNNY DAY";"SWEET SCENT";"SNORE";"PROTECT";"GIGA DRAIN";"ENDURE";"FRUSTRATION";"SOLARBEAM";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"SLUDGE BOMB";"REST";"ATTRACT";"CUT";"FLASH";"ABSORB";"SWEET SCENT";"POISONPOWDER";"STUN SPORE";"SLEEP POWDER";"ACID";"MOONLIGHT";"PETAL DANCE";];
@@ -1054,7 +1075,7 @@ let dexmap = PokeDex.add "MAGNETON" {
 name="MAGNETON"; 
 learnable_moves=["ROLLOUT";"TOXIC";"ZAP CANNON";"HIDDEN POWER";"SNORE";"HYPER BEAM";"PROTECT";"RAIN DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"SWIFT";"REST";"FLASH";"THUNDERBOLT";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDER WAVE";"LOCK ON";"SWIFT";"SCREECH";"ZAP CANNON";];
 stats={max_hp=50; attack=60; defense=95; speed=70; sp_attack=120;sp_defense=70;};
-poca_type=("ELECTRIC", "ELECTRICS"); 
+poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="        OZN      8=I           
         Z?88N$~,+N             
        O7N 8$   $,+            
@@ -2854,27 +2875,6 @@ ascii="
              D7D               
                                
                                
-                               "} dexmap
-
-let dexmap = PokeDex.add "MRMIME" {
-name="MRMIME"; 
-learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"TOXIC";"ZAP CANNON";"PSYCH UP";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"SHADOW BALL";"MUD SLAP";"DOUBLE TEAM";"ICE PUNCH";"SWAGGER";"SLEEP TALK";"THUNDERPUNCH";"DREAM EATER";"REST";"ATTRACT";"FIRE PUNCH";"NIGHTMARE";"FLASH";"THUNDERBOLT";];
-stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;};
-poca_type=("PSYCHIC", "PSYCHIC"); 
-ascii="          OOI                  
-           NOO OOO DIID        
-            O:..:NOOOODN       
-            : ::O:ON  OOI      
-           N=::O??=O  OOO N    
-          ???:NNNO??7   ::     
-      :N  =77   ?:D7=::=N      
-    INI:::=NI  ~??:            
-      :::: ??:::7:N7           
-          OO77N  7O:N          
-         O =       N:N         
-           =O      ==          
-        ODODO     NOIDO        
-        NOON         NN        
                                "} dexmap
 
 let dexmap = PokeDex.add "NINETALES" {
