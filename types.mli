@@ -80,6 +80,8 @@ type pocamon = {
 *)
 type action = Move of string | Switch of string
 
+type fAction = FMove of move | FSwitch of pocamon
+
 (*
 * Current state information about a player
 *)
