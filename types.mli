@@ -39,8 +39,6 @@ type move = {
           accuracy : int;
           damage : int;
           max_pp : int;
-          pp : int
-          max_PP : int;
           pp : int;
           move_category: pCategory
 }
@@ -80,7 +78,7 @@ type pocamon = {
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
 *)
-type action = Move of string | Switch of string * string
+type action = Move of string | Switch of string
 
 (*
 * Current state information about a player
