@@ -1,5 +1,19 @@
 open Types
 
+type attack_status = {
+      atk_eff : pEffect;
+      status_change : bool * pStatus;
+      missed : bool;
+}
+
+type move_status = Attack_Status of attack_status | Switch_Status
+
+type battle_status = {
+      p1_went_first : bool;
+      p1_move_status : move_status;
+      p2_move_status : move_status;
+}
+
 let calc_type_effectiveness atk_type def_type =
   match atk_type with
     | TNormal ->
@@ -98,20 +112,48 @@ let calc_type_effectiveness atk_type def_type =
       | TDragon -> 2.
       | _ -> 1.
 
+let calc_damage atk_poca def_poca move =
+
 (*
 * Applys the single attack to the game state
 *)
-let apply_attack atk_state def_state move g_state =
+let apply_attack atk_state def_state move g_state * battle_status =
+
   let atk_poca = atk_state.active_pocamon in
   let def_poca = def_state.active_pocamon in
 
+  match atk_poca.status with
+  |
   let type_effectiveness =
     if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
       calc_type_effectiveness move.move_type (fst def_poca.poca_type)
     else calc_type_effectiveness move.move_type (fst def_poca.poca_type) *.
       calc_type_effectiveness move.move_type (snd def_poca.poca_type) in
 
+  let STAB_bonus =
+    if (fst atk_poca.poca_type) = move.move_type
+    || (snd atk_poca.poca_type) = move.move_type then 1.5 else 1. in
 
+  let burn_multiplier =
+    match atk_poca.status with
+    | SBurn -> 0.5
+    | _ -> 1. in
+
+  (* it is assumed that every pocamon is level 100 *)
+  let assumed_level = 100. in
+
+  let atk_def_multiplier =
+    match move.move_category with
+    | EPhysical -> float_of_int(atk_poca.attack) *.
+      float_of_int(atk_poca.attack) /. float_of_int(def_poca.defense)
+    | ESpecial -> float_of_int(atk_poca.sp_attack) *.
+      float_of_int(atk_poca.sp_attack) /. float_of_int(def_poca.sp_defense) in
+
+  let modifiers = burn_multiplier *. STAB_bonus *. type_effectiveness
+    (* status effects *)
+  let damage =
+    ((2. *. assumed_level +. 10.) /. 250) *. (atk_def_multiplier)  +. 2.)*.
+    modifiers
 
 
 (*
