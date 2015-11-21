@@ -98,7 +98,9 @@ type public_info = {
       player_one_active_pocamon : pocamon;
       player_two_active_pocamon : pocamon;
       player_one_remaining_pocamon : int;
-      player_two_remaining_pocamon : int
+      player_two_remaining_pocamon : int;
+      player_one_name: string;
+      player_two_name: string;
 }
 
 (*
@@ -110,8 +112,3 @@ type game_state = {
       player_two : player_state;
       battle_info : public_info
       }
-
-type moveName = string
-type damage = int
-type playerName = string
-type pocamonName = string

@@ -84,12 +84,12 @@ let create_help (c_list: command list) :bytes =
 
   help_help c_list ""
 
-(*let create_available_pocamon (p_list: pocamon_list) (i: int) :bytes =
+let create_available_pocamon (p_list: pocamon_list) (i: int) :bytes =
   let start = if List.length p_list <= 4 then 0 else i in
   let ellipses = (List.length p_list > 4) && (i = ((List.length p_list) - 4)) in
   let end = if List.length p_list <= 4 then List.length else
     if ellipses then i + 4 else i + 3
-*)
+
 let create_available_moves (pc: pocamon) :bytes =
 
 let print_screen (ps: player_state) (pi: public_info) (ss: screen_state) =
@@ -101,7 +101,9 @@ let print_screen (ps: player_state) (pi: public_info) (ss: screen_state) =
   let art = art_joiner art1 art2 in
   let bar1 = create_health_bar pi.player_one_active_pocamon in
   let bar2 = create_health_bar pi.player_two_active_pocamon in
-  let bar = bar1 ^ "  " ^ bar2 in
+  let health_bar = bar1 ^ "  " ^ bar2 in
   let middle_bar = top_bar in
-
+  let box = gen_text ps pi ss in
   let end_bar = middle_bar
+  print_string (top_bar ^ "\n" ^ art ^ "\n" ^ health_bar ^ "\n" ^ middle_bar ^
+  "\n" ^ box ^ "\n" ^ end_bar)
