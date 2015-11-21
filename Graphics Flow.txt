@@ -42,11 +42,11 @@ MMMMM87NMMMMMN77777877N78887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 MMMMMMZ7+78N7787$+778M778887MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
-[==========            ] 100/100	      [==========             ] 100/100
+[==========            ] 100/100	    [==========             ] 100/100
 ***************************************************************************
-* Tackle              (32/35) FLYING					
-* Gust		          (32/35) FLYING									
-* Sand-Attack         (32/35) FLYING	
+* Tackle              (32/35) FLYING
+* Gust		          (32/35) FLYING
+* Sand-Attack         (32/35) FLYING
 *     - 					-
 ***************************************************************************
 |> <Move> | Back
@@ -70,12 +70,12 @@ MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [==========            ] 100/100	      [==========             ] 100/100
 ***************************************************************************
-* Picture 			A picture of ...		
-* Cellphone 		There's a time and a place for everything, but not now							
-*  	   _        
+* Picture 			A picture of ...
+* Cellphone 		There's a time and a place for everything, but not now
+*  	   _
 *      -
 ***************************************************************************
-|> 
+|>
 
 Pocamon Switch Screen (top)
 ***************************************************************************
@@ -98,7 +98,7 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 ***************************************************************************
 * Charmander 		Lv15	(140/140)	SPosion	 TFire
 * Pikachu			Lv15	(120/140)	SNormal	 TElectric
-* Chansey			Lv15	(120/140)	SNormal	 TNormal       
+* Chansey			Lv15	(120/140)	SNormal	 TNormal
 * ...
 ***************************************************************************
 |> <Item> | '' | Up | Down | Back
@@ -123,8 +123,8 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [==========            ] 100/100	      [==========             ] 100/100
 ***************************************************************************
 * Pikachu			Lv15	(120/140)	SNormal	 TElectric
-* Chansey			Lv15	(120/140)	SNormal	 TNormal       
-* Diglett			Lv15	(120/140)	SNormal	 TNormal       
+* Chansey			Lv15	(120/140)	SNormal	 TNormal
+* Diglett			Lv15	(120/140)	SNormal	 TNormal
 * ...
 ***************************************************************************
 |> <Item> | '' | Up | Down | Back
@@ -150,8 +150,8 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 ***************************************************************************
 * ...
 * Pikachu			Lv15	(120/140)	SNormal	 TElectric
-* Chansey			Lv15	(120/140)	SNormal	 TNormal       
-* Diglett			Lv15	(120/140)	SNormal	 TNormal       
+* Chansey			Lv15	(120/140)	SNormal	 TNormal
+* Diglett			Lv15	(120/140)	SNormal	 TNormal
 ***************************************************************************
 |> <Item> | '' | Up | Down | Back
 
@@ -176,8 +176,8 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [========          ]  80/100 PSN           [==========       ] 100/100
 ***************************************************************************
 * <pokemon> used <move>
-* (optional) It's <Super/Not Very> Effective!			
-* <pokemon> took <#> damage and is POSIONED/ <pokemon> took <#> damage.	
+* (optional) It's <Super/Not Very> Effective!
+* <pokemon> took <#> damage and is POSIONED/ <pokemon> took <#> damage.
 * ...
 ***************************************************************************
 |> ''
@@ -202,8 +202,8 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [============     ]  80/100 PSN           [=======          ] 50/100	SLP
 ***************************************************************************
 * <pokemon> used <move>
-* (optional) It's <Super/Not Very> Effective!			
-* <pokemon> took <#> damage and is ASLEEP/ <pokemon> took <#> damage.	
+* (optional) It's <Super/Not Very> Effective!
+* <pokemon> took <#> damage and is ASLEEP/ <pokemon> took <#> damage.
 * ...
 ***************************************************************************
 |> ''
@@ -228,7 +228,7 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [                      ] 0/100	           [==========             ] 100/100
 ***************************************************************************
 * <pokemon> fainted!
-* ...									 
+* ...
 *
 *
 ***************************************************************************
@@ -255,7 +255,7 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 ***************************************************************************
 * Charmander 		Lv15	(0 /100)	SPosion	 TFire
 * Pikachu			Lv15	(120/140)	SNormal	 TElectric
-* Chansey			Lv15	(120/140)	SNormal	 TNormal       
+* Chansey			Lv15	(120/140)	SNormal	 TNormal
 * ...
 ***************************************************************************
 |> <Item> | '' | Up | Down | Back
@@ -281,10 +281,10 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 ***************************************************************************
 * Player defeated CLARKSON!
 * ...
-* 
-* 
+*
+*
 ***************************************************************************
-|>  '' 
+|>  ''
 
 Win/Lose 2/2
 ***************************************************************************
@@ -307,8 +307,8 @@ MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 ***************************************************************************
 * CLARKSON: catch phrase
 * ...
-* 
-* 
+*
+*
 ***************************************************************************
 |>  '' (quit after this)
 
@@ -331,9 +331,9 @@ MMMMMM7+++77MM7+77778MM7Z7Z7MMMM    ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 MMMMMM8..87MMMO+7+7MMMMMNMMMMMM     ||     MMMMMMMMMMMMM7$=====?I?IO$NMMMMM
 [==========            ] 100/100	      [==========             ] 100/100
 ***************************************************************************
-* Invalid Command. Avaliable commands:					
-* <Move>  | Back | ...									
-* 	
+* Invalid Command. Avaliable commands:
+* <Move>  | Back | ...
+*
 * Press ENTER to continue
 ***************************************************************************
 |> ''
