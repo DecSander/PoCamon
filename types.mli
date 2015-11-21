@@ -16,6 +16,11 @@ type pType = TNormal | TFire | TWater | TElectric | TGrass
 type pEffect = ESuper | ENormal | ENotVery
 
 (*
+* The move category (Special, Physical or Status)
+*)
+type pCategory = ESpecial | EStatus | EPhysical
+
+(*
 * Calculates damage modifier from effectiveness
 *)
 val effect_to_float : pEffect -> float
@@ -32,7 +37,8 @@ type move = {
           accuracy : float;
           damage : int;
           max_PP : int;
-          pp : int
+          pp : int;
+          move_category: pCategory
 }
 
 (* the stats of a pocamon that show how powerful it is *)
