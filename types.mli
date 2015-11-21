@@ -53,7 +53,6 @@ type poca_stats = {
             speed: int
 }
 
-
 (*
 * A pocamon and associated information
 *)
@@ -79,7 +78,7 @@ type pocamon = {
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
 *)
-type action = Move of string | Switch of string * string
+type action = Move of string | Switch of string
 
 (*
 * Current state information about a player
@@ -98,7 +97,9 @@ type public_info = {
       player_one_active_pocamon : pocamon;
       player_two_active_pocamon : pocamon;
       player_one_remaining_pocamon : int;
-      player_two_remaining_pocamon : int
+      player_two_remaining_pocamon : int;
+      player_one_name: string;
+      player_two_name: string;
 }
 
 (*
@@ -110,24 +111,3 @@ type game_state = {
       player_two : player_state;
       battle_info : public_info
       }
-
-type attack_status = {
-      atk_eff : pEffect;
-      status_change : bool * pStatus;
-      missed : bool;
-}
-
-type move_status = Attack_Status of attack_status | Switch_Status
-
-type battle_status = {
-      p1_went_first : bool;
-      p1_move_status : move_status;
-      p2_move_status : move_status;
-}
-
-
-
-type moveName = string
-type damage = int
-type playerName = string
-type pocamonName = string
