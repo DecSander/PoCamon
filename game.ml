@@ -14,7 +14,6 @@ let rec get_new_pocamon p_list : pocamon =
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
-  (* Make sure player cannot get two of the same pocamon *)
   let player_one_name = "PLAYER ONE" in
   let player_two_name = "PLAYER TWO" in
   let player_one_pocamon = List.fold_left
@@ -27,14 +26,14 @@ let gen_initial_state () : game_state =
   {
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
-    pocamon_list = player_one_pocamon;
+    pocamon_list = List.tl player_one_pocamon;
     is_computer = false
   } in
   let player_two =
   {
     name = player_two_name;
     active_pocamon = player_two_active_pocamon;
-    pocamon_list = player_two_pocamon;
+    pocamon_list = List.tl player_two_pocamon;
     is_computer = false
   } in
   let public_info =
@@ -66,7 +65,7 @@ let process_screen_action comm s_state g_state : screen_state =
   | Some Pocamon, Out -> Pocamon_List 1
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
   | Some Back, Moves -> Out
-  | Some Down, Pocamon_List n -> Pocamon_List (if n < 3 then n + 1 else 3)
+  | Some Down, Pocamon_List n -> Pocamon_List (if n < 2 then n + 1 else 2)
   | Some Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
   | Some Back, Pocamon_List _ -> Out
   | Some Back, Talking _ | Some Enter, Talking _ -> Out
@@ -74,20 +73,22 @@ let process_screen_action comm s_state g_state : screen_state =
     (Talking "You have entered an incorrect command") in s_state
 
 
-let rec get_player_action g_state p_state s_state : action =
+let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state g_state.battle_info s_state in
   let input = read_line () in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
-    if List.mem x (List.map (fun (m:move) -> m.name) p_state.active_pocamon.moves) then
-      Move x
-    else
-      get_player_action g_state p_state s_state
+    let move_option = try Some (List.find (fun (m:move) -> m.name = x)
+        p_state.active_pocamon.moves) with _ -> None in
+    begin match move_option with
+    | Some m -> FMove m
+    | None -> get_player_action g_state p_state s_state end
   | Some Action (Switch x), Pocamon_List _ ->
-    (if List.mem x (List.map (fun (m:pocamon) -> m.name) p_state.pocamon_list) then
-      Switch x
-    else
-      get_player_action g_state p_state s_state)
+    let poca_option = try Some (List.find (fun (p:pocamon) -> p.name = x)
+        p_state.pocamon_list) with _ -> None in
+    begin match poca_option with
+    | Some p -> FSwitch p
+    | None -> get_player_action g_state p_state s_state end
   | c, _ -> get_player_action g_state p_state (process_screen_action c s_state g_state)
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
@@ -99,12 +100,12 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
     let poca_option = try Some (List.find (fun (poca:pocamon) -> poca.name = p)
       p_state.pocamon_list) with _ -> None in
     begin match poca_option with
-    | Some poca -> fst (switch_pokemon poca p_state g_state)
+    | Some poca -> fst (switch_pocamon poca p_state g_state)
     | None -> choose_new_pocamon g_state p_state s_state end
   | Some Up -> choose_new_pocamon g_state p_state
             (Pocamon_List (if n > 0 then n - 1 else 0))
   | Some Down -> choose_new_pocamon g_state p_state
-              (Pocamon_List (if n < 3 then n + 1 else 3))
+              (Pocamon_List (if n < 2 then n + 1 else 2))
   | _ -> choose_new_pocamon g_state p_state s_state
 
 
@@ -127,7 +128,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
       " switched to " ^
       p_state.active_pocamon.name) in
     wait_for_enter g_state p_state screen_message
-  | Attack_Status a, Move move_name ->
+  | Attack_Status a, FMove poca_move ->
 
     let () = (if fst a.self_status_change then
       wait_for_enter g_state p_state
@@ -143,7 +144,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
       (Talking (p_state.name ^ " is paralyzed! It can't move!"))
     | _ ->
       (let poca_used_move = Talking (p_state.name ^ "'s " ^
-        p_state.active_pocamon.name ^ " used " ^ move_name) in
+        p_state.active_pocamon.name ^ " used " ^ poca_move.name) in
 
       let () = wait_for_enter g_state p_state poca_used_move in
 
@@ -193,7 +194,7 @@ let rec run_game_turn g_state : game_state =
       (print_result p1_action new_g_state new_g_state.player_one
         printfo.p1_move_status new_g_state.player_two;
       print_result p2_action new_g_state new_g_state.player_two
-        printfo.p2_move_status new_g_state.player_one;
+        printfo.p2_move_status new_g_state.player_one
       )
     else
       (print_result p2_action new_g_state new_g_state.player_two
