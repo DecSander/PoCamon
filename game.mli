@@ -8,7 +8,7 @@
 * Prompts the user for an action to be taken. Player can also request
 * information is printed during this time
 *)
-val get_player_action : game_state -> player_state -> screen_state -> action
+val get_player_action : game_state -> player_state -> screen_state -> fAction
 
 (*
 * The recursive driver for the game - takes in the initial game state at first,
