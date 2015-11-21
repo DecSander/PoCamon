@@ -40,16 +40,38 @@ let gen_initial_state () : game_state =
     battle_info = public_info
   }
 
-let rec get_player_action g_state s_state: command =
+let process_screen_action comm s_state g_state : s_state =
+  match comm, s_state with
+  | Fight, Out -> Moves
+  | Pocamon, Out -> Pocamon of 1
+  | Run, Out -> Talking "You can't run from a trainer battle!"
+  | Back, Moves -> Out
+  | Down, Pocamon n -> Pocamon (if n < 3 then n + 1 else 3)
+  | Up, Pocamon n -> Pocamon (if n > 0 then n - 1 else 0)
+  | Back, Pocamon _ -> Out
+  | Back, Talking _ | Enter, Talking _ -> Out
+  | _ -> s_state
+
+
+let rec get_player_action g_state p_state s_state: command =
+  let () = print_screen g_state.public_info p_state s_state in
   let input = read_line () in
-  match process_input input with
-  | Action a -> a
+  match (process_input input), s_state with
+  | Action (Move x), Moves ->
+    if List.mem x (List.map (fun m -> m.name) p_state.active_pocamon.moves) then
+      Move x
+    else
+      get_player_action g_state p_state s_state
+  | Action (Switch x), Pocamon -> Switch x
+    if List.mem x (List.map (fun m -> m.name) p_state.pocamon_list) then
+      Move x
+    else
+      get_player_action g_state p_state s_state
   | c -> get_player_action g_state (process_screen_action c s_state g_state)
 
 let rec run_game_turn g_state : game_state =
-  let () = print_screen g_state Out in
-  let p1_action = get_player_action g_state Out in
-  let p2_action = get_player_action g_state Out in
+  let p1_action = get_player_action g_state.player_one Out in
+  let p2_action = get_player_action g_state.player_two Out in
   let new_g_state = apply_fight_sequence g_state p1_action p2_action in
 
   run_game_turn status_changed_g_state
