@@ -54,7 +54,6 @@ type poca_stats = {
             speed: int
 }
 
-
 (*
 * A pocamon and associated information
 *)
@@ -112,23 +111,7 @@ type game_state = {
       player_one : player_state;
       player_two : player_state;
       battle_info : public_info
-      }
-
-type attack_status = {
-      atk_eff : pEffect;
-      status_change : bool * pStatus;
-      missed : bool;
 }
-
-type move_status = Attack_Status of attack_status | Switch_Status
-
-type battle_status = {
-      p1_went_first : bool;
-      p1_move_status : move_status;
-      p2_move_status : move_status;
-}
-
-
 
 type moveName = string
 type damage = int
