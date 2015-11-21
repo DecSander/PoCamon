@@ -3,7 +3,7 @@ mystr = '''
 '''
 mystr = ""
 with open("pocamonMoves.asm") as f:
-  strlst = f.read_lines()
+  strlst = f.readlines()
 
 for s in strlst:
   mystr += s + "\n"
