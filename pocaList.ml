@@ -1,4 +1,4 @@
-open types
+open Types
 let my_hash = Hashtbl.create 180
 
 Hashtbl.add my_hash "POUND" {name="POUND"; move_type=TNormal; status_effect=SNormal; status_probability=100; accuracy=100; damage=40; max_PP=35; PP=35}
