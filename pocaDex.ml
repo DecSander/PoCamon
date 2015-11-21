@@ -244,7 +244,6 @@ let movedex = MoveDex.add "SHADOW BALL" {name="SHADOW BALL"; move_type=TGhost; s
 let movedex = MoveDex.add "FUTURE SIGHT" {name="FUTURE SIGHT"; move_type=TPsychic; status_effect=MNormal; status_probability=90; accuracy=90; damage=80; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "ROCK SMASH" {name="ROCK SMASH"; move_type=TFighting; status_effect=MNormal; status_probability=100; accuracy=100; damage=20; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "WHIRLPOOL" {name="WHIRLPOOL"; move_type=TWater; status_effect=MNormal; status_probability=70; accuracy=70; damage=15; max_pp=15; pp=15; move_category=ESpecial} movedex
-
 module PokeDex = Map.Make(String)
 let dexmap = PokeDex.empty
 let dexmap = PokeDex.add "ELECTABUZZ" {
@@ -729,6 +728,27 @@ ascii="           NN88+IIIIIZ
    ZIIIIIIIZ++++ZIIIIIIIN     Z
      ZNNN  Z++++IIIZIINN     Z~
              IIIIIIIIN      Z~I"} dexmap
+
+let dexmap = PokeDex.add "MR.MIME" {
+name="MR.MIME"; 
+learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"TOXIC";"ZAP CANNON";"PSYCH UP";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"SHADOW BALL";"MUD SLAP";"DOUBLE TEAM";"ICE PUNCH";"SWAGGER";"SLEEP TALK";"THUNDERPUNCH";"DREAM EATER";"REST";"ATTRACT";"FIRE PUNCH";"NIGHTMARE";"FLASH";"THUNDERBOLT";"CONFUSION";"SUBSTITUTE";"MEDITATE";"DOUBLESLAP";"LIGHT SCREEN";"REFLECT";"ENCORE";"PSYBEAM";"BATON PASS";"SAFEGUARD";];
+stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;};
+poca_type=("PSYCHIC", "PSYCHIC"); 
+ascii="          OOI                  
+           NOO OOO DIID        
+            O:..:NOOOODN       
+            : ::O:ON  OOI      
+           N=::O??=O  OOO N    
+          ???:NNNO??7   ::     
+      :N  =77   ?:D7=::=N      
+    INI:::=NI  ~??:            
+      :::: ??:::7:N7           
+          OO77N  7O:N          
+         O =       N:N         
+           =O      ==          
+        ODODO     NOIDO        
+        NOON         NN        
+                               "} dexmap
 
 let dexmap = PokeDex.add "ODDISH" {
 name="ODDISH"; 
@@ -1301,7 +1321,7 @@ let dexmap = PokeDex.add "MAGNETON" {
 name="MAGNETON"; 
 learnable_moves=["ROLLOUT";"TOXIC";"ZAP CANNON";"HIDDEN POWER";"SNORE";"HYPER BEAM";"PROTECT";"RAIN DANCE";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"SWIFT";"REST";"FLASH";"THUNDERBOLT";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDERSHOCK";"SUPERSONIC";"SONICBOOM";"THUNDER WAVE";"LOCK ON";"SWIFT";"SCREECH";"ZAP CANNON";];
 stats={max_hp=50; attack=60; defense=95; speed=70; sp_attack=120;sp_defense=70;};
-poca_type=("ELECTRIC", "ELECTRICS"); 
+poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="        OZN      8=I           
         Z?88N$~,+N             
        O7N 8$   $,+            
@@ -3103,27 +3123,6 @@ ascii="
                                
                                "} dexmap
 
-let dexmap = PokeDex.add "MRMIME" {
-name="MRMIME"; 
-learnable_moves=["DYNAMICPUNCH";"HEADBUTT";"TOXIC";"ZAP CANNON";"PSYCH UP";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"SOLARBEAM";"THUNDER";"RETURN";"SHADOW BALL";"MUD SLAP";"DOUBLE TEAM";"ICE PUNCH";"SWAGGER";"SLEEP TALK";"THUNDERPUNCH";"DREAM EATER";"REST";"ATTRACT";"FIRE PUNCH";"NIGHTMARE";"FLASH";"THUNDERBOLT";];
-stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;};
-poca_type=("PSYCHIC", "PSYCHIC"); 
-ascii="          OOI                  
-           NOO OOO DIID        
-            O:..:NOOOODN       
-            : ::O:ON  OOI      
-           N=::O??=O  OOO N    
-          ???:NNNO??7   ::     
-      :N  =77   ?:D7=::=N      
-    INI:::=NI  ~??:            
-      :::: ??:::7:N7           
-          OO77N  7O:N          
-         O =       N:N         
-           =O      ==          
-        ODODO     NOIDO        
-        NOON         NN        
-                               "} dexmap
-
 let dexmap = PokeDex.add "NINETALES" {
 name="NINETALES"; 
 learnable_moves=["HEADBUTT";"ROAR";"TOXIC";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DIG";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"FIRE BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"QUICK ATTACK";"CONFUSE RAY";"SAFEGUARD";"FIRE SPIN";];
@@ -3421,6 +3420,7 @@ ascii="   , ??OO==??    7===Z
 
 
 
+
 let get_move (name: string) : move  =
 	try MoveDex.find name movedex
 	with _ -> failwith ("Can't find move " ^ name)
@@ -3448,7 +3448,7 @@ let type_of_string s : pType =
 	| "ROCK" -> TRock
 	| "GHOST" -> TGhost
 	| "DRAGON" -> TDragon
-	| _ -> failwith ("not a type!" ^ s)
+	| _ -> failwith ("not a type:" ^ s)
 
 let update_stats base_stats  : poca_stats =
 	let rec update_stats' stats (points: int) : poca_stats =
@@ -3487,7 +3487,7 @@ let get_four_moves (moves: string list): move list =
   Random.self_init ();
   let mlst = List.map
        (fun move -> get_move move) moves in
-
+  if List.length mlst <= 4 then mlst else
 	let rec get_four acc: int list =
 			if List.length acc = 4 then acc else
 			let rando: int = Random.int (List.length mlst) in
@@ -3503,16 +3503,17 @@ let get_four_moves (moves: string list): move list =
 let get_random_pocamon () : pocamon =
 	let lst = ["BULBASAUR"; "IVYSAUR"; "VENUSAUR"; "CHARMANDER"; "CHARMELEON"; "CHARIZARD"; "SQUIRTLE"; "WARTORTLE";    "BLASTOISE"; "CATERPIE"; "METAPOD"; "BUTTERFREE"; "WEEDLE"; "KAKUNA"; "BEEDRILL"; "PIDGEY"; "PIDGEOTTO"; "PIDGEOT"; "RATTATA"; "RATICATE"; "SPEAROW"; "FEAROW"; "EKANS"; "ARBOK"; "PIKACHU";"RAICHU"; "SANDSHREW"; "SANDSLASH"; "NIDORANM"; "NIDORANF"; "NIDORINA"; "NIDOQUEEN"; "NIDORINO"; "NIDOKING"; "CLEFAIRY"; "CLEFABLE"; "VULPIX"; "NINETALES"; "JIGGLYPUFF"; "WIGGLYTUFF"; "ZUBAT"; "GOLBAT"; "ODDISH"; "GLOOM"; "VILEPLUME"; "PARAS"; "PARASECT"; "VENONAT"; "VENOMOTH"; "DIGLETT";"DUGTRIO"; "MEOWTH"; "PERSIAN"; "PSYDUCK"; "GOLDUCK"; "MANKEY"; "PRIMEAPE"; "GROWLITHE"; "ARCANINE"; "POLIWAG"; "POLIWHIRL"; "POLIWRATH"; "ABRA"; "KADABRA"; "ALAKAZAM"; "MACHOP"; "MACHOKE"; "MACHAMP"; "BELLSPROUT"; "WEEPINBELL"; "VICTREEBEL"; "TENTACOOL"; "TENTACRUEL"; "GEODUDE"; "GRAVELER"; "GOLEM"; "PONYTA"; "RAPIDASH"; "SLOWPOKE"; "SLOWBRO"; "MAGNEMITE"; "MAGNETON"; "FARFETCHD"; "DODUO"; "DODRIO"; "SEEL"; "DEWGONG"; "GRIMER"; "MUK"; "SHELLDER"; "CLOYSTER"; "GASTLY"; "HAUNTER"; "GENGAR"; "ONIX"; "DROWZEE"; "HYPNO"; "KRABBY"; "KINGLER"; "VOLTORB"; "ELECTRODE"; "EXEGGCUTE"; "EXEGGUTOR"; "CUBONE"; "MAROWAK"; "HITMONLEE"; "HITMONCHAN"; "LICKITUNG"; "KOFFING"; "WEEZING"; "RHYHORN"; "RHYDON"; "CHANSEY"; "TANGELA"; "KANGASKHAN"; "HORSEA"; "SEADRA"; "GOLDEEN"; "SEAKING"; "STARYU"; "STARMIE"; "MR.MIME"; "SCYTHER"; "JYNX"; "ELECTABUZZ"; "MAGMAR"; "PINSIR"; "TAUROS"; "MAGIKARP"; "GYARADOS"; "LAPRAS"; "EEVEE"; "VAPOREON"; "JOLTEON"; "FLAREON"; "PORYGON"; "OMANYTE"; "OMASTAR"; "KABUTO"; "KABUTOPS"; "AERODACTYL"; "SNORLAX"; "ARTICUNO"; "ZAPDOS"; "MOLTRES"; "DRATINI"; "DRAGONAIR"; "DRAGONITE"; "MEWTWO"; "MEW"] in
 	Random.self_init ();
-	let index = Random.int 151 in
+	let index = Random.int 150 in
 	let pocamon_name = List.nth lst index in
 	let dexmon = get_pocamon pocamon_name in
 	let pType = (type_of_string (fst dexmon.poca_type),
 		         type_of_string (snd dexmon.poca_type)) in
+	let new_stats = update_stats dexmon.stats in
 	{ name = pocamon_name;
 	  status = SNormal;
 	  moves = get_four_moves dexmon.learnable_moves;
 	  poca_type = pType ;
-	  health  = dexmon.stats.max_hp;
-	  stats = update_stats dexmon.stats ;
+	  health  = new_stats.max_hp;
+	  stats = new_stats ;
 	  ascii = dexmon.ascii;  }
 
