@@ -370,4 +370,28 @@ let apply_fight_sequence g_state p1_action p2_action =
                       p2_move_status=p2_status})
 
 let apply_status_debuffs g_state =
-  failwith "TODO"
+  let p1_poca = g_state.player_one.active_pocamon in
+  let p2_poca = g_state.player_two.active_pocamon in
+
+  let p1_poca_health, p1_debuff_s =
+  match p1_poca.status with
+  | SBurn -> p1_poca.health - (p1_poca.stats.max_hp / 8), SBurn
+  | SPoison -> p1_poca.health - (p1_poca.stats.max_hp / 8), SPoison
+  | _ -> p1_poca.health, SNormal in
+
+  let p2_poca_health, p2_debuff_s =
+  match p2_poca.status with
+  | SBurn -> p2_poca.health - (p2_poca.stats.max_hp / 8), SBurn
+  | SPoison -> p2_poca.health - (p2_poca.stats.max_hp / 8), SPoison
+  | _ -> p2_poca.health, SNormal in
+
+  let p1_poca' = {p1_poca with health=p1_poca_health} in
+  let p2_poca' = {p2_poca with health=p2_poca_health} in
+  let p1' = {g_state.player_one with active_pocamon=p1_poca'} in
+  let p2' = {g_state.player_two with active_pocamon=p2_poca'} in
+
+  let g_state' = {g_state with player_one= p1'; player_two=p2'} in
+
+  (g_state', {p1_debuff=p1_debuff_s; p2_debuff=p2_debuff_s})
+
+
