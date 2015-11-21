@@ -29,7 +29,7 @@ def scrap_base_stats(lines):
             i += 1
             moves = []
             while("; end" not in lines[i]):
-                m = lines[i].strip().replace("tmhm","").replace(" ", "").split(",")
+                m = lines[i].strip().replace("tmhm","").replace(" ", "").replace("_"," ").split(",")
                 if len(m) > 1:
                     moves += m
                 i += 1
@@ -51,7 +51,7 @@ def scrap_evos_attacks(lines, data):
                 i += 3
                 newMoves = []
                 while ";" not in lines[i]:
-                    m  = lines[i].strip().replace(" ","").split(",")[1]
+                    m  = lines[i].strip().replace(" ","").split(",")[1].replace("_", " ")
                     if len(m) > 1:
                         newMoves.append(m)
                     i += 1
