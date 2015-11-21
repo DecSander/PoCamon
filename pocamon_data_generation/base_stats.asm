@@ -1928,7 +1928,7 @@ MagnemiteBaseData:: ; 0x51e24
 	db  25,  35,  70,  45,  95,  55
 	;   hp  atk  def  spd  sat  sdf
 
-	db ELECTRIC, STEEL
+	db ELECTRIC, ELECTRIC
 	db 190 ; catch rate
 	db 89 ; base exp
 	db NO_ITEM ; item 1
@@ -1952,7 +1952,7 @@ MagnetonBaseData:: ; 0x51e44
 	db  50,  60,  95,  70, 120,  70
 	;   hp  atk  def  spd  sat  sdf
 
-	db ELECTRIC, STEEL
+	db ELECTRIC, ELECTRICS
 	db 60 ; catch rate
 	db 161 ; base exp
 	db NO_ITEM ; item 1
@@ -2907,7 +2907,7 @@ StarmieBaseData:: ; 0x52324
 	; end
 
 MrMimeBaseData:: ; 0x52344
-	db MR__MIME ; 122
+	db MR.MIME ; 122
 
 	db  40,  45,  65,  90, 100, 120
 	;   hp  atk  def  spd  sat  sdf
