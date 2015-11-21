@@ -11,7 +11,7 @@ type command = Up | Down | Enter | Action of action | Fight | Bag | Pocamon
 val process_input : string -> command option
 
 (* Prints the appropriate screen for the given command specified *)
-val print_screen : game_state -> command -> unit
+val print_screen : game_state -> screen_state -> unit
 
 (* The below functions will be used in creating print_screen, but will
  * be removed from the mli upon implementation because they should
