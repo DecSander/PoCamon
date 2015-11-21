@@ -1241,27 +1241,6 @@ ascii="        OZN      8=I
                                
                                "} dexmap
 
-let dexmap = PokeDex.add "DITTO" {
-name="DITTO"; 
-learnable_moves=["";];
-stats={max_hp=48; attack=48; defense=48; speed=48; sp_attack=48;sp_defense=48;};
-poca_type=("NORMAL", "NORMAL"); 
-ascii="                               
-                               
-                               
-             ,= Z              
-         I,=======I            
-          ===========          
-          Z==========          
-          ==========I          
-        II+========IIII        
-         IIIIIIIIIIIIIZ        
-                               
-                               
-                               
-                               
-                               "} dexmap
-
 let dexmap = PokeDex.add "KOFFING" {
 name="KOFFING"; 
 learnable_moves=["CURSE";"ROLLOUT";"TOXIC";"ZAP_CANNON";"HIDDEN_POWER";"SUNNY_DAY";"SNORE";"PROTECT";"ENDURE";"FRUSTRATION";"THUNDER";"RETURN";"DOUBLE_TEAM";"SWAGGER";"SLEEP_TALK";"SLUDGE_BOMB";"FIRE_BLAST";"REST";"ATTRACT";"THIEF";"FLAMETHROWER";"THUNDERBOLT";"POISON_GAS";"TACKLE";"SMOG";"SELFDESTRUCT";"SLUDGE";"SMOKESCREEN";"HAZE";"EXPLOSION";"DESTINY_BOND";];
@@ -3345,12 +3324,12 @@ ascii="   , ??OO==??    7===Z
 
 let get_move (name: string) : move  =
 	try MoveDex.find name movedex
-	with _ -> failwith ("Can't find move" ^ name)
+	with _ -> failwith ("Can't find move " ^ name)
   
 
 let get_pocamon (name: string): dex_pocamon  = 
 	try PokeDex.find name dexmap
-	with _ -> failwith ("Can't find pokemon" ^ name)
+	with _ -> failwith ("Can't find pokemon " ^ name)
 
 
 let type_of_string s : pType = 
@@ -3372,8 +3351,8 @@ let type_of_string s : pType =
 	| "DRAGON" -> TDragon
 	| _ -> failwith "not a type!"
 
-let update_stats base_stats : poca_stats =
-	let rec update_stats' stats points : poca_stats =
+let update_stats base_stats  : poca_stats =
+	let rec update_stats' stats (points: int) : poca_stats =
 		if points = 0 then stats else
 		let index = Random.int 6 in
 		match index with
@@ -3405,22 +3384,34 @@ let update_stats base_stats : poca_stats =
 	update_stats' { max_hp = 0; attack = 0; defense = 0 ; sp_defense = 0;
             sp_attack = 0; speed = 0} 500
 
+let get_four_moves (moves: string list): move list =
+  Random.self_init ();
+  let mlst = List.map 
+       (fun move -> print_string move; get_move move) moves in 
+		
+	let rec get_four acc: int list = 
+			if List.length acc = 4 then acc else
+			let rando: int = Random.int (List.length mlst) in
+			if List.mem rando acc then get_four acc else get_four (rando::acc)  in
+	let randos = get_four [] in
 
+	(* List must contain four elements as defined above*)
+	[List.nth mlst (List.nth randos 0); List.nth mlst (List.nth randos 1); 
+	List.nth mlst (List.nth randos 2); List.nth mlst (List.nth randos 4)]
 
 
 let get_random_pocamon () : pocamon = 
-		let lst = ["Bulbasaur" ;"Ivysaur" ;"Venusaur" ;"Charmander" ;"Charmeleon" ;"Charizard" ;"Squirtle" ;"Wartortle" ;"Blastoise" ;"Caterpie" ;"Metapod" ;"Butterfree" ;"Weedle" ;"Kakuna" ;"Beedrill" ;"Pidgey" ;"Pidgeotto" ;"Pidgeot" ;"Rattata" ;"Raticate" ;"Spearow" ;"Fearow" ;"Ekans" ;"Arbok" ;"Pikachu" ;"Raichu" ;"Sandshrew" ;"Sandslash" ;"Nidoran" ;"Nidorina" ;"Nidoqueen" ;"Nidoran" ;"Nidorino" ;"Nidoking" ;"Clefairy" ;"Clefable" ;"Vulpix" ;"Ninetales" ;"Jigglypuff" ;"Wigglytuff" ;"Zubat" ;"Golbat" ;"Oddish" ;"Gloom" ;"Vileplume" ;"Paras" ;"Parasect" ;"Venonat" ;"Venomoth" ;"Diglett" ;"Dugtrio" ;"Meowth" ;"Persian" ;"Psyduck" ;"Golduck" ;"Mankey" ;"Primeape" ;"Growlithe" ;"Arcanine" ;"Poliwag" ;"Poliwhirl" ;"Poliwrath" ;"Abra" ;"Kadabra" ;"Alakazam" ;"Machop" ;"Machoke" ;"Machamp" ;"Bellsprout" ;"Weepinbell" ;"Victreebel" ;"Tentacool" ;"Tentacruel" ;"Geodude" ;"Graveler" ;"Golem" ;"Ponyta" ;"Rapidash" ;"Slowpoke" ;"Slowbro" ;"Magnemite" ;"Magneton" ;"Farfetchd" ;"Doduo" ;"Dodrio" ;"Seel" ;"Dewgong" ;"Grimer" ;"Muk" ;"Shellder" ;"Cloyster" ;"Gastly" ;"Haunter" ;"Gengar" ;"Onix" ;"Drowzee" ;"Hypno" ;"Krabby" ;"Kingler" ;"Voltorb" ;"Electrode" ;"Exeggcute" ;"Exeggutor" ;"Cubone" ;"Marowak" ;"Hitmonlee" ;"Hitmonchan" ;"Lickitung" ;"Koffing" ;"Weezing" ;"Rhyhorn" ;"Rhydon" ;"Chansey" ;"Tangela" ;"Kangaskhan" ;"Horsea" ;"Seadra" ;"Goldeen" ;"Seaking" ;"Staryu" ;"Starmie" ;"Mr.Mime" ;"Scyther" ;"Jynx" ;"Electabuzz" ;"Magmar" ;"Pinsir" ;"Tauros" ;"Magikarp" ;"Gyarados" ;"Lapras" ;"Ditto" ;"Eevee" ;"Vaporeon" ;"Jolteon" ;"Flareon" ;"Porygon" ;"Omanyte" ;"Omastar" ;"Kabuto" ;"Kabutops" ;"Aerodactyl" ;"Snorlax" ;"Articuno" ;"Zapdos" ;"Moltres" ;"Dratini" ;"Dragonair" ;"Dragonite" ;"Mewtwo" ;"Mew"] in
-		let index = Random.int 151 in
-		let pocamon_name = List.nth lst index in
-		let dexmon = get_pocamon pocamon_name in
-		let pType = (type_of_string (fst dexmon.poca_type), 
-			         type_of_string (snd dexmon.poca_type)) in
-		let movestb = List.map  
-		(fun move -> get_move move) dexmon.learnable_moves in
-		{ name = pocamon_name;
-	      status = SNormal;
-	      moves = movestb;
-	      poca_type = pType ;
-	      health  = dexmon.stats.max_hp;
-	      stats = update_stats dexmon.stats ;
-	      ascii = dexmon.ascii;  }
+	let lst = ["BULBASAUR"; "IVYSAUR"; "VENUSAUR"; "CHARMANDER"; "CHARMELEON"; "CHARIZARD"; "SQUIRTLE"; "WARTORTLE";    "BLASTOISE"; "CATERPIE"; "METAPOD"; "BUTTERFREE"; "WEEDLE"; "KAKUNA"; "BEEDRILL"; "PIDGEY"; "PIDGEOTTO"; "PIDGEOT"; "RATTATA"; "RATICATE"; "SPEAROW"; "FEAROW"; "EKANS"; "ARBOK"; "PIKACHU";"RAICHU"; "SANDSHREW"; "SANDSLASH"; "NIDORAN"; "NIDORINA"; "NIDOQUEEN"; "NIDORAN"; "NIDORINO"; "NIDOKING"; "CLEFAIRY"; "CLEFABLE"; "VULPIX"; "NINETALES"; "JIGGLYPUFF"; "WIGGLYTUFF"; "ZUBAT"; "GOLBAT"; "ODDISH"; "GLOOM"; "VILEPLUME"; "PARAS"; "PARASECT"; "VENONAT"; "VENOMOTH"; "DIGLETT";"DUGTRIO"; "MEOWTH"; "PERSIAN"; "PSYDUCK"; "GOLDUCK"; "MANKEY"; "PRIMEAPE"; "GROWLITHE"; "ARCANINE"; "POLIWAG"; "POLIWHIRL"; "POLIWRATH"; "ABRA"; "KADABRA"; "ALAKAZAM"; "MACHOP"; "MACHOKE"; "MACHAMP"; "BELLSPROUT"; "WEEPINBELL"; "VICTREEBEL"; "TENTACOOL"; "TENTACRUEL"; "GEODUDE"; "GRAVELER"; "GOLEM"; "PONYTA"; "RAPIDASH"; "SLOWPOKE"; "SLOWBRO"; "MAGNEMITE"; "MAGNETON"; "FARFETCHD"; "DODUO"; "DODRIO"; "SEEL"; "DEWGONG"; "GRIMER"; "MUK"; "SHELLDER"; "CLOYSTER"; "GASTLY"; "HAUNTER"; "GENGAR"; "ONIX"; "DROWZEE"; "HYPNO"; "KRABBY"; "KINGLER"; "VOLTORB"; "ELECTRODE"; "EXEGGCUTE"; "EXEGGUTOR"; "CUBONE"; "MAROWAK"; "HITMONLEE"; "HITMONCHAN"; "LICKITUNG"; "KOFFING"; "WEEZING"; "RHYHORN"; "RHYDON"; "CHANSEY"; "TANGELA"; "KANGASKHAN"; "HORSEA"; "SEADRA"; "GOLDEEN"; "SEAKING"; "STARYU"; "STARMIE"; "MR.MIME"; "SCYTHER"; "JYNX"; "ELECTABUZZ"; "MAGMAR"; "PINSIR"; "TAUROS"; "MAGIKARP"; "GYARADOS"; "LAPRAS"; "EEVEE"; "VAPOREON"; "JOLTEON"; "FLAREON"; "PORYGON"; "OMANYTE"; "OMASTAR"; "KABUTO"; "KABUTOPS"; "AERODACTYL"; "SNORLAX"; "ARTICUNO"; "ZAPDOS"; "MOLTRES"; "DRATINI"; "DRAGONAIR"; "DRAGONITE"; "MEWTWO"; "MEW"] in
+	Random.self_init ();
+	let index = Random.int 151 in
+	let pocamon_name = List.nth lst index in
+	let dexmon = get_pocamon pocamon_name in
+	let pType = (type_of_string (fst dexmon.poca_type), 
+		         type_of_string (snd dexmon.poca_type)) in
+	{ name = pocamon_name;
+	  status = SNormal;
+	  moves = get_four_moves dexmon.learnable_moves;
+	  poca_type = pType ;
+	  health  = dexmon.stats.max_hp;
+	  stats = update_stats dexmon.stats ;
+	  ascii = dexmon.ascii;  }
