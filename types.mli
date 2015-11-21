@@ -3,6 +3,8 @@
 * which can be changed via moves and each have different effects
 *)
 type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze | SFreeze of int
+type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
+
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
 *)
@@ -13,12 +15,12 @@ type pType = TNormal | TFire | TWater | TElectric | TGrass
 (*
 * The effectiveness of a move
 *)
-type pEffect = ESuper | ENormal | ENotVery | EImmune
+type pEffect = ESuper | ENormal | ENotVery
 
 (*
 * The move category (Special, Physical or Status)
 *)
-type pCategory = ESpecial | EStatus | EPhysical
+type pCategory = ESpecial | EPhysical
 
 (*
 * Calculates damage modifier from effectiveness
@@ -32,25 +34,26 @@ val effect_to_float : pEffect -> float
 type move = {
           name : bytes;
           move_type : pType;
-          status_effect : pStatus;
+          status_effect : mStatus;
           status_probability : int;
           accuracy : int;
           damage : int;
-          pp : int;
           max_pp : int;
+          pp : int
+          max_PP : int;
+          pp : int;
           move_category: pCategory
 }
 
 (* the stats of a pocamon that show how powerful it is *)
 type poca_stats = {
-            max_HP : int;
+            max_hp : int;
             attack : int;
             defense : int;
             sp_defense: int;
             sp_attack: int;
             speed: int
 }
-
 
 (*
 * A pocamon and associated information
@@ -67,10 +70,8 @@ type pocamon = {
 
  type dex_pocamon = {
       name : bytes;
-      status : pStatus;
-      learnable_moves : move list;
-      poca_type : pType list;
-      health : int;
+      learnable_moves : string list;
+      poca_type : string * string;
       stats : poca_stats;
       ascii : bytes;
       }
@@ -79,7 +80,7 @@ type pocamon = {
 * An action that the player can take as his/her turn -
 * Use a pocamon's move, or switch pocamon
 *)
-type action = Move of string | Switch of string
+type action = Move of string | Switch of string * string
 
 (*
 * Current state information about a player

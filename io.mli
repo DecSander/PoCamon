@@ -3,8 +3,7 @@ open Types
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
 | Run | Back | Save | Load
 
-type screen_state = Out | Moves | Pocamon of int |
-Result (pocamonName * bool * moveName * pEffect) | Talking of string
+type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
 (*
  * Takes a string and parses it using regex to return the command corresponding

@@ -24,17 +24,17 @@ def breakup(lns):
 def mapStatus(lsts):
   for k in lsts:
     if 'POISON' in k[1]:
-      k[1] = 'SPoison'
+      k[1] = 'MPoison'
     elif 'BURN' in k[1]:
-      k[1] = 'SBurn'
+      k[1] = 'MBurn'
     elif 'SLEEP' in k[1]:
-      k[1] = 'SSleep'
+      k[1] = 'MSleep'
     elif 'PARALYZE' in k[1]:
-      k[1] = 'SParalyze'
+      k[1] = 'MParalyze'
     elif 'FREEZE' in k[1]:
-      k[1] = 'SFreeze'
+      k[1] = 'MFreeze'
     else:
-      k[1] = 'SNormal'
+      k[1] = 'MNormal'
   return lsts
 
 def mapType(lsts):
@@ -76,12 +76,16 @@ def mapType(lsts):
 def gen_command(lsts):
   newlst = []
   for k in lsts:
-    newlst.append("let movedex = MoveDex.add \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[4] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_PP=" + k[5] + "; pp=" + k[5] + "}")
+    if k[3] in ["PNormal", "PFighting", "PFlying", "PGround", "PRock", "PBug", "PGhost", "PPoison"]:
+      pCategory = "EPhysical"
+    else:
+      pCategory = "ESpecial"
+    newlst.append("let movedex = MoveDex.add \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[4] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_pp=" + k[5] + "; pp=" + k[5] + "; move_category=" + pCategory + "}" + " movedex")
   return newlst
 
 def start():
   return '''module MoveDex = Map.Make(String)
-let movedex = MoveDex.empty'''
+let movedex = MoveDex.empty\n'''
 
 def gen_full(lsts):
   bigstr = ""
