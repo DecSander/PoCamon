@@ -24,10 +24,8 @@ let player_score (ps: player_state) :float =
   let health = health_score ps.pocamon_list 0. in
   health -. status
 
-let game_score (ai: ai_player) (gs: game_state) :float =
-  match ai with
-  | P1 -> (player_score gs.player_one) -. (player_score gs.player_two)
-  | P2 -> (player_score gs.player_two) -. (player_score gs.player_one)
+let game_score (gs: game_state) :float =
+  (player_score gs.player_one) -. (player_score gs.player_two)
 
 let get_switch_poca foe_poca active_poca pocamon_list : pocamon =
   (* should be elaborated *)

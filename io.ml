@@ -5,6 +5,8 @@ type command = Up | Down | Enter | Action of action | Fight | Pocamon
 
 type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
+type yn = Yes | No
+
 let match_phrase (str: bytes) (regex: bytes) :bool =
   Str.string_match (Str.regexp regex) str 0
 
@@ -28,6 +30,11 @@ let process_input (s: bytes) :command option =
   else if match_phrase trim_s "^SWITCH" then get_switch trim_s
   else Some (Action (Move trim_s))
 
+let process_selection (s: bytes) :yn option =
+  let trim_s = String.uppercase (String.trim s) in
+  if match_phrase trim_s "^Y" then Some Yes
+  else if match_phrase trim_s "^N" then Some No
+  else None
 
 
 let string_to_box (s: bytes) :bytes =
@@ -59,10 +66,14 @@ let create_health_bar (pc: pocamon) :bytes =
     | SFreeze _ -> "FRZ" in
 
   let frac = (float_of_int pc.health) /. (float_of_int pc.stats.max_hp) in
-  let max_hp = 22 in
-  let equals = (int_of_float (frac *. (float_of_int max_hp))) in
-  (gen_hp_bar equals (max_hp - equals) "[")
-  ^ " " ^ (string_of_int pc.health) ^ "/" ^ (string_of_int pc.stats.max_hp)
+  let max_hp_int = 22 in
+  let health = string_of_int pc.health in
+  let max_hp = string_of_int pc.stats.max_hp in
+  let health_spaced = (Bytes.make (3 - (String.length health)) ' ') ^ health in
+  let max_hp_spaced = (Bytes.make (3 - (String.length max_hp)) ' ') ^ max_hp in
+  let equals = (int_of_float (frac *. (float_of_int max_hp_int))) in
+  (gen_hp_bar equals (max_hp_int - equals) "[")
+  ^ " " ^ health_spaced ^ "/" ^ max_hp_spaced
   ^ " " ^ status_to_string (pc.status) ^ " "
 
 let art_joiner (art1: bytes) (art2: bytes) :bytes =
@@ -80,27 +91,46 @@ let gen_moves ps :bytes =
     match m_list with
     | [] -> if i <> 0
       then moves_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
-      else res ^ "\n"
+      else res
     | h::t -> moves_help t (i-1) (res ^ (string_to_box h.name) ^ "\n") in
   moves_help ps.active_pocamon.moves 4 ""
 
-let gen_pocamon ps i :bytes =
-  let rec pocamon_help (p_list: pocamon list) i n l res :bytes =
-    match p_list with
+(*From 99 Problems in OCaml https://ocaml.org/learn/tutorials/99problems.html*)
+let slice l i k =
+  let rec take n = function
+    | [] -> []
+    | h :: t -> if n = 0 then [] else h :: take (n-1) t
+  in
+  let rec drop n = function
+    | [] -> []
+    | h :: t as l -> if n = 0 then l else drop (n-1) t
+  in
+  take (k - i + 1) (drop i l)
+
+let gen_pocamon (ps: player_state) i :bytes =
+  let start = i in
+  let end_lst = min (i+3) ((List.length ps.pocamon_list) - 1) in
+  let ellipses = end_lst = ((List.length ps.pocamon_list) - 1) in
+  let p_strings =
+    List.map (fun (p:pocamon) -> p.name) ps.pocamon_list in
+  let pl =
+    if ellipses
+    then slice p_strings start end_lst
+    else (slice p_strings start (end_lst - 1))@["..."] in
+  let rec pocamon_help (lines: string list) i (res :bytes) :bytes =
+    match lines with
     | [] -> if i <> 0
-      then pocamon_help [] (i-1) n l (res ^ (string_to_box " ") ^ "\n")
+      then pocamon_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
       else res ^ "\n"
-    | h::t -> if n > 3 && l > 4
-    then res ^ "\n" ^ (string_to_box "...")
-    else pocamon_help t (i-1) (n+1) l (res ^ "\n" ^ (string_to_box h.name)) in
-  pocamon_help ps.pocamon_list 4 0 (List.length ps.pocamon_list) ""
+    | h::t -> pocamon_help t (i-1) (res ^ "\n" ^ (string_to_box h)) in
+  Bytes.sub (pocamon_help pl 4 "") 1 (Bytes.length (pocamon_help pl 4 "") - 1)
 
 let gen_talking (s: bytes) :bytes =
   let rec talking_help (words: bytes list) i (res :bytes) :bytes =
     match words with
     | [] -> if i <> 0
       then talking_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
-      else res ^ "\n"
+      else res
     | h::t -> talking_help t (i-1) ((string_to_box h) ^ "\n" ^ res) in
   let lines = Str.split (Str.regexp "\n") s in
   talking_help lines 4 ""
@@ -111,6 +141,14 @@ let gen_out ps :bytes =
   (string_to_box "Pocamon      |        Run") ^ "\n" ^
   (string_to_box " ") ^ "\n"
 
+let gen_names pi :bytes =
+  let l1 = String.length pi.player_one_active_pocamon.name in
+  let l2 = String.length pi.player_two_active_pocamon.name in
+  let leftl1 = Bytes.make ((36 - l1) / 2) ' ' in
+  let leftl2 = Bytes.make ((36 - l2) / 2) ' ' in
+  leftl1 ^ pi.player_one_active_pocamon.name ^ leftl1 ^
+  "  " ^ leftl2 ^ pi.player_two_active_pocamon.name ^ leftl2
+
 let gen_text ps pi ss :bytes =
   match ss with
   | Out -> gen_out ps
@@ -118,17 +156,45 @@ let gen_text ps pi ss :bytes =
   | Pocamon_List i -> gen_pocamon ps i
   | Talking s -> gen_talking s
 
+let star_bar = "********************************************"^
+  "*******************************"
+
 let print_screen_debug ps pi ss =
-  let star_bar = "********************************************"^
-  "*******************************" in
   let art = art_joiner (create_pocamon_ascii pi.player_one_active_pocamon)
   (create_pocamon_ascii pi.player_two_active_pocamon) in
   let health_bar = (create_health_bar pi.player_one_active_pocamon)
   ^ " " ^ (create_health_bar pi.player_two_active_pocamon) in
+  let names = gen_names pi in
   let box = gen_text ps pi ss in
-  star_bar ^ "\n" ^ art ^ "\n" ^ health_bar ^ "\n" ^ star_bar ^
+  star_bar ^ "\n" ^ names ^ art ^ "\n" ^ health_bar ^ "\n" ^ star_bar ^
   "\n" ^ box ^ star_bar
 
 let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   print_string str
+
+let ascii_pokeball = "        WELCOME TO POCAMON!!!
+                         ────────▄███████████▄────────
+                         ─────▄███▓▓▓▓▓▓▓▓▓▓▓███▄─────
+                         ────███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███────
+                         ───██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██───
+                         ──██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██──
+                         ─██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██─
+                         ██▓▓▓▓▓▓▓▓▓███████▓▓▓▓▓▓▓▓▓██
+                         ██▓▓▓▓▓▓▓▓██░░░░░██▓▓▓▓▓▓▓▓██
+                         ██▓▓▓▓▓▓▓██░░███░░██▓▓▓▓▓▓▓██
+                         ███████████░░███░░███████████
+                         ██░░░░░░░██░░███░░██░░░░░░░██
+                         ██░░░░░░░░██░░░░░██░░░░░░░░██
+                         ██░░░░░░░░░███████░░░░░░░░░██
+                         ─██░░░░░░░░░░░░░░░░░░░░░░░██─
+                         ──██░░░░░░░░░░░░░░░░░░░░░██──
+                         ───██░░░░░░░░░░░░░░░░░░░██───
+                         ────███░░░░░░░░░░░░░░░███────
+                         ─────▀███░░░░░░░░░░░███▀─────
+                         ────────▀███████████▀────────
+"
+
+let print_start s =
+  print_string (ascii_pokeball ^ star_bar ^ "\n" ^
+                (string_to_box s) ^ "\n" ^ star_bar)
