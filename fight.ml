@@ -233,6 +233,9 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
         let def_poca_health = def_poca.health - int_of_float(damage) in
 
+        let def_poca_health' =
+          if def_poca_health < 0 then 0 else def_poca_health in
+
         let status_eff =
           (Random.int 100) <= move.status_probability in
 
@@ -244,7 +247,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           else def_poca.status in
 
         let def_poca' =
-          {def_poca with health=def_poca_health; status=new_status} in
+          {def_poca with health=def_poca_health'; status=new_status} in
 
 
         let def_state' = {def_state with active_pocamon=def_poca'} in
