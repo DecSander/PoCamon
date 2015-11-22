@@ -28,15 +28,24 @@ let process_input (s: bytes) :command option =
   else if match_phrase trim_s "^SWITCH" then get_switch trim_s
   else Some (Action (Move trim_s))
 
+
+
 let string_to_box (s: bytes) :bytes =
   "* " ^ s
+
+let add_spaces (s: bytes) (len: int) :bytes =
+  let rec add_help st i =
+    if i <= 0
+    then st
+    else add_help (st ^ " ") (i-1) in
+  add_help s (len - (String.length s))
 
 let create_pocamon_ascii (pc: pocamon) :bytes =
   pc.ascii
 
 let create_health_bar (pc: pocamon) :bytes =
   let rec gen_hp_bar (equals: int) (empty: int) (s: bytes) :bytes =
-    if empty <= 0 then s ^ "]"
+    if empty <= 0 && equals <= 0 then s ^ "]"
     else if equals <= 0 then gen_hp_bar 0 (empty - 1) (s ^ " ")
     else gen_hp_bar (equals - 1) empty (s ^ "=") in
 
@@ -59,12 +68,12 @@ let create_health_bar (pc: pocamon) :bytes =
 let art_joiner (art1: bytes) (art2: bytes) :bytes =
   let rec art_help (art1: bytes list) (art2: bytes list) res :bytes =
     match art1, art2 with
-    | h1::t1, h2::t2 -> art_help t1 t2 (res ^ "\n" ^ h1 ^ "    ||    " ^ h2)
+    | h1::t1, h2::t2 ->
+      art_help t1 t2
+        (res ^ "\n" ^ (add_spaces h1 32) ^ "    ||    " ^ (add_spaces h2 32))
     | _, _ -> res in
-
   art_help (Str.split (Str.regexp "\n") art1)
-           (Str.split (Str.regexp "\n") art2)
-           ""
+           (Str.split (Str.regexp "\n") art2) ""
 
 let gen_moves ps :bytes =
   let rec moves_help (m_list: move list) i (res: bytes) :bytes =
@@ -115,7 +124,7 @@ let print_screen_debug ps pi ss =
   let art = art_joiner (create_pocamon_ascii pi.player_one_active_pocamon)
   (create_pocamon_ascii pi.player_two_active_pocamon) in
   let health_bar = (create_health_bar pi.player_one_active_pocamon)
-  ^ "  " ^ (create_health_bar pi.player_two_active_pocamon) in
+  ^ " " ^ (create_health_bar pi.player_two_active_pocamon) in
   let box = gen_text ps pi ss in
   star_bar ^ "\n" ^ art ^ "\n" ^ health_bar ^ "\n" ^ star_bar ^
   "\n" ^ box ^ star_bar
