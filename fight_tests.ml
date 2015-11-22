@@ -4,7 +4,7 @@ open Fight
 let tackle = {
           name = "TACKLE";
           move_type = TNormal;
-          status_effect = MPoison;
+          status_effect = MNormal;
           status_probability = 0;
           accuracy = 100;
           damage = 80;
@@ -163,27 +163,27 @@ TEST "Test multi turn sleep" = let sleep_game =
   {simple_game with player_one = {simple_game.player_one with active_pocamon = asleep_poca1}} in
   let start_health = simple_game.player_two.active_pocamon.health in
   let new_state, _ = apply_fight_sequence sleep_game (FMove tackle) (FMove tackle) in
+  let new_state', _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
+  let new_state'', _ = apply_fight_sequence new_state' (FMove tackle) (FMove tackle) in
+  let new_state''', _ = apply_fight_sequence new_state'' (FMove tackle) (FMove tackle) in
+  let new_state'''', _ = apply_fight_sequence new_state''' (FMove tackle) (FMove tackle) in
   let () = print_endline "start" in
   (match new_state.player_one.active_pocamon.status with
   | SSleep x -> print_endline "here"; x = 3 && (new_state.player_two.active_pocamon.health = start_health)
   | _ -> false)
   &&
-  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
-  match new_state.player_one.active_pocamon.status with
-  | SSleep x -> x = 2 && (new_state.player_two.active_pocamon.health = start_health)
+  (match new_state'.player_one.active_pocamon.status with
+  | SSleep x -> x = 2 && (new_state'.player_two.active_pocamon.health = start_health)
   | _ -> false)
   &&
-  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
-  match new_state.player_one.active_pocamon.status with
-  | SSleep x -> print_int x; print_endline ""; x = 1 && (new_state.player_two.active_pocamon.health = start_health)
+  (match new_state''.player_one.active_pocamon.status with
+  | SSleep x -> print_int x; print_endline ""; x = 1 && (new_state''.player_two.active_pocamon.health = start_health)
   | _ -> false)
   &&
-  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
-  match new_state.player_one.active_pocamon.status with
-  | SSleep x -> print_endline "0"; x = 0 && (new_state.player_two.active_pocamon.health = start_health)
+  (match new_state'''.player_one.active_pocamon.status with
+  | SSleep x -> print_int x; print_endline ""; x = 0 && (new_state'''.player_two.active_pocamon.health = start_health)
   | _ -> print_endline "ERROR"; true)
   &&
-  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
-  match new_state.player_one.active_pocamon.status with
-  | SSleep x -> print_endline "ERROR"; false
+  (match new_state''''.player_one.active_pocamon.status with
+  | SSleep x -> print_int x; print_endline "ERROR"; false
   | _ -> true)
