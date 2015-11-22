@@ -70,7 +70,7 @@ let assemble_actions ai is_ai_turn action (p1_act, p2_act) =
       | P1, false -> p1_act, action
       | P2, false -> action, p2_act in
 
-let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : fAction * float =
+let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : (fAction * fAction) * float =
   (* if recs_left = 0, return the score *)
 
   let g_state', b_status' =
@@ -81,7 +81,8 @@ let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : fAct
 
   if recs_left <= 0 then
     let final_game_score = game_score g_state' in
-  let
+    (p1_act, p2_act), final_game_score
+  else begin
 
 
   (* check who's turn it is *)
@@ -131,7 +132,11 @@ let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : fAct
 
   let move_scores_list = List.map f active_player.active_pocamon.moves in
 
-  failwith "TODO"
+  (* NOW WE JUST HAVE TO MATCH THE MOVES WITH THE SCORES AND THEN RETURN THE
+  APPRORPRIATE PAIR FROM EACH LEVEL. aLSO TAKE INTO ACCOUNT THE FACT THAT PAIRS
+ARE INCOMPLETE EVERY OTHER DEPTH *)
+
+  end
 
   (* if the switch pokemon is your active, don't consider switching *)
   (* run mini max for every action *)
