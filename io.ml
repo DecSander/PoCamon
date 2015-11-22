@@ -5,6 +5,8 @@ type command = Up | Down | Enter | Action of action | Fight | Pocamon
 
 type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
+type yn = Yes | No
+
 let match_phrase (str: bytes) (regex: bytes) :bool =
   Str.string_match (Str.regexp regex) str 0
 
@@ -28,6 +30,11 @@ let process_input (s: bytes) :command option =
   else if match_phrase trim_s "^SWITCH" then get_switch trim_s
   else Some (Action (Move trim_s))
 
+let process_selection (s: bytes) :yn option =
+  let trim_s = String.uppercase (String.trim s) in
+  if match_phrase trim_s "^Y" then Some Yes
+  else if match_phrase trim_s "^N" then Some No
+  else None
 
 
 let string_to_box (s: bytes) :bytes =
@@ -149,9 +156,10 @@ let gen_text ps pi ss :bytes =
   | Pocamon_List i -> gen_pocamon ps i
   | Talking s -> gen_talking s
 
+let star_bar = "********************************************"^
+  "*******************************"
+
 let print_screen_debug ps pi ss =
-  let star_bar = "********************************************"^
-  "*******************************" in
   let art = art_joiner (create_pocamon_ascii pi.player_one_active_pocamon)
   (create_pocamon_ascii pi.player_two_active_pocamon) in
   let health_bar = (create_health_bar pi.player_one_active_pocamon)
@@ -164,3 +172,34 @@ let print_screen_debug ps pi ss =
 let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   print_string str
+
+let ascii_pokeball = "
+                          WELCOME TO POCAMON!!!
+                      ────────▄███████████▄────────
+                      ─────▄███▓▓▓▓▓▓▓▓▓▓▓███▄─────
+                      ────███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███────
+                      ───██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██───
+                      ──██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██──
+                      ─██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██─
+                      ██▓▓▓▓▓▓▓▓▓███████▓▓▓▓▓▓▓▓▓██
+                      ██▓▓▓▓▓▓▓▓██░░░░░██▓▓▓▓▓▓▓▓██
+                      ██▓▓▓▓▓▓▓██░░███░░██▓▓▓▓▓▓▓██
+                      ███████████░░███░░███████████
+                      ██░░░░░░░██░░███░░██░░░░░░░██
+                      ██░░░░░░░░██░░░░░██░░░░░░░░██
+                      ██░░░░░░░░░███████░░░░░░░░░██
+                      ─██░░░░░░░░░░░░░░░░░░░░░░░██─
+                      ──██░░░░░░░░░░░░░░░░░░░░░██──
+                      ───██░░░░░░░░░░░░░░░░░░░██───
+                      ────███░░░░░░░░░░░░░░░███────
+                      ─────▀███░░░░░░░░░░░███▀─────
+                      ────────▀███████████▀────────
+"
+
+let print_start ss =
+  match ss with
+  | Out
+  | Moves
+  | Pocamon_List _ -> failwith "TODO"
+  | Talking s -> print_string
+    (ascii_pokeball ^ star_bar ^ "\n" ^ (string_to_box s) ^ "\n" ^ star_bar)
