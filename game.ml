@@ -56,7 +56,7 @@ let gen_initial_state () : game_state =
 
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string ">" in
+  let () = print_endline "" in let () = print_string "> " in
   let input = read_line () in
   match (process_input input) with
   | Some Enter -> ()
@@ -65,7 +65,7 @@ let rec wait_for_enter g_state p_state s_state : unit =
 let process_screen_action comm s_state g_state : screen_state =
   match comm, s_state with
   | Some Fight, Out -> Moves
-  | Some Pocamon, Out -> Pocamon_List 1
+  | Some Pocamon, Out -> Pocamon_List 0
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
   | Some Back, Moves -> Out
   | Some Down, Pocamon_List n -> Pocamon_List (if n < 2 then n + 1 else 2)
@@ -78,7 +78,7 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string ">" in
+  let () = print_endline "" in let () = print_string "> " in
   let input = read_line () in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
@@ -97,7 +97,7 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string ">" in
+  let () = print_endline "" in let () = print_string "> " in
   let input = read_line () in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
   match (process_input input) with
@@ -213,14 +213,19 @@ let rec run_game_turn g_state : game_state =
     if printfo.p1_went_first then
       (print_result p1_action new_g_state new_g_state.player_one
         printfo.p1_move_status new_g_state.player_two;
-      print_result p2_action new_g_state new_g_state.player_two
-        printfo.p2_move_status new_g_state.player_one
+      if new_g_state.player_two.active_pocamon.health > 0 then
+        print_result p2_action new_g_state new_g_state.player_two
+          printfo.p2_move_status new_g_state.player_one
+      else ()
       )
     else
       (print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one;
-      print_result p1_action new_g_state new_g_state.player_one
-        printfo.p1_move_status new_g_state.player_two) in
+      if new_g_state.player_one.active_pocamon.health > 0 then
+        print_result p1_action new_g_state new_g_state.player_one
+          printfo.p1_move_status new_g_state.player_two
+      else ()
+      ) in
 
   let faint_switch_game_state = on_faint new_g_state in
 
