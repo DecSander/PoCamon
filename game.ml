@@ -6,7 +6,8 @@ open PocaDex
 
 let rec get_new_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
-  if not (List.mem new_poca p_list) then
+  if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
+  then
     new_poca
   else
     get_new_pocamon p_list
@@ -228,6 +229,8 @@ let rec run_game_turn g_state : game_state =
       ) in
 
   let faint_switch_game_state = on_faint new_g_state in
+  let () = print_endline faint_switch_game_state.player_one.active_pocamon.name in
+  let () = print_endline faint_switch_game_state.player_two.active_pocamon.name in
 
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
@@ -244,4 +247,4 @@ let rec run_game_turn g_state : game_state =
 let start () : unit =
   ignore (run_game_turn (gen_initial_state ()))
 
-let _ = start ()
+(*let _ = start ()*)
