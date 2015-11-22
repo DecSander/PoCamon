@@ -19,6 +19,9 @@ type debuff_state = {
   p1_debuff : pStatus;
   p2_debuff : pStatus;
 }
+
+val calc_type_effectiveness : pType -> pType -> float
+
 (*
 * Takes in an action and returns the state of the game after that action
 * has taken place
