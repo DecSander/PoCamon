@@ -103,13 +103,13 @@ let slice l i k =
 let gen_pocamon (ps: player_state) i :bytes =
   let start = i in
   let end_lst = min (i+3) ((List.length ps.pocamon_list) - 1) in
-  let ellipses = end_lst <> ((List.length ps.pocamon_list) - 1) in
+  let ellipses = end_lst = ((List.length ps.pocamon_list) - 1) in
   let p_strings =
     List.map (fun (p:pocamon) -> p.name) ps.pocamon_list in
   let pl =
     if ellipses
     then slice p_strings start end_lst
-    else "..."::(slice p_strings start (end_lst - 1)) in
+    else (slice p_strings start (end_lst - 1))@["..."] in
   let rec pocamon_help (lines: string list) i (res :bytes) :bytes =
     match lines with
     | [] -> if i <> 0
