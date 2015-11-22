@@ -168,8 +168,6 @@ let mStatus_to_pStatus move_status =
   | MParalyze -> SParalyze
   | MFreeze -> SFreeze ((Random.int 2) + 3)
 
-
-
 (*
 * Applys the single attack to the game state
 *)
@@ -238,8 +236,12 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
         let status_eff =
           (Random.int 100) <= move.status_probability in
 
+
         let new_status = if status_eff
-          then mStatus_to_pStatus move.status_effect else def_poca.status in
+          then match move.status_effect with
+          | MNormal -> def_poca.status
+          | _ -> mStatus_to_pStatus move.status_effect
+          else def_poca.status in
 
         let def_poca' =
           {def_poca with health=def_poca_health; status=new_status} in
