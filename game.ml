@@ -27,8 +27,22 @@ let create_public_info g_state: public_info =
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
-  let player_one_name = "PLAYER ONE" in
-  let player_two_name = "PLAYER TWO" in
+  print_start "What is your name, player one?\n";
+  let player_one_name = read_line () in
+  print_start "Would you like to play against your rival, or a human?\n";
+  let against_ai =
+    if (get_input ["Rival";"Human"] ["Rival";"Human"]) = "Rival" then
+      true
+    else
+      false in
+  let player_two_name = if against_ai then
+      (print_start "What is your rival's name?\n";
+      read_line ())
+    else
+      (print_start "What is your name, player two?\n";
+      read_line ())
+    in
+
   let player_one_pocamon = List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_two_pocamon = List.fold_left
@@ -47,7 +61,7 @@ let gen_initial_state () : game_state =
     name = player_two_name;
     active_pocamon = player_two_active_pocamon;
     pocamon_list = List.tl player_two_pocamon;
-    is_computer = false
+    is_computer = against_ai
   } in
 
   {
@@ -58,7 +72,7 @@ let gen_initial_state () : game_state =
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let () = print_endline "" in let () = print_string "> " in
-  let input = read_line () in
+  let input = get_input ["\'\'"] ["\'\'"] in
   match (process_input input) with
   | Some Enter -> ()
   | _ -> wait_for_enter g_state p_state s_state
@@ -80,7 +94,17 @@ let process_screen_action comm s_state g_state : screen_state =
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let () = print_endline "" in let () = print_string "> " in
-  let input = read_line () in
+  let defaults =
+    match s_state with
+    | Out -> ["Fight";"Bag";"Pocamon";"Run"], ["Fight";"Bag";"Pocamon";"Run"]
+    | Moves -> (List.map (fun (x:move) -> x.name) p_state.active_pocamon.moves),
+      ["<Move>";"Back"]
+    | Pocamon_List _ ->
+      (List.map (fun (x:pocamon) -> "switch " ^ x.name) p_state.pocamon_list),
+      ["Switch <Pocamon>"; "Back"]
+    | Talking _ -> ["\'\'"], ["\'\'"]
+  in
+  let input = get_input (fst defaults) (snd defaults) in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
     let move_option = try Some (List.find (fun (m:move) -> m.name = x)
@@ -245,6 +269,7 @@ let rec run_game_turn g_state : game_state =
   run_game_turn final_game_state
 
 let start () : unit =
+  let () = setup () in
   ignore (run_game_turn (gen_initial_state ()))
 
 let _ = start ()

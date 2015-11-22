@@ -22,7 +22,9 @@ val print_screen : player_state -> public_info -> screen_state -> unit
 val print_start : string -> unit
 
 (* Collects input with autocomplete magic
- * [get_input words defaults] gets the input where user can autocomple to 
- * [words] and is shown defaults [defaults] 
+ * [get_input words defaults] gets the input where user can autocomple to
+ * [words] and is shown defaults [defaults]
  * Preconditon: [defaults] is not empty *)
 val get_input : string list -> string list -> string
+
+val setup : unit -> unit

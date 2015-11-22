@@ -92,7 +92,7 @@ let movedex = MoveDex.add "ROCK THROW" {name="ROCK THROW"; move_type=TRock; stat
 let movedex = MoveDex.add "EARTHQUAKE" {name="EARTHQUAKE"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=100; damage=100; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "FISSURE" {name="FISSURE"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=30; damage=1; max_pp=5; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DIG" {name="DIG"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=100; damage=60; max_pp=10; pp=10; move_category=ESpecial} movedex
-let movedex = MoveDex.add "TOXIC" {name="TOXIC"; move_type=TPoison; status_effect=MNormal; status_probability=100; accuracy=85; damage=0; max_pp=10; pp=10; move_category=ESpecial} movedex
+let movedex = MoveDex.add "TOXIC" {name="TOXIC"; move_type=TPoison; status_effect=MPoison; status_probability=100; accuracy=85; damage=0; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "CONFUSION" {name="CONFUSION"; move_type=TPsychic; status_effect=MNormal; status_probability=10; accuracy=100; damage=50; max_pp=25; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "PSYCHIC" {name="PSYCHIC"; move_type=TPsychic; status_effect=MNormal; status_probability=10; accuracy=100; damage=90; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "HYPNOSIS" {name="HYPNOSIS"; move_type=TPsychic; status_effect=MSleep; status_probability=100; accuracy=60; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
