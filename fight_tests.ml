@@ -154,3 +154,8 @@ TEST "Test single poisoned poca" = let poison_game =
     new_state.player_one.active_pocamon.stats.max_hp &&
   new_state.battle_info.player_one_active_pocamon.health <
     new_state.battle_info.player_one_active_pocamon.stats.max_hp
+
+TEST "basic fight mechanics are correct" =
+  let damage = calc_damage poca1 poca2 tackle in
+  let () = print_endline (string damage) in
+  damage <= 86 || damage >= 73
