@@ -173,8 +173,7 @@ let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   print_string str
 
-let ascii_pokeball = "
-                          WELCOME TO POCAMON!!!
+let ascii_pokeball = "     WELCOME TO POCAMON!!!
                       ────────▄███████████▄────────
                       ─────▄███▓▓▓▓▓▓▓▓▓▓▓███▄─────
                       ────███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███────
@@ -196,10 +195,6 @@ let ascii_pokeball = "
                       ────────▀███████████▀────────
 "
 
-let print_start ss =
-  match ss with
-  | Out
-  | Moves
-  | Pocamon_List _ -> failwith "TODO"
-  | Talking s -> print_string
-    (ascii_pokeball ^ star_bar ^ "\n" ^ (string_to_box s) ^ "\n" ^ star_bar)
+let print_start s =
+  print_string (ascii_pokeball ^ star_bar ^ "\n" ^
+                (string_to_box s) ^ "\n" ^ star_bar)
