@@ -69,7 +69,7 @@ let process_screen_action comm s_state g_state : screen_state =
   | Some Pocamon, Out -> Pocamon_List 0
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
   | Some Back, Moves -> Out
-  | Some Down, Pocamon_List n -> Pocamon_List (if n < 2 then n + 1 else 2)
+  | Some Down, Pocamon_List n -> Pocamon_List (if n < 1 then n + 1 else 1)
   | Some Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
   | Some Back, Pocamon_List _ -> Out
   | Some Back, Talking _ | Some Enter, Talking _ -> Out
@@ -247,4 +247,4 @@ let rec run_game_turn g_state : game_state =
 let start () : unit =
   ignore (run_game_turn (gen_initial_state ()))
 
-(*let _ = start ()*)
+let _ = start ()
