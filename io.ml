@@ -114,9 +114,9 @@ let gen_pocamon (ps: player_state) i :bytes =
     match lines with
     | [] -> if i <> 0
       then pocamon_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
-      else res
-    | h::t -> pocamon_help t (i-1) ((string_to_box h) ^ "\n" ^ res) in
-  pocamon_help pl 4 ""
+      else res ^ "\n"
+    | h::t -> pocamon_help t (i-1) (res ^ "\n" ^ (string_to_box h)) in
+  Bytes.sub (pocamon_help pl 4 "") 1 (Bytes.length (pocamon_help pl 4 "") - 1)
 
 let gen_talking (s: bytes) :bytes =
   let rec talking_help (words: bytes list) i (res :bytes) :bytes =
