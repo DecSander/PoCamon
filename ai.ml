@@ -57,7 +57,7 @@ let get_switch_poca foe_poca active_poca pocamon_list : pocamon =
     | e_hd::e_tl, p_hd::p_tl ->
       let best_poca = if e_head > acc then p_hd else best in
       let acc' = if e_head > acc then e_head else acc in
-      get_best_poca e_tl p_tl acc' best_poca
+      get_best_poca e_tl p_tl acc' best_poca in
 
   let eff_list = List.map get_type_eff pocamon_list in
   let best_poca = get_best_poca eff_list pocamon_list 0. active_pocamon in
@@ -73,13 +73,16 @@ let assemble_actions ai is_ai_turn action (p1_act, p2_act) =
 let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : fAction * float =
   (* if recs_left = 0, return the score *)
 
-  if recs_left <= 0 then
-  let game_score =
-
   let g_state', b_status' =
   match (p1_act, p2_act) with
-  | (None, None) | (_, None) | (None, _) -> g_state, b_status
-  | (_, _) -> apply_fight_sequence g_state p1_act p2_act
+  | (None, None) | (_, None) | (None, _) ->
+    if recs_left > 0 then g_state, b_status else failwith "minimax ran into an error"
+  | (_, _) -> apply_fight_sequence g_state p1_act p2_act in
+
+  if recs_left <= 0 then
+    let final_game_score = game_score g_state' in
+  let
+
 
   (* check who's turn it is *)
   let active_player =
@@ -128,7 +131,7 @@ let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : fAct
 
   let move_scores_list = List.map f active_player.active_pocamon.moves in
 
-
+  failwith "TODO"
 
   (* if the switch pokemon is your active, don't consider switching *)
   (* run mini max for every action *)
@@ -137,3 +140,4 @@ let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : fAct
 
 
 let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) :action =
+  failwith "TODO"
