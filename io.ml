@@ -36,7 +36,7 @@ let create_pocamon_ascii (pc: pocamon) :bytes =
 
 let create_health_bar (pc: pocamon) :bytes =
   let rec gen_hp_bar (equals: int) (empty: int) (s: bytes) :bytes =
-    if empty = 0 then s ^ "]"
+    if empty <= 0 then s ^ "]"
     else if equals = 0 then gen_hp_bar 0 (empty - 1) (s ^ " ")
     else gen_hp_bar (equals - 1) empty (s ^ "=") in
 
