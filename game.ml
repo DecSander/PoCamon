@@ -105,7 +105,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
     let poca_option = try Some (List.find (fun (poca:pocamon) -> poca.name = p)
       p_state.pocamon_list) with _ -> None in
     begin match poca_option with
-    | Some poca -> fst (switch_pocamon poca p_state g_state)
+    | Some poca -> fst (switch_pocamon poca p_state g_state true)
     | None -> choose_new_pocamon g_state p_state s_state end
   | Some Up -> choose_new_pocamon g_state p_state
             (Pocamon_List (if n > 0 then n - 1 else 0))

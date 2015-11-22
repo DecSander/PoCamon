@@ -35,7 +35,7 @@ val apply_attack : player_state -> player_state -> move -> bool -> game_state ->
 (*
 * Switches the active pocamon of the player making the move
 *)
-val switch_pocamon : pocamon -> player_state -> game_state ->
+val switch_pocamon : pocamon -> player_state -> game_state -> bool ->
                      game_state * move_status
 
 
