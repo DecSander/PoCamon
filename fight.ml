@@ -151,10 +151,11 @@ let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
 
   let modifiers = burn_multiplier *. stab_bonus *.
                   type_effectiveness *. rand_mod in
-    (* status effects *)
-  let damage =
+
+  let damage = if base_pwr > 0. then
     (((2. *. assumed_level +. 10.) /. 250.) *. (atk_def_multiplier)
-    *. base_pwr +. 2. ) *. modifiers in
+    *. base_pwr +. 2. ) *. modifiers
+    else 0. in
   damage, type_effectiveness
 
 let mStatus_to_pStatus move_status =
@@ -246,8 +247,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
         let def_state' = {def_state with active_pocamon=def_poca'} in
         let g_state'' = if not p1_is_atk
-          then {g_state with player_one=def_state'}
-          else {g_state with player_two=def_state'} in
+          then {g_state' with player_one=def_state'}
+          else {g_state' with player_two=def_state'} in
 
         let p_move_status =
           Attack_Status {atk_eff = type_eff;
