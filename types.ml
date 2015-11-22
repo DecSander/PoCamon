@@ -105,6 +105,5 @@ type public_info = {
 *)
 type game_state = {
       player_one : player_state;
-      player_two : player_state;
-      battle_info : public_info
+      player_two : player_state
       }

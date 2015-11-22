@@ -391,7 +391,7 @@ let apply_status_debuffs g_state =
   let p1' = {g_state.player_one with active_pocamon=p1_poca'} in
   let p2' = {g_state.player_two with active_pocamon=p2_poca'} in
 
-  let g_state' = {g_state with player_one= p1'; player_two=p2'} in
+  let g_state' = {player_one= p1'; player_two=p2'} in
 
   (g_state', {p1_debuff=p1_debuff_s; p2_debuff=p2_debuff_s})
 
