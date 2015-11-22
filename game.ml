@@ -72,7 +72,7 @@ let gen_initial_state () : game_state =
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let () = print_endline "" in let () = print_string "> " in
-  let input = get_input ["\'\'"] [] in
+  let input = get_input ["\'\'"] ["\'\'"] in
   match (process_input input) with
   | Some Enter -> ()
   | _ -> wait_for_enter g_state p_state s_state
