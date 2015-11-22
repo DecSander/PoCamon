@@ -6,7 +6,8 @@ open PocaDex
 
 let rec get_new_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
-  if not (List.mem new_poca p_list) then
+  if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
+  then
     new_poca
   else
     get_new_pocamon p_list
@@ -56,7 +57,7 @@ let gen_initial_state () : game_state =
 
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string ">" in
+  let () = print_endline "" in let () = print_string "> " in
   let input = read_line () in
   match (process_input input) with
   | Some Enter -> ()
@@ -65,10 +66,10 @@ let rec wait_for_enter g_state p_state s_state : unit =
 let process_screen_action comm s_state g_state : screen_state =
   match comm, s_state with
   | Some Fight, Out -> Moves
-  | Some Pocamon, Out -> Pocamon_List 1
+  | Some Pocamon, Out -> Pocamon_List 0
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
   | Some Back, Moves -> Out
-  | Some Down, Pocamon_List n -> Pocamon_List (if n < 2 then n + 1 else 2)
+  | Some Down, Pocamon_List n -> Pocamon_List (if n < 1 then n + 1 else 1)
   | Some Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
   | Some Back, Pocamon_List _ -> Out
   | Some Back, Talking _ | Some Enter, Talking _ -> Out
@@ -78,7 +79,7 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string ">" in
+  let () = print_endline "" in let () = print_string "> " in
   let input = read_line () in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
@@ -97,7 +98,7 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string ">" in
+  let () = print_endline "" in let () = print_string "> " in
   let input = read_line () in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
   match (process_input input) with
@@ -221,13 +222,15 @@ let rec run_game_turn g_state : game_state =
     else
       (print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one;
-      if new_g_state.player_two.active_pocamon.health > 0 then
+      if new_g_state.player_one.active_pocamon.health > 0 then
         print_result p1_action new_g_state new_g_state.player_one
           printfo.p1_move_status new_g_state.player_two
       else ()
       ) in
 
   let faint_switch_game_state = on_faint new_g_state in
+  let () = print_endline faint_switch_game_state.player_one.active_pocamon.name in
+  let () = print_endline faint_switch_game_state.player_two.active_pocamon.name in
 
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
