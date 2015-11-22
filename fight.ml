@@ -118,8 +118,6 @@ let calc_type_effectiveness atk_type def_type =
 
 let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
 
-  let () = Random.self_init() in
-
   let type_effectiveness =
       if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
         calc_type_effectiveness move.move_type (fst def_poca.poca_type)
@@ -147,7 +145,7 @@ let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
 
   let base_pwr = float_of_int(move.damage) in
 
-  let rand_mod = 0.85 +. (Random.float 0.15) in
+  let rand_mod = 0.85 +. (float_of_int((Random.int 15)) /. 100.) in
 
   let modifiers = burn_multiplier *. stab_bonus *.
                   type_effectiveness *. rand_mod in
@@ -159,7 +157,6 @@ let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
   damage, type_effectiveness
 
 let mStatus_to_pStatus move_status =
-  let () = Random.self_init () in
   match move_status with
   | MNormal -> SNormal
   | MPoison -> SPoison
@@ -173,8 +170,6 @@ let mStatus_to_pStatus move_status =
 *)
 let apply_attack atk_state def_state move p1_is_atk g_state =
 
-  let () = Random.self_init() in
-
   let atk_poca = atk_state.active_pocamon in
   let def_poca = def_state.active_pocamon in
 
@@ -183,14 +178,16 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
     let is_paralyzed =
       match atk_poca.status with
       | SParalyze ->
-        let x = (Random.float 1.) in
-        (print_endline (string_of_float x));
-        x <= 0.25
+        let x = (Random.int 100) in
+        x <= 25
       | _ -> false in
+
+
 
     let new_status_change =
       match atk_poca.status with
       | SSleep 0 | SFreeze 0 -> (true, SNormal)
+      | SParalyze -> (false, SNormal)
       | _ -> (false, atk_poca.status) in
 
      let g_state' =
