@@ -31,4 +31,4 @@ val gen_initial_state : unit -> game_state
 *)
 val start  : unit -> unit
 
-val process_screen_action : command option -> screen_state -> game_state -> screen_state
+val process_screen_action : command option-> screen_state -> game_state -> screen_state
