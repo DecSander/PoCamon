@@ -182,7 +182,10 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
   | SNormal | SPoison | SBurn  | SParalyze | SSleep 0 | SFreeze 0 ->
     let is_paralyzed =
       match atk_poca.status with
-      | SParalyze -> (Random.float 1.) <= 0.25
+      | SParalyze ->
+        let x = (Random.float 1.) in
+        (print_endline (string_of_float x));
+        x <= 0.25
       | _ -> false in
 
     let new_status_change =
