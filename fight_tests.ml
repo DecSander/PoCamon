@@ -31,6 +31,24 @@ let poisoned_poca1 = {
       ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
     }
 
+let asleep_poca1 = {
+      name = "p1 poca one";
+      status = SSleep 4;
+      moves = [tackle;tackle;tackle;tackle];
+      poca_type = TFire, TGrass;
+      health = 200;
+      stats =
+      {
+        max_hp = 200;
+        attack = 100;
+        defense = 100;
+        sp_defense = 100;
+        sp_attack = 100;
+        speed = 100
+      };
+      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+    }
+
 let poca1 = {
       name = "p1 poca one";
       status = SNormal;
@@ -119,15 +137,6 @@ let simple_game =
     pocamon_list = [poca3; poca4];
     is_computer = false
   };
-  battle_info =
-  {
-    player_one_active_pocamon = poca1;
-    player_two_active_pocamon = poca3;
-    player_one_remaining_pocamon = 2;
-    player_two_remaining_pocamon = 2;
-    player_one_name = "player one";
-    player_two_name = "player two";
-  };
 }
 
 
@@ -136,9 +145,7 @@ TEST "Test switch" = let new_state, _ =
   let new_new_state, _ =
     switch_pocamon poca1 new_state.player_one new_state in
   new_state.player_one.active_pocamon = poca2 &&
-  new_new_state.player_one.active_pocamon = poca1 &&
-  new_state.battle_info.player_one_active_pocamon = poca2 (*&&
-  new_new_state.battle_info.player_one_active_pocamon = poca1 *)
+  new_new_state.player_one.active_pocamon = poca1
 
 let () = print_endline "FIRST TEST DONE"
 
@@ -147,10 +154,36 @@ TEST "Test empty debuff" = let new_state, _ =
   new_state = simple_game
 
 TEST "Test single poisoned poca" = let poison_game =
-  {simple_game with battle_info = {simple_game.battle_info with player_one_active_pocamon = poisoned_poca1};
-                    player_one = {simple_game.player_one with active_pocamon = poisoned_poca1}} in
+  {simple_game with player_one = {simple_game.player_one with active_pocamon = poisoned_poca1}} in
   let new_state, _ = apply_status_debuffs poison_game in
   new_state.player_one.active_pocamon.health <
-    new_state.player_one.active_pocamon.stats.max_hp &&
-  new_state.battle_info.player_one_active_pocamon.health <
-    new_state.battle_info.player_one_active_pocamon.stats.max_hp
+    new_state.player_one.active_pocamon.stats.max_hp
+
+TEST "Test multi turn sleep" = let sleep_game =
+  {simple_game with player_one = {simple_game.player_one with active_pocamon = asleep_poca1}} in
+  let start_health = simple_game.player_two.active_pocamon.health in
+  let new_state, _ = apply_fight_sequence sleep_game (FMove tackle) (FMove tackle) in
+  let () = print_endline "start" in
+  (match new_state.player_one.active_pocamon.status with
+  | SSleep x -> print_endline "here"; x = 3 && (new_state.player_two.active_pocamon.health = start_health)
+  | _ -> false)
+  &&
+  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
+  match new_state.player_one.active_pocamon.status with
+  | SSleep x -> x = 2 && (new_state.player_two.active_pocamon.health = start_health)
+  | _ -> false)
+  &&
+  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
+  match new_state.player_one.active_pocamon.status with
+  | SSleep x -> print_int x; print_endline ""; x = 1 && (new_state.player_two.active_pocamon.health = start_health)
+  | _ -> false)
+  &&
+  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
+  match new_state.player_one.active_pocamon.status with
+  | SSleep x -> print_endline "0"; x = 0 && (new_state.player_two.active_pocamon.health = start_health)
+  | _ -> print_endline "ERROR"; true)
+  &&
+  (let new_state, _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
+  match new_state.player_one.active_pocamon.status with
+  | SSleep x -> print_endline "ERROR"; false
+  | _ -> true)
