@@ -173,7 +173,7 @@ let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   print_string str
 
-let ascii_pokeball = "     WELCOME TO POCAMON!!!
+let ascii_pokeball = "        WELCOME TO POCAMON!!!
                          ────────▄███████████▄────────
                          ─────▄███▓▓▓▓▓▓▓▓▓▓▓███▄─────
                          ────███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███────
