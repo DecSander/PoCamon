@@ -66,21 +66,21 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
            (Str.split (Str.regexp "\n") art2)
            ""
 
-let gen_moves pi :bytes =
+let gen_moves ps :bytes =
   let rec moves_help (m_list: move list) i (res: bytes) :bytes =
     match m_list with
-    | [] -> if i = 0
-      then moves_help [] (i-1) (res ^ (string_to_box " "))
-      else res
-    | h::t -> moves_help t (i-1) ((string_to_box h.name) ^ res) in
-  moves_help pi.player_one_active_pocamon.moves 4 ""
+    | [] -> if i <> 0
+      then moves_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
+      else res ^ "\n"
+    | h::t -> moves_help t (i-1) (res ^ (string_to_box h.name) ^ "\n") in
+  moves_help ps.active_pocamon.moves 4 ""
 
 let gen_pocamon ps i :bytes =
   let rec pocamon_help (p_list: pocamon list) i n l res :bytes =
     match p_list with
-    | [] -> if i = 0
-      then pocamon_help [] (i-1) n l (res ^ (string_to_box " "))
-      else res
+    | [] -> if i <> 0
+      then pocamon_help [] (i-1) n l (res ^ (string_to_box " ") ^ "\n")
+      else res ^ "\n"
     | h::t -> if n > 3 && l > 4
     then res ^ "\n" ^ (string_to_box "...")
     else pocamon_help t (i-1) (n+1) l (res ^ "\n" ^ (string_to_box h.name)) in
@@ -89,23 +89,23 @@ let gen_pocamon ps i :bytes =
 let gen_talking (s: bytes) :bytes =
   let rec talking_help (words: bytes list) i (res :bytes) :bytes =
     match words with
-    | [] -> if i = 0
-      then talking_help [] (i-1) (res ^ (string_to_box " "))
-      else res
-    | h::t -> talking_help t (i-1) ((string_to_box h) ^ res) in
+    | [] -> if i <> 0
+      then talking_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
+      else res ^ "\n"
+    | h::t -> talking_help t (i-1) ((string_to_box h) ^ "\n" ^ res) in
   let lines = Str.split (Str.regexp "\n") s in
   talking_help lines 4 ""
 
-let gen_out pi :bytes =
-  (string_to_box ("What will " ^ pi.player_one_name ^ " do?")) ^
-  (string_to_box "Fight        |        Bag") ^
-  (string_to_box "Pocamon      |        Run") ^
-  (string_to_box " ")
+let gen_out ps :bytes =
+  (string_to_box ("What will " ^ ps.name ^ " do?")) ^ "\n" ^
+  (string_to_box "Fight        |        Bag") ^ "\n" ^
+  (string_to_box "Pocamon      |        Run") ^ "\n" ^
+  (string_to_box " ") ^ "\n"
 
 let gen_text ps pi ss :bytes =
   match ss with
-  | Out -> gen_out pi
-  | Moves -> gen_moves pi
+  | Out -> gen_out ps
+  | Moves -> gen_moves ps
   | Pocamon_List i -> gen_pocamon ps i
   | Talking s -> gen_talking s
 
@@ -118,7 +118,7 @@ let print_screen_debug ps pi ss =
   ^ "  " ^ (create_health_bar pi.player_two_active_pocamon) in
   let box = gen_text ps pi ss in
   star_bar ^ "\n" ^ art ^ "\n" ^ health_bar ^ "\n" ^ star_bar ^
-  "\n" ^ box ^ "\n" ^ star_bar
+  "\n" ^ box ^ star_bar
 
 let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
