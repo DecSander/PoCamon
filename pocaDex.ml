@@ -47,7 +47,7 @@ let movedex = MoveDex.add "LEER" {name="LEER"; move_type=TNormal; status_effect=
 let movedex = MoveDex.add "BITE" {name="BITE"; move_type=TNormal; status_effect=MNormal; status_probability=30; accuracy=100; damage=60; max_pp=25; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "GROWL" {name="GROWL"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "ROAR" {name="ROAR"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
-let movedex = MoveDex.add "SING" {name="SING"; move_type=TNormal; status_effect=MSleep; status_probability=0; accuracy=55; damage=0; max_pp=15; pp=15; move_category=ESpecial} movedex
+let movedex = MoveDex.add "SING" {name="SING"; move_type=TNormal; status_effect=MSleep; status_probability=100; accuracy=55; damage=0; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SUPERSONIC" {name="SUPERSONIC"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=55; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SONICBOOM" {name="SONICBOOM"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=90; damage=20; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DISABLE" {name="DISABLE"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=55; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
@@ -77,25 +77,25 @@ let movedex = MoveDex.add "LEECH SEED" {name="LEECH SEED"; move_type=TGrass; sta
 let movedex = MoveDex.add "GROWTH" {name="GROWTH"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "RAZOR LEAF" {name="RAZOR LEAF"; move_type=TGrass; status_effect=MNormal; status_probability=0; accuracy=95; damage=55; max_pp=25; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SOLARBEAM" {name="SOLARBEAM"; move_type=TGrass; status_effect=MNormal; status_probability=0; accuracy=100; damage=120; max_pp=10; pp=10; move_category=ESpecial} movedex
-let movedex = MoveDex.add "POISONPOWDER" {name="POISONPOWDER"; move_type=TPoison; status_effect=MPoison; status_probability=0; accuracy=75; damage=0; max_pp=35; pp=35; move_category=ESpecial} movedex
-let movedex = MoveDex.add "STUN SPORE" {name="STUN SPORE"; move_type=TGrass; status_effect=MParalyze; status_probability=0; accuracy=75; damage=0; max_pp=30; pp=30; move_category=ESpecial} movedex
-let movedex = MoveDex.add "SLEEP POWDER" {name="SLEEP POWDER"; move_type=TGrass; status_effect=MSleep; status_probability=0; accuracy=75; damage=0; max_pp=15; pp=15; move_category=ESpecial} movedex
+let movedex = MoveDex.add "POISONPOWDER" {name="POISONPOWDER"; move_type=TPoison; status_effect=MPoison; status_probability=100; accuracy=75; damage=0; max_pp=35; pp=35; move_category=ESpecial} movedex
+let movedex = MoveDex.add "STUN SPORE" {name="STUN SPORE"; move_type=TGrass; status_effect=MParalyze; status_probability=100; accuracy=75; damage=0; max_pp=30; pp=30; move_category=ESpecial} movedex
+let movedex = MoveDex.add "SLEEP POWDER" {name="SLEEP POWDER"; move_type=TGrass; status_effect=MSleep; status_probability=100; accuracy=75; damage=0; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "PETAL DANCE" {name="PETAL DANCE"; move_type=TGrass; status_effect=MNormal; status_probability=0; accuracy=100; damage=70; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "STRING SHOT" {name="STRING SHOT"; move_type=TBug; status_effect=MNormal; status_probability=0; accuracy=95; damage=0; max_pp=40; pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DRAGON RAGE" {name="DRAGON RAGE"; move_type=TDragon; status_effect=MNormal; status_probability=0; accuracy=100; damage=40; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "FIRE SPIN" {name="FIRE SPIN"; move_type=TFire; status_effect=MNormal; status_probability=0; accuracy=70; damage=15; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "THUNDERSHOCK" {name="THUNDERSHOCK"; move_type=TElectric; status_effect=MParalyze; status_probability=10; accuracy=100; damage=40; max_pp=30; pp=30; move_category=ESpecial} movedex
 let movedex = MoveDex.add "THUNDERBOLT" {name="THUNDERBOLT"; move_type=TElectric; status_effect=MParalyze; status_probability=10; accuracy=100; damage=95; max_pp=15; pp=15; move_category=ESpecial} movedex
-let movedex = MoveDex.add "THUNDER WAVE" {name="THUNDER WAVE"; move_type=TElectric; status_effect=MParalyze; status_probability=0; accuracy=100; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
+let movedex = MoveDex.add "THUNDER WAVE" {name="THUNDER WAVE"; move_type=TElectric; status_effect=MParalyze; status_probability=100; accuracy=100; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "THUNDER" {name="THUNDER"; move_type=TElectric; status_effect=MNormal; status_probability=30; accuracy=70; damage=120; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "ROCK THROW" {name="ROCK THROW"; move_type=TRock; status_effect=MNormal; status_probability=0; accuracy=90; damage=50; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "EARTHQUAKE" {name="EARTHQUAKE"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=100; damage=100; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "FISSURE" {name="FISSURE"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=30; damage=1; max_pp=5; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DIG" {name="DIG"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=100; damage=60; max_pp=10; pp=10; move_category=ESpecial} movedex
-let movedex = MoveDex.add "TOXIC" {name="TOXIC"; move_type=TPoison; status_effect=MNormal; status_probability=0; accuracy=85; damage=0; max_pp=10; pp=10; move_category=ESpecial} movedex
+let movedex = MoveDex.add "TOXIC" {name="TOXIC"; move_type=TPoison; status_effect=MNormal; status_probability=100; accuracy=85; damage=0; max_pp=10; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "CONFUSION" {name="CONFUSION"; move_type=TPsychic; status_effect=MNormal; status_probability=10; accuracy=100; damage=50; max_pp=25; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "PSYCHIC" {name="PSYCHIC"; move_type=TPsychic; status_effect=MNormal; status_probability=10; accuracy=100; damage=90; max_pp=10; pp=10; move_category=ESpecial} movedex
-let movedex = MoveDex.add "HYPNOSIS" {name="HYPNOSIS"; move_type=TPsychic; status_effect=MSleep; status_probability=0; accuracy=60; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
+let movedex = MoveDex.add "HYPNOSIS" {name="HYPNOSIS"; move_type=TPsychic; status_effect=MSleep; status_probability=100; accuracy=60; damage=0; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "MEDITATE" {name="MEDITATE"; move_type=TPsychic; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "AGILITY" {name="AGILITY"; move_type=TPsychic; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=30; pp=30; move_category=ESpecial} movedex
 let movedex = MoveDex.add "QUICK ATTACK" {name="QUICK ATTACK"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=40; max_pp=30; pp=30; move_category=ESpecial} movedex
@@ -139,7 +139,7 @@ let movedex = MoveDex.add "SOFTBOILED" {name="SOFTBOILED"; move_type=TNormal; st
 let movedex = MoveDex.add "HI JUMP KICK" {name="HI JUMP KICK"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=90; damage=85; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "GLARE" {name="GLARE"; move_type=TNormal; status_effect=MParalyze; status_probability=0; accuracy=75; damage=0; max_pp=30; pp=30; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DREAM EATER" {name="DREAM EATER"; move_type=TPsychic; status_effect=MNormal; status_probability=0; accuracy=100; damage=100; max_pp=15; pp=15; move_category=ESpecial} movedex
-let movedex = MoveDex.add "POISON GAS" {name="POISON GAS"; move_type=TPoison; status_effect=MPoison; status_probability=0; accuracy=55; damage=0; max_pp=40; pp=40; move_category=ESpecial} movedex
+let movedex = MoveDex.add "POISON GAS" {name="POISON GAS"; move_type=TPoison; status_effect=MPoison; status_probability=100; accuracy=55; damage=0; max_pp=40; pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "BARRAGE" {name="BARRAGE"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=15; max_pp=20; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "LEECH LIFE" {name="LEECH LIFE"; move_type=TBug; status_effect=MNormal; status_probability=0; accuracy=100; damage=20; max_pp=15; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "LOVELY KISS" {name="LOVELY KISS"; move_type=TNormal; status_effect=MSleep; status_probability=0; accuracy=75; damage=0; max_pp=10; pp=10; move_category=ESpecial} movedex
