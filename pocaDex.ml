@@ -3454,30 +3454,32 @@ let update_stats base_stats  : poca_stats =
 	let rec update_stats' stats (points: int) : poca_stats =
 		if points = 0 then stats else
 		let index = Random.int 6 in
+		let addPoints = Random.int 50 in
+		let addPoints = if addPoints < points then addPoints else points in
 		match index with
 		| 0 -> if stats.max_hp + base_stats.max_hp < 252
-			   then update_stats' {stats with max_hp = stats.max_hp + 1}
-			   (points - 1)
+			   then update_stats' {stats with max_hp = stats.max_hp + addPoints}
+			   (points - addPoints)
 			   else  update_stats' stats points
 		| 1 -> if stats.attack + base_stats.attack < 252
-			   then update_stats' {stats with attack = stats.attack + 1}
-			   (points - 1)
+			   then update_stats' {stats with attack = stats.attack + addPoints}
+			   (points - addPoints)
 			   else  update_stats' stats points
 		| 2 -> if stats.defense + base_stats.defense < 252
-			   then update_stats' {stats with defense = stats.defense + 1}
-			   (points - 1)
+			   then update_stats' {stats with defense = stats.defense + addPoints}
+			   (points - addPoints)
 			   else  update_stats' stats points
 		| 3 -> if stats.speed + base_stats.speed < 252
-			   then update_stats' {stats with speed = stats.speed + 1}
-			   (points - 1)
+			   then update_stats' {stats with speed = stats.speed + addPoints}
+			   (points - addPoints)
 			   else  update_stats' stats points
 		| 4 -> if stats.sp_attack + base_stats.sp_attack < 252
-			   then update_stats' {stats with sp_attack = stats.sp_attack + 1}
-			   (points - 1)
+			   then update_stats' {stats with sp_attack = stats.sp_attack + addPoints}
+			   (points - addPoints)
 			   else  update_stats' stats points
 		| 5-> if stats.sp_defense + base_stats.sp_defense < 252
-			   then update_stats' {stats with sp_defense = stats.sp_defense + 1}
-			   (points - 1)
+			   then update_stats' {stats with sp_defense = stats.sp_defense + addPoints}
+			   (points - addPoints)
 			   else  update_stats' stats points
 		| _ -> failwith "error in random number generation" in
 	update_stats' { max_hp = 0; attack = 0; defense = 0 ; sp_defense = 0;

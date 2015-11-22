@@ -151,10 +151,11 @@ let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
 
   let modifiers = burn_multiplier *. stab_bonus *.
                   type_effectiveness *. rand_mod in
-    (* status effects *)
-  let damage =
+
+  let damage = if base_pwr > 0. then
     (((2. *. assumed_level +. 10.) /. 250.) *. (atk_def_multiplier)
-    *. base_pwr +. 2. ) *. modifiers in
+    *. base_pwr +. 2. ) *. modifiers
+    else 0. in
   damage, type_effectiveness
 
 let mStatus_to_pStatus move_status =
@@ -246,8 +247,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
         let def_state' = {def_state with active_pocamon=def_poca'} in
         let g_state'' = if not p1_is_atk
-          then {g_state with player_one=def_state'}
-          else {g_state with player_two=def_state'} in
+          then {g_state' with player_one=def_state'}
+          else {g_state' with player_two=def_state'} in
 
         let p_move_status =
           Attack_Status {atk_eff = type_eff;
@@ -370,4 +371,28 @@ let apply_fight_sequence g_state p1_action p2_action =
                       p2_move_status=p2_status})
 
 let apply_status_debuffs g_state =
-  failwith "TODO"
+  let p1_poca = g_state.player_one.active_pocamon in
+  let p2_poca = g_state.player_two.active_pocamon in
+
+  let p1_poca_health, p1_debuff_s =
+  match p1_poca.status with
+  | SBurn -> p1_poca.health - (p1_poca.stats.max_hp / 8), SBurn
+  | SPoison -> p1_poca.health - (p1_poca.stats.max_hp / 8), SPoison
+  | _ -> p1_poca.health, SNormal in
+
+  let p2_poca_health, p2_debuff_s =
+  match p2_poca.status with
+  | SBurn -> p2_poca.health - (p2_poca.stats.max_hp / 8), SBurn
+  | SPoison -> p2_poca.health - (p2_poca.stats.max_hp / 8), SPoison
+  | _ -> p2_poca.health, SNormal in
+
+  let p1_poca' = {p1_poca with health=p1_poca_health} in
+  let p2_poca' = {p2_poca with health=p2_poca_health} in
+  let p1' = {g_state.player_one with active_pocamon=p1_poca'} in
+  let p2' = {g_state.player_two with active_pocamon=p2_poca'} in
+
+  let g_state' = {player_one= p1'; player_two=p2'} in
+
+  (g_state', {p1_debuff=p1_debuff_s; p2_debuff=p2_debuff_s})
+
+
