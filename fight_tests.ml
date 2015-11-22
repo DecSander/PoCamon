@@ -28,7 +28,7 @@ let poisoned_poca1 = {
         sp_attack = 100;
         speed = 100
       };
-      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+      ascii = "IMAGINE THIS GUY IN\n YOUR HEAD"
     }
 
 let asleep_poca1 = {
@@ -46,7 +46,7 @@ let asleep_poca1 = {
         sp_attack = 100;
         speed = 100
       };
-      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+      ascii = "IMAGINE THIS GUY IN\n YOUR HEAD"
     }
 
 let poca1 = {
@@ -64,7 +64,7 @@ let poca1 = {
         sp_attack = 100;
         speed = 100
       };
-      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+      ascii = "IMAGINE THIS GUY IN\n YOUR HEAD"
     }
 
 let poca2 = {
@@ -82,7 +82,7 @@ let poca2 = {
         sp_attack = 100;
         speed = 100
       };
-      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+      ascii = "IMAGINE THIS GUY IN\n YOUR HEAD"
     }
 
 let poca3 = {
@@ -100,7 +100,7 @@ let poca3 = {
         sp_attack = 100;
         speed = 100
       };
-      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+      ascii = "IMAGINE THIS GUY IN\n YOUR HEAD"
     }
 
 let poca4 = {
@@ -118,7 +118,7 @@ let poca4 = {
         sp_attack = 100;
         speed = 100
       };
-      ascii = "IMAGINE THIS FUCKER IN\n YOUR HEAD"
+      ascii = "IMAGINE THIS GUY IN\n YOUR HEAD"
     }
 
 let simple_game =
