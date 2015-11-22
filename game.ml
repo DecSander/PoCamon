@@ -55,9 +55,8 @@ let gen_initial_state () : game_state =
   }
 
 let rec wait_for_enter g_state p_state s_state : unit =
-  let () = print_endline "adfdfd" in
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "printed after wait for enter" in
+  let () = print_endline "" in
   let input = read_line () in
   match (process_input input) with
   | Some Enter -> ()
@@ -79,6 +78,7 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
+  let () = print_endline "" in
   let input = read_line () in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
@@ -97,6 +97,7 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
+  let () = print_endline "" in
   let input = read_line () in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
   match (process_input input) with
@@ -149,36 +150,35 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | SParalyze -> wait_for_enter g_state p_state
       (Talking (p_state.name ^ " is paralyzed! It can't move!"))
     | _ ->
-      let () = print_endline "using move" in
       (let poca_used_move = Talking (p_state.name ^ "'s " ^
         p_state.active_pocamon.name ^ " used " ^ poca_move.name) in
 
       let () = wait_for_enter g_state p_state poca_used_move in
+      if not a.missed then
+        let () = if (match a.atk_eff with ENormal -> false | _ -> true) then
+          let eff =
+            match a.atk_eff with
+            | ESuper -> "It's super effective!"
+            | ENotVery -> "It's not very effective..."
+            | _ -> "It's normal effective" (* should never happen *) in
+          wait_for_enter g_state p_state (Talking eff)
+        else
+          () in
 
-      let () = print_endline "blank used move" in
-
-      let () = if (match a.atk_eff with ENormal -> false | _ -> true) then
-        let eff =
-          match a.atk_eff with
-          | ESuper -> "It's super effective!"
-          | ENotVery -> "It's not very effective..."
-          | _ -> "It's normal effective" (* should never happen *) in
-        wait_for_enter g_state p_state (Talking eff)
+        (if fst a.opp_status_change then
+          let change_string = opp_p_state.name ^ "'s' " ^
+          opp_p_state.active_pocamon.name ^
+            (match snd a.opp_status_change with
+            | SNormal -> " is healthy again!" (*This should never happen *)
+            | SPoison -> " became poisoned!"
+            | SBurn -> " was burned!"
+            | SSleep _ -> " fell asleep!"
+            | SParalyze -> " became paralyzed!"
+            | SFreeze _ -> " became frozen!") in
+          wait_for_enter g_state p_state
+            (Talking change_string) else ())
       else
-        () in
-
-      (if fst a.opp_status_change then
-        let change_string = opp_p_state.name ^ "'s' " ^
-        opp_p_state.active_pocamon.name ^
-          (match snd a.opp_status_change with
-          | SNormal -> " is healthy again!" (*This should never happen *)
-          | SPoison -> " became poisoned!"
-          | SBurn -> " was burned!"
-          | SSleep _ -> " fell asleep!"
-          | SParalyze -> " became paralyzed!"
-          | SFreeze _ -> " became frozen!") in
-        wait_for_enter g_state p_state
-          (Talking change_string) else ()))
+        wait_for_enter g_state p_state (Talking ("The attack missed!")))
     end
 
   | Faint_Status, _ -> ()
@@ -199,41 +199,28 @@ let rec run_game_turn g_state : game_state =
   let p2_action = get_player_action g_state g_state.player_two Out in
   let new_g_state, printfo = apply_fight_sequence g_state p1_action p2_action in
 
-  let () = print_endline "new game state received" in
-
   let () =
     if printfo.p1_went_first then
-      let () = print_endline "starting p1 move" in
-      let () = match printfo.p1_move_status with
-              | Attack_Status a -> print_endline "attack status"
-              | Faint_Status -> print_endline "faint"
-              | _ -> print_endline "Switch? weird" in
       (print_result p1_action new_g_state new_g_state.player_one
         printfo.p1_move_status new_g_state.player_two;
-      let () = print_endline "first p1 move done" in
       print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one
       )
     else
-      let () = print_endline "starting p2 move" in
-      let () = match printfo.p2_move_status with
-              | Attack_Status a -> print_endline "attack status"
-              | Faint_Status -> print_endline "faint"
-              | _ -> print_endline "Switch? weird" in
       (print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one;
-        let () = print_endline "first p2 move done" in
       print_result p1_action new_g_state new_g_state.player_one
         printfo.p1_move_status new_g_state.player_two) in
 
-  let () = print_endline "ON TO DEATH" in
   let faint_switch_game_state = on_faint new_g_state in
 
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
 
-  let () = print_debuff_info g_state g_state.player_one debuff_info.p1_debuff in
-  let () = print_debuff_info g_state g_state.player_two debuff_info.p2_debuff in
+  let () = print_debuff_info status_changed_game_state
+    g_state.player_one debuff_info.p1_debuff in
+  let () = print_debuff_info status_changed_game_state
+    g_state.player_two debuff_info.p2_debuff in
 
   run_game_turn status_changed_game_state
 
