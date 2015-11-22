@@ -26,3 +26,6 @@ let game_score (ai: ai_player) (gs: game_state) :float =
   match ai with
   | P1 -> (player_score gs.player_one) -. (player_score gs.player_two)
   | P2 -> (player_score gs.player_two) -. (player_score gs.player_one)
+
+let get_ai_action (ai: ai_player) (gs: game_state) :action =
+  failwith "TODO"
