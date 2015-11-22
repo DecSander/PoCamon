@@ -287,13 +287,13 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 (*
 * Switches the active pocamon of the player making the move
 *)
-let switch_pocamon switch_poca p_state g_state =
+let switch_pocamon switch_poca p_state g_state is_fainted=
   let p1_switch = p_state = g_state.player_one in
 
   let active_poca = p_state.active_pocamon in
   let other_poca =
     List.filter (fun p -> p <> switch_poca) p_state.pocamon_list in
-  let new_party = active_poca::other_poca in
+  let new_party = if is_fainted then other_poca else active_poca::other_poca in
 
   let p_state' = {p_state with active_pocamon=switch_poca;
                                pocamon_list=new_party} in
@@ -311,7 +311,7 @@ let do_single_move player_state foe_state action p_state_is_p1 g_state =
   match action with
   | FMove m -> apply_attack player_state foe_state m p_state_is_p1 g_state
   | FSwitch s_p ->
-    switch_pocamon s_p player_state g_state
+    switch_pocamon s_p player_state g_state false
 
 let apply_fight_sequence g_state p1_action p2_action =
 
