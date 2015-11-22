@@ -221,7 +221,7 @@ let rec run_game_turn g_state : game_state =
     else
       (print_result p2_action new_g_state new_g_state.player_two
         printfo.p2_move_status new_g_state.player_one;
-      if new_g_state.player_two.active_pocamon.health > 0 then
+      if new_g_state.player_one.active_pocamon.health > 0 then
         print_result p1_action new_g_state new_g_state.player_one
           printfo.p1_move_status new_g_state.player_two
       else ()
