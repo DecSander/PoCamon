@@ -56,7 +56,7 @@ let gen_initial_state () : game_state =
 
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
+  let () = print_endline "" in let () = print_string ">" in
   let input = read_line () in
   match (process_input input) with
   | Some Enter -> ()
@@ -78,7 +78,7 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
+  let () = print_endline "" in let () = print_string ">" in
   let input = read_line () in
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
@@ -97,7 +97,7 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
+  let () = print_endline "" in let () = print_string ">" in
   let input = read_line () in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
   match (process_input input) with
