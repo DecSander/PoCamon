@@ -115,6 +115,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
 
 
 let on_faint g_state : game_state =
+  let () = print_endline "ON FAINT" in
   if g_state.player_one.active_pocamon.health <= 0 then
     let () = wait_for_enter g_state g_state.player_one
       (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
