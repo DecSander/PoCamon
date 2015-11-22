@@ -113,16 +113,26 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
               (Pocamon_List (if n < 2 then n + 1 else 2))
   | _ -> choose_new_pocamon g_state p_state s_state
 
+let game_over g_state winner : game_state =
+  let end_message = Talking (winner.name ^ " has won!") in
+  let () = wait_for_enter g_state winner end_message in
+  exit 0
 
 let on_faint g_state : game_state =
   if g_state.player_one.active_pocamon.health <= 0 then
-    let () = wait_for_enter g_state g_state.player_one
-      (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
-      choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
+      let () = wait_for_enter g_state g_state.player_one
+        (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
+        if List.length g_state.player_one.pocamon_list > 0 then
+          choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
+        else
+          game_over g_state g_state.player_two
   else if g_state.player_two.active_pocamon.health <= 0 then
-    let () = wait_for_enter g_state g_state.player_two
-      (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
-      choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
+      let () = wait_for_enter g_state g_state.player_two
+        (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
+        if List.length g_state.player_two.pocamon_list > 0 then
+          choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
+        else
+          game_over g_state g_state.player_one
   else
     g_state
 
@@ -217,12 +227,14 @@ let rec run_game_turn g_state : game_state =
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
 
-  let () = print_debuff_info status_changed_game_state
+  let final_game_state = on_faint status_changed_game_state in
+
+  let () = print_debuff_info final_game_state
     g_state.player_one debuff_info.p1_debuff in
-  let () = print_debuff_info status_changed_game_state
+  let () = print_debuff_info final_game_state
     g_state.player_two debuff_info.p2_debuff in
 
-  run_game_turn status_changed_game_state
+  run_game_turn final_game_state
 
 let start () : unit =
   ignore (run_game_turn (gen_initial_state ()))
