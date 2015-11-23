@@ -28,10 +28,10 @@ let create_public_info g_state: public_info =
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
   print_start "What is your name, player one?";
-  print_endline "";
+  print_string "\n|> ";
   let player_one_name = read_line () in
   print_start "Would you like to play against your rival, or a human?";
-  print_endline "";
+  print_string "";
   let rec get_against_ai () : bool =
     let input = String.uppercase (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
       if input = "RIVAL" then
@@ -43,11 +43,11 @@ let gen_initial_state () : game_state =
   let against_ai = get_against_ai () in
   let player_two_name = if against_ai then
       (print_start "What is your rival's name?\n";
-      print_endline "";
+      print_string "\n|> ";
       read_line ())
     else
       (print_start "What is your name, player two?\n";
-      print_endline "";
+      print_string "\n|> ";
       read_line ())
     in
 
@@ -105,7 +105,7 @@ let rec get_player_action g_state p_state s_state : fAction =
   let defaults =
     match s_state with
     | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"], ["FIGHT";"BAG";"POCAMON";"RUN"]
-    | Moves -> (List.map (fun (x:move) -> x.name) p_state.active_pocamon.moves),
+    | Moves -> (List.map (fun (x:move) -> x.name) p_state.active_pocamon.moves)@["BACK"],
       ["<MOVE>";"BACK"]
     | Pocamon_List _ ->
       (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN"],
@@ -137,6 +137,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
     ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"] in
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
+
   match (process_input input) with
   | Some Action (Switch p) ->
     let poca_option = try Some (List.find (fun (poca:pocamon) -> poca.name = p)
@@ -265,8 +266,6 @@ let rec run_game_turn g_state : game_state =
       ) in
 
   let faint_switch_game_state = on_faint new_g_state in
-  let () = print_endline faint_switch_game_state.player_one.active_pocamon.name in
-  let () = print_endline faint_switch_game_state.player_two.active_pocamon.name in
 
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
