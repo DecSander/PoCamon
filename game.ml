@@ -1,6 +1,6 @@
 open Types
 open Io
-open Ai
+(*open Ai *)
 open Fight
 open PocaDex
 
