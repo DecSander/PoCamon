@@ -35,9 +35,9 @@ let gen_initial_state () : game_state =
   print_string "\n|> ";
   let player_one_name = read_line () in
   print_start "Would you like to play against your rival, or a human?";
-  print_string "";
   let rec get_against_ai () : bool =
-    let input = String.uppercase (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
+    let input = String.uppercase
+      (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
       if input = "RIVAL" then
         true
       else if input = "HUMAN" then
@@ -46,11 +46,11 @@ let gen_initial_state () : game_state =
         get_against_ai () in
   let against_ai = get_against_ai () in
   let player_two_name = if against_ai then
-      (print_start "What is your rival's name?\n";
+      (print_start "What is your rival's name?";
       print_string "\n|> ";
       read_line ())
     else
-      (print_start "What is your name, player two?\n";
+      (print_start "What is your name, player two?";
       print_string "\n|> ";
       read_line ())
     in
@@ -94,7 +94,8 @@ let process_screen_action comm s_state g_state : screen_state =
   | Some Fight, Out -> Moves
   | Some Pocamon, Out -> Pocamon_List 0
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
-  | Some Bag, Out -> Talking (List.nth bag_jokes (Random.int (List.length bag_jokes)))
+  | Some Bag, Out ->
+      Talking (List.nth bag_jokes (Random.int (List.length bag_jokes)))
   | Some Back, Moves -> Out
   | Some Down, Pocamon_List n -> Pocamon_List (if n < 1 then n + 1 else 1)
   | Some Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
@@ -109,12 +110,15 @@ let rec get_player_action g_state p_state s_state : fAction =
   let () = print_endline "" in
   let defaults =
     match s_state with
-    | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"], ["FIGHT";"BAG";"POCAMON";"RUN"]
-    | Moves -> (List.map (fun (x:move) -> x.name) p_state.active_pocamon.moves)@["BACK"],
-      ["<MOVE>";"BACK"]
+    | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"],
+        ["FIGHT";"BAG";"POCAMON";"RUN"]
+    | Moves -> (List.map (fun (x:move) -> x.name)
+        p_state.active_pocamon.moves)@["BACK"],
+        ["<MOVE>";"BACK"]
     | Pocamon_List _ ->
-      (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN";"SWITCH"],
-      ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
+        (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list)
+        @ ["BACK";"UP";"DOWN";"SWITCH"],
+        ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
     | Talking _ -> ["\'\'"], [""]
   in
   let input = get_input (fst defaults) (snd defaults) in
@@ -132,13 +136,15 @@ let rec get_player_action g_state p_state s_state : fAction =
     begin match poca_option with
     | Some p -> FSwitch p
     | None -> get_player_action g_state p_state s_state end
-  | c, _ -> get_player_action g_state p_state (process_screen_action c s_state g_state)
+  | c, _ -> get_player_action g_state p_state
+      (process_screen_action c s_state g_state)
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let () = print_endline "" in
   let auto_complete_info =
-    (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN";"SWITCH"],
+    (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @
+    ["BACK";"UP";"DOWN";"SWITCH"],
     ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"] in
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
@@ -248,7 +254,6 @@ let print_debuff_info g_state p_state p_debuff : unit =
 
 let rec run_game_turn g_state : game_state =
   let p1_action = get_player_action g_state g_state.player_one Out in
-  let () = ignore(List.map (fun (x:move) -> print_endline x.name) g_state.player_two.active_pocamon.moves) in
   let p2_action = get_player_action g_state g_state.player_two Out in
   let new_g_state, printfo = apply_fight_sequence g_state p1_action p2_action in
 
