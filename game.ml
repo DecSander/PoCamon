@@ -275,12 +275,12 @@ let rec run_game_turn g_state : game_state =
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
 
-  let final_game_state = on_faint status_changed_game_state in
-
-  let () = print_debuff_info final_game_state
+  let () = print_debuff_info status_changed_game_state
     g_state.player_one debuff_info.p1_debuff in
-  let () = print_debuff_info final_game_state
+  let () = print_debuff_info status_changed_game_state
     g_state.player_two debuff_info.p2_debuff in
+
+  let final_game_state = on_faint status_changed_game_state in
 
   run_game_turn final_game_state
 
