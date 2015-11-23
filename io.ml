@@ -138,7 +138,7 @@ let gen_talking (s: bytes) :bytes =
 
 let gen_out ps :bytes =
   (string_to_box ("What will " ^ ps.name ^ " do?")) ^ "\n" ^
-  (string_to_box "Fight        |        Bag") ^ "\n" ^
+  (string_to_box "Fight") ^ "\n" ^
   (string_to_box "Pocamon      |        Run") ^ "\n" ^
   (string_to_box " ") ^ "\n"
 
@@ -174,22 +174,22 @@ let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   print_string str
 
-let ascii_pokeball = " \027[34m       
-                                                                
-                              .;:**'                     
-                              `                              
-  .:XHHHHk.              db.   .;;.     dH  MX               \027[33m 
-oMMMMMMMMMMM        MM  dMMP :MMMMMR   MMM  MR      ~MRMN     
+let ascii_pokeball = " \027[34m
+
+                              .;:**'
+                              `
+  .:XHHHHk.              db.   .;;.     dH  MX               \027[33m
+oMMMMMMMMMMM        MM  dMMP :MMMMMR   MMM  MR      ~MRMN
 QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
   `MMM.   )M> :X!Hk. QMMM   XMQ.o'  .  MMMMMMM X?XMMM MMM>!MMP
-   'MMMb.dM! XM M'?M QMMMMX.`MMMMMMMM~ MM MHM XM    MX MMXXMM 
-    ~MMMMM~ XMM. .XM XM`'MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP 
-     ?MMM>  YMMMMMM! MM   `?MMRb.    `'''   !L'MMMMM XM IMMM  
-      MMMX   'MMMM'  LM       ~%:           !Mh.''' dMI IMMP  \027[34m 
-      'MMM.                                             IMX   
-       ~M!M                                             IMP 
+   'MMMb.dM! XM M'?M QMMMMX.`MMMMMMMM~ MM MHM XM    MX MMXXMM
+    ~MMMMM~ XMM. .XM XM`'MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP
+     ?MMM>  YMMMMMM! MM   `?MMRb.    `'''   !L'MMMMM XM IMMM
+      MMMX   'MMMM'  LM       ~%:           !Mh.''' dMI IMMP  \027[34m
+      'MMM.                                             IMX
+       ~M!M                                             IMP
 
-\027[37m 
+\027[37m
                     PSHSHSHSHSHSHHSSHS - Kraby #93
 
 
