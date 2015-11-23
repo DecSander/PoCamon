@@ -4,6 +4,10 @@ open Io
 open Fight
 open PocaDex
 
+let bag_jokes = ["There is a time and a place for everything. But not now";
+  "Steroids are bad - how could you do that to an innocent pocamon?";
+  "Don't do drugs, kids"]
+
 let rec get_new_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
   if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
@@ -90,6 +94,7 @@ let process_screen_action comm s_state g_state : screen_state =
   | Some Fight, Out -> Moves
   | Some Pocamon, Out -> Pocamon_List 0
   | Some Run, Out -> Talking "You can't run from a trainer battle!"
+  | Some Bag, Out -> Talking (List.nth bag_jokes (Random.int (List.length bag_jokes)))
   | Some Back, Moves -> Out
   | Some Down, Pocamon_List n -> Pocamon_List (if n < 1 then n + 1 else 1)
   | Some Up, Pocamon_List n -> Pocamon_List (if n > 0 then n - 1 else 0)
@@ -108,7 +113,7 @@ let rec get_player_action g_state p_state s_state : fAction =
     | Moves -> (List.map (fun (x:move) -> x.name) p_state.active_pocamon.moves)@["BACK"],
       ["<MOVE>";"BACK"]
     | Pocamon_List _ ->
-      (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN"],
+      (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN";"SWITCH"],
       ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
     | Talking _ -> ["\'\'"], [""]
   in
@@ -133,7 +138,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let () = print_endline "" in
   let auto_complete_info =
-    (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN"],
+    (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN";"SWITCH"],
     ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"] in
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
@@ -148,7 +153,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   | Some Up -> choose_new_pocamon g_state p_state
             (Pocamon_List (if n > 0 then n - 1 else 0))
   | Some Down -> choose_new_pocamon g_state p_state
-              (Pocamon_List (if n < 2 then n + 1 else 2))
+              (Pocamon_List (if n < 1 then n + 1 else 1))
   | _ -> choose_new_pocamon g_state p_state s_state
 
 let game_over g_state winner : game_state =
@@ -281,6 +286,7 @@ let rec run_game_turn g_state : game_state =
 
 let start () : unit =
   let () = setup () in
+  let () = Random.self_init () in
   ignore (run_game_turn (gen_initial_state ()))
 
 let _ = start ()
