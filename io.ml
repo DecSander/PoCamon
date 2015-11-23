@@ -246,7 +246,7 @@ let rec string_contains s sub : bool =
 let find_matches words acc =
   List.sort (fun v1 v2 -> if v1 <= v2 then -1 else 1)
               (List.filter (fun s -> (String.sub s 0
-                (min (List.length acc) (String.length s)))= get_word acc) words)
+                (min (String.length (get_word acc)) (String.length s)))= get_word acc) words)
 
 let print_text s : unit=
    print_string (Bytes.make (80) ' ');
@@ -270,7 +270,7 @@ let get_input (words: string list) (defaults: string list) =
                 print_string ("\027[37m\r|> \027[32m"^h);
                 flush Pervasives.stdout;
                 let c = really_input_string Pervasives.stdin 1 in
-                go (acc@[c]) in
+                go ([h]@[c]) in
  (*let () = print_string (Bytes.make (80) ' ') in
           if (string_contains h "Switch" && (String.length (get_word acc) < 6))
           then
