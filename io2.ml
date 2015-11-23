@@ -41,51 +41,35 @@ let process_selection (s: bytes) :yn option =
 let string_to_box (s: bytes) :bytes =
   "* " ^ s
 
-(* From http://stackoverflow.com/questions/10068713/string-to-list-of-char *)
-let explode s =
-  let rec exp i l =
-    if i < 0 then l else exp (i - 1) (String.make 1 (s.[i]) :: l) in
-  exp ((String.length s) - 1) []
-
-let length_no_color (s: bytes) :int =
-  let rec length_helper xs res :int =
-    (match xs with
-    | [] -> res
-    | h::t ->
-      if "\027[28m" > h && h < "\027[41m"
-      then length_helper t res
-      else length_helper t (1 + res)) in
-  length_helper (explode s) 0
-
 let add_spaces (s: bytes) (len: int) :bytes =
   let rec add_help st i =
     if i <= 0
     then st
     else add_help (st ^ " ") (i-1) in
-  add_help s (len - (length_no_color s))
+  add_help s (len - (String.length s))
 
 let create_pocamon_ascii (pc: pocamon) :bytes =
-  let color = "\027" ^ (match fst pc.poca_type with
-  | TNormal -> "[37m"
-  | TFire -> "[31m"
-  | TWater -> "[34m"
-  | TElectric -> "[33m"
-  | TGrass -> "[32m"
-  | TIce -> "[36m"
-  | TFighting -> "[37m"
-  | TPoison -> "[35m"
-  | TGround -> "[37m"
-  | TFlying -> "[37m"
-  | TPsychic -> "[35m"
-  | TBug -> "[32m"
-  | TRock -> "[37m"
-  | TGhost -> "[35m"
-  | TDragon -> "[35m") in
-  let _ = "" in
+  let _ = "\027" ^ (match fst pc.poca_type with
+  | TNormal -> "[40m"
+  | TFire -> "[41m"
+  | TWater -> "[44m"
+  | TElectric -> "[43m"
+  | TGrass -> "[42m"
+  | TIce -> "[46m"
+  | TFighting -> "[40m"
+  | TPoison -> "[45m"
+  | TGround -> "[40m"
+  | TFlying -> "[40m"
+  | TPsychic -> "[45m"
+  | TBug -> "[42m"
+  | TRock -> "[40m"
+  | TGhost -> "[45m"
+  | TDragon -> "[45m") in
+  let color = "" in
 
   let rec ascii_help (art: bytes list) (res: bytes) :bytes =
     match art with
-    | h::t -> ascii_help t (res ^ "\n" ^ color ^ h ^ "")
+    | h::t -> ascii_help t (res ^ "\n" ^ color ^ h ^ "\027[37m")
     | _ -> res in
   ascii_help (Str.split (Str.regexp "\n") pc.ascii) ""
 
@@ -122,8 +106,8 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
       art_help t1 t2
         (res ^ "\n" ^ (add_spaces h1 32) ^ "    ||    " ^ (add_spaces h2 32))
     | _, _ -> res in
-  (art_help (Str.split (Str.regexp "\n") art1)
-            (Str.split (Str.regexp "\n") art2) "") ^ "\027[37m"
+  art_help (Str.split (Str.regexp "\n") art1)
+           (Str.split (Str.regexp "\n") art2) ""
 
 let gen_moves ps :bytes =
   let rec moves_help (m_list: move list) i (res: bytes) :bytes =
