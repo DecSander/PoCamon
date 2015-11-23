@@ -2,7 +2,7 @@ open Types
 open Unix
 
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
-| Run | Back | Save | Load
+| Run | Back | Save | Load | Bag
 
 type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
@@ -13,7 +13,7 @@ let match_phrase (str: bytes) (regex: bytes) :bool =
 
 let get_switch (str: bytes) :command option =
   let words = Str.split (Str.regexp " ") str in
-  if (List.length words = 0) || (List.length words > 2)
+  if (List.length words < 2)
   then None
   else Some (Action (Switch (List.nth words 1)))
 
@@ -24,6 +24,7 @@ let process_input (s: bytes) :command option =
   else if match_phrase trim_s "^$" then Some Enter
   else if match_phrase trim_s "^FIGHT$" then Some Fight
   else if match_phrase trim_s "^POCAMON$" then Some Pocamon
+  else if match_phrase trim_s "^BAG$" then Some Bag
   else if match_phrase trim_s "^RUN$" then Some Run
   else if match_phrase trim_s "^BACK$" then Some Back
   else if match_phrase trim_s "^SAVE$" then Some Save
@@ -176,7 +177,7 @@ let gen_talking (s: bytes) :bytes =
 
 let gen_out ps :bytes =
   (string_to_box ("What will " ^ ps.name ^ " do?")) ^ "\n" ^
-  (string_to_box "Fight") ^ "\n" ^
+  (string_to_box "Fight        |        Bag") ^ "\n" ^
   (string_to_box "Pocamon      |        Run") ^ "\n" ^
   (string_to_box " ") ^ "\n"
 
