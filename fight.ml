@@ -363,7 +363,7 @@ let apply_fight_sequence g_state p1_action p2_action =
     let new_g_state, p2_status = do_single_move g_state.player_two
       g_state.player_one p2_action false g_state in
 
-    if new_g_state.player_two.active_pocamon.health <= 0
+    if new_g_state.player_one.active_pocamon.health <= 0
     then
       (new_g_state, {p1_went_first=false;
                     p1_move_status=Faint_Status;
@@ -391,8 +391,11 @@ let apply_status_debuffs g_state =
   | SPoison -> p2_poca.health - (p2_poca.stats.max_hp / 8), SPoison
   | _ -> p2_poca.health, SNormal in
 
-  let p1_poca' = {p1_poca with health=p1_poca_health} in
-  let p2_poca' = {p2_poca with health=p2_poca_health} in
+  let p1_final_health = if p1_poca_health > 0 then p1_poca_health else 0 in
+  let p2_final_health = if p2_poca_health > 0 then p2_poca_health else 0 in
+
+  let p1_poca' = {p1_poca with health=p1_final_health} in
+  let p2_poca' = {p2_poca with health=p2_final_health} in
   let p1' = {g_state.player_one with active_pocamon=p1_poca'} in
   let p2' = {g_state.player_two with active_pocamon=p2_poca'} in
 
