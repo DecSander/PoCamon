@@ -250,7 +250,7 @@ let find_matches words acc =
                 (min (String.length (get_word acc)) (String.length s)))= get_word acc) words)
 
 let print_text s : unit=
-   print_string (Bytes.make (70) ' ');
+   print_string ("\r"^(Bytes.make (70) ' '));
    print_string("\r|>"^(s));
    flush Pervasives.stdout
 
@@ -267,7 +267,7 @@ let get_input (words: string list) (defaults: string list) =
      let acc = remove_last_one acc in
      match find_matches words acc with
       | [] ->   failwith "error this should be handled by handle_typing"
-      | h::t -> print_string (Bytes.make (70) ' ');
+      | h::t -> print_string ("\r"^(Bytes.make (70) ' '));
                 print_string ("\027[37m\r|> \027[32m"^(String.capitalize h));
                 flush Pervasives.stdout;
                 let c = really_input_string Pervasives.stdin 1 in
@@ -290,14 +290,14 @@ let get_input (words: string list) (defaults: string list) =
           print_text (get_word newl);
           go newl
       | h::t -> let w = get_word acc in
-          print_string (Bytes.make (70) ' ');
+          print_string ("\r"^(Bytes.make (70) ' '));
           print_string ("\r\027[37m   "^h);
           print_string ("\r|> \027[32m"^w);
           flush Pervasives.stdout;
           go (acc@[String.lowercase(really_input_string Pervasives.stdin 1)]) in
 
     let handle_defaults () =
-      print_string (Bytes.make (70) ' ');
+      print_string ("\r"^(Bytes.make (70) ' '));
       print_string ("\r\027[37m   ");
       print_string (List.hd defaults);
       List.iter (fun s -> print_string (" | "^s)) (List.tl defaults);
