@@ -174,26 +174,26 @@ let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   print_string str
 
-let ascii_pokeball = "        WELCOME TO POCAMON!!!
-                         ────────▄███████████▄────────
-                         ─────▄███▓▓▓▓▓▓▓▓▓▓▓███▄─────
-                         ────███▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓███────
-                         ───██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██───
-                         ──██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██──
-                         ─██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██─
-                         ██▓▓▓▓▓▓▓▓▓███████▓▓▓▓▓▓▓▓▓██
-                         ██▓▓▓▓▓▓▓▓██░░░░░██▓▓▓▓▓▓▓▓██
-                         ██▓▓▓▓▓▓▓██░░███░░██▓▓▓▓▓▓▓██
-                         ███████████░░███░░███████████
-                         ██░░░░░░░██░░███░░██░░░░░░░██
-                         ██░░░░░░░░██░░░░░██░░░░░░░░██
-                         ██░░░░░░░░░███████░░░░░░░░░██
-                         ─██░░░░░░░░░░░░░░░░░░░░░░░██─
-                         ──██░░░░░░░░░░░░░░░░░░░░░██──
-                         ───██░░░░░░░░░░░░░░░░░░░██───
-                         ────███░░░░░░░░░░░░░░░███────
-                         ─────▀███░░░░░░░░░░░███▀─────
-                         ────────▀███████████▀────────
+let ascii_pokeball = " \027[34m       
+                                                                
+                              .;:**'                     
+                              `                              
+  .:XHHHHk.              db.   .;;.     dH  MX               \027[33m 
+oMMMMMMMMMMM        MM  dMMP :MMMMMR   MMM  MR      ~MRMN     
+QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
+  `MMM.   )M> :X!Hk. QMMM   XMQ.o'  .  MMMMMMM X?XMMM MMM>!MMP
+   'MMMb.dM! XM M'?M QMMMMX.`MMMMMMMM~ MM MHM XM    MX MMXXMM 
+    ~MMMMM~ XMM. .XM XM`'MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP 
+     ?MMM>  YMMMMMM! MM   `?MMRb.    `'''   !L'MMMMM XM IMMM  
+      MMMX   'MMMM'  LM       ~%:           !Mh.''' dMI IMMP  \027[34m 
+      'MMM.                                             IMX   
+       ~M!M                                             IMP 
+
+\027[37m 
+                    PSHSHSHSHSHSHHSSHS - Kraby #93
+
+
+
 "
 
 let print_start s =
@@ -244,12 +244,13 @@ let rec string_contains s sub : bool =
       string_contains (String.sub s 1 ((String.length s) - 1)) sub
 
 let find_matches words acc =
-  List.sort (fun v1 v2 -> if v1 <= v2 then -1 else 1)
+  let words = List.map (fun s -> String.lowercase s) words in
+  List.sort (fun v1 v2 -> String.compare v1 v2)
               (List.filter (fun s -> (String.sub s 0
                 (min (String.length (get_word acc)) (String.length s)))= get_word acc) words)
 
 let print_text s : unit=
-   print_string (Bytes.make (80) ' ');
+   print_string (Bytes.make (70) ' ');
    print_string("\r|>"^(s));
    flush Pervasives.stdout
 
@@ -266,11 +267,11 @@ let get_input (words: string list) (defaults: string list) =
      let acc = remove_last_one acc in
      match find_matches words acc with
       | [] ->   failwith "error this should be handled by handle_typing"
-      | h::t -> print_string (Bytes.make (80) ' ');
-                print_string ("\027[37m\r|> \027[32m"^h);
+      | h::t -> print_string (Bytes.make (70) ' ');
+                print_string ("\027[37m\r|> \027[32m"^(String.capitalize h));
                 flush Pervasives.stdout;
                 let c = really_input_string Pervasives.stdin 1 in
-                go ([h]@[c]) in
+                go ([String.lowercase h]@[String.lowercase c]) in
  (*let () = print_string (Bytes.make (80) ' ') in
           if (string_contains h "Switch" && (String.length (get_word acc) < 6))
           then
@@ -285,24 +286,24 @@ let get_input (words: string list) (defaults: string list) =
     let handle_typing (): string =
       match find_matches words acc with
       | [] -> let _ = Sys.command "printf '\a'" in
-              let newl = remove_last_one acc in
-              print_text (get_word newl);
-              go newl
+          let newl = remove_last_one acc in
+          print_text (get_word newl);
+          go newl
       | h::t -> let w = get_word acc in
-                print_string (Bytes.make (80) ' ');
-                print_string ("\r\027[37m   "^h);
-                print_string ("\r|> \027[32m"^w);
-                flush Pervasives.stdout;
-                go (acc@[really_input_string Pervasives.stdin 1]) in
+          print_string (Bytes.make (70) ' ');
+          print_string ("\r\027[37m   "^h);
+          print_string ("\r|> \027[32m"^w);
+          flush Pervasives.stdout;
+          go (acc@[String.lowercase(really_input_string Pervasives.stdin 1)]) in
 
     let handle_defaults () =
-      print_string (Bytes.make (80) ' ');
+      print_string (Bytes.make (70) ' ');
       print_string ("\r\027[37m   ");
       print_string (List.hd defaults);
       List.iter (fun s -> print_string (" | "^s)) (List.tl defaults);
       print_string ("\r|> ");
       flush Pervasives.stdout;
-      go (acc@[really_input_string Pervasives.stdin 1]) in
+      go (acc@[String.lowercase (really_input_string Pervasives.stdin 1)]) in
 
 
 
