@@ -27,19 +27,27 @@ let create_public_info g_state: public_info =
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
-  print_start "What is your name, player one?\n";
+  print_start "What is your name, player one?";
+  print_endline "";
   let player_one_name = read_line () in
-  print_start "Would you like to play against your rival, or a human?\n";
-  let against_ai =
-    if (get_input ["Rival";"Human"] ["Rival";"Human"]) = "Rival" then
-      true
-    else
-      false in
+  print_start "Would you like to play against your rival, or a human?";
+  print_endline "";
+  let rec get_against_ai () : bool =
+    let input = String.uppercase (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
+      if input = "RIVAL" then
+        true
+      else if input = "HUMAN" then
+        false
+      else
+        get_against_ai () in
+  let against_ai = get_against_ai () in
   let player_two_name = if against_ai then
       (print_start "What is your rival's name?\n";
+      print_endline "";
       read_line ())
     else
       (print_start "What is your name, player two?\n";
+      print_endline "";
       read_line ())
     in
 
@@ -71,8 +79,8 @@ let gen_initial_state () : game_state =
 
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string "> " in
-  let input = get_input ["\'\'"] ["\'\'"] in
+  let () = print_endline "" in
+  let input = get_input ["\'\'"] [""] in
   match (process_input input) with
   | Some Enter -> ()
   | _ -> wait_for_enter g_state p_state s_state
@@ -93,18 +101,19 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string "> " in
+  let () = print_endline "" in
   let defaults =
     match s_state with
-    | Out -> ["Fight";"Bag";"Pocamon";"Run"], ["Fight";"Bag";"Pocamon";"Run"]
+    | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"], ["FIGHT";"BAG";"POCAMON";"RUN"]
     | Moves -> (List.map (fun (x:move) -> x.name) p_state.active_pocamon.moves),
-      ["<Move>";"Back"]
+      ["<MOVE>";"BACK"]
     | Pocamon_List _ ->
-      (List.map (fun (x:pocamon) -> "switch " ^ x.name) p_state.pocamon_list),
-      ["Switch <Pocamon>"; "Back"]
-    | Talking _ -> ["\'\'"], ["\'\'"]
+      (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN"],
+      ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
+    | Talking _ -> ["\'\'"], [""]
   in
   let input = get_input (fst defaults) (snd defaults) in
+  print_endline input;
   match (process_input input), s_state with
   | Some Action (Move x), Moves ->
     let move_option = try Some (List.find (fun (m:move) -> m.name = x)
@@ -122,8 +131,11 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in let () = print_string "> " in
-  let input = read_line () in
+  let () = print_endline "" in
+  let auto_complete_info =
+    (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @ ["BACK";"UP";"DOWN"],
+    ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"] in
+  let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
   match (process_input input) with
   | Some Action (Switch p) ->

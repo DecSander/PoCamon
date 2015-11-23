@@ -312,4 +312,4 @@ let get_input (words: string list) (defaults: string list) =
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
-  go []
+  String.trim (go [])
