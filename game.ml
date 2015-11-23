@@ -32,7 +32,7 @@ let create_public_info g_state: public_info =
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
   print_start "What is your name, player one?";
-  print_string "\n|> ";
+  print_string "|> ";
   let player_one_name = read_line () in
   print_start "Would you like to play against your rival, or a human?";
   let rec get_against_ai () : bool =
@@ -51,7 +51,7 @@ let gen_initial_state () : game_state =
       read_line ())
     else
       (print_start "What is your name, player two?";
-      print_string "\n|> ";
+      print_string "|> ";
       read_line ())
     in
 
