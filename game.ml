@@ -47,7 +47,7 @@ let gen_initial_state () : game_state =
   let against_ai = get_against_ai () in
   let player_two_name = if against_ai then
       (print_start "What is your rival's name?";
-      print_string "\n|> ";
+      print_string "|> ";
       read_line ())
     else
       (print_start "What is your name, player two?";
