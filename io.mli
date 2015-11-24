@@ -1,5 +1,4 @@
 open Types
-open Unix
 
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
 | Run | Back | Save | Load | Bag
@@ -29,7 +28,7 @@ val print_start : string -> unit
 val get_input : string list -> string list -> string
 
 (* Setup the terminal for nonconical input to use the autocorrect *)
-val setup : unit -> terminal_io
+val setup : unit -> Unix.terminal_io
 
 (* Setup the terminal back to its normal state *)
-val breakdown: terminal_io -> unit
+val breakdown: Unix.terminal_io -> unit
