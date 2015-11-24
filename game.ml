@@ -1,4 +1,5 @@
 open Types
+open Unix
 open Io
 (*open Ai *)
 open Fight
@@ -36,6 +37,7 @@ let gen_initial_state () : game_state =
   let player_one_name = read_line () in
   print_start "Would you like to play against your rival, or a human?";
   print_string "";
+  let tinfo = setup () in
   let rec get_against_ai () : bool =
     let input = String.uppercase (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
       if input = "RIVAL" then
@@ -45,6 +47,7 @@ let gen_initial_state () : game_state =
       else
         get_against_ai () in
   let against_ai = get_against_ai () in
+  breakdown tinfo;
   let player_two_name = if against_ai then
       (print_start "What is your rival's name?\n";
       print_string "\n|> ";
@@ -54,7 +57,7 @@ let gen_initial_state () : game_state =
       print_string "\n|> ";
       read_line ())
     in
-
+  let _ = setup () in
   let player_one_pocamon = List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_two_pocamon = List.fold_left
@@ -285,7 +288,6 @@ let rec run_game_turn g_state : game_state =
   run_game_turn final_game_state
 
 let start () : unit =
-  let () = setup () in
   let () = Random.self_init () in
   ignore (run_game_turn (gen_initial_state ()))
 
