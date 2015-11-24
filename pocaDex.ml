@@ -33,7 +33,7 @@ let movedex = MoveDex.add "WATER GUN" {name="WATER GUN"; move_type=TWater; statu
 let movedex = MoveDex.add "HYDRO PUMP" {name="HYDRO PUMP"; move_type=TWater; status_effect=MNormal; status_probability=0; accuracy=80; damage=120; max_pp=5; effect=MNone; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SURF" {name="SURF"; move_type=TWater; status_effect=MNormal; status_probability=0; accuracy=100; damage=95; max_pp=15; effect=MNone; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "BUBBLEBEAM" {name="BUBBLEBEAM"; move_type=TWater; status_effect=MNormal; status_probability=10; accuracy=100; damage=65; max_pp=20; effect=MSpeed (-1); pp=20; move_category=ESpecial} movedex
-let movedex = MoveDex.add "HYPER BEAM" {name="HYPER BEAM"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=90; damage=150; max_pp=5; effect=MCharge; pp=5; move_category=ESpecial} movedex
+let movedex = MoveDex.add "HYPER BEAM" {name="HYPER BEAM"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=150; max_pp=5; effect=MCharge; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "PECK" {name="PECK"; move_type=TFlying; status_effect=MNormal; status_probability=0; accuracy=100; damage=35; max_pp=35; effect=MNone; pp=35; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DRILL PECK" {name="DRILL PECK"; move_type=TFlying; status_effect=MNormal; status_probability=0; accuracy=100; damage=80; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SUBMISSION" {name="SUBMISSION"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=80; damage=80; max_pp=25; effect=MRecoil; pp=25; move_category=ESpecial} movedex
