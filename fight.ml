@@ -172,6 +172,14 @@ let mStatus_to_pStatus move_status =
 *)
 let apply_attack atk_state def_state move p1_is_atk g_state =
 
+  let charge_move = atk_state.active_pocamon.charging in
+  let charge_off = {atk_state.active_pocamon with charging = None} in
+  let atk_state = {atk_state with active_pocamon = charge_off} in
+  let g_state = if p1_is_atk then
+    {g_state with player_one = atk_state}
+  else
+    {g_state with player_two = atk_state} in
+
   let atk_poca = atk_state.active_pocamon in
   let def_poca = def_state.active_pocamon in
 
@@ -214,8 +222,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
     else
       begin
       if (match move.effect with MCharge -> false | _ -> true)
-        || (match atk_state.active_pocamon.charging with
-            |Some _ -> true
+        || (match charge_move with
+            | Some _ -> true
             | None -> false) then
         let missed = (Random.int 100) > move.accuracy in
 
@@ -271,10 +279,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             | _ -> atk_state.active_pocamon
           in
 
-          let atk_poca'' = {atk_poca' with charging=None} in
-
           let def_state' = {def_state with active_pocamon=def_poca'} in
-          let atk_state' = {atk_state with active_pocamon=atk_poca''} in
+          let atk_state' = {atk_state with active_pocamon=atk_poca'} in
           let g_state'' = if not p1_is_atk
             then {player_one=def_state'; player_two=atk_state'}
             else {player_two=def_state'; player_one=atk_state'} in
