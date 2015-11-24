@@ -4,6 +4,9 @@
 *)
 type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze | SFreeze of int
 type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
+type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
+| MSpecAttack of int | MAllStatsUp | MLoop | Mohko | MRecoil | MRecover
+| MChargeNoHit | MCharge
 
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
@@ -35,7 +38,8 @@ type move = {
           damage : int;
           max_pp : int;
           pp : int;
-          move_category: pCategory
+          move_category: pCategory;
+          move_effect : mEffect;
 }
 
 (* the stats of a pocamon that show how powerful it is *)
