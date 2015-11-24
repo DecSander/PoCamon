@@ -8,6 +8,7 @@ type attack_status = {
 }
 
 type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
+                    | Charge_Status
 
 type battle_status = {
       p1_went_first : bool;
@@ -33,7 +34,7 @@ val do_single_move : player_state -> player_state -> fAction -> bool ->
 * Applys the single attack to the game state
 *)
 val apply_attack : player_state -> player_state -> move -> bool -> game_state ->
-                   game_state * move_status
+                   bool -> game_state * move_status
 
 (*
 * Switches the active pocamon of the player making the move

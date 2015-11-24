@@ -85,7 +85,7 @@ let create_pocamon_ascii (pc: pocamon) :bytes =
 
   let rec ascii_help (art: bytes list) (res: bytes) :bytes =
     match art with
-    | h::t -> ascii_help t (res ^ "\n" ^ color ^ h ^ "")
+    | h::t -> ascii_help t (res ^ "\n" ^ color ^ h)
     | _ -> res in
   ascii_help (Str.split (Str.regexp "\n") pc.ascii) ""
 
@@ -120,7 +120,7 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
     match art1, art2 with
     | h1::t1, h2::t2 ->
       art_help t1 t2
-        (res ^ "\n" ^ (add_spaces h1 36) ^ "    ||    " ^ (add_spaces h2 36))
+        (res ^ "\n" ^ (add_spaces h1 36) ^ "   \027[37m ||    " ^ (add_spaces h2 36))
     | _, _ -> res in
   (art_help (Str.split (Str.regexp "\n") art1)
             (Str.split (Str.regexp "\n") art2) "") ^ "\027[37m"
@@ -236,7 +236,7 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
 
 let print_start s =
   print_string (ascii_pokeball ^ star_bar ^ "\n" ^
-                (string_to_box s) ^ "\n" ^ star_bar)
+                (string_to_box s) ^ "\n")
 
 let setup () =
   (* Credit to Niki Yoshiuchi from http://stackoverflow.com/questions/4130048/recognizing-arrow-keys-with-stdin*)

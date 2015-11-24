@@ -108,38 +108,44 @@ let process_screen_action comm s_state g_state : screen_state =
 
 
 let rec get_player_action g_state p_state s_state : fAction =
-  let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
-  let defaults =
-    match s_state with
-    | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"],
-        ["FIGHT";"BAG";"POCAMON";"RUN"]
-    | Moves -> (List.map (fun (x:move) -> x.name)
-        p_state.active_pocamon.moves)@["BACK"],
-        ["<MOVE>";"BACK"]
-    | Pocamon_List _ ->
-        (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list)
-        @ ["BACK";"UP";"DOWN";"SWITCH"],
-        ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
-    | Talking _ -> ["\'\'"], [""]
-  in
-  let input = get_input (fst defaults) (snd defaults) in
-  print_endline input;
-  match (process_input input), s_state with
-  | Some Action (Move x), Moves ->
-    let move_option = try Some (List.find (fun (m:move) -> m.name = x)
-        p_state.active_pocamon.moves) with _ -> None in
-    begin match move_option with
-    | Some m -> FMove m
-    | None -> get_player_action g_state p_state s_state end
-  | Some Action (Switch x), Pocamon_List _ ->
-    let poca_option = try Some (List.find (fun (p:pocamon) -> p.name = x)
-        p_state.pocamon_list) with _ -> None in
-    begin match poca_option with
-    | Some p -> FSwitch p
-    | None -> get_player_action g_state p_state s_state end
-  | c, _ -> get_player_action g_state p_state
-      (process_screen_action c s_state g_state)
+  match p_state.active_pocamon.charging with None ->
+    let () = print_screen p_state (create_public_info g_state) s_state in
+    let () = print_endline "" in
+    let defaults =
+      match s_state with
+      | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"],
+          ["FIGHT";"BAG";"POCAMON";"RUN"]
+      | Moves -> (List.map (fun (x:move) -> x.name)
+          p_state.active_pocamon.moves)@["BACK"],
+          ["<MOVE>";"BACK"]
+      | Pocamon_List _ ->
+          (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list)
+          @ ["BACK";"UP";"DOWN";"SWITCH"],
+          ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
+      | Talking _ -> ["\'\'"], [""]
+    in
+    let input = get_input (fst defaults) (snd defaults) in
+    print_endline input;
+    begin match (process_input input), s_state with
+    | Some Action (Move x), Moves ->
+      let move_option = try Some (List.find (fun (m:move) -> m.name = x)
+          p_state.active_pocamon.moves) with _ -> None in
+      begin match move_option with
+      | Some m -> FMove m
+      | None -> get_player_action g_state p_state s_state end
+    | Some Action (Switch x), Pocamon_List _ ->
+      let poca_option = try Some (List.find (fun (p:pocamon) -> p.name = x)
+          p_state.pocamon_list) with _ -> None in
+      begin match poca_option with
+      | Some p -> FSwitch p
+      | None -> get_player_action g_state p_state s_state end
+    | c, _ -> get_player_action g_state p_state
+        (process_screen_action c s_state g_state) end
+  | Some m ->
+    let () = print_screen p_state (create_public_info g_state)
+      (Talking (p_state.active_pocamon.name ^ "'s move is powering up!")) in
+    FCharge m
+
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
@@ -189,6 +195,8 @@ let on_faint g_state : game_state =
 
 let print_result action g_state p_state m_status opp_p_state : unit =
   match m_status, action with
+  | Charge_Status, _ -> wait_for_enter g_state p_state
+      (Talking (p_state.active_pocamon.name ^ " is charging!"))
   | Switch_Status, _ ->
     let screen_message = Talking (p_state.name ^
       " switched to " ^
@@ -227,7 +235,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
           () in
 
         (if fst a.opp_status_change then
-          let change_string = opp_p_state.name ^ "'s' " ^
+          let change_string = opp_p_state.name ^ "'s " ^
           opp_p_state.active_pocamon.name ^
             (match snd a.opp_status_change with
             | SNormal -> " is healthy again!" (*This should never happen *)
@@ -255,8 +263,15 @@ let print_debuff_info g_state p_state p_debuff : unit =
 
 
 let rec run_game_turn g_state : game_state =
-  let p1_action = get_player_action g_state g_state.player_one Out in
-  let p2_action = get_player_action g_state g_state.player_two Out in
+  let p1_action =
+    match g_state.player_one.active_pocamon.charging with
+    | None -> get_player_action g_state g_state.player_one Out
+    | Some m -> FCharge m in
+  let p2_action =
+    match g_state.player_one.active_pocamon.charging with
+    | None -> get_player_action g_state g_state.player_two Out
+    | Some m -> FCharge m in
+
   let new_g_state, printfo = apply_fight_sequence g_state p1_action p2_action in
 
   let () =
@@ -283,9 +298,9 @@ let rec run_game_turn g_state : game_state =
     apply_status_debuffs faint_switch_game_state in
 
   let () = print_debuff_info status_changed_game_state
-    g_state.player_one debuff_info.p1_debuff in
+    status_changed_game_state.player_one debuff_info.p1_debuff in
   let () = print_debuff_info status_changed_game_state
-    g_state.player_two debuff_info.p2_debuff in
+    status_changed_game_state.player_two debuff_info.p2_debuff in
 
   let final_game_state = on_faint status_changed_game_state in
 
