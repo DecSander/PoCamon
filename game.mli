@@ -1,6 +1,6 @@
   open Types
   open Io
-  (*open Ai *)
+  open Ai
   open Fight
   open PocaDex
 
@@ -17,7 +17,7 @@ val get_player_action : game_state -> player_state -> screen_state -> fAction
 *
 * Tail recursive
 *)
-val run_game_turn : game_state -> game_state
+val run_game_turn : game_state -> battle_status -> game_state
 
 (*
 * Generates the initial state of the game using information from various text

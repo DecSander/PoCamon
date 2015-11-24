@@ -6,143 +6,198 @@ type ai_player = P1 | P2
 let status_score (s: pStatus) :float =
   match s with
   | SNormal -> 0.
-  | SPoison -> 0.3
-  | SBurn -> 0.3
-  | SSleep n -> (float_of_int n) *. 0.2
-  | SParalyze -> 0.25
-  | SFreeze n -> (float_of_int n) *. 0.2
+  | SPoison -> 1.
+  | SBurn -> 1.
+  | SSleep n -> (float_of_int n) *. 0.5
+  | SParalyze -> 0.9
+  | SFreeze n -> (float_of_int n) *. 0.5
 
-let rec health_score (p_list: pocamon list) (score: float) :float =
+(*let rec health_score (p_list: pocamon list) (score: float) :float =
   match p_list with
   | [] -> score
-  | h::t -> health_score t
-    (score +. (((float_of_int h.health) /.
+  | h::t -> score +. health_score t
+    ((((float_of_int h.health) /.
                 (float_of_int h.stats.max_hp))) ** 2.0)
 
 let player_score (ps: player_state) :float =
   let status = status_score ps.active_pocamon.status in
   let health = health_score ps.pocamon_list 0. in
-  health -. status
+  health -. status *)
+
+let poca_score acc poca =
+  let health_score = (((float_of_int poca.health) /.
+    (float_of_int poca.stats.max_hp)) ** 2.0) in
+  let status_score = status_score poca.status in
+  acc +. (health_score -. status_score)
+
+
+let get_player_score p_state =
+  let active_poca_score = poca_score 0. p_state.active_pocamon in
+  let party_score = List.fold_left poca_score active_poca_score p_state.pocamon_list in
+  party_score
 
 let game_score (gs: game_state) :float =
-  (player_score gs.player_one) -. (player_score gs.player_two)
+  let ps1 = (get_player_score gs.player_one) in
+  let ps2 = (get_player_score gs.player_two) in
+  (*let () = (print_endline ((string_of_float ps1)^" "^(string_of_float ps2))) in *)
+  ((ps2) -. (ps1))
 
-let get_switch_poca foe_poca active_poca pocamon_list : pocamon =
+let expectation move = {move with accuracy=100;
+  damage=move.damage*move.accuracy/100}
+
+let print_gamestate gs =
+  (*(print_endline (gs.player_one.active_pocamon.name^": "^(string_of_int gs.player_one.active_pocamon.health)));
+  (print_endline (gs.player_two.active_pocamon.name^": "^(string_of_int gs.player_two.active_pocamon.health))); *)
+()
+
+
+let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
   (* should be elaborated *)
 
-  (* multiplying all the type effectivenesses. So (fire, rock) vs.
-   * (water, dragon) then it computes
-   * fire vs water * fire vs dragon * rock vs water * rock vs dragon
-   *)
-  let get_type_eff poca =
-      if (fst foe_poca.poca_type) = (snd foe_poca.poca_type) then
-        if (fst poca.poca_type) = (snd poca.poca_type)
-        then
-          calc_type_effectiveness (fst poca.poca_type) (fst def_poca.poca_type)
-        else calc_type_effectiveness (fst poca.poca_type) (fst def_poca.poca_type) *.
-          calc_type_effectiveness (snd poca.poca_type) (fst def_poca.poca_type)
+  let get_eff_score poca =
+    let active_player' = {active_player with active_pocamon=poca} in
 
-      else if (fst poca.poca_type) = (snd poca.poca_type)
-        then calc_type_effectiveness (fst poca.poca_type) (fst def_poca.poca_type) *.
-          calc_type_effectiveness (fst poca.poca_type) (snd def_poca.poca_type)
-        else calc_type_effectiveness (fst poca.poca_type) (fst def_poca.poca_type) *.
-          calc_type_effectiveness (fst poca.poca_type) (snd def_poca.poca_type) *.
-          calc_type_effectiveness (snd poca.poca_type) (fst def_poca.poca_type) *.
-          calc_type_effectiveness (snd poca.poca_type) (snd def_poca.poca_type)
+    let get_health_diff atk_state def_state p1_ia move =
+      let e_move = expectation move in
+      let g_state', _ = apply_attack atk_state def_state e_move p1_ia g_state in
+      let def_poca_health =
+      match p1_ia with
+      | true -> g_state'.player_two.active_pocamon.health
+      | false -> g_state'.player_one.active_pocamon.health in
+      def_state.active_pocamon.health - def_poca_health in
+
+    let active_move_vals =
+      List.map (get_health_diff active_player' foe_player is_p1) poca.moves in
+
+    let foe_move_vals = List.map
+      (get_health_diff foe_player active_player' (not is_p1))
+      foe_player.active_pocamon.moves in
+
+    let max_active = List.fold_left max 0 active_move_vals in
+    let max_foe = List.fold_left max 0 foe_move_vals in
+
+    float_of_int(max_active)/.float_of_int(max_foe)
   in
+
 
   let rec get_best_poca e_list p_list acc best =
     match e_list, p_list with
     | [], [] -> best
     | e_hd::e_tl, p_hd::p_tl ->
-      let best_poca = if e_head > acc then p_hd else best in
-      let acc' = if e_head > acc then e_head else acc in
-      get_best_poca e_tl p_tl acc' best_poca in
+      let best_poca = if e_hd > acc then p_hd else best in
+      let acc' = if e_hd > acc then e_hd else acc in
+      get_best_poca e_tl p_tl acc' best_poca
+    | _ -> failwith "this should never happen" in
 
-  let eff_list = List.map get_type_eff pocamon_list in
-  let best_poca = get_best_poca eff_list pocamon_list 0. active_pocamon in
+  let eff_list = List.map get_eff_score active_player.pocamon_list in
+  let best_poca = get_best_poca eff_list active_player.pocamon_list 0. active_player.active_pocamon in
   best_poca
 
-let assemble_actions ai is_ai_turn action (p1_act, p2_act) =
-      match ai, is_ai_turn with
-      | P1, true ->  action, p2_act
-      | P2, true ->  p1_act, action
-      | P1, false -> p1_act, action
-      | P2, false -> action, p2_act in
+let assemble_actions is_ai_turn action (p1_act, p2_act) =
+  match is_ai_turn with
+  | true ->  p1_act, Some action
+  | false -> Some action, p2_act
 
-let rec mini_max ai g_state b_status is_ai_turn (p1_act,p2_act) recs_left : (fAction * fAction) * float =
-  (* if recs_left = 0, return the score *)
+let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
 
-  let g_state', b_status' =
+  let g_state', b_status', p1_act', p2_act' =
   match (p1_act, p2_act) with
   | (None, None) | (_, None) | (None, _) ->
-    if recs_left > 0 then g_state, b_status else failwith "minimax ran into an error"
-  | (_, _) -> apply_fight_sequence g_state p1_act p2_act in
+    if recs_left > 0 then g_state, b_status, p1_act, p2_act
+    else failwith "minimax ran into an error"
+  | (Some a1, Some a2) ->
+  let g, b = (apply_fight_sequence g_state a1 a2) in
+    g, b, None, None in
 
   if recs_left <= 0 then
     let final_game_score = game_score g_state' in
-    (p1_act, p2_act), final_game_score
-  else begin
+    if final_game_score = 0.
+    then final_game_score else
+    let () = print_gamestate g_state' in
+    final_game_score
+  else
 
+    (* check who's turn it is *)
+    let active_player =
+    match is_ai_turn with
+    | true -> g_state'.player_two
+    | false -> g_state'.player_one in
 
-  (* check who's turn it is *)
-  let active_player =
-  match ai, is_ai_turn with
-  | P1, true -> g_state'.player_one
-  | P2, true -> g_state'.player_two
-  | P1, false -> g_state'.player_two
-  | P2, false -> g_state'.player_one in
+    let foe_player =
+    match is_ai_turn with
+    | true -> g_state'.player_one
+    | false -> g_state'.player_two in
 
-  let foe_player =
-  match ai, is_ai_turn with
-  | P1, true -> g_state'.player_two
-  | P2, true -> g_state'.player_one
-  | P1, false -> g_state'.player_one
-  | P2, false -> g_state'.player_two in
+    (* check if other person has switched *)
+    let did_foe_switch =
+    match is_ai_turn with
+    | true ->  b_status.p1_move_status = Switch_Status
+    | false ->  b_status.p2_move_status = Switch_Status in
 
-  (* check if other person has switched *)
-  let did_foe_switch =
-  match ai, is_ai_turn with
-  | P1, true ->  b_status.p2_move_status = Switch_Status
-  | P2, true ->  b_status.p1_move_status = Switch_Status
-  | P1, false -> b_status.p1_move_status = Switch_Status
-  | P2, false -> b_status.p2_move_status = Switch_Status in
-
-  (* if switch then add the switch option and check for best pokemon *)
-  let switch_action_option, switch_score =
-    if did_foe_switch then
-      let switch_poca = get_switch_poca foe_player.active_pocamon
-        active_player.active_pocamon active_player.pocamon_list in
-      if switch_poca = active_player.active_pocamon then (None, 0)
+    (* if switch then add the switch option and check for best pokemon *)
+    let switch_action_option, switch_score =
+      if did_foe_switch then
+        let switch_poca = get_switch_poca foe_player
+          active_player (not is_ai_turn) g_state' in
+        if switch_poca = active_player.active_pocamon then (None, 0.)
+        else
+          let actions =
+            assemble_actions is_ai_turn (FSwitch switch_poca) (p1_act', p2_act') in
+          let calcd_switch_score =
+            mini_max g_state' b_status' (not is_ai_turn) actions (recs_left-1) in
+        ((Some (FSwitch switch_poca)), calcd_switch_score)
       else
-        let actions =
-          assemble_actions ai is_ai_turn (FSwitch switch_poca) (p1_act, p2_act)
-        let calcd_switch_score =
-          mini_max ai g_state' b_status' (not is_ai_turn) actions (recs_left-1)
-      ((Some FSwitch switch_poca), calcd_switch_score)
-    else
-    (* -7 is worse than any actual score that can be calculated*)
-    (None, 0) in
-
-  let f m =
-    let actions =
-      assemble_actions ai is_ai_turn (FMove m) (p1_act, p2_act)
-    let calcd_switch_score =
-      mini_max ai g_state' b_status' (not is_ai_turn) actions (recs_left-1) in
-
-  let move_scores_list = List.map f active_player.active_pocamon.moves in
-
-  (* NOW WE JUST HAVE TO MATCH THE MOVES WITH THE SCORES AND THEN RETURN THE
-  APPRORPRIATE PAIR FROM EACH LEVEL. aLSO TAKE INTO ACCOUNT THE FACT THAT PAIRS
-ARE INCOMPLETE EVERY OTHER DEPTH *)
-
-  end
-
-  (* if the switch pokemon is your active, don't consider switching *)
-  (* run mini max for every action *)
-
-  (* get scores back and return best action *)
+      (None, 0.) in
 
 
-let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) :action =
-  failwith "TODO"
+    let apply_m_m m =
+      let actions =
+        assemble_actions is_ai_turn (FMove m) (p1_act', p2_act') in
+      mini_max g_state' b_status' (not is_ai_turn) actions (recs_left-1) in
+
+    let move_scores_list =
+      List.map apply_m_m active_player.active_pocamon.moves in
+
+    let get_best best score =
+    match is_ai_turn with
+    | true -> max best score
+    | false -> min best score in
+
+    let base = if is_ai_turn then -8. else 8. in
+    let best_move_score = List.fold_left get_best base move_scores_list in
+
+    match switch_action_option with
+    | Some _ ->
+      get_best best_move_score switch_score
+    | None -> best_move_score
+
+let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) : fAction =
+
+  let active_player = gs.player_two in
+
+    let foe_player = gs.player_one in
+
+  let moves = active_player.active_pocamon.moves in
+
+  let switch_poca = get_switch_poca foe_player
+          active_player false gs in
+
+  let depth = 7 in
+
+  let switch_score = mini_max gs bs false (None, Some (FSwitch switch_poca)) depth in
+
+  (*let () = List.iter (fun (x:move) -> print_endline x.name) moves in*)
+
+  let m_list = List.map (fun x ->
+    (mini_max gs bs false (None, Some (FMove x)) depth)) moves in
+
+  let i = ref (-1) in
+
+  let find_best acc x =
+  print_endline (string_of_float x);
+  if x > acc then let () = i := !i + 1 in x else acc in
+
+  let best_score = List.fold_left find_best (-8.0) m_list in
+  (print_endline ("Final: " ^string_of_float(best_score)^ " " ^ string_of_float(switch_score)));
+  if best_score >= switch_score
+    then FMove (List.nth moves !i) else FSwitch switch_poca
