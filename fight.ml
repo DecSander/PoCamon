@@ -244,9 +244,9 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
 
 
           let new_status, def_status_change = if status_eff
-            then match move.status_effect with
+            then begin match move.status_effect with
             | MNormal -> def_poca.status, false
-            | _ -> (mStatus_to_pStatus move.status_effect), true
+            | _ -> (mStatus_to_pStatus move.status_effect), true end
             else def_poca.status, false in
 
           let def_poca' =
@@ -256,23 +256,25 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
             match move.effect with
             | MRecoil -> {atk_state.active_pocamon with
                 health=atk_state.active_pocamon.health -
-                int_of_float(damage/.3)} in
-            | MExplode -> {atk_state.active_pocamon with health = 0} in
+                int_of_float(damage/.3.)}
+            | MExplode -> {atk_state.active_pocamon with health = 0}
             | MRecover -> {atk_state.active_pocamon with health = min
                 (atk_state.active_pocamon.health +
                   atk_state.active_pocamon.stats.max_hp/2)
                 atk_state.active_pocamon.stats.max_hp}
             | MLeech -> {atk_state.active_pocamon with health = min
                 (atk_state.active_pocamon.health +
-                  int_of_float(damage/.2))
+                  int_of_float(damage/.2.))
                 atk_state.active_pocamon.stats.max_hp}
             | _ -> atk_state.active_pocamon
+          in
 
 
           let def_state' = {def_state with active_pocamon=def_poca'} in
+          let atk_state' = {atk_state with active_pocamon=atk_poca'} in
           let g_state'' = if not p1_is_atk
-            then {g_state' with player_one=def_state'; player_two=atk_poca'}
-            else {g_state' with player_two=def_state'; player_one=atk_poca'} in
+            then {player_one=def_state'; player_two=atk_state'}
+            else {player_two=def_state'; player_one=atk_state'} in
 
           let p_move_status =
             Attack_Status {atk_eff = type_eff;
