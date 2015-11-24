@@ -154,7 +154,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   let auto_complete_info =
     (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @
     ["BACK";"UP";"DOWN";"SWITCH"],
-    ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"] in
+    ["SWITCH <Pocamon>"; "UP"; "DOWN"] in
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
 

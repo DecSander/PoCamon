@@ -11,7 +11,13 @@ for l in new_effects:
   if l == "":
     continue
   elif l[0] == ">":
-    obj[l[1:]] = current
+    e = l[1:]
+    e = e.split(" ")
+    if len(e) == 2:
+      e = e[0] + " (" + e[1] + ")"
+    else:
+      e = "".join(e)
+    obj[e] = current
     current = []
   else:
     current.append(l.upper())
