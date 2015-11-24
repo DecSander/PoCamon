@@ -9,3 +9,6 @@ val get_move: string -> move
 
 (* Returns a random pocamon *)
 val get_random_pocamon: unit -> pocamon
+
+(* Returns the pocamon designated by name with randomized stats *)
+val get_pocamon_by_name: string -> pocamon 
