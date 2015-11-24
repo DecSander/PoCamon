@@ -1,6 +1,6 @@
 open Types
 open Io
-(*open Ai *)
+open Ai
 open Fight
 open PocaDex
 
@@ -311,7 +311,7 @@ let print_debuff_info g_state p_state p_debuff : unit =
     | _ -> ()
 
 
-let rec run_game_turn g_state : game_state =
+let rec run_game_turn g_state b_status : game_state =
   let p1_action =
     match g_state.player_one.active_pocamon.charging with
     | None -> get_player_action g_state g_state.player_one Out
@@ -321,7 +321,9 @@ let rec run_game_turn g_state : game_state =
       FCharge m in
   let p2_action =
     match g_state.player_two.active_pocamon.charging with
-    | None -> get_player_action g_state g_state.player_two Out
+    | None -> if g_state.player_two.is_computer then
+        get_ai_action P2 g_state b_status
+        else get_player_action g_state g_state.player_two Out
     | Some m -> let () = wait_for_enter g_state g_state.player_two
       (Talking (g_state.player_two.active_pocamon.name ^
         "'s move is powering up!")) in
@@ -354,10 +356,24 @@ let rec run_game_turn g_state : game_state =
 
   let final_game_state = on_faint status_changed_game_state in
 
-  run_game_turn final_game_state
+  run_game_turn final_game_state printfo
 
 let start () : unit =
   let () = Random.self_init () in
-  ignore (run_game_turn (gen_initial_state ()))
+
+  let a_status1 = {
+      atk_eff = ENormal;
+      self_status_change = false, SNormal;
+      opp_status_change = false,  SNormal;
+      missed = false;
+  } in
+
+  let b_status = {
+      p1_went_first = true;
+      p1_move_status = Attack_Status a_status1;
+      p2_move_status = Attack_Status a_status1;
+  } in
+
+  ignore (run_game_turn (gen_initial_state ()) b_status)
 
 let _ = start ()
