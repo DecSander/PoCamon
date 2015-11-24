@@ -82,7 +82,7 @@ Speed Up2
 
 Amnesia
 Special Defense Up2
->MSpec Defense 2
+>MSpecDefense 2
 
 Growl
 Attack Down
@@ -131,7 +131,7 @@ Psychic
 Crunch
 Shadow Ball
 Special Defense Down Hit
->MSpecialDefense -1
+>MSpecDefense -1
 
 Ancientpower
 All Up Hit
