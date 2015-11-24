@@ -57,8 +57,8 @@ let gen_initial_state () : game_state =
       read_line ())
     in
   let _ = setup () in
-  let player_one_pocamon = (get_pocamon_by_name "VILEPLUME")::(List.fold_left
-    (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();()]) in
+  let player_one_pocamon = (List.fold_left
+    (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()]) in
   let player_two_pocamon = List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_one_active_pocamon = List.hd player_one_pocamon in
