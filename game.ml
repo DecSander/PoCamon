@@ -34,9 +34,9 @@ let gen_initial_state () : game_state =
   print_start "What is your name, player one?";
   print_string "|> ";
   let player_one_name = read_line () in
-  print_start "Would you like to play against your rival, or a human?";
   let tinfo = setup () in
   let rec get_against_ai () : bool =
+    print_start "Would you like to play against your rival, or a human?";
     let input = String.uppercase
       (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
       if input = "RIVAL" then
