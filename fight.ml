@@ -126,13 +126,13 @@ let get_stat_mod_multiplier i : float =
   | -3 -> 40./.100.
   | -2 -> 50./.100.
   | -1 -> 66./.100.
-  | 0  -> 100./.100.
-  | 1  -> 150./.100.
-  | 2  -> 200./.100.
-  | 3  -> 250./.100.
-  | 4  -> 300./.100.
-  | 5 ->  350./.100.
-  | 6 ->  400./.100.
+  |  0 -> 100./.100.
+  |  1 -> 150./.100.
+  |  2 -> 200./.100.
+  |  3 -> 250./.100.
+  |  4 -> 300./.100.
+  |  5 -> 350./.100.
+  |  6 -> 400./.100.
   | _ -> failwith "Error - stat mods must be between -6 and 6"
 
 let change_stat_mods atk_mods def_mods move : poca_stat_mods * poca_stat_mods =
@@ -323,8 +323,12 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           let damage, damage_mult = calc_damage atk_poca effective_atk_stats
             def_poca effective_def_stats move in
 
-          let type_eff = if (damage_mult -. 1.) > 0.01 then ESuper
-            else if (damage_mult -. 1.) < -0.25 then ENotVery else ENormal in
+          let type_eff = if damage > 0.5 && (damage_mult -. 1.) > 0.01 then
+            ESuper
+          else if damage > 0.5 && (damage_mult -. 1.) < -0.25 then
+            ENotVery
+          else
+            ENormal in
 
           let def_poca_health = def_poca.health - int_of_float(damage) in
 
@@ -440,6 +444,11 @@ let switch_pocamon switch_poca p_state g_state is_fainted=
 * has taken place
 *)
 let do_single_move player_state foe_state action p_state_is_p1 g_state =
+  let action =
+    match player_state.active_pocamon.charging with
+    | Some m -> FCharge m
+    | _ -> action in
+
   match action with
   | FMove m | FCharge m -> apply_attack player_state foe_state m p_state_is_p1 g_state
   | FSwitch s_p ->
