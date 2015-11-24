@@ -100,6 +100,7 @@ with open("pocadex.ml", 'w') as f:
     f.write('module PokeDex = Map.Make(String)\n')
     f.write('let dexmap = PokeDex.empty\n')
     for pocamon in data.keys():
+        if pocamon == "ditto": continue
         lst = ["IRON TAIL", "THIEF", "STEEL WING", "TR MORNDAY", "TR NITE", 'CURSE',  "FAINT ATTACK", "FIRE STONE", "BELLY DRUM", "PSYCHIC"]
         for m in lst:
             try:
@@ -112,7 +113,8 @@ with open("pocadex.ml", 'w') as f:
         allmoves.remove
         moves = '['
         for move in data[pocamon]["moves"]:
-            moves += '"{0}";'.format(move)
+            if move in ['POUND', 'DOUBLESLAP', 'SCRATCH', 'VICEGRIP', 'GUILLOTINE', 'CUT', 'SLAM', 'STOMP', 'TACKLE', 'TWINEEDLE', 'ACID', 'SURF', 'BUBBLEBEAM', 'PECK', 'SUBMISSION', 'STRENGTH', 'ABSORB', 'GROWTH', 'THUNDER', 'FISSURE', 'MEDITATE', 'AGILITY', 'SCREECH', 'RECOVER', 'HARDEN', 'WITHDRAW', 'BARRIER', 'SELFDESTRUCT', 'WATERFALL', 'SWIFT', 'CONSTRICT', 'AMNESIA', 'SOFTBOILED', 'BARRAGE', 'BUBBLE', 'SPLASH', 'CRABHAMMER', 'EXPLOSION', 'BONEMERANG', 'REST', 'SHARPEN', 'SLASH', 'STRUGGLE', 'AEROBLAST', 'CHARM', 'MEGAHORN', 'EXTREMESPEED', 'ANCIENTPOWER']:
+                moves += '"{0}";'.format(move)
         moves += "]"
         types = '("{0}", "{1}")'.format(data[pocamon]["types"][0], data[pocamon]["types"][1])
         sd = data[pocamon]["stats"]
