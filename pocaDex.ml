@@ -3364,6 +3364,21 @@ let get_four_moves (moves: string list): move list =
 	List.nth mlst (List.nth randos 2); List.nth mlst (List.nth randos 3)]
 
 
+let get_pocamon_by_name (name) : pocamon =
+	let pocamon_name = name in
+	let dexmon = get_pocamon pocamon_name in
+	let pType = (type_of_string (fst dexmon.poca_type),
+		         type_of_string (snd dexmon.poca_type)) in
+	let new_stats = update_stats dexmon.stats in
+	{ name = pocamon_name;
+	  status = SNormal;
+	  moves = get_four_moves dexmon.learnable_moves;
+	  poca_type = pType ;
+	  health  = new_stats.max_hp;
+	  stats = new_stats ;
+    charging = None;
+	  ascii = dexmon.ascii;  }
+
 
 let get_random_pocamon () : pocamon =
 	let lst = ["BULBASAUR"; "IVYSAUR"; "VENUSAUR"; "CHARMANDER"; "CHARMELEON"; "CHARIZARD"; "SQUIRTLE"; "WARTORTLE";    "BLASTOISE"; "CATERPIE"; "METAPOD"; "BUTTERFREE"; "WEEDLE"; "KAKUNA"; "BEEDRILL"; "PIDGEY"; "PIDGEOTTO"; "PIDGEOT"; "RATTATA"; "RATICATE"; "SPEAROW"; "FEAROW"; "EKANS"; "ARBOK"; "PIKACHU";"RAICHU"; "SANDSHREW"; "SANDSLASH"; "NIDORANM"; "NIDORANF"; "NIDORINA"; "NIDOQUEEN"; "NIDORINO"; "NIDOKING"; "CLEFAIRY"; "CLEFABLE"; "VULPIX"; "NINETALES"; "JIGGLYPUFF"; "WIGGLYTUFF"; "ZUBAT"; "GOLBAT"; "ODDISH"; "GLOOM"; "VILEPLUME"; "PARAS"; "PARASECT"; "VENONAT"; "VENOMOTH"; "DIGLETT";"DUGTRIO"; "MEOWTH"; "PERSIAN"; "PSYDUCK"; "GOLDUCK"; "MANKEY"; "PRIMEAPE"; "GROWLITHE"; "ARCANINE"; "POLIWAG"; "POLIWHIRL"; "POLIWRATH"; "ABRA"; "KADABRA"; "ALAKAZAM"; "MACHOP"; "MACHOKE"; "MACHAMP"; "BELLSPROUT"; "WEEPINBELL"; "VICTREEBEL"; "TENTACOOL"; "TENTACRUEL"; "GEODUDE"; "GRAVELER"; "GOLEM"; "PONYTA"; "RAPIDASH"; "SLOWPOKE"; "SLOWBRO"; "MAGNEMITE"; "MAGNETON"; "FARFETCHD"; "DODUO"; "DODRIO"; "SEEL"; "DEWGONG"; "GRIMER"; "MUK"; "SHELLDER"; "CLOYSTER"; "GASTLY"; "HAUNTER"; "GENGAR"; "ONIX"; "DROWZEE"; "HYPNO"; "KRABBY"; "KINGLER"; "VOLTORB"; "ELECTRODE"; "EXEGGCUTE"; "EXEGGUTOR"; "CUBONE"; "MAROWAK"; "HITMONLEE"; "HITMONCHAN"; "LICKITUNG"; "KOFFING"; "WEEZING"; "RHYHORN"; "RHYDON"; "CHANSEY"; "TANGELA"; "KANGASKHAN"; "HORSEA"; "SEADRA"; "GOLDEEN"; "SEAKING"; "STARYU"; "STARMIE"; "MR.MIME"; "SCYTHER"; "JYNX"; "ELECTABUZZ"; "MAGMAR"; "PINSIR"; "TAUROS"; "MAGIKARP"; "GYARADOS"; "LAPRAS"; "EEVEE"; "VAPOREON"; "JOLTEON"; "FLAREON"; "PORYGON"; "OMANYTE"; "OMASTAR"; "KABUTO"; "KABUTOPS"; "AERODACTYL"; "SNORLAX"; "ARTICUNO"; "ZAPDOS"; "MOLTRES"; "DRATINI"; "DRAGONAIR"; "DRAGONITE"; "MEWTWO"; "MEW"] in
