@@ -2,6 +2,7 @@ open Types
 
 type attack_status = {
       atk_eff : pEffect;
+      spec_eff : mEffect;
       self_status_change : bool * pStatus;
       opp_status_change : bool * pStatus;
       missed : bool;
