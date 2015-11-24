@@ -363,6 +363,7 @@ let start () : unit =
 
   let a_status1 = {
       atk_eff = ENormal;
+      spec_eff = MNone;
       self_status_change = false, SNormal;
       opp_status_change = false,  SNormal;
       missed = false;
