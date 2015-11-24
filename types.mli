@@ -2,8 +2,14 @@
 * A status that a pocamon can have - each pocamon defaults to normal status
 * which can be changed via moves and each have different effects
 *)
-type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze | SFreeze of int
+type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze
+              | SFreeze of int
 type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
+              | MConfuse
+
+type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
+| MSpecAttack of int | MAllStatsUp | MLoop | Mohko | MRecoil | MRecover
+| MChargeNoHit | MCharge
 
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
@@ -35,7 +41,8 @@ type move = {
           damage : int;
           max_pp : int;
           pp : int;
-          move_category: pCategory
+          move_category: pCategory;
+          effect : mEffect
 }
 
 (* the stats of a pocamon that show how powerful it is *)
@@ -59,6 +66,7 @@ type pocamon = {
       health : int;
       stats : poca_stats;
       ascii : bytes;
+      charging : move option;
       }
 
  type dex_pocamon = {
@@ -75,7 +83,7 @@ type pocamon = {
 *)
 type action = Move of string | Switch of string
 
-type fAction = FMove of move | FSwitch of pocamon
+type fAction = FMove of move | FSwitch of pocamon | FCharge of move
 
 (*
 * Current state information about a player
@@ -105,5 +113,5 @@ type public_info = {
 *)
 type game_state = {
       player_one : player_state;
-      player_two : player_state;
+      player_two : player_state
       }

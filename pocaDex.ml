@@ -3527,5 +3527,6 @@ let get_random_pocamon () : pocamon =
 	  poca_type = pType ;
 	  health  = new_stats.max_hp;
 	  stats = new_stats ;
+    charging = None;
 	  ascii = dexmon.ascii;  }
 
