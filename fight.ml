@@ -252,11 +252,19 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
           let def_poca' =
             {def_poca with health=def_poca_health'; status=new_status} in
 
+          let atk_poca' =
+            match move.effect with
+            | MRecoil -> {atk_state.active_pocamon with
+                health=atk_state.active_pocamon.health -
+                int_of_float(damage/.3)} in
+            | MExplode -> {atk_state.active_pocamon with health = 0} in
+            | _ -> atk_state.active_pocamon
+
 
           let def_state' = {def_state with active_pocamon=def_poca'} in
           let g_state'' = if not p1_is_atk
-            then {g_state' with player_one=def_state'}
-            else {g_state' with player_two=def_state'} in
+            then {g_state' with player_one=def_state'; player_two=atk_poca'}
+            else {g_state' with player_two=def_state'; player_one=atk_poca'} in
 
           let p_move_status =
             Attack_Status {atk_eff = type_eff;
