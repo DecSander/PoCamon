@@ -170,7 +170,7 @@ let mStatus_to_pStatus move_status =
 (*
 * Applys the single attack to the game state
 *)
-let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
+let apply_attack atk_state def_state move p1_is_atk g_state =
 
   let atk_poca = atk_state.active_pocamon in
   let def_poca = def_state.active_pocamon in
@@ -214,7 +214,9 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
     else
       begin
       if (match move.effect with MCharge -> false | _ -> true)
-        || done_charging then
+        || (match atk_state.active_pocamon.charging with
+            |Some _ -> true
+            | None -> false) then
         let missed = (Random.int 100) > move.accuracy in
 
         if missed then
@@ -269,9 +271,10 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
             | _ -> atk_state.active_pocamon
           in
 
+          let atk_poca'' = {atk_poca' with charging=None} in
 
           let def_state' = {def_state with active_pocamon=def_poca'} in
-          let atk_state' = {atk_state with active_pocamon=atk_poca'} in
+          let atk_state' = {atk_state with active_pocamon=atk_poca''} in
           let g_state'' = if not p1_is_atk
             then {player_one=def_state'; player_two=atk_state'}
             else {player_two=def_state'; player_one=atk_state'} in
@@ -339,8 +342,7 @@ let switch_pocamon switch_poca p_state g_state is_fainted=
 *)
 let do_single_move player_state foe_state action p_state_is_p1 g_state =
   match action with
-  | FMove m -> apply_attack player_state foe_state m p_state_is_p1 g_state false
-  | FCharge m ->apply_attack player_state foe_state m p_state_is_p1 g_state true
+  | FMove m | FCharge m -> apply_attack player_state foe_state m p_state_is_p1 g_state
   | FSwitch s_p ->
     switch_pocamon s_p player_state g_state false
 
