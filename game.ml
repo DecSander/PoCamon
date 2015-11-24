@@ -233,7 +233,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
           () in
 
         (if fst a.opp_status_change then
-          let change_string = opp_p_state.name ^ "'s' " ^
+          let change_string = opp_p_state.name ^ "'s " ^
           opp_p_state.active_pocamon.name ^
             (match snd a.opp_status_change with
             | SNormal -> " is healthy again!" (*This should never happen *)

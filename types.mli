@@ -8,8 +8,8 @@ type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
               | MConfuse
 
 type mEffect = MNone | MAttack of int | MDefense of int
-              | MSpecAttack of int | MChargeNoHit | MSpecDefense of int
-              | MCharge | MSpeed of int | MLeech | MRecover
+              | MSpecAttack of int | MSpecDefense of int | | MSpeed of int
+              | MCharge | | MChargeNoHit | MLeech | MRecover
               | MLoop of (int * int) | MOHKO | MRecoil | MExplode | MAllStatsUp
 
 (*

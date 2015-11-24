@@ -243,11 +243,11 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
             (Random.int 100) <= move.status_probability in
 
 
-          let new_status = if status_eff
+          let new_status, def_status_change = if status_eff
             then match move.status_effect with
-            | MNormal -> def_poca.status
-            | _ -> mStatus_to_pStatus move.status_effect
-            else def_poca.status in
+            | MNormal -> def_poca.status, false
+            | _ -> (mStatus_to_pStatus move.status_effect), true
+            else def_poca.status, false in
 
           let def_poca' =
             {def_poca with health=def_poca_health'; status=new_status} in
@@ -258,6 +258,14 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
                 health=atk_state.active_pocamon.health -
                 int_of_float(damage/.3)} in
             | MExplode -> {atk_state.active_pocamon with health = 0} in
+            | MRecover -> {atk_state.active_pocamon with health = min
+                (atk_state.active_pocamon.health +
+                  atk_state.active_pocamon.stats.max_hp/2)
+                atk_state.active_pocamon.stats.max_hp}
+            | MLeech -> {atk_state.active_pocamon with health = min
+                (atk_state.active_pocamon.health +
+                  int_of_float(damage/.2))
+                atk_state.active_pocamon.stats.max_hp}
             | _ -> atk_state.active_pocamon
 
 
@@ -269,7 +277,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state done_charging=
           let p_move_status =
             Attack_Status {atk_eff = type_eff;
                        self_status_change = new_status_change;
-                       opp_status_change = (false, def_poca.status);
+                       opp_status_change = (def_status_change, def_poca'.status);
                        missed = false } in
 
           (g_state'', p_move_status)
