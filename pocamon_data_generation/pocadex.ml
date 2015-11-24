@@ -2,7 +2,7 @@ module PokeDex = Map.Make(String)
 let dexmap = PokeDex.empty
 let dexmap = PokeDex.add "ELECTABUZZ" {
 name="ELECTABUZZ"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"STRENGTH";"SWIFT";"SCREECH";"THUNDER";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"STRENGTH";"LEER";"SWIFT";"SCREECH";"THUNDER";];
 stats={max_hp=65; attack=83; defense=57; speed=105; sp_attack=95;sp_defense=85;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="   N====   8N =N     N78=7     
@@ -23,7 +23,7 @@ ascii="   N====   8N =N     N78=7
 
 let dexmap = PokeDex.add "STARMIE" {
 name="STARMIE"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SURF";"WATERFALL";"RECOVER";"BUBBLEBEAM";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"SURF";"WATERFALL";"RECOVER";"BUBBLEBEAM";];
 stats={max_hp=60; attack=75; defense=85; speed=115; sp_attack=100;sp_defense=85;};
 poca_type=("WATER", "PSYCHIC"); 
 ascii="              :?               
@@ -44,7 +44,7 @@ ascii="              :?
 
 let dexmap = PokeDex.add "DODRIO" {
 name="DODRIO"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"GROWL";"FURY ATTACK";"FURY ATTACK";"DRILL PECK";"AGILITY";];
 stats={max_hp=60; attack=110; defense=70; speed=100; sp_attack=60;sp_defense=60;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="          8?? ??7    OI  OII   
@@ -65,7 +65,7 @@ ascii="          8?? ??7    OI  OII
 
 let dexmap = PokeDex.add "SLOWPOKE" {
 name="SLOWPOKE"; 
-learnable_moves=["SWIFT";"REST";"SURF";"STRENGTH";];
+learnable_moves=["DIG";"SHADOW BALL";"SWIFT";"SURF";"STRENGTH";];
 stats={max_hp=90; attack=65; defense=65; speed=15; sp_attack=40;sp_defense=40;};
 poca_type=("WATER", "PSYCHIC"); 
 ascii="                               
@@ -86,7 +86,7 @@ ascii="
 
 let dexmap = PokeDex.add "BULBASAUR" {
 name="BULBASAUR"; 
-learnable_moves=["REST";"CUT";"TACKLE";"GROWTH";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"DEFENSE CURL";"FURY CUTTER";"CUT";"TACKLE";"GROWL";"VINE WHIP";"RAZOR LEAF";"GROWTH";"SOLARBEAM";];
 stats={max_hp=45; attack=49; defense=49; speed=45; sp_attack=65;sp_defense=65;};
 poca_type=("GRASS", "POISON"); 
 ascii="                               
@@ -107,7 +107,7 @@ ascii="
 
 let dexmap = PokeDex.add "SANDSLASH" {
 name="SANDSLASH"; 
-learnable_moves=["SWIFT";"REST";"CUT";"STRENGTH";"SLASH";"SWIFT";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"DEFENSE CURL";"DEFENSE CURL";"SLASH";"SWIFT";"FURY SWIPES";];
 stats={max_hp=75; attack=100; defense=110; speed=65; sp_attack=45;sp_defense=55;};
 poca_type=("GROUND", "GROUND"); 
 ascii="             8  88             
@@ -128,7 +128,7 @@ ascii="             8  88
 
 let dexmap = PokeDex.add "DRATINI" {
 name="DRATINI"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SURF";"WATERFALL";"SLAM";"AGILITY";];
+learnable_moves=["THUNDER";"SWIFT";"SURF";"WATERFALL";"LEER";"SLAM";"AGILITY";"HYPER BEAM";];
 stats={max_hp=41; attack=64; defense=45; speed=50; sp_attack=50;sp_defense=50;};
 poca_type=("DRAGON", "DRAGON"); 
 ascii="                               
@@ -149,7 +149,7 @@ ascii="
 
 let dexmap = PokeDex.add "POLIWAG" {
 name="POLIWAG"; 
-learnable_moves=["REST";"SURF";"WATERFALL";"BUBBLE";"DOUBLESLAP";];
+learnable_moves=["DEFENSE CURL";"SURF";"WATERFALL";"BUBBLE";"WATER GUN";"DOUBLESLAP";"HYDRO PUMP";];
 stats={max_hp=40; attack=50; defense=40; speed=90; sp_attack=40;sp_defense=40;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -170,7 +170,7 @@ ascii="
 
 let dexmap = PokeDex.add "SPEAROW" {
 name="SPEAROW"; 
-learnable_moves=["SWIFT";"REST";"PECK";"AGILITY";];
+learnable_moves=["SWIFT";"FLY";"PECK";"GROWL";"LEER";"FURY ATTACK";"DRILL PECK";"AGILITY";];
 stats={max_hp=40; attack=60; defense=30; speed=70; sp_attack=31;sp_defense=31;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="                               
@@ -191,7 +191,7 @@ ascii="
 
 let dexmap = PokeDex.add "IVYSAUR" {
 name="IVYSAUR"; 
-learnable_moves=["REST";"CUT";"TACKLE";"GROWTH";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"DEFENSE CURL";"FURY CUTTER";"CUT";"TACKLE";"GROWL";"GROWL";"VINE WHIP";"RAZOR LEAF";"GROWTH";"SOLARBEAM";];
 stats={max_hp=60; attack=62; defense=63; speed=60; sp_attack=80;sp_defense=80;};
 poca_type=("GRASS", "POISON"); 
 ascii="                               
@@ -212,7 +212,7 @@ ascii="
 
 let dexmap = PokeDex.add "LAPRAS" {
 name="LAPRAS"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SURF";"STRENGTH";"GROWL";"HYDRO PUMP";];
 stats={max_hp=130; attack=85; defense=80; speed=60; sp_attack=85;sp_defense=95;};
 poca_type=("WATER", "ICE"); 
 ascii="      ?7==???777               
@@ -233,7 +233,7 @@ ascii="      ?7==???777
 
 let dexmap = PokeDex.add "GYARADOS" {
 name="GYARADOS"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";"WATERFALL";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SURF";"STRENGTH";"WATERFALL";"LEER";"HYDRO PUMP";"HYPER BEAM";];
 stats={max_hp=95; attack=125; defense=79; speed=81; sp_attack=60;sp_defense=100;};
 poca_type=("WATER", "FLYING"); 
 ascii="       7,,+++::+:+::N    Z,ZO7O
@@ -254,7 +254,7 @@ N,787+::+++7N7       7.7
 
 let dexmap = PokeDex.add "FEAROW" {
 name="FEAROW"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"GROWL";"LEER";"FURY ATTACK";"LEER";"FURY ATTACK";"DRILL PECK";"AGILITY";];
 stats={max_hp=65; attack=90; defense=65; speed=100; sp_attack=61;sp_defense=61;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="      ?8?????:     Z?$88$Z$?   
@@ -275,7 +275,7 @@ ascii="      ?8?????:     Z?$88$Z$?
 
 let dexmap = PokeDex.add "SHELLDER" {
 name="SHELLDER"; 
-learnable_moves=["SWIFT";"REST";"SURF";"TACKLE";"WITHDRAW";];
+learnable_moves=["SWIFT";"SURF";"TACKLE";"WITHDRAW";"LEER";];
 stats={max_hp=30; attack=65; defense=100; speed=40; sp_attack=45;sp_defense=25;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -296,7 +296,7 @@ ascii="
 
 let dexmap = PokeDex.add "OMASTAR" {
 name="OMASTAR"; 
-learnable_moves=["REST";"SURF";"WITHDRAW";"ANCIENTPOWER";];
+learnable_moves=["HYPER BEAM";"SURF";"WITHDRAW";"WATER GUN";"LEER";"SPIKE CANNON";"ANCIENTPOWER";"HYDRO PUMP";];
 stats={max_hp=70; attack=60; defense=125; speed=55; sp_attack=115;sp_defense=70;};
 poca_type=("ROCK", "WATER"); 
 ascii="                               
@@ -317,7 +317,7 @@ ascii="
 
 let dexmap = PokeDex.add "PERSIAN" {
 name="PERSIAN"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SCREECH";"SLASH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"GROWL";"SCREECH";"FURY SWIPES";"SLASH";];
 stats={max_hp=65; attack=70; defense=60; speed=115; sp_attack=65;sp_defense=65;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="     NNO   N$IN                
@@ -338,7 +338,7 @@ ascii="     NNO   N$IN
 
 let dexmap = PokeDex.add "EXEGGUTOR" {
 name="EXEGGUTOR"; 
-learnable_moves=["REST";"STRENGTH";"STOMP";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"STRENGTH";"STOMP";"EGG BOMB";];
 stats={max_hp=95; attack=95; defense=85; speed=55; sp_attack=125;sp_defense=65;};
 poca_type=("GRASS", "PSYCHIC"); 
 ascii="    O????O N?OO7 ?7    OO      
@@ -359,7 +359,7 @@ ascii="    O????O N?OO7 ?7    OO
 
 let dexmap = PokeDex.add "KRABBY" {
 name="KRABBY"; 
-learnable_moves=["REST";"CUT";"SURF";"STRENGTH";"BUBBLE";"VICEGRIP";"HARDEN";"STOMP";"GUILLOTINE";"CRABHAMMER";];
+learnable_moves=["FURY CUTTER";"CUT";"SURF";"STRENGTH";"BUBBLE";"LEER";"VICEGRIP";"HARDEN";"STOMP";"GUILLOTINE";"CRABHAMMER";];
 stats={max_hp=30; attack=105; defense=90; speed=50; sp_attack=25;sp_defense=25;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -380,7 +380,7 @@ ascii="
 
 let dexmap = PokeDex.add "MAGNEMITE" {
 name="MAGNEMITE"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"TACKLE";"SWIFT";"SCREECH";];
+learnable_moves=["THUNDER";"SWIFT";"TACKLE";"SWIFT";"SCREECH";];
 stats={max_hp=25; attack=35; defense=70; speed=45; sp_attack=95;sp_defense=55;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="                               
@@ -401,7 +401,7 @@ ascii="
 
 let dexmap = PokeDex.add "KANGASKHAN" {
 name="KANGASKHAN"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"FURY CUTTER";"SURF";"STRENGTH";"LEER";"TAIL WHIP";"MEGA PUNCH";];
 stats={max_hp=105; attack=95; defense=80; speed=90; sp_attack=40;sp_defense=80;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="      ~???II$I::I~             
@@ -422,7 +422,7 @@ $N~NNN++:::::::~~~I++++IIIII
 
 let dexmap = PokeDex.add "RHYDON" {
 name="RHYDON"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";"STOMP";"STOMP";];
+learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"FURY CUTTER";"SURF";"STRENGTH";"TAIL WHIP";"STOMP";"FURY ATTACK";"STOMP";"FURY ATTACK";"HORN DRILL";"TAKE DOWN";];
 stats={max_hp=105; attack=130; defense=120; speed=40; sp_attack=45;sp_defense=45;};
 poca_type=("GROUND", "ROCK"); 
 ascii="      IIZZZZI                  
@@ -443,7 +443,7 @@ NIIIII  ~Z?~~?~Z~~IN~~N NZ~~IZ
 
 let dexmap = PokeDex.add "CLEFABLE" {
 name="CLEFABLE"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DOUBLESLAP";];
 stats={max_hp=95; attack=70; defense=73; speed=60; sp_attack=85;sp_defense=90;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -464,7 +464,7 @@ ascii="
 
 let dexmap = PokeDex.add "ARBOK" {
 name="ARBOK"; 
-learnable_moves=["REST";"STRENGTH";"SCREECH";"ACID";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"DIG";"STRENGTH";"LEER";"SCREECH";"ACID";];
 stats={max_hp=60; attack=85; defense=69; speed=80; sp_attack=65;sp_defense=79;};
 poca_type=("POISON", "POISON"); 
 ascii="           NN88+IIIIIZ         
@@ -485,7 +485,7 @@ ascii="           NN88+IIIIIZ
 
 let dexmap = PokeDex.add "MR.MIME" {
 name="MR.MIME"; 
-learnable_moves=["THUNDER";"REST";"MEDITATE";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"MEDITATE";"DOUBLESLAP";];
 stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="          OOI                  
@@ -506,7 +506,7 @@ ascii="          OOI
 
 let dexmap = PokeDex.add "ODDISH" {
 name="ODDISH"; 
-learnable_moves=["REST";"CUT";"ABSORB";"ACID";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"CUT";"ABSORB";"ACID";];
 stats={max_hp=45; attack=50; defense=55; speed=30; sp_attack=75;sp_defense=65;};
 poca_type=("GRASS", "POISON"); 
 ascii="                               
@@ -527,7 +527,7 @@ ascii="
 
 let dexmap = PokeDex.add "PSYDUCK" {
 name="PSYDUCK"; 
-learnable_moves=["SWIFT";"REST";"SURF";"STRENGTH";"WATERFALL";"SCRATCH";"SCREECH";];
+learnable_moves=["DIG";"SWIFT";"SURF";"STRENGTH";"WATERFALL";"SCRATCH";"TAIL WHIP";"SCREECH";"FURY SWIPES";"HYDRO PUMP";];
 stats={max_hp=50; attack=52; defense=48; speed=55; sp_attack=65;sp_defense=50;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -548,7 +548,7 @@ ascii="
 
 let dexmap = PokeDex.add "CHARIZARD" {
 name="CHARIZARD"; 
-learnable_moves=["SWIFT";"REST";"CUT";"STRENGTH";"SLASH";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"FLY";"STRENGTH";"GROWL";"WING ATTACK";"SLASH";];
 stats={max_hp=78; attack=84; defense=78; speed=100; sp_attack=109;sp_defense=85;};
 poca_type=("FIRE", "FLYING"); 
 ascii="   I  II   I++I$  I88$$$$8++   
@@ -569,7 +569,7 @@ O IIIIO IIIII7 788887  $    87$
 
 let dexmap = PokeDex.add "ONIX" {
 name="ONIX"; 
-learnable_moves=["REST";"STRENGTH";"TACKLE";"SCREECH";"HARDEN";"SLAM";];
+learnable_moves=["DIG";"STRENGTH";"TACKLE";"SCREECH";"ROCK THROW";"HARDEN";"SLAM";];
 stats={max_hp=35; attack=45; defense=160; speed=70; sp_attack=30;sp_defense=45;};
 poca_type=("ROCK", "GROUND"); 
 ascii="     :=   7::::::N7==7==       
@@ -590,7 +590,7 @@ ascii="     :=   7::::::N7==7==
 
 let dexmap = PokeDex.add "BEEDRILL" {
 name="BEEDRILL"; 
-learnable_moves=["SWIFT";"REST";"CUT";"TWINEEDLE";"AGILITY";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SWIFT";"FURY CUTTER";"CUT";"FURY ATTACK";"TWINEEDLE";"PIN MISSILE";"AGILITY";];
 stats={max_hp=65; attack=80; defense=40; speed=75; sp_attack=45;sp_defense=80;};
 poca_type=("BUG", "POISON"); 
 ascii="               I,      ==      
@@ -611,7 +611,7 @@ ascii="               I,      ==
 
 let dexmap = PokeDex.add "GROWLITHE" {
 name="GROWLITHE"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";];
+learnable_moves=["DIG";"SWIFT";"LEER";"TAKE DOWN";"FLAME WHEEL";"AGILITY";];
 stats={max_hp=55; attack=70; defense=45; speed=60; sp_attack=70;sp_defense=50;};
 poca_type=("FIRE", "FIRE"); 
 ascii="                               
@@ -632,7 +632,7 @@ ascii="
 
 let dexmap = PokeDex.add "ELECTRODE" {
 name="ELECTRODE"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SCREECH";"SELFDESTRUCT";"SCREECH";"SELFDESTRUCT";"SWIFT";"EXPLOSION";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"SCREECH";"SELFDESTRUCT";"SCREECH";"SELFDESTRUCT";"SWIFT";"EXPLOSION";];
 stats={max_hp=60; attack=50; defense=70; speed=140; sp_attack=80;sp_defense=80;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="                               
@@ -653,7 +653,7 @@ ascii="
 
 let dexmap = PokeDex.add "GRIMER" {
 name="GRIMER"; 
-learnable_moves=["THUNDER";"REST";"POUND";"HARDEN";"SCREECH";];
+learnable_moves=["GIGA DRAIN";"THUNDER";"POUND";"HARDEN";"SCREECH";"ACID ARMOR";];
 stats={max_hp=80; attack=80; defense=50; speed=25; sp_attack=40;sp_defense=50;};
 poca_type=("POISON", "POISON"); 
 ascii="                               
@@ -674,7 +674,7 @@ ascii="
 
 let dexmap = PokeDex.add "FLAREON" {
 name="FLAREON"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["HYPER BEAM";"SHADOW BALL";"SWIFT";"TAIL WHIP";"QUICK ATTACK";"LEER";];
 stats={max_hp=65; attack=130; defense=60; speed=65; sp_attack=95;sp_defense=110;};
 poca_type=("FIRE", "FIRE"); 
 ascii="                               
@@ -695,7 +695,7 @@ ascii="
 
 let dexmap = PokeDex.add "PIDGEOT" {
 name="PIDGEOT"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"QUICK ATTACK";"QUICK ATTACK";"WING ATTACK";"AGILITY";];
 stats={max_hp=83; attack=80; defense=75; speed=91; sp_attack=70;sp_defense=70;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="     N::INZZZ+ZZZN             
@@ -716,7 +716,7 @@ ascii="     N::INZZZ+ZZZN
 
 let dexmap = PokeDex.add "DRAGONITE" {
 name="DRAGONITE"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SURF";"STRENGTH";"WATERFALL";"SLAM";"AGILITY";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"FURY CUTTER";"FLY";"SURF";"STRENGTH";"WATERFALL";"LEER";"SLAM";"AGILITY";"WING ATTACK";"HYPER BEAM";];
 stats={max_hp=91; attack=134; defense=95; speed=80; sp_attack=100;sp_defense=100;};
 poca_type=("DRAGON", "FLYING"); 
 ascii="      II ???  I   8?IOOOOO     
@@ -737,7 +737,7 @@ ascii="      II ???  I   8?IOOOOO
 
 let dexmap = PokeDex.add "RHYHORN" {
 name="RHYHORN"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"STOMP";];
+learnable_moves=["THUNDER";"DIG";"STRENGTH";"HORN ATTACK";"TAIL WHIP";"STOMP";"FURY ATTACK";"HORN DRILL";"TAKE DOWN";];
 stats={max_hp=80; attack=85; defense=95; speed=25; sp_attack=30;sp_defense=30;};
 poca_type=("GROUND", "ROCK"); 
 ascii="                ~~~            
@@ -758,7 +758,7 @@ ascii="                ~~~
 
 let dexmap = PokeDex.add "CHARMELEON" {
 name="CHARMELEON"; 
-learnable_moves=["SWIFT";"REST";"CUT";"STRENGTH";"SCRATCH";"SLASH";];
+learnable_moves=["DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"SCRATCH";"GROWL";"SLASH";];
 stats={max_hp=58; attack=64; defense=58; speed=80; sp_attack=80;sp_defense=65;};
 poca_type=("FIRE", "FIRE"); 
 ascii="              $+               
@@ -779,7 +779,7 @@ ascii="              $+
 
 let dexmap = PokeDex.add "KADABRA" {
 name="KADABRA"; 
-learnable_moves=["REST";"RECOVER";];
+learnable_moves=["DIG";"SHADOW BALL";"RECOVER";"PSYCHIC";];
 stats={max_hp=40; attack=35; defense=30; speed=105; sp_attack=120;sp_defense=70;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="        Z       =              
@@ -821,7 +821,7 @@ ascii="
 
 let dexmap = PokeDex.add "EEVEE" {
 name="EEVEE"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["SHADOW BALL";"SWIFT";];
 stats={max_hp=55; attack=55; defense=50; speed=55; sp_attack=45;sp_defense=65;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="           Z?                  
@@ -842,7 +842,7 @@ ascii="           Z?
 
 let dexmap = PokeDex.add "VILEPLUME" {
 name="VILEPLUME"; 
-learnable_moves=["REST";"CUT";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"CUT";];
 stats={max_hp=75; attack=80; defense=85; speed=50; sp_attack=100;sp_defense=90;};
 poca_type=("GRASS", "POISON"); 
 ascii="                               
@@ -863,7 +863,7 @@ ascii="
 
 let dexmap = PokeDex.add "POLIWRATH" {
 name="POLIWRATH"; 
-learnable_moves=["REST";"SURF";"STRENGTH";"WATERFALL";"DOUBLESLAP";"SUBMISSION";"SUBMISSION";];
+learnable_moves=["HYPER BEAM";"DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";"DOUBLESLAP";"SUBMISSION";"SUBMISSION";];
 stats={max_hp=90; attack=85; defense=95; speed=70; sp_attack=70;sp_defense=90;};
 poca_type=("WATER", "FIGHTING"); 
 ascii="         ZOIN   OIIII          
@@ -884,7 +884,7 @@ ascii="         ZOIN   OIIII
 
 let dexmap = PokeDex.add "HAUNTER" {
 name="HAUNTER"; 
-learnable_moves=["THUNDER";"REST";];
+learnable_moves=["GIGA DRAIN";"THUNDER";"SHADOW BALL";];
 stats={max_hp=45; attack=50; defense=45; speed=95; sp_attack=115;sp_defense=55;};
 poca_type=("GHOST", "POISON"); 
 ascii="         $+          Z=$N      
@@ -905,7 +905,7 @@ ascii="         $+          Z=$N
 
 let dexmap = PokeDex.add "DUGTRIO" {
 name="DUGTRIO"; 
-learnable_moves=["REST";"CUT";"SCRATCH";"SLASH";"FISSURE";];
+learnable_moves=["HYPER BEAM";"DIG";"CUT";"SCRATCH";"GROWL";"GROWL";"DIG";"SLASH";"FISSURE";];
 stats={max_hp=35; attack=80; defense=50; speed=120; sp_attack=50;sp_defense=70;};
 poca_type=("GROUND", "GROUND"); 
 ascii="                               
@@ -926,7 +926,7 @@ ascii="
 
 let dexmap = PokeDex.add "NIDORINO" {
 name="NIDORINO"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"TACKLE";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"STRENGTH";"LEER";"TACKLE";"HORN ATTACK";"DOUBLE KICK";"FURY ATTACK";"HORN DRILL";];
 stats={max_hp=61; attack=72; defense=57; speed=65; sp_attack=55;sp_defense=55;};
 poca_type=("POISON", "POISON"); 
 ascii="        Z=      ==             
@@ -947,7 +947,7 @@ ascii="        Z=      ==
 
 let dexmap = PokeDex.add "NIDORINA" {
 name="NIDORINA"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"TACKLE";"SCRATCH";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"STRENGTH";"GROWL";"TACKLE";"SCRATCH";"DOUBLE KICK";"TAIL WHIP";"FURY SWIPES";];
 stats={max_hp=70; attack=62; defense=67; speed=56; sp_attack=55;sp_defense=55;};
 poca_type=("POISON", "POISON"); 
 ascii="        I                      
@@ -968,7 +968,7 @@ ascii="        I
 
 let dexmap = PokeDex.add "DIGLETT" {
 name="DIGLETT"; 
-learnable_moves=["REST";"CUT";"SCRATCH";"SLASH";"FISSURE";];
+learnable_moves=["DIG";"CUT";"SCRATCH";"GROWL";"DIG";"SLASH";"FISSURE";];
 stats={max_hp=10; attack=55; defense=25; speed=95; sp_attack=35;sp_defense=45;};
 poca_type=("GROUND", "GROUND"); 
 ascii="                               
@@ -989,7 +989,7 @@ ascii="
 
 let dexmap = PokeDex.add "MACHOKE" {
 name="MACHOKE"; 
-learnable_moves=["REST";"STRENGTH";"SUBMISSION";];
+learnable_moves=["DIG";"STRENGTH";"LEER";"KARATE CHOP";"VITAL THROW";"CROSS CHOP";"SUBMISSION";];
 stats={max_hp=80; attack=100; defense=70; speed=45; sp_attack=50;sp_defense=60;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="                   ~+~~O       
@@ -1010,7 +1010,7 @@ ascii="                   ~+~~O
 
 let dexmap = PokeDex.add "NIDORANF" {
 name="NIDORANF"; 
-learnable_moves=["THUNDER";"REST";"TACKLE";"SCRATCH";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"GROWL";"TACKLE";"SCRATCH";"DOUBLE KICK";"TAIL WHIP";"FURY SWIPES";];
 stats={max_hp=55; attack=47; defense=52; speed=41; sp_attack=40;sp_defense=40;};
 poca_type=("POISON", "POISON"); 
 ascii="                               
@@ -1031,7 +1031,7 @@ ascii="
 
 let dexmap = PokeDex.add "CUBONE" {
 name="CUBONE"; 
-learnable_moves=["REST";"STRENGTH";"BONEMERANG";];
+learnable_moves=["DIG";"STRENGTH";"GROWL";"TAIL WHIP";"LEER";"BONEMERANG";"BONE RUSH";];
 stats={max_hp=50; attack=50; defense=95; speed=35; sp_attack=40;sp_defense=50;};
 poca_type=("GROUND", "GROUND"); 
 ascii="                               
@@ -1052,7 +1052,7 @@ ascii="
 
 let dexmap = PokeDex.add "NIDORANM" {
 name="NIDORANM"; 
-learnable_moves=["THUNDER";"REST";"TACKLE";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"LEER";"TACKLE";"HORN ATTACK";"DOUBLE KICK";"FURY ATTACK";"HORN DRILL";];
 stats={max_hp=46; attack=57; defense=40; speed=50; sp_attack=40;sp_defense=40;};
 poca_type=("POISON", "POISON"); 
 ascii="                               
@@ -1073,7 +1073,7 @@ ascii="
 
 let dexmap = PokeDex.add "MAGNETON" {
 name="MAGNETON"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SWIFT";"SCREECH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"SWIFT";"SCREECH";];
 stats={max_hp=50; attack=60; defense=95; speed=70; sp_attack=120;sp_defense=70;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="        OZN      8=I           
@@ -1115,7 +1115,7 @@ ascii="
 
 let dexmap = PokeDex.add "KOFFING" {
 name="KOFFING"; 
-learnable_moves=["THUNDER";"REST";"TACKLE";"SELFDESTRUCT";"EXPLOSION";];
+learnable_moves=["THUNDER";"TACKLE";"SELFDESTRUCT";"EXPLOSION";];
 stats={max_hp=40; attack=65; defense=95; speed=35; sp_attack=60;sp_defense=45;};
 poca_type=("POISON", "POISON"); 
 ascii="       =:::                    
@@ -1136,7 +1136,7 @@ ascii="       =:::
 
 let dexmap = PokeDex.add "GASTLY" {
 name="GASTLY"; 
-learnable_moves=["THUNDER";"REST";];
+learnable_moves=["GIGA DRAIN";"THUNDER";"SHADOW BALL";];
 stats={max_hp=30; attack=35; defense=30; speed=80; sp_attack=100;sp_defense=35;};
 poca_type=("GHOST", "POISON"); 
 ascii="                  ~+~          
@@ -1157,7 +1157,7 @@ ascii="                  ~+~
 
 let dexmap = PokeDex.add "CATERPIE" {
 name="CATERPIE"; 
-learnable_moves=["TACKLE";];
+learnable_moves=["TACKLE";"STRING SHOT";];
 stats={max_hp=45; attack=30; defense=35; speed=45; sp_attack=20;sp_defense=20;};
 poca_type=("BUG", "BUG"); 
 ascii="                               
@@ -1178,7 +1178,7 @@ ascii="
 
 let dexmap = PokeDex.add "PARAS" {
 name="PARAS"; 
-learnable_moves=["REST";"CUT";"SCRATCH";"SLASH";"GROWTH";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"DIG";"FURY CUTTER";"CUT";"SCRATCH";"LEECH LIFE";"SLASH";"GROWTH";"GIGA DRAIN";];
 stats={max_hp=35; attack=70; defense=55; speed=25; sp_attack=45;sp_defense=55;};
 poca_type=("BUG", "GRASS"); 
 ascii="                               
@@ -1199,7 +1199,7 @@ ascii="
 
 let dexmap = PokeDex.add "NIDOKING" {
 name="NIDOKING"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"FURY CUTTER";"SURF";"STRENGTH";"HORN ATTACK";"DOUBLE KICK";];
 stats={max_hp=81; attack=92; defense=77; speed=85; sp_attack=85;sp_defense=75;};
 poca_type=("POISON", "GROUND"); 
 ascii="    $ON N  NOI$$$$I            
@@ -1220,7 +1220,7 @@ OIIO   N$    ====IIIIIO=IIO I~I
 
 let dexmap = PokeDex.add "VENOMOTH" {
 name="VENOMOTH"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"SWIFT";"LEECH LIFE";"PSYCHIC";];
 stats={max_hp=70; attack=65; defense=60; speed=90; sp_attack=90;sp_defense=75;};
 poca_type=("BUG", "POISON"); 
 ascii="  ,,+             +....+..     
@@ -1241,7 +1241,7 @@ ascii="  ,,+             +....+..
 
 let dexmap = PokeDex.add "MACHAMP" {
 name="MACHAMP"; 
-learnable_moves=["REST";"STRENGTH";"SUBMISSION";];
+learnable_moves=["HYPER BEAM";"DIG";"STRENGTH";"LEER";"KARATE CHOP";"VITAL THROW";"CROSS CHOP";"SUBMISSION";];
 stats={max_hp=90; attack=130; defense=80; speed=55; sp_attack=65;sp_defense=85;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="  IZI +   88I:$88   +ZZ+I      
@@ -1262,7 +1262,7 @@ ascii="  IZI +   88I:$88   +ZZ+I
 
 let dexmap = PokeDex.add "VENONAT" {
 name="VENONAT"; 
-learnable_moves=["SWIFT";"REST";"TACKLE";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"SWIFT";"TACKLE";"LEECH LIFE";"PSYCHIC";];
 stats={max_hp=60; attack=55; defense=50; speed=45; sp_attack=40;sp_defense=55;};
 poca_type=("BUG", "POISON"); 
 ascii="                     N         
@@ -1283,7 +1283,7 @@ ascii="                     N
 
 let dexmap = PokeDex.add "PIKACHU" {
 name="PIKACHU"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"STRENGTH";"SLAM";"AGILITY";"THUNDER";];
+learnable_moves=["THUNDER";"SWIFT";"DEFENSE CURL";"STRENGTH";"GROWL";"TAIL WHIP";"QUICK ATTACK";"SLAM";"AGILITY";"THUNDER";];
 stats={max_hp=35; attack=55; defense=30; speed=90; sp_attack=50;sp_defense=40;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="                               
@@ -1304,7 +1304,7 @@ ascii="
 
 let dexmap = PokeDex.add "TANGELA" {
 name="TANGELA"; 
-learnable_moves=["REST";"CUT";"ABSORB";"SLAM";"GROWTH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"CUT";"ABSORB";"VINE WHIP";"MEGA DRAIN";"SLAM";"GROWTH";];
 stats={max_hp=65; attack=55; defense=115; speed=60; sp_attack=100;sp_defense=40;};
 poca_type=("GRASS", "GRASS"); 
 ascii="                               
@@ -1325,7 +1325,7 @@ ascii="
 
 let dexmap = PokeDex.add "TAUROS" {
 name="TAUROS"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";"REST";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SURF";"STRENGTH";"TAIL WHIP";"HORN ATTACK";"TAKE DOWN";];
 stats={max_hp=75; attack=100; defense=95; speed=110; sp_attack=40;sp_defense=70;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                        8+8    
@@ -1346,7 +1346,7 @@ ascii="                        8+8
 
 let dexmap = PokeDex.add "TENTACRUEL" {
 name="TENTACRUEL"; 
-learnable_moves=["REST";"CUT";"SURF";"CONSTRICT";"CONSTRICT";"ACID";"BUBBLEBEAM";"BARRIER";"SCREECH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"CUT";"SURF";"CONSTRICT";"CONSTRICT";"ACID";"BUBBLEBEAM";"BARRIER";"SCREECH";"HYDRO PUMP";];
 stats={max_hp=80; attack=70; defense=65; speed=100; sp_attack=80;sp_defense=120;};
 poca_type=("WATER", "POISON"); 
 ascii="          Z Z==IZ~I8           
@@ -1367,7 +1367,7 @@ N         ZII   ZZ?7 ?N
 
 let dexmap = PokeDex.add "BELLSPROUT" {
 name="BELLSPROUT"; 
-learnable_moves=["REST";"CUT";"GROWTH";"ACID";"SLAM";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"CUT";"VINE WHIP";"GROWTH";"ACID";"RAZOR LEAF";"SLAM";];
 stats={max_hp=50; attack=75; defense=35; speed=40; sp_attack=70;sp_defense=30;};
 poca_type=("GRASS", "POISON"); 
 ascii="                               
@@ -1388,7 +1388,7 @@ ascii="
 
 let dexmap = PokeDex.add "VAPOREON" {
 name="VAPOREON"; 
-learnable_moves=["SWIFT";"REST";"SURF";"WATERFALL";];
+learnable_moves=["HYPER BEAM";"SHADOW BALL";"SWIFT";"SURF";"WATERFALL";"TAIL WHIP";"WATER GUN";"QUICK ATTACK";"ACID ARMOR";"HYDRO PUMP";];
 stats={max_hp=130; attack=65; defense=60; speed=65; sp_attack=110;sp_defense=95;};
 poca_type=("WATER", "WATER"); 
 ascii="                ZO             
@@ -1409,7 +1409,7 @@ ascii="                ZO
 
 let dexmap = PokeDex.add "POLIWHIRL" {
 name="POLIWHIRL"; 
-learnable_moves=["REST";"SURF";"STRENGTH";"WATERFALL";];
+learnable_moves=["DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";];
 stats={max_hp=65; attack=65; defense=65; speed=90; sp_attack=50;sp_defense=50;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -1430,7 +1430,7 @@ ascii="
 
 let dexmap = PokeDex.add "GOLBAT" {
 name="GOLBAT"; 
-learnable_moves=["SWIFT";"REST";"SCREECH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SWIFT";"SCREECH";"LEECH LIFE";"WING ATTACK";];
 stats={max_hp=75; attack=80; defense=70; speed=90; sp_attack=65;sp_defense=75;};
 poca_type=("POISON", "FLYING"); 
 ascii="  IIO:?              :OIIIII   
@@ -1451,7 +1451,7 @@ ascii="  IIO:?              :OIIIII
 
 let dexmap = PokeDex.add "MANKEY" {
 name="MANKEY"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"STRENGTH";"SCRATCH";"SCREECH";];
+learnable_moves=["THUNDER";"DIG";"SWIFT";"DEFENSE CURL";"STRENGTH";"SCRATCH";"LEER";"KARATE CHOP";"FURY SWIPES";"CROSS CHOP";"SCREECH";];
 stats={max_hp=40; attack=80; defense=35; speed=70; sp_attack=35;sp_defense=45;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="                               
@@ -1472,7 +1472,7 @@ ascii="
 
 let dexmap = PokeDex.add "HITMONCHAN" {
 name="HITMONCHAN"; 
-learnable_moves=["SWIFT";"REST";"STRENGTH";"AGILITY";];
+learnable_moves=["SWIFT";"STRENGTH";"AGILITY";"MACH PUNCH";"MEGA PUNCH";];
 stats={max_hp=50; attack=105; defense=79; speed=76; sp_attack=35;sp_defense=110;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="             ++++8I            
@@ -1493,7 +1493,7 @@ ascii="             ++++8I
 
 let dexmap = PokeDex.add "GOLEM" {
 name="GOLEM"; 
-learnable_moves=["REST";"STRENGTH";"SELFDESTRUCT";"HARDEN";"EXPLOSION";];
+learnable_moves=["HYPER BEAM";"DIG";"DEFENSE CURL";"FURY CUTTER";"STRENGTH";"DEFENSE CURL";"ROCK THROW";"DEFENSE CURL";"ROCK THROW";"SELFDESTRUCT";"HARDEN";"EXPLOSION";];
 stats={max_hp=80; attack=110; defense=130; speed=45; sp_attack=55;sp_defense=65;};
 poca_type=("ROCK", "GROUND"); 
 ascii="             88 8?O            
@@ -1514,7 +1514,7 @@ ascii="             88 8?O
 
 let dexmap = PokeDex.add "RAICHU" {
 name="RAICHU"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"DEFENSE CURL";"STRENGTH";"TAIL WHIP";"QUICK ATTACK";];
 stats={max_hp=60; attack=90; defense=55; speed=100; sp_attack=90;sp_defense=80;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="           8ZO    8ZZ??        
@@ -1535,7 +1535,7 @@ Z=Z      8??OO??==I O
 
 let dexmap = PokeDex.add "PIDGEY" {
 name="PIDGEY"; 
-learnable_moves=["SWIFT";"REST";"TACKLE";"AGILITY";];
+learnable_moves=["SWIFT";"FLY";"TACKLE";"QUICK ATTACK";"WING ATTACK";"AGILITY";];
 stats={max_hp=40; attack=45; defense=40; speed=56; sp_attack=35;sp_defense=35;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="                               
@@ -1556,7 +1556,7 @@ ascii="
 
 let dexmap = PokeDex.add "MEWTWO" {
 name="MEWTWO"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"STRENGTH";"BARRIER";"SWIFT";"AMNESIA";"RECOVER";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"SWIFT";"STRENGTH";"BARRIER";"SWIFT";"PSYCHIC";"AMNESIA";"RECOVER";];
 stats={max_hp=106; attack=110; defense=90; speed=130; sp_attack=154;sp_defense=90;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="           I:I:::=     I    $  
@@ -1577,7 +1577,7 @@ ascii="           I:I:::=     I    $
 
 let dexmap = PokeDex.add "ARCANINE" {
 name="ARCANINE"; 
-learnable_moves=["SWIFT";"REST";"EXTREMESPEED";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"LEER";"TAKE DOWN";"FLAME WHEEL";"EXTREMESPEED";];
 stats={max_hp=90; attack=110; defense=80; speed=95; sp_attack=100;sp_defense=80;};
 poca_type=("FIRE", "FIRE"); 
 ascii=" +NO:::+OI+N+     :::::::N     
@@ -1598,7 +1598,7 @@ ascii=" +NO:::+OI+N+     :::::::N
 
 let dexmap = PokeDex.add "HORSEA" {
 name="HORSEA"; 
-learnable_moves=["SWIFT";"REST";"SURF";"WATERFALL";"BUBBLE";"AGILITY";];
+learnable_moves=["SWIFT";"SURF";"WATERFALL";"BUBBLE";"LEER";"WATER GUN";"AGILITY";"HYDRO PUMP";];
 stats={max_hp=30; attack=40; defense=70; speed=60; sp_attack=70;sp_defense=25;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -1619,7 +1619,7 @@ ascii="
 
 let dexmap = PokeDex.add "DRAGONAIR" {
 name="DRAGONAIR"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SURF";"WATERFALL";"SLAM";"AGILITY";];
+learnable_moves=["THUNDER";"SWIFT";"SURF";"WATERFALL";"LEER";"SLAM";"AGILITY";"HYPER BEAM";];
 stats={max_hp=61; attack=84; defense=65; speed=70; sp_attack=70;sp_defense=70;};
 poca_type=("DRAGON", "DRAGON"); 
 ascii="           ==??? ::            
@@ -1640,7 +1640,7 @@ ascii="           ==??? ::
 
 let dexmap = PokeDex.add "VENUSAUR" {
 name="VENUSAUR"; 
-learnable_moves=["REST";"CUT";"GROWTH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"DEFENSE CURL";"FURY CUTTER";"CUT";"GROWL";"VINE WHIP";"GROWL";"VINE WHIP";"RAZOR LEAF";"GROWTH";"SOLARBEAM";];
 stats={max_hp=80; attack=82; defense=83; speed=80; sp_attack=100;sp_defense=100;};
 poca_type=("GRASS", "POISON"); 
 ascii="   7+:++8+++++88++++N+++::+8   
@@ -1661,7 +1661,7 @@ Z 7778NN888ZZZZZN  8+7++++N888+
 
 let dexmap = PokeDex.add "CHARMANDER" {
 name="CHARMANDER"; 
-learnable_moves=["SWIFT";"REST";"CUT";"STRENGTH";"SCRATCH";"SLASH";];
+learnable_moves=["DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"SCRATCH";"GROWL";"SLASH";];
 stats={max_hp=39; attack=52; defense=43; speed=65; sp_attack=60;sp_defense=50;};
 poca_type=("FIRE", "FIRE"); 
 ascii="                               
@@ -1682,7 +1682,7 @@ ascii="
 
 let dexmap = PokeDex.add "ARTICUNO" {
 name="ARTICUNO"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"AGILITY";];
 stats={max_hp=90; attack=85; defense=100; speed=85; sp_attack=95;sp_defense=125;};
 poca_type=("ICE", "FLYING"); 
 ascii=" D ~++O             ++++++DO~~ 
@@ -1703,7 +1703,7 @@ ascii=" D ~++O             ++++++DO~~
 
 let dexmap = PokeDex.add "MUK" {
 name="MUK"; 
-learnable_moves=["THUNDER";"REST";"POUND";"HARDEN";"HARDEN";"SCREECH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"THUNDER";"POUND";"HARDEN";"HARDEN";"SCREECH";"ACID ARMOR";];
 stats={max_hp=105; attack=105; defense=75; speed=50; sp_attack=65;sp_defense=100;};
 poca_type=("POISON", "POISON"); 
 ascii="                      Z+:::::=N
@@ -1724,7 +1724,7 @@ ascii="                      Z+:::::=N
 
 let dexmap = PokeDex.add "NIDOQUEEN" {
 name="NIDOQUEEN"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";"SCRATCH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"FURY CUTTER";"SURF";"STRENGTH";"SCRATCH";"DOUBLE KICK";"TAIL WHIP";];
 stats={max_hp=90; attack=82; defense=87; speed=76; sp_attack=75;sp_defense=85;};
 poca_type=("POISON", "GROUND"); 
 ascii="        I~~~I:??ZZ?IN          
@@ -1745,7 +1745,7 @@ ascii="        I~~~I:??ZZ?IN
 
 let dexmap = PokeDex.add "GOLDUCK" {
 name="GOLDUCK"; 
-learnable_moves=["SWIFT";"REST";"SURF";"STRENGTH";"WATERFALL";"SCREECH";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"FURY CUTTER";"SURF";"STRENGTH";"WATERFALL";"TAIL WHIP";"TAIL WHIP";"SCREECH";"FURY SWIPES";"HYDRO PUMP";];
 stats={max_hp=80; attack=82; defense=78; speed=85; sp_attack=95;sp_defense=80;};
 poca_type=("WATER", "WATER"); 
 ascii="           I O+ ++             
@@ -1766,7 +1766,7 @@ ascii="           I O+ ++
 
 let dexmap = PokeDex.add "PINSIR" {
 name="PINSIR"; 
-learnable_moves=["REST";"CUT";"STRENGTH";"HARDEN";"GUILLOTINE";"SUBMISSION";];
+learnable_moves=["HYPER BEAM";"FURY CUTTER";"CUT";"STRENGTH";"HARDEN";"GUILLOTINE";"SUBMISSION";"SWORDS DANCE";];
 stats={max_hp=65; attack=125; defense=100; speed=85; sp_attack=55;sp_defense=70;};
 poca_type=("BUG", "BUG"); 
 ascii="        ~,,O     7,,,          
@@ -1787,7 +1787,7 @@ I        IO$$$OO$$$   OI
 
 let dexmap = PokeDex.add "GOLDEEN" {
 name="GOLDEEN"; 
-learnable_moves=["SWIFT";"REST";"SURF";"WATERFALL";"PECK";"WATERFALL";"AGILITY";];
+learnable_moves=["SWIFT";"SURF";"WATERFALL";"PECK";"TAIL WHIP";"HORN ATTACK";"FURY ATTACK";"WATERFALL";"HORN DRILL";"AGILITY";];
 stats={max_hp=45; attack=67; defense=60; speed=63; sp_attack=35;sp_defense=50;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -1808,7 +1808,7 @@ ascii="
 
 let dexmap = PokeDex.add "HYPNO" {
 name="HYPNO"; 
-learnable_moves=["REST";"MEDITATE";];
+learnable_moves=["HYPER BEAM";"SHADOW BALL";"MEDITATE";"PSYCHIC";];
 stats={max_hp=85; attack=73; defense=70; speed=67; sp_attack=73;sp_defense=115;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="           ~~~????7            
@@ -1829,7 +1829,7 @@ ascii="           ~~~????7
 
 let dexmap = PokeDex.add "MOLTRES" {
 name="MOLTRES"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"AGILITY";"SKY ATTACK";];
 stats={max_hp=90; attack=100; defense=90; speed=90; sp_attack=125;sp_defense=85;};
 poca_type=("FIRE", "FLYING"); 
 ascii="OO             II +OOO         
@@ -1850,7 +1850,7 @@ I8   O$ OOO   I$
 
 let dexmap = PokeDex.add "WEEPINBELL" {
 name="WEEPINBELL"; 
-learnable_moves=["REST";"CUT";"GROWTH";"GROWTH";"ACID";"SLAM";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"CUT";"VINE WHIP";"GROWTH";"GROWTH";"ACID";"RAZOR LEAF";"SLAM";];
 stats={max_hp=65; attack=90; defense=50; speed=55; sp_attack=85;sp_defense=45;};
 poca_type=("GRASS", "POISON"); 
 ascii="             7OO               
@@ -1871,7 +1871,7 @@ ascii="             7OO
 
 let dexmap = PokeDex.add "PONYTA" {
 name="PONYTA"; 
-learnable_moves=["SWIFT";"REST";"TACKLE";"STOMP";"AGILITY";];
+learnable_moves=["SWIFT";"TACKLE";"GROWL";"TAIL WHIP";"STOMP";"TAKE DOWN";"AGILITY";];
 stats={max_hp=50; attack=85; defense=55; speed=90; sp_attack=65;sp_defense=65;};
 poca_type=("FIRE", "FIRE"); 
 ascii="         7?77                  
@@ -1892,7 +1892,7 @@ ascii="         7?77
 
 let dexmap = PokeDex.add "MEOWTH" {
 name="MEOWTH"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SCRATCH";"SCREECH";"SLASH";];
+learnable_moves=["THUNDER";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"SCRATCH";"GROWL";"SCREECH";"FURY SWIPES";"SLASH";];
 stats={max_hp=40; attack=45; defense=35; speed=90; sp_attack=40;sp_defense=40;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -1913,7 +1913,7 @@ ascii="
 
 let dexmap = PokeDex.add "BLASTOISE" {
 name="BLASTOISE"; 
-learnable_moves=["REST";"SURF";"STRENGTH";"WATERFALL";"BUBBLE";"WITHDRAW";"BUBBLE";"WITHDRAW";];
+learnable_moves=["HYPER BEAM";"DIG";"DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";"TAIL WHIP";"BUBBLE";"WITHDRAW";"TAIL WHIP";"BUBBLE";"WITHDRAW";"WATER GUN";"HYDRO PUMP";];
 stats={max_hp=79; attack=83; defense=100; speed=78; sp_attack=85;sp_defense=105;};
 poca_type=("WATER", "WATER"); 
 ascii="   N?:8??????O?888             
@@ -1934,7 +1934,7 @@ ascii="   N?:8??????O?888
 
 let dexmap = PokeDex.add "BUTTERFREE" {
 name="BUTTERFREE"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"SWIFT";];
 stats={max_hp=60; attack=45; defense=50; speed=70; sp_attack=80;sp_defense=80;};
 poca_type=("BUG", "FLYING"); 
 ascii="                               
@@ -1955,7 +1955,7 @@ ascii="
 
 let dexmap = PokeDex.add "WEEDLE" {
 name="WEEDLE"; 
-learnable_moves=[];
+learnable_moves=["STRING SHOT";];
 stats={max_hp=40; attack=35; defense=30; speed=50; sp_attack=20;sp_defense=20;};
 poca_type=("BUG", "POISON"); 
 ascii="                               
@@ -1976,7 +1976,7 @@ ascii="
 
 let dexmap = PokeDex.add "GRAVELER" {
 name="GRAVELER"; 
-learnable_moves=["REST";"STRENGTH";"TACKLE";"SELFDESTRUCT";"HARDEN";"EXPLOSION";];
+learnable_moves=["DIG";"DEFENSE CURL";"STRENGTH";"TACKLE";"DEFENSE CURL";"ROCK THROW";"DEFENSE CURL";"ROCK THROW";"SELFDESTRUCT";"HARDEN";"EXPLOSION";];
 stats={max_hp=55; attack=95; defense=115; speed=35; sp_attack=45;sp_defense=45;};
 poca_type=("ROCK", "GROUND"); 
 ascii="                               
@@ -1997,7 +1997,7 @@ ascii="
 
 let dexmap = PokeDex.add "SEADRA" {
 name="SEADRA"; 
-learnable_moves=["SWIFT";"REST";"SURF";"WATERFALL";"BUBBLE";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"SURF";"WATERFALL";"BUBBLE";"LEER";"WATER GUN";"LEER";"WATER GUN";"AGILITY";"HYDRO PUMP";];
 stats={max_hp=55; attack=65; defense=95; speed=85; sp_attack=95;sp_defense=45;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -2018,7 +2018,7 @@ ascii="
 
 let dexmap = PokeDex.add "KINGLER" {
 name="KINGLER"; 
-learnable_moves=["REST";"CUT";"SURF";"STRENGTH";"VICEGRIP";"VICEGRIP";"HARDEN";"STOMP";"GUILLOTINE";"CRABHAMMER";];
+learnable_moves=["HYPER BEAM";"FURY CUTTER";"CUT";"SURF";"STRENGTH";"LEER";"VICEGRIP";"LEER";"VICEGRIP";"HARDEN";"STOMP";"GUILLOTINE";"CRABHAMMER";];
 stats={max_hp=55; attack=130; defense=115; speed=75; sp_attack=50;sp_defense=50;};
 poca_type=("WATER", "WATER"); 
 ascii="                    ~~I?I      
@@ -2039,7 +2039,7 @@ OI=                      =OO
 
 let dexmap = PokeDex.add "KABUTOPS" {
 name="KABUTOPS"; 
-learnable_moves=["REST";"CUT";"SURF";"HARDEN";"ABSORB";"ABSORB";"SLASH";"ANCIENTPOWER";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"FURY CUTTER";"CUT";"SURF";"HARDEN";"ABSORB";"ABSORB";"LEER";"SLASH";"MEGA DRAIN";"ANCIENTPOWER";];
 stats={max_hp=60; attack=115; defense=105; speed=80; sp_attack=65;sp_defense=70;};
 poca_type=("ROCK", "WATER"); 
 ascii="     ZZ++ +  +8                
@@ -2060,7 +2060,7 @@ ascii="     ZZ++ +  +8
 
 let dexmap = PokeDex.add "ZAPDOS" {
 name="ZAPDOS"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"AGILITY";"THUNDER";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"FLY";"AGILITY";"DRILL PECK";"THUNDER";];
 stats={max_hp=90; attack=90; defense=85; speed=100; sp_attack=125;sp_defense=90;};
 poca_type=("ELECTRIC", "FLYING"); 
 ascii="        =   =                  
@@ -2081,7 +2081,7 @@ N=====NN8====8==N===========INN
 
 let dexmap = PokeDex.add "DODUO" {
 name="DODUO"; 
-learnable_moves=["SWIFT";"REST";"PECK";"AGILITY";];
+learnable_moves=["SWIFT";"FLY";"PECK";"GROWL";"FURY ATTACK";"DRILL PECK";"AGILITY";];
 stats={max_hp=35; attack=85; defense=45; speed=75; sp_attack=35;sp_defense=35;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="                  8++8  7      
@@ -2102,7 +2102,7 @@ ascii="                  8++8  7
 
 let dexmap = PokeDex.add "MAROWAK" {
 name="MAROWAK"; 
-learnable_moves=["REST";"STRENGTH";"BONEMERANG";];
+learnable_moves=["HYPER BEAM";"DIG";"STRENGTH";"TAIL WHIP";"TAIL WHIP";"LEER";"BONEMERANG";"BONE RUSH";];
 stats={max_hp=60; attack=80; defense=110; speed=45; sp_attack=50;sp_defense=80;};
 poca_type=("GROUND", "GROUND"); 
 ascii="   I O                         
@@ -2123,7 +2123,7 @@ ascii="   I O
 
 let dexmap = PokeDex.add "PRIMEAPE" {
 name="PRIMEAPE"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"STRENGTH";"SCREECH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"SWIFT";"DEFENSE CURL";"STRENGTH";"LEER";"KARATE CHOP";"FURY SWIPES";"CROSS CHOP";"SCREECH";];
 stats={max_hp=65; attack=105; defense=60; speed=95; sp_attack=60;sp_defense=70;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="        7 O    O7.O            
@@ -2144,7 +2144,7 @@ ascii="        7 O    O7.O
 
 let dexmap = PokeDex.add "AERODACTYL" {
 name="AERODACTYL"; 
-learnable_moves=["SWIFT";"REST";"AGILITY";"ANCIENTPOWER";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"AGILITY";"ANCIENTPOWER";"TAKE DOWN";"HYPER BEAM";];
 stats={max_hp=80; attack=105; defense=65; speed=130; sp_attack=60;sp_defense=75;};
 poca_type=("ROCK", "FLYING"); 
 ascii=":Z:?=    ?Z Z==?     Z:=?7??8  
@@ -2165,7 +2165,7 @@ ascii=":Z:?=    ?Z Z==?     Z:=?7??8
 
 let dexmap = PokeDex.add "CLOYSTER" {
 name="CLOYSTER"; 
-learnable_moves=["SWIFT";"REST";"SURF";];
+learnable_moves=["HYPER BEAM";"SWIFT";"SURF";"SPIKE CANNON";];
 stats={max_hp=50; attack=95; defense=180; speed=70; sp_attack=85;sp_defense=45;};
 poca_type=("WATER", "ICE"); 
 ascii="  8                 7~~+N      
@@ -2186,7 +2186,7 @@ ascii="  8                 7~~+N
 
 let dexmap = PokeDex.add "SLOWBRO" {
 name="SLOWBRO"; 
-learnable_moves=["SWIFT";"REST";"SURF";"STRENGTH";"TACKLE";"WITHDRAW";"AMNESIA";];
+learnable_moves=["HYPER BEAM";"DIG";"SHADOW BALL";"SWIFT";"FURY CUTTER";"SURF";"STRENGTH";"TACKLE";"GROWL";"WATER GUN";"GROWL";"WATER GUN";"WITHDRAW";"AMNESIA";"PSYCHIC";];
 stats={max_hp=95; attack=75; defense=110; speed=30; sp_attack=100;sp_defense=80;};
 poca_type=("WATER", "PSYCHIC"); 
 ascii="       ??NNNNO==N              
@@ -2207,7 +2207,7 @@ ascii="       ??NNNNO==N
 
 let dexmap = PokeDex.add "ALAKAZAM" {
 name="ALAKAZAM"; 
-learnable_moves=["REST";"RECOVER";];
+learnable_moves=["HYPER BEAM";"DIG";"SHADOW BALL";"RECOVER";"PSYCHIC";];
 stats={max_hp=55; attack=50; defense=45; speed=120; sp_attack=135;sp_defense=85;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii=" :        +II    OIN     +=:N  
@@ -2228,7 +2228,7 @@ ascii=" :        +II    OIN     +=:N
 
 let dexmap = PokeDex.add "MEW" {
 name="MEW"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"CUT";"SURF";"STRENGTH";"WATERFALL";"ANCIENTPOWER";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"THUNDER";"DIG";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"FLY";"SURF";"STRENGTH";"WATERFALL";"MEGA PUNCH";"PSYCHIC";"ANCIENTPOWER";];
 stats={max_hp=100; attack=100; defense=100; speed=100; sp_attack=100;sp_defense=100;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="                               
@@ -2249,7 +2249,7 @@ ascii="
 
 let dexmap = PokeDex.add "SEAKING" {
 name="SEAKING"; 
-learnable_moves=["SWIFT";"REST";"SURF";"WATERFALL";"WATERFALL";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"SURF";"WATERFALL";"TAIL WHIP";"TAIL WHIP";"HORN ATTACK";"FURY ATTACK";"WATERFALL";"HORN DRILL";"AGILITY";];
 stats={max_hp=80; attack=92; defense=65; speed=68; sp_attack=65;sp_defense=80;};
 poca_type=("WATER", "WATER"); 
 ascii="                       II      
@@ -2270,7 +2270,7 @@ ascii="                       II
 
 let dexmap = PokeDex.add "DEWGONG" {
 name="DEWGONG"; 
-learnable_moves=["REST";"SURF";"WATERFALL";"REST";];
+learnable_moves=["HYPER BEAM";"SURF";"WATERFALL";"GROWL";"GROWL";"TAKE DOWN";];
 stats={max_hp=90; attack=70; defense=80; speed=70; sp_attack=70;sp_defense=95;};
 poca_type=("WATER", "ICE"); 
 ascii="                +,:,:          
@@ -2291,7 +2291,7 @@ ascii="                +,:,:
 
 let dexmap = PokeDex.add "ZUBAT" {
 name="ZUBAT"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["GIGA DRAIN";"SWIFT";"LEECH LIFE";"WING ATTACK";];
 stats={max_hp=40; attack=45; defense=35; speed=55; sp_attack=30;sp_defense=40;};
 poca_type=("POISON", "FLYING"); 
 ascii="                               
@@ -2312,7 +2312,7 @@ ascii="
 
 let dexmap = PokeDex.add "SANDSHREW" {
 name="SANDSHREW"; 
-learnable_moves=["SWIFT";"REST";"CUT";"STRENGTH";"SCRATCH";"SLASH";"SWIFT";];
+learnable_moves=["DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"SCRATCH";"DEFENSE CURL";"SLASH";"SWIFT";"FURY SWIPES";];
 stats={max_hp=50; attack=75; defense=85; speed=40; sp_attack=20;sp_defense=30;};
 poca_type=("GROUND", "GROUND"); 
 ascii="                               
@@ -2333,7 +2333,7 @@ ascii="
 
 let dexmap = PokeDex.add "RATICATE" {
 name="RATICATE"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"CUT";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"CUT";"STRENGTH";"TAIL WHIP";"QUICK ATTACK";"QUICK ATTACK";];
 stats={max_hp=55; attack=81; defense=60; speed=97; sp_attack=50;sp_defense=70;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                  I~~~I        
@@ -2354,7 +2354,7 @@ ascii="                  I~~~I
 
 let dexmap = PokeDex.add "RATTATA" {
 name="RATTATA"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"TACKLE";];
+learnable_moves=["THUNDER";"DIG";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"TACKLE";"TAIL WHIP";"QUICK ATTACK";];
 stats={max_hp=30; attack=56; defense=35; speed=72; sp_attack=25;sp_defense=35;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                  ~~7          
@@ -2375,7 +2375,7 @@ ascii="                  ~~7
 
 let dexmap = PokeDex.add "MACHOP" {
 name="MACHOP"; 
-learnable_moves=["REST";"STRENGTH";"SUBMISSION";];
+learnable_moves=["DIG";"STRENGTH";"LEER";"KARATE CHOP";"VITAL THROW";"CROSS CHOP";"SUBMISSION";];
 stats={max_hp=70; attack=80; defense=50; speed=35; sp_attack=35;sp_defense=35;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="              OO               
@@ -2396,7 +2396,7 @@ ascii="              OO
 
 let dexmap = PokeDex.add "FARFETCHD" {
 name="FARFETCHD"; 
-learnable_moves=["SWIFT";"REST";"CUT";"AGILITY";"SLASH";];
+learnable_moves=["SWIFT";"CUT";"FLY";"LEER";"FURY ATTACK";"SWORDS DANCE";"AGILITY";"SLASH";];
 stats={max_hp=52; attack=65; defense=55; speed=60; sp_attack=58;sp_defense=62;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="                               
@@ -2417,7 +2417,7 @@ ascii="
 
 let dexmap = PokeDex.add "EKANS" {
 name="EKANS"; 
-learnable_moves=["REST";"STRENGTH";"SCREECH";"ACID";];
+learnable_moves=["GIGA DRAIN";"DIG";"STRENGTH";"LEER";"SCREECH";"ACID";];
 stats={max_hp=35; attack=60; defense=44; speed=55; sp_attack=40;sp_defense=54;};
 poca_type=("POISON", "POISON"); 
 ascii="                               
@@ -2438,7 +2438,7 @@ ascii="
 
 let dexmap = PokeDex.add "EXEGGCUTE" {
 name="EXEGGCUTE"; 
-learnable_moves=["REST";"STRENGTH";"BARRAGE";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"STRENGTH";"BARRAGE";"SOLARBEAM";];
 stats={max_hp=60; attack=40; defense=80; speed=40; sp_attack=60;sp_defense=45;};
 poca_type=("GRASS", "PSYCHIC"); 
 ascii="                               
@@ -2459,7 +2459,7 @@ ascii="
 
 let dexmap = PokeDex.add "VOLTORB" {
 name="VOLTORB"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"TACKLE";"SCREECH";"SELFDESTRUCT";"SWIFT";"EXPLOSION";];
+learnable_moves=["THUNDER";"SWIFT";"TACKLE";"SCREECH";"SELFDESTRUCT";"SWIFT";"EXPLOSION";];
 stats={max_hp=40; attack=30; defense=50; speed=100; sp_attack=55;sp_defense=55;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="                               
@@ -2480,7 +2480,7 @@ ascii="
 
 let dexmap = PokeDex.add "SNORLAX" {
 name="SNORLAX"; 
-learnable_moves=["THUNDER";"REST";"SURF";"STRENGTH";"AMNESIA";"REST";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"SURF";"STRENGTH";"AMNESIA";"DEFENSE CURL";"HYPER BEAM";];
 stats={max_hp=160; attack=110; defense=65; speed=30; sp_attack=65;sp_defense=110;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="           III?IIZZZZ          
@@ -2501,7 +2501,7 @@ ascii="           III?IIZZZZ
 
 let dexmap = PokeDex.add "JOLTEON" {
 name="JOLTEON"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"AGILITY";"THUNDER";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"SWIFT";"TAIL WHIP";"QUICK ATTACK";"DOUBLE KICK";"PIN MISSILE";"AGILITY";"THUNDER";];
 stats={max_hp=65; attack=65; defense=60; speed=130; sp_attack=110;sp_defense=95;};
 poca_type=("ELECTRIC", "ELECTRIC"); 
 ascii="                               
@@ -2522,7 +2522,7 @@ ascii="
 
 let dexmap = PokeDex.add "STARYU" {
 name="STARYU"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"SURF";"WATERFALL";"TACKLE";"HARDEN";"RECOVER";"SWIFT";"BUBBLEBEAM";];
+learnable_moves=["THUNDER";"SWIFT";"SURF";"WATERFALL";"TACKLE";"HARDEN";"WATER GUN";"RECOVER";"SWIFT";"BUBBLEBEAM";"HYDRO PUMP";];
 stats={max_hp=30; attack=45; defense=55; speed=85; sp_attack=70;sp_defense=55;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -2543,7 +2543,7 @@ ascii="
 
 let dexmap = PokeDex.add "WIGGLYTUFF" {
 name="WIGGLYTUFF"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DEFENSE CURL";"DOUBLESLAP";];
 stats={max_hp=140; attack=70; defense=45; speed=45; sp_attack=75;sp_defense=50;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="       N 7            ON       
@@ -2564,7 +2564,7 @@ ascii="       N 7            ON
 
 let dexmap = PokeDex.add "HITMONLEE" {
 name="HITMONLEE"; 
-learnable_moves=["SWIFT";"REST";"STRENGTH";"MEDITATE";];
+learnable_moves=["SWIFT";"STRENGTH";"MEDITATE";"JUMP KICK";"HI JUMP KICK";"MEGA KICK";];
 stats={max_hp=50; attack=120; defense=53; speed=87; sp_attack=35;sp_defense=110;};
 poca_type=("FIGHTING", "FIGHTING"); 
 ascii="   I::++D                      
@@ -2585,7 +2585,7 @@ ascii="   I::++D
 
 let dexmap = PokeDex.add "PARASECT" {
 name="PARASECT"; 
-learnable_moves=["REST";"CUT";"SLASH";"GROWTH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"DIG";"FURY CUTTER";"CUT";"LEECH LIFE";"SLASH";"GROWTH";"GIGA DRAIN";];
 stats={max_hp=60; attack=95; defense=80; speed=30; sp_attack=60;sp_defense=80;};
 poca_type=("BUG", "GRASS"); 
 ascii="              7???77D          
@@ -2606,7 +2606,7 @@ ascii="              7???77D
 
 let dexmap = PokeDex.add "LICKITUNG" {
 name="LICKITUNG"; 
-learnable_moves=["THUNDER";"REST";"CUT";"SURF";"STRENGTH";"STOMP";"SLAM";"SCREECH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"CUT";"SURF";"STRENGTH";"DEFENSE CURL";"STOMP";"SLAM";"SCREECH";];
 stats={max_hp=90; attack=55; defense=75; speed=30; sp_attack=60;sp_defense=75;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -2627,7 +2627,7 @@ ascii="
 
 let dexmap = PokeDex.add "SEEL" {
 name="SEEL"; 
-learnable_moves=["REST";"SURF";"WATERFALL";"REST";];
+learnable_moves=["SURF";"WATERFALL";"GROWL";"TAKE DOWN";];
 stats={max_hp=65; attack=45; defense=55; speed=45; sp_attack=45;sp_defense=70;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -2648,7 +2648,7 @@ ascii="
 
 let dexmap = PokeDex.add "SCYTHER" {
 name="SCYTHER"; 
-learnable_moves=["SWIFT";"REST";"CUT";"AGILITY";"SLASH";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FURY CUTTER";"CUT";"QUICK ATTACK";"LEER";"AGILITY";"WING ATTACK";"SLASH";"SWORDS DANCE";];
 stats={max_hp=70; attack=110; defense=80; speed=105; sp_attack=55;sp_defense=80;};
 poca_type=("BUG", "FLYING"); 
 ascii="             87N               
@@ -2669,7 +2669,7 @@ ascii="             87N
 
 let dexmap = PokeDex.add "MAGMAR" {
 name="MAGMAR"; 
-learnable_moves=["REST";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"STRENGTH";"LEER";"LEER";];
 stats={max_hp=65; attack=95; defense=57; speed=93; sp_attack=100;sp_defense=85;};
 poca_type=("FIRE", "FIRE"); 
 ascii="           == Z?=Z             
@@ -2690,7 +2690,7 @@ ascii="           == Z?=Z
 
 let dexmap = PokeDex.add "GENGAR" {
 name="GENGAR"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"THUNDER";"SHADOW BALL";"STRENGTH";];
 stats={max_hp=60; attack=65; defense=60; speed=110; sp_attack=130;sp_defense=75;};
 poca_type=("GHOST", "POISON"); 
 ascii="               8    +?N        
@@ -2711,7 +2711,7 @@ ascii="               8    +?N
 
 let dexmap = PokeDex.add "GEODUDE" {
 name="GEODUDE"; 
-learnable_moves=["REST";"STRENGTH";"TACKLE";"SELFDESTRUCT";"HARDEN";"EXPLOSION";];
+learnable_moves=["DIG";"DEFENSE CURL";"STRENGTH";"TACKLE";"DEFENSE CURL";"ROCK THROW";"SELFDESTRUCT";"HARDEN";"EXPLOSION";];
 stats={max_hp=40; attack=80; defense=100; speed=20; sp_attack=30;sp_defense=30;};
 poca_type=("ROCK", "GROUND"); 
 ascii="                               
@@ -2732,7 +2732,7 @@ ascii="
 
 let dexmap = PokeDex.add "PIDGEOTTO" {
 name="PIDGEOTTO"; 
-learnable_moves=["SWIFT";"REST";"TACKLE";"AGILITY";];
+learnable_moves=["SWIFT";"FLY";"TACKLE";"QUICK ATTACK";"WING ATTACK";"AGILITY";];
 stats={max_hp=63; attack=60; defense=55; speed=71; sp_attack=50;sp_defense=50;};
 poca_type=("NORMAL", "FLYING"); 
 ascii="I++++I             ZI:::::N    
@@ -2753,7 +2753,7 @@ ascii="I++++I             ZI:::::N
 
 let dexmap = PokeDex.add "GLOOM" {
 name="GLOOM"; 
-learnable_moves=["REST";"CUT";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"CUT";];
 stats={max_hp=60; attack=65; defense=70; speed=40; sp_attack=85;sp_defense=75;};
 poca_type=("GRASS", "POISON"); 
 ascii="                               
@@ -2774,7 +2774,7 @@ ascii="
 
 let dexmap = PokeDex.add "TENTACOOL" {
 name="TENTACOOL"; 
-learnable_moves=["REST";"CUT";"SURF";"CONSTRICT";"ACID";"BUBBLEBEAM";"BARRIER";"SCREECH";];
+learnable_moves=["GIGA DRAIN";"CUT";"SURF";"CONSTRICT";"ACID";"BUBBLEBEAM";"BARRIER";"SCREECH";"HYDRO PUMP";];
 stats={max_hp=40; attack=40; defense=35; speed=70; sp_attack=50;sp_defense=100;};
 poca_type=("WATER", "POISON"); 
 ascii="           I++IZ               
@@ -2795,7 +2795,7 @@ ascii="           I++IZ
 
 let dexmap = PokeDex.add "JIGGLYPUFF" {
 name="JIGGLYPUFF"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"POUND";"DOUBLESLAP";"REST";];
+learnable_moves=["SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DEFENSE CURL";"POUND";"DOUBLESLAP";"DOUBLE EDGE";];
 stats={max_hp=115; attack=45; defense=20; speed=20; sp_attack=45;sp_defense=25;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -2837,7 +2837,7 @@ ascii="           :        $
 
 let dexmap = PokeDex.add "JYNX" {
 name="JYNX"; 
-learnable_moves=["REST";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SHADOW BALL";"DOUBLESLAP";];
 stats={max_hp=65; attack=50; defense=35; speed=95; sp_attack=115;sp_defense=95;};
 poca_type=("ICE", "PSYCHIC"); 
 ascii="          ,=?==,,,?            
@@ -2879,7 +2879,7 @@ ascii="
 
 let dexmap = PokeDex.add "NINETALES" {
 name="NINETALES"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"QUICK ATTACK";];
 stats={max_hp=73; attack=76; defense=75; speed=100; sp_attack=81;sp_defense=100;};
 poca_type=("FIRE", "FIRE"); 
 ascii="      ~~~~~~Z~~~Z    ~N~~~~++Z 
@@ -2900,7 +2900,7 @@ ascii="      ~~~~~~Z~~~Z    ~N~~~~++Z
 
 let dexmap = PokeDex.add "WEEZING" {
 name="WEEZING"; 
-learnable_moves=["THUNDER";"REST";"TACKLE";"SELFDESTRUCT";"SELFDESTRUCT";"EXPLOSION";];
+learnable_moves=["HYPER BEAM";"THUNDER";"TACKLE";"SELFDESTRUCT";"SELFDESTRUCT";"EXPLOSION";];
 stats={max_hp=65; attack=90; defense=120; speed=60; sp_attack=85;sp_defense=70;};
 poca_type=("POISON", "POISON"); 
 ascii=" ::I::=I     =? I I =::==:=    
@@ -2921,7 +2921,7 @@ ascii=" ::I::=I     =? I I =::==:=
 
 let dexmap = PokeDex.add "VICTREEBEL" {
 name="VICTREEBEL"; 
-learnable_moves=["REST";"CUT";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SOLARBEAM";"CUT";"RAZOR LEAF";];
 stats={max_hp=80; attack=105; defense=65; speed=70; sp_attack=100;sp_defense=60;};
 poca_type=("GRASS", "POISON"); 
 ascii="         87??????77 O          
@@ -2942,7 +2942,7 @@ ascii="         87??????77 O
 
 let dexmap = PokeDex.add "WARTORTLE" {
 name="WARTORTLE"; 
-learnable_moves=["REST";"SURF";"STRENGTH";"WATERFALL";"TACKLE";"BUBBLE";"BUBBLE";"WITHDRAW";];
+learnable_moves=["DIG";"DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";"TACKLE";"TAIL WHIP";"BUBBLE";"TAIL WHIP";"BUBBLE";"WITHDRAW";"WATER GUN";"HYDRO PUMP";];
 stats={max_hp=59; attack=63; defense=80; speed=58; sp_attack=65;sp_defense=80;};
 poca_type=("WATER", "WATER"); 
 ascii="       =~        = O           
@@ -2963,7 +2963,7 @@ ascii="       =~        = O
 
 let dexmap = PokeDex.add "SQUIRTLE" {
 name="SQUIRTLE"; 
-learnable_moves=["REST";"SURF";"STRENGTH";"WATERFALL";"TACKLE";"BUBBLE";"WITHDRAW";];
+learnable_moves=["DIG";"DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";"TACKLE";"TAIL WHIP";"BUBBLE";"WITHDRAW";"WATER GUN";"HYDRO PUMP";];
 stats={max_hp=44; attack=48; defense=65; speed=43; sp_attack=50;sp_defense=64;};
 poca_type=("WATER", "WATER"); 
 ascii="                               
@@ -2984,7 +2984,7 @@ ascii="
 
 let dexmap = PokeDex.add "OMANYTE" {
 name="OMANYTE"; 
-learnable_moves=["REST";"SURF";"CONSTRICT";"WITHDRAW";"ANCIENTPOWER";];
+learnable_moves=["SURF";"CONSTRICT";"WITHDRAW";"WATER GUN";"LEER";"ANCIENTPOWER";"HYDRO PUMP";];
 stats={max_hp=35; attack=40; defense=100; speed=35; sp_attack=90;sp_defense=55;};
 poca_type=("ROCK", "WATER"); 
 ascii="                               
@@ -3005,7 +3005,7 @@ ascii="
 
 let dexmap = PokeDex.add "PORYGON" {
 name="PORYGON"; 
-learnable_moves=["THUNDER";"SWIFT";"REST";"TACKLE";"AGILITY";"RECOVER";"SHARPEN";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SWIFT";"TACKLE";"AGILITY";"RECOVER";"SHARPEN";];
 stats={max_hp=65; attack=60; defense=70; speed=40; sp_attack=85;sp_defense=75;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -3026,7 +3026,7 @@ ascii="
 
 let dexmap = PokeDex.add "DROWZEE" {
 name="DROWZEE"; 
-learnable_moves=["REST";"POUND";"MEDITATE";];
+learnable_moves=["SHADOW BALL";"POUND";"MEDITATE";"PSYCHIC";];
 stats={max_hp=60; attack=48; defense=45; speed=42; sp_attack=43;sp_defense=90;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="           ?? $$$ $$O          
@@ -3047,7 +3047,7 @@ ascii="           ?? $$$ $$O
 
 let dexmap = PokeDex.add "KABUTO" {
 name="KABUTO"; 
-learnable_moves=["REST";"SCRATCH";"HARDEN";"ABSORB";"ANCIENTPOWER";];
+learnable_moves=["GIGA DRAIN";"SCRATCH";"HARDEN";"ABSORB";"LEER";"MEGA DRAIN";"ANCIENTPOWER";];
 stats={max_hp=30; attack=80; defense=90; speed=55; sp_attack=55;sp_defense=45;};
 poca_type=("ROCK", "WATER"); 
 ascii="                               
@@ -3068,7 +3068,7 @@ ascii="
 
 let dexmap = PokeDex.add "VULPIX" {
 name="VULPIX"; 
-learnable_moves=["SWIFT";"REST";];
+learnable_moves=["DIG";"SWIFT";"TAIL WHIP";"QUICK ATTACK";];
 stats={max_hp=38; attack=41; defense=40; speed=65; sp_attack=50;sp_defense=65;};
 poca_type=("FIRE", "FIRE"); 
 ascii="                               
@@ -3089,7 +3089,7 @@ ascii="
 
 let dexmap = PokeDex.add "CHANSEY" {
 name="CHANSEY"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"POUND";"SOFTBOILED";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"POUND";"GROWL";"TAIL WHIP";"SOFTBOILED";"DOUBLESLAP";"EGG BOMB";"DEFENSE CURL";"DOUBLE EDGE";];
 stats={max_hp=250; attack=05; defense=05; speed=50; sp_attack=35;sp_defense=105;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -3110,7 +3110,7 @@ ascii="
 
 let dexmap = PokeDex.add "ABRA" {
 name="ABRA"; 
-learnable_moves=["REST";];
+learnable_moves=["SHADOW BALL";];
 stats={max_hp=25; attack=20; defense=15; speed=90; sp_attack=105;sp_defense=55;};
 poca_type=("PSYCHIC", "PSYCHIC"); 
 ascii="                               
@@ -3131,7 +3131,7 @@ ascii="
 
 let dexmap = PokeDex.add "CLEFAIRY" {
 name="CLEFAIRY"; 
-learnable_moves=["THUNDER";"REST";"STRENGTH";"POUND";"DOUBLESLAP";];
+learnable_moves=["SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"POUND";"GROWL";"DOUBLESLAP";"DEFENSE CURL";];
 stats={max_hp=70; attack=45; defense=48; speed=35; sp_attack=60;sp_defense=65;};
 poca_type=("NORMAL", "NORMAL"); 
 ascii="                               
@@ -3152,7 +3152,7 @@ ascii="
 
 let dexmap = PokeDex.add "RAPIDASH" {
 name="RAPIDASH"; 
-learnable_moves=["SWIFT";"REST";"STOMP";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"GROWL";"TAIL WHIP";"GROWL";"TAIL WHIP";"STOMP";"TAKE DOWN";"FURY ATTACK";"AGILITY";];
 stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
 poca_type=("FIRE", "FIRE"); 
 ascii="   , ??OO==??    7===Z         
