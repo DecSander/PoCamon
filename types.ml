@@ -39,7 +39,7 @@ type move = {
           max_pp : int;
           pp : int;
           move_category: pCategory;
-          move_effect : mEffect;
+          effect : mEffect;
 }
 
 (* the stats of a pocamon that show how powerful it is *)
