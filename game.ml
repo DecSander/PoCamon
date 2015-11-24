@@ -288,7 +288,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             | MSpeed (-2) ->
               opp_p_state.active_pocamon.name ^ "'s speed sharply fell!"
             | MAllStatsUp -> p_state.active_pocamon.name ^ "'s stats rose!"
-            | _ -> failwith "Stat changes must be between -2 and 2" end )))
+            | _ -> failwith "Stat changes must be nonzero and  between -2 and 2"
+            end )))
 
         | MLeech -> wait_for_enter g_state p_state (Talking (
             p_state.active_pocamon.name ^ " drained " ^
