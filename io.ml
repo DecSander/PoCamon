@@ -1,5 +1,4 @@
 open Types
-open Unix
 
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
 | Run | Back | Save | Load | Bag
@@ -239,20 +238,18 @@ let print_start s =
   print_string (ascii_pokeball ^ star_bar ^ "\n" ^
                 (string_to_box s) ^ "\n" ^ star_bar)
 
-open Unix
-
 let setup () =
   (* Credit to Niki Yoshiuchi from http://stackoverflow.com/questions/4130048/recognizing-arrow-keys-with-stdin*)
-  let terminfo = tcgetattr stdin in
-  let newterminfo = {terminfo with c_icanon = false; c_vmin = 1;
+  let terminfo = Unix.tcgetattr Unix.stdin in
+  let newterminfo = Unix.{terminfo with c_icanon = false; c_vmin = 1;
   c_vtime = 100000; c_echoe=false} in
-  at_exit (fun _ -> tcsetattr stdin TCSAFLUSH terminfo); (* reset stdin when you quit*)
-  tcsetattr stdin TCSAFLUSH newterminfo;
+  at_exit (fun _ -> Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo); (* reset stdin when you quit*)
+  Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH newterminfo;
   terminfo
 
 let breakdown (terminfo) : unit = 
   print_string "\n\nbreakdown!\n\n";
-  tcsetattr stdin TCSAFLUSH terminfo 
+  Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo 
 
 let get_word (lst: string list) =
   List.fold_right (fun v a -> v^a) lst ""
