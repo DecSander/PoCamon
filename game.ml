@@ -1,6 +1,6 @@
 open Types
 open Io
-(*open Ai *)
+open Ai
 open Fight
 open PocaDex
 
@@ -246,10 +246,12 @@ let print_debuff_info g_state p_state p_debuff : unit =
     | _ -> ()
 
 
-let rec run_game_turn g_state : game_state =
+let rec run_game_turn g_state b_status : game_state =
   let p1_action = get_player_action g_state g_state.player_one Out in
   let () = ignore(List.map (fun (x:move) -> print_endline x.name) g_state.player_two.active_pocamon.moves) in
-  let p2_action = get_player_action g_state g_state.player_two Out in
+  let p2_action = if g_state.player_two.is_computer
+    then get_ai_action P2 g_state b_status
+    else get_player_action g_state g_state.player_two Out in
   let new_g_state, printfo = apply_fight_sequence g_state p1_action p2_action in
 
   let () =
@@ -282,11 +284,25 @@ let rec run_game_turn g_state : game_state =
 
   let final_game_state = on_faint status_changed_game_state in
 
-  run_game_turn final_game_state
+  run_game_turn final_game_state printfo
 
 let start () : unit =
   let () = setup () in
   let () = Random.self_init () in
-  ignore (run_game_turn (gen_initial_state ()))
+
+  let a_status1 = {
+      atk_eff = ENormal;
+      self_status_change = false, SNormal;
+      opp_status_change = false,  SNormal;
+      missed = false;
+  } in
+
+  let b_status = {
+      p1_went_first = true;
+      p1_move_status = Attack_Status a_status1;
+      p2_move_status = Attack_Status a_status1;
+  } in
+
+  ignore (run_game_turn (gen_initial_state ()) b_status)
 
 let _ = start ()
