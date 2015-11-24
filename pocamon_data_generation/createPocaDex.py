@@ -100,6 +100,7 @@ with open("pocadex.ml", 'w') as f:
     f.write('module PokeDex = Map.Make(String)\n')
     f.write('let dexmap = PokeDex.empty\n')
     for pocamon in data.keys():
+        if pocamon == "ditto": continue
         lst = ["IRON TAIL", "THIEF", "STEEL WING", "TR MORNDAY", "TR NITE", 'CURSE',  "FAINT ATTACK", "FIRE STONE", "BELLY DRUM", "PSYCHIC"]
         for m in lst:
             try:
@@ -112,7 +113,8 @@ with open("pocadex.ml", 'w') as f:
         allmoves.remove
         moves = '['
         for move in data[pocamon]["moves"]:
-            moves += '"{0}";'.format(move)
+            if move.upper() in ['POUND', 'KARATE CHOP', 'MEGA PUNCH', 'SCRATCH', 'VICEGRIP', 'CUT', 'WING ATTACK', 'SLAM', 'VINE WHIP', 'MEGA KICK', 'HORN ATTACK', 'TACKLE', 'WATER GUN', 'HYDRO PUMP', 'SURF', 'PECK', 'DRILL PECK', 'STRENGTH', 'RAZOR LEAF', 'ROCK THROW', 'EGG BOMB', 'WATERFALL', 'CRABHAMMER', 'SLASH', 'AEROBLAST', 'MEGAHORN', 'CROSS CHOP', 'SWIFT', 'FAINT ATTACK', 'VITAL THROW', 'JUMP KICK', 'HI JUMP KICK', 'QUICK ATTACK', 'MACH PUNCH', 'EXTREMESPEED', 'FURY CUTTER', 'NORMAL HIT', 'SPLASH', 'STOMP', 'THUNDER', 'FLAME WHEEL', 'ABSORB', 'MEGA DRAIN', 'LEECH LIFE', 'GIGA DRAIN', 'LEECH HIT', 'SELFDESTRUCT', 'EXPLOSION', 'MEDITATE', 'SHARPEN', 'HARDEN', 'WITHDRAW', 'GROWTH', 'SWORDS DANCE', 'BARRIER', 'ACID ARMOR', 'DEFENSE CURL', 'AGILITY', 'AMNESIA', 'GROWL', 'TAIL WHIP', 'LEER', 'STRING SHOT', 'CHARM', 'SCREECH', 'COTTONSPORE', 'SCARYFACE', 'AURORABEAM', 'ACID', 'IRONTAIL', 'ROCKSMASH', 'BUBBLEBEAM', 'CONSTRICT', 'BUBBLE', 'ICYWIND', 'PSYCHIC', 'CRUNCH', 'SHADOW BALL', 'ANCIENTPOWER', 'DOUBLESLAP', 'COMET PUNCH', 'FURY ATTACK', 'PIN MISSILE', 'SPIKE CANNON', 'BARRAGE', 'FURY SWIPES', 'BONE RUSH', 'DOUBLE KICK', 'BONEMERANG', 'TWINEEDLE', 'GUILLOTINE', 'HORN DRILL', 'FISSURE', 'TAKE DOWN', 'DOUBLE EDGE', 'SUBMISSION', 'STRUGGLE', 'RECOVER', 'SOFTBOILED', 'MILK DRINK', 'HEAL', 'FLY', 'DIG', 'SOLARBEAM', 'SKY ATTACK', 'RAZOR WIND', 'HYPER BEAM']:
+                moves += '"{0}";'.format(move)
         moves += "]"
         types = '("{0}", "{1}")'.format(data[pocamon]["types"][0], data[pocamon]["types"][1])
         sd = data[pocamon]["stats"]

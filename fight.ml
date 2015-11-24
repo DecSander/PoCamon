@@ -8,6 +8,7 @@ type attack_status = {
 }
 
 type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
+                    | Charge_Status
 
 type battle_status = {
       p1_went_first : bool;
@@ -164,6 +165,7 @@ let mStatus_to_pStatus move_status =
   | MSleep -> SSleep ((Random.int 2) + 3)
   | MParalyze -> SParalyze
   | MFreeze -> SFreeze ((Random.int 2) + 3)
+  | MConfuse -> failwith "TODO"
 
 (*
 * Applys the single attack to the game state
@@ -211,59 +213,90 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
       end
     else
       begin
+      if (match move.effect with MCharge -> false | _ -> true)
+        || (match atk_state.active_pocamon.charging with
+            |Some _ -> true
+            | None -> false) then
+        let missed = (Random.int 100) > move.accuracy in
 
-      let missed = (Random.int 100) > move.accuracy in
+        if missed then
+          begin
+          let p_move_status =
+            Attack_Status {atk_eff = ENormal;
+                       self_status_change = new_status_change;
+                       opp_status_change = (false, def_poca.status);
+                       missed = true } in
+          (g_state', p_move_status)
+          end
+        else
+          begin
 
-      if missed then
-        begin
-        let p_move_status =
-          Attack_Status {atk_eff = ENormal;
-                     self_status_change = new_status_change;
-                     opp_status_change = (false, def_poca.status);
-                     missed = true } in
-        (g_state', p_move_status)
-        end
+          let damage, damage_mult = calc_damage atk_poca def_poca move in
+
+          let type_eff = if (damage_mult -. 1.) > 0.01 then ESuper
+            else if (damage_mult -. 1.) < -0.25 then ENotVery else ENormal in
+
+          let def_poca_health = def_poca.health - int_of_float(damage) in
+
+          let def_poca_health' =
+            if def_poca_health < 0 then 0 else def_poca_health in
+
+          let status_eff =
+            (Random.int 100) <= move.status_probability in
+
+
+          let new_status, def_status_change = if status_eff
+            then begin match move.status_effect with
+            | MNormal -> def_poca.status, false
+            | _ -> (mStatus_to_pStatus move.status_effect), true end
+            else def_poca.status, false in
+
+          let def_poca' =
+            {def_poca with health=def_poca_health'; status=new_status} in
+
+          let atk_poca' =
+            match move.effect with
+            | MRecoil -> {atk_state.active_pocamon with
+                health=atk_state.active_pocamon.health -
+                int_of_float(damage/.3.)}
+            | MExplode -> {atk_state.active_pocamon with health = 0}
+            | MRecover -> {atk_state.active_pocamon with health = min
+                (atk_state.active_pocamon.health +
+                  atk_state.active_pocamon.stats.max_hp/2)
+                atk_state.active_pocamon.stats.max_hp}
+            | MLeech -> {atk_state.active_pocamon with health = min
+                (atk_state.active_pocamon.health +
+                  int_of_float(damage/.2.))
+                atk_state.active_pocamon.stats.max_hp}
+            | _ -> atk_state.active_pocamon
+          in
+
+          let atk_poca'' = {atk_poca' with charging=None} in
+
+          let def_state' = {def_state with active_pocamon=def_poca'} in
+          let atk_state' = {atk_state with active_pocamon=atk_poca''} in
+          let g_state'' = if not p1_is_atk
+            then {player_one=def_state'; player_two=atk_state'}
+            else {player_two=def_state'; player_one=atk_state'} in
+
+          let p_move_status =
+            Attack_Status {atk_eff = type_eff;
+                       self_status_change = new_status_change;
+                       opp_status_change = (def_status_change, def_poca'.status);
+                       missed = false } in
+
+          (g_state'', p_move_status)
+          end
       else
-        begin
+        let new_pocamon = {atk_state.active_pocamon with charging = Some move} in
+        let new_player = {atk_state with active_pocamon = new_pocamon} in
+        let new_game_status = if p1_is_atk then
+          {g_state with player_one = new_player}
+        else
+          {g_state with player_two = new_player} in
 
-        let damage, damage_mult = calc_damage atk_poca def_poca move in
-
-        let type_eff = if (damage_mult -. 1.) > 0.01 then ESuper
-          else if (damage_mult -. 1.) < -0.25 then ENotVery else ENormal in
-
-        let def_poca_health = def_poca.health - int_of_float(damage) in
-
-        let def_poca_health' =
-          if def_poca_health < 0 then 0 else def_poca_health in
-
-        let status_eff =
-          (Random.int 100) <= move.status_probability in
-
-
-        let new_status = if status_eff
-          then match move.status_effect with
-          | MNormal -> def_poca.status
-          | _ -> mStatus_to_pStatus move.status_effect
-          else def_poca.status in
-
-        let def_poca' =
-          {def_poca with health=def_poca_health'; status=new_status} in
-
-
-        let def_state' = {def_state with active_pocamon=def_poca'} in
-        let g_state'' = if not p1_is_atk
-          then {g_state' with player_one=def_state'}
-          else {g_state' with player_two=def_state'} in
-
-        let p_move_status =
-          Attack_Status {atk_eff = type_eff;
-                     self_status_change = new_status_change;
-                     opp_status_change = (false, def_poca.status);
-                     missed = false } in
-
-        (g_state'', p_move_status)
-        end
-      end
+        (new_game_status, Charge_Status)
+    end
 
   | SSleep t | SFreeze t ->
     let new_status =
@@ -309,7 +342,7 @@ let switch_pocamon switch_poca p_state g_state is_fainted=
 *)
 let do_single_move player_state foe_state action p_state_is_p1 g_state =
   match action with
-  | FMove m -> apply_attack player_state foe_state m p_state_is_p1 g_state
+  | FMove m | FCharge m -> apply_attack player_state foe_state m p_state_is_p1 g_state
   | FSwitch s_p ->
     switch_pocamon s_p player_state g_state false
 
@@ -323,7 +356,7 @@ let apply_fight_sequence g_state p1_action p2_action =
     | _ -> 1. in
   let p1_switch_priority =
     match p1_action with
-    | FMove _ -> false
+    | FMove _ | FCharge _ -> false
     | FSwitch _ -> true in
 
   let p2 = g_state.player_two in
@@ -334,7 +367,7 @@ let apply_fight_sequence g_state p1_action p2_action =
     | _ -> 1. in
   let p2_switch_priority =
     match p2_action with
-    | FMove _ -> false
+    | FMove _ | FCharge _ -> false
     | FSwitch _ -> true in
 
   let p1_goes_first =
