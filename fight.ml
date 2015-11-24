@@ -118,7 +118,56 @@ let calc_type_effectiveness atk_type def_type =
       end
     end
 
-let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
+let get_stat_mod_multiplier i : float =
+  match i with
+  | -6 -> 25./.100.
+  | -5 -> 28./.100.
+  | -4 -> 33./.100.
+  | -3 -> 40./.100.
+  | -2 -> 50./.100.
+  | -1 -> 66./.100.
+  | 0  -> 100./.100.
+  | 1  -> 150./.100.
+  | 2  -> 200./.100.
+  | 3  -> 250./.100.
+  | 4  -> 300./.100.
+  | 5 ->  350./.100.
+  | 6 ->  400./.100.
+  | _ -> failwith "Error - stat mods must be between -6 and 6"
+
+let change_stat_mods atk_mods def_mods move : poca_stat_mods * poca_stat_mods =
+  let force_bounds n =
+    if n < -6 then -6 else if n > 6 then 6 else n in
+  match move.effect with
+  | MAttack x ->
+    if x > 0 then
+      {atk_mods with attack=force_bounds(atk_mods.attack + x)}, def_mods
+    else
+      atk_mods, {def_mods with attack=force_bounds(def_mods.attack + x)}
+  | MDefense x ->
+    if x > 0 then
+      {atk_mods with defense=force_bounds(atk_mods.defense + x)}, def_mods
+    else
+      atk_mods, {def_mods with defense=force_bounds(def_mods.defense + x)}
+  | MSpecAttack x ->
+    if x > 0 then
+      {atk_mods with sp_attack=force_bounds(atk_mods.sp_attack + x)}, def_mods
+    else
+      atk_mods, {def_mods with sp_attack=force_bounds(def_mods.sp_attack + x)}
+  | MSpecDefense x ->
+    if x > 0 then
+      {atk_mods with sp_defense=force_bounds(atk_mods.sp_defense + x)}, def_mods
+    else
+      atk_mods, {def_mods with sp_defense=force_bounds(def_mods.sp_defense + x)}
+  | MSpeed x ->
+    if x > 0 then
+      {atk_mods with speed=force_bounds(atk_mods.speed + x)}, def_mods
+    else
+      atk_mods, {def_mods with speed=force_bounds(def_mods.speed + x)}
+  | _ -> atk_mods, def_mods
+
+let calc_damage (atk_poca : pocamon) (effective_atk_stats : poca_stats)
+  (def_poca : pocamon) (effective_def_stats : poca_stats) move =
 
   let type_effectiveness =
       if (fst def_poca.poca_type) = (snd def_poca.poca_type) then
@@ -140,10 +189,10 @@ let calc_damage (atk_poca : pocamon) (def_poca : pocamon) move =
 
   let atk_def_multiplier =
     match move.move_category with
-    | EPhysical -> float_of_int(atk_poca.stats.attack)
-      /. float_of_int(def_poca.stats.defense)
-    | ESpecial -> float_of_int(atk_poca.stats.sp_attack)
-      /. float_of_int(def_poca.stats.sp_defense) in
+    | EPhysical -> float_of_int(effective_atk_stats.attack)
+      /. float_of_int(effective_def_stats.defense)
+    | ESpecial -> float_of_int(effective_atk_stats.sp_attack)
+      /. float_of_int(effective_def_stats.sp_defense) in
 
   let base_pwr = float_of_int(move.damage) in
 
@@ -183,6 +232,35 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
   let atk_poca = atk_state.active_pocamon in
   let def_poca = def_state.active_pocamon in
+
+  let effective_atk_stats =
+  {
+    max_hp = atk_poca.stats.max_hp;
+    attack = int_of_float(float_of_int(atk_poca.stats.attack) *.
+      get_stat_mod_multiplier(atk_poca.stat_mods.attack));
+    defense = int_of_float(float_of_int(atk_poca.stats.defense) *.
+      get_stat_mod_multiplier(atk_poca.stat_mods.defense));
+    sp_defense = int_of_float(float_of_int(atk_poca.stats.sp_defense) *.
+      get_stat_mod_multiplier(atk_poca.stat_mods.sp_defense));
+    sp_attack = int_of_float(float_of_int(atk_poca.stats.sp_attack) *.
+      get_stat_mod_multiplier(atk_poca.stat_mods.sp_attack));
+    speed = int_of_float(float_of_int(atk_poca.stats.speed) *.
+      get_stat_mod_multiplier(atk_poca.stat_mods.speed))
+  } in
+  let effective_def_stats =
+  {
+    max_hp = def_poca.stats.max_hp;
+    attack = int_of_float(float_of_int(def_poca.stats.attack) *.
+      get_stat_mod_multiplier(def_poca.stat_mods.attack));
+    defense = int_of_float(float_of_int(def_poca.stats.defense) *.
+      get_stat_mod_multiplier(def_poca.stat_mods.defense));
+    sp_defense = int_of_float(float_of_int(def_poca.stats.sp_defense) *.
+      get_stat_mod_multiplier(def_poca.stat_mods.sp_defense));
+    sp_attack = int_of_float(float_of_int(def_poca.stats.sp_attack) *.
+      get_stat_mod_multiplier(def_poca.stat_mods.sp_attack));
+    speed = int_of_float(float_of_int(def_poca.stats.speed) *.
+      get_stat_mod_multiplier(def_poca.stat_mods.speed));
+  } in
 
   match atk_poca.status with
   | SNormal | SPoison | SBurn  | SParalyze | SSleep 0 | SFreeze 0 ->
@@ -242,7 +320,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
         else
           begin
 
-          let damage, damage_mult = calc_damage atk_poca def_poca move in
+          let damage, damage_mult = calc_damage atk_poca effective_atk_stats
+            def_poca effective_def_stats move in
 
           let type_eff = if (damage_mult -. 1.) > 0.01 then ESuper
             else if (damage_mult -. 1.) < -0.25 then ENotVery else ENormal in
@@ -282,8 +361,17 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             | _ -> atk_state.active_pocamon
           in
 
-          let def_state' = {def_state with active_pocamon=def_poca'} in
-          let atk_state' = {atk_state with active_pocamon=atk_poca'} in
+          let atk_poca_stat_mods, def_poca_stat_mods =
+            change_stat_mods atk_poca'.stat_mods def_poca'.stat_mods move in
+
+          let def_poca'' =
+            {def_poca' with stat_mods=def_poca_stat_mods} in
+          let atk_poca'' =
+            {atk_poca' with stat_mods=atk_poca_stat_mods} in
+
+          let def_state' = {def_state with active_pocamon=def_poca''} in
+          let atk_state' = {atk_state with active_pocamon=atk_poca''} in
+
           let g_state'' = if not p1_is_atk
             then {player_one=def_state'; player_two=atk_state'}
             else {player_two=def_state'; player_one=atk_state'} in
@@ -370,6 +458,38 @@ let apply_fight_sequence g_state p1_action p2_action =
     | FMove _ | FCharge _ -> false
     | FSwitch _ -> true in
 
+  let p1_poca = g_state.player_one.active_pocamon in
+  let p2_poca = g_state.player_two.active_pocamon in
+
+  let effective_p1_stats =
+  {
+    max_hp = p1_poca.stats.max_hp;
+    attack = int_of_float(float_of_int(p1_poca.stats.attack) *.
+      get_stat_mod_multiplier(p1_poca.stat_mods.attack));
+    defense = int_of_float(float_of_int(p1_poca.stats.defense) *.
+      get_stat_mod_multiplier(p1_poca.stat_mods.defense));
+    sp_defense = int_of_float(float_of_int(p1_poca.stats.sp_defense) *.
+      get_stat_mod_multiplier(p1_poca.stat_mods.sp_defense));
+    sp_attack = int_of_float(float_of_int(p1_poca.stats.sp_attack) *.
+      get_stat_mod_multiplier(p1_poca.stat_mods.sp_attack));
+    speed = int_of_float(float_of_int(p1_poca.stats.speed) *.
+      get_stat_mod_multiplier(p1_poca.stat_mods.speed));
+  } in
+  let effective_p2_stats =
+  {
+    max_hp = p2_poca.stats.max_hp;
+    attack = int_of_float(float_of_int(p2_poca.stats.attack) *.
+      get_stat_mod_multiplier(p2_poca.stat_mods.attack));
+    defense = int_of_float(float_of_int(p2_poca.stats.defense) *.
+      get_stat_mod_multiplier(p2_poca.stat_mods.defense));
+    sp_defense = int_of_float(float_of_int(p2_poca.stats.sp_defense) *.
+      get_stat_mod_multiplier(p2_poca.stat_mods.sp_defense));
+    sp_attack = int_of_float(float_of_int(p2_poca.stats.sp_attack) *.
+      get_stat_mod_multiplier(p2_poca.stat_mods.sp_attack));
+    speed = int_of_float(float_of_int(p2_poca.stats.speed) *.
+      get_stat_mod_multiplier(p2_poca.stat_mods.speed));
+  } in
+
   let p2 = g_state.player_two in
   let p2_poca = p2.active_pocamon in
   let p2_status_speed_multiplier =
@@ -382,8 +502,8 @@ let apply_fight_sequence g_state p1_action p2_action =
     | FSwitch _ -> true in
 
   let p1_goes_first =
-    if (((float_of_int p1_poca.stats.speed)*.p1_status_speed_multiplier >=
-      (float_of_int p2_poca.stats.speed) *.p2_status_speed_multiplier)
+    if (((float_of_int effective_p1_stats.speed)*.p1_status_speed_multiplier >=
+      (float_of_int effective_p2_stats.speed) *.p2_status_speed_multiplier)
       && not p2_switch_priority) || p1_switch_priority
     then true else false in
 

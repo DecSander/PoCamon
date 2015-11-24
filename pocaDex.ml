@@ -3370,12 +3370,21 @@ let get_pocamon_by_name (name) : pocamon =
 	let pType = (type_of_string (fst dexmon.poca_type),
 		         type_of_string (snd dexmon.poca_type)) in
 	let new_stats = update_stats dexmon.stats in
+  let base_stat_mods =
+  {
+    attack = 0;
+    defense = 0;
+    sp_defense = 0;
+    sp_attack = 0;
+    speed = 0
+  } in
 	{ name = pocamon_name;
 	  status = SNormal;
 	  moves = get_four_moves dexmon.learnable_moves;
 	  poca_type = pType ;
 	  health  = new_stats.max_hp;
 	  stats = new_stats ;
+    stat_mods = base_stat_mods ;
     charging = None;
 	  ascii = dexmon.ascii;  }
 
@@ -3389,12 +3398,22 @@ let get_random_pocamon () : pocamon =
 	let pType = (type_of_string (fst dexmon.poca_type),
 		         type_of_string (snd dexmon.poca_type)) in
 	let new_stats = update_stats dexmon.stats in
+  let base_stat_mods =
+  {
+    attack = 0;
+    defense = 0;
+    sp_defense = 0;
+    sp_attack = 0;
+    speed = 0
+  } in
+
 	{ name = pocamon_name;
 	  status = SNormal;
 	  moves = get_four_moves dexmon.learnable_moves;
 	  poca_type = pType ;
 	  health  = new_stats.max_hp;
 	  stats = new_stats ;
+    stat_mods = base_stat_mods ;
     charging = None;
 	  ascii = dexmon.ascii;  }
 

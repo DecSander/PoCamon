@@ -55,6 +55,14 @@ type poca_stats = {
             speed: int
 }
 
+type poca_stat_mods = {
+            attack : int;
+            defense : int;
+            sp_defense: int;
+            sp_attack: int;
+            speed: int
+}
+
 (*
 * A pocamon and associated information
 *)
@@ -65,6 +73,7 @@ type pocamon = {
       poca_type : pType * pType;
       health : int;
       stats : poca_stats;
+      stat_mods : poca_stat_mods;
       ascii : bytes;
       charging : move option;
       }
