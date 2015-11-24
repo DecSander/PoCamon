@@ -54,87 +54,69 @@ Explosion
 
 Meditate
 Sharpen
-Attack Up
 >MAttack 1
 
 Harden
 Withdraw
-Defense Up
 >MDefense 1
 
 Growth
-Special Attack Up
 >MSpecAttack 1
 
 Swords Dance
-Attack Up2
 >MAttack 2
 
 Barrier
 Acid Armor
 Defense Curl
-Defense Up2
 >MDefense 2
 
 Agility
-Speed Up2
 >MSpeed 2
 
 Amnesia
-Special Defense Up2
 >MSpecDefense 2
 
 Growl
-Attack Down
 >MAttack -1
 
 Tail Whip
 Leer
-Defense Down
 >MDefense -1
 
 String Shot
-Speed Down
 >MSpeed -1
 
 Charm
-Attack Down2
 >MAttack -2
 
 Screech
-Defense Down2
 >MDefense -2
 
 CottonSpore
 ScaryFace
-Speed Down2
 >MSpeed -2
 
 AuroraBeam
-Attack Down Hit
 >MAttack -1
 
 Acid
 IronTail
 RockSmash
-Defense Down Hit
 >MDefense -1
 
 Bubblebeam
 Constrict
 Bubble
 IcyWind
-Speed Down Hit
 >MSpeed -1
 
 Psychic
 Crunch
 Shadow Ball
-Special Defense Down Hit
 >MSpecDefense -1
 
 Ancientpower
-All Up Hit
 >MAllStatsUp
 
 Doubleslap
@@ -149,27 +131,23 @@ Double Kick
 Bonemerang
 Multi Hit
 Twineedle
-PoisonMulti Hit
 >MLoop
 
 Guillotine
 Horn Drill
 Fissure
-OHKOHit
 >Mohko
 
 Take Down
 Double Edge
 Submission
 Struggle
-Recoil Hit
 >MRecoil
 
 Recover
 Softboiled
 Rest
 Milk Drink
-Heal
 >MRecover
 
 Fly

@@ -94,7 +94,11 @@ let movedex = MoveDex.add "CROSS CHOP" {name="CROSS CHOP"; move_type=TFighting; 
 let movedex = MoveDex.add "EXTREMESPEED" {name="EXTREMESPEED"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=80; max_pp=5; effect=MNone; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "ANCIENTPOWER" {name="ANCIENTPOWER"; move_type=TRock; status_effect=MNormal; status_probability=10; accuracy=100; damage=60; max_pp=5; effect=MAllStatsUp; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SHADOW BALL" {name="SHADOW BALL"; move_type=TGhost; status_effect=MNormal; status_probability=20; accuracy=100; damage=80; max_pp=15; effect=MSpecDefense (-1); pp=15; move_category=ESpecial} movedex
-
+let movedex = MoveDex.add "GROWL" {name="GROWL"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; effect=MAttack (-1); pp=40; move_category=ESpecial} movedex
+let movedex = MoveDex.add "TAIL WHIP" {name="TAIL WHIP"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=30; effect=MDefense (-1); pp=30; move_category=ESpecial} movedex
+let movedex = MoveDex.add "LEER" {name="LEER"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=30; effect=MDefense (-1); pp=30; move_category=ESpecial} movedex
+let movedex = MoveDex.add "STRING SHOT" {name="STRING SHOT"; move_type=TBug; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; effect=MSpeed (-1); pp=40; move_category=ESpecial} movedex
+let movedex = MoveDex.add "AURORA BEAM" {name="AURORA BEAM"; move_type=TIce; status_effect=MNormal; status_probability=0; accuracy=100; damage=65; max_pp=20; effect=MAttack (-1); pp=20; move_category=ESpecial} movedex
 
 module PokeDex = Map.Make(String)
 let dexmap = PokeDex.empty

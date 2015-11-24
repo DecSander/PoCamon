@@ -34,7 +34,7 @@ val do_single_move : player_state -> player_state -> fAction -> bool ->
 * Applys the single attack to the game state
 *)
 val apply_attack : player_state -> player_state -> move -> bool -> game_state ->
-                   bool -> game_state * move_status
+                   game_state * move_status
 
 (*
 * Switches the active pocamon of the player making the move
