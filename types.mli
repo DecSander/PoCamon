@@ -7,10 +7,9 @@ type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze
 type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
               | MConfuse
 
-type mEffect = MNone | MAttack of int | MDefense of int
-              | MSpecAttack of int | MSpecDefense of int | | MSpeed of int
-              | MCharge | | MChargeNoHit | MLeech | MRecover
-              | MLoop of (int * int) | MOHKO | MRecoil | MExplode | MAllStatsUp
+type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
+| MSpecAttack of int | MAllStatsUp | MLoop | Mohko | MRecoil | MRecover
+| MChargeNoHit | MCharge
 
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness

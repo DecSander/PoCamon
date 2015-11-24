@@ -1,6 +1,21 @@
-mystr = '''
+with open('effects.txt') as f:
+  effects_objs = f.readlines();
 
-'''
+new_effects = []
+for f in effects_objs:
+  new_effects.append(f[:-1])
+
+obj = {}
+current = [];
+for l in new_effects:
+  if l == "":
+    continue
+  elif l[0] == ">":
+    obj[l[1:]] = current
+    current = []
+  else:
+    current.append(l.upper())
+
 mystr = ""
 with open("moves.asm") as f:
   strlst = f.readlines()
@@ -27,6 +42,8 @@ def mapStatus(lsts):
       k[1] = 'MPoison'
     elif 'BURN' in k[1]:
       k[1] = 'MBurn'
+    elif 'CONFUSE' in k[1]:
+      k[1] = 'MConfuse'
     elif 'SLEEP' in k[1]:
       k[1] = 'MSleep'
     elif 'PARALYZE' in k[1]:
@@ -36,6 +53,24 @@ def mapStatus(lsts):
     else:
       k[1] = 'MNormal'
   return lsts
+
+def mapMe(lsts):
+  for l in lsts:
+    for k, v in obj.iteritems():
+      if l[0] in v:
+        l.append(k)
+  return lsts
+
+def remNone(lsts):
+  new = []
+  for i in lsts:
+    try:
+      "Str" == i[7]
+      new.append(i)
+    except:
+      None
+  return new
+
 
 def mapType(lsts):
   for k in lsts:
@@ -80,8 +115,7 @@ def gen_command(lsts):
       pCategory = "EPhysical"
     else:
       pCategory = "ESpecial"
-    print k
-    newlst.append("let movedex = MoveDex.add \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[6] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_pp=" + k[5] + "; pp=" + k[5] + "; move_category=" + pCategory + "}" + " movedex")
+    newlst.append("let movedex = MoveDex.add \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[6] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_pp=" + k[5] + "; effect=" + k[7] + "; pp=" + k[5] + "; move_category=" + pCategory + "}" + " movedex")
   return newlst
 
 def start():
@@ -94,7 +128,7 @@ def gen_full(lsts):
     bigstr += k + "\n"
   return start() + bigstr
 
-lines = gen_full(gen_command(mapType(mapStatus(breakup(flter(mystr.rsplit('\n')))))))
+lines = gen_full(gen_command(remNone(mapMe(mapType(mapStatus(breakup(flter(mystr.rsplit('\n')))))))))
 
 with open("moves.ml", "w") as f:
   f.write(lines)
