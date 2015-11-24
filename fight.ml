@@ -2,6 +2,7 @@ open Types
 
 type attack_status = {
       atk_eff : pEffect;
+      spec_eff : mEffect;
       self_status_change : bool * pStatus;
       opp_status_change : bool * pStatus;
       missed : bool;
@@ -214,6 +215,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
       begin
       let p_move_status =
       Attack_Status {atk_eff = ENormal;
+                     spec_eff = MNone;
                      self_status_change = (false, SParalyze);
                      opp_status_change = (false, def_poca.status);
                      missed = false } in
@@ -231,6 +233,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           begin
           let p_move_status =
             Attack_Status {atk_eff = ENormal;
+                       spec_eff = MNone;
                        self_status_change = new_status_change;
                        opp_status_change = (false, def_poca.status);
                        missed = true } in
@@ -287,6 +290,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
           let p_move_status =
             Attack_Status {atk_eff = type_eff;
+                       spec_eff = move.effect;
                        self_status_change = new_status_change;
                        opp_status_change = (def_status_change, def_poca'.status);
                        missed = false } in
@@ -313,6 +317,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
     let p_move_status =
       Attack_Status {atk_eff = ENormal;
+                     spec_eff = MNone;
                      self_status_change = (false, new_status);
                      opp_status_change = (false, def_poca.status);
                      missed = false } in
