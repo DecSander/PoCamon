@@ -1,4 +1,5 @@
 open Types
+open Fight
 
 type ai_player = P1 | P2
 
@@ -7,4 +8,4 @@ type ai_player = P1 | P2
 * the current game state and returns the next action that the AI wants to
 * take given the current state of the game. Uses the minimax algorithm.
 *)
-val get_ai_action : ai_player -> game_state -> action
+val get_ai_action : ai_player -> game_state -> battle_status -> fAction
