@@ -12,23 +12,43 @@ let status_score (s: pStatus) :float =
   | SParalyze -> 0.9
   | SFreeze n -> (float_of_int n) *. 0.5
 
-let rec health_score (p_list: pocamon list) (score: float) :float =
+(*let rec health_score (p_list: pocamon list) (score: float) :float =
   match p_list with
   | [] -> score
-  | h::t -> health_score t
-    (score +. (((float_of_int h.health) /.
-                (float_of_int h.stats.max_hp))) ** 4.0)
+  | h::t -> score +. health_score t
+    ((((float_of_int h.health) /.
+                (float_of_int h.stats.max_hp))) ** 2.0)
 
 let player_score (ps: player_state) :float =
   let status = status_score ps.active_pocamon.status in
   let health = health_score ps.pocamon_list 0. in
-  health -. status
+  health -. status *)
+
+let poca_score acc poca =
+  let health_score = (((float_of_int poca.health) /.
+    (float_of_int poca.stats.max_hp)) ** 2.0) in
+  let status_score = status_score poca.status in
+  acc +. (health_score -. status_score)
+
+
+let get_player_score p_state =
+  let active_poca_score = poca_score 0. p_state.active_pocamon in
+  let party_score = List.fold_left poca_score active_poca_score p_state.pocamon_list in
+  party_score
 
 let game_score (gs: game_state) :float =
-  (player_score gs.player_two) -. (player_score gs.player_one)
+  let ps1 = (get_player_score gs.player_one) in
+  let ps2 = (get_player_score gs.player_two) in
+  (*let () = (print_endline ((string_of_float ps1)^" "^(string_of_float ps2))) in *)
+  ((ps2) -. (ps1))
 
 let expectation move = {move with accuracy=100;
   damage=move.damage*move.accuracy/100}
+
+let print_gamestate gs =
+  (*(print_endline (gs.player_one.active_pocamon.name^": "^(string_of_int gs.player_one.active_pocamon.health)));
+  (print_endline (gs.player_two.active_pocamon.name^": "^(string_of_int gs.player_two.active_pocamon.health))); *)
+()
 
 
 let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
@@ -85,11 +105,15 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
   | (None, None) | (_, None) | (None, _) ->
     if recs_left > 0 then g_state, b_status, p1_act, p2_act
     else failwith "minimax ran into an error"
-  | (Some a1, Some a2) -> let g, b = (apply_fight_sequence g_state a1 a2) in
+  | (Some a1, Some a2) ->
+  let g, b = (apply_fight_sequence g_state a1 a2) in
     g, b, None, None in
 
   if recs_left <= 0 then
     let final_game_score = game_score g_state' in
+    if final_game_score = 0.
+    then final_game_score else
+    let () = print_gamestate g_state' in
     final_game_score
   else
 
@@ -144,9 +168,8 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
 
     match switch_action_option with
     | Some _ ->
-      print_endline (string_of_float(best_move_score)^" "^string_of_float(switch_score));
       get_best best_move_score switch_score
-    | None -> (print_endline (string_of_float best_move_score)); best_move_score
+    | None -> best_move_score
 
 let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) : fAction =
 
@@ -159,24 +182,22 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) : fActio
   let switch_poca = get_switch_poca foe_player
           active_player false gs in
 
-  let switch_score = mini_max gs bs false (None, Some (FSwitch switch_poca)) 7 in
+  let depth = 7 in
 
-  let m1_score =
-    mini_max gs bs false (None, Some (FMove (List.nth moves 0))) 7 in
-  let m2_score =
-    mini_max gs bs false (None, Some (FMove (List.nth moves 1))) 7 in
-  let m3_score =
-    mini_max gs bs false (None, Some (FMove (List.nth moves 2))) 7 in
-  let m4_score =
-    mini_max gs bs false (None, Some (FMove (List.nth moves 3))) 7 in
+  let switch_score = mini_max gs bs false (None, Some (FSwitch switch_poca)) depth in
 
-  let m_list = m1_score::m2_score::m3_score::[m4_score] in
+  (*let () = List.iter (fun (x:move) -> print_endline x.name) moves in*)
+
+  let m_list = List.map (fun x ->
+    (mini_max gs bs false (None, Some (FMove x)) depth)) moves in
 
   let i = ref (-1) in
 
-  let find_best acc x = if x > acc then let () = i := !i + 1 in x else acc in
+  let find_best acc x =
+  print_endline (string_of_float x);
+  if x > acc then let () = i := !i + 1 in x else acc in
 
   let best_score = List.fold_left find_best (-8.0) m_list in
   (print_endline ("Final: " ^string_of_float(best_score)^ " " ^ string_of_float(switch_score)));
-  if best_score > switch_score
+  if best_score >= switch_score
     then FMove (List.nth moves !i) else FSwitch switch_poca
