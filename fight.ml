@@ -350,7 +350,11 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             else def_poca.status, false in
 
           let def_poca' =
-            {def_poca with health=def_poca_health'; status=new_status} in
+            if match move.effect with Mohko -> true | _ -> false then
+              {def_poca with health=0; status=new_status}
+            else
+              {def_poca with health=def_poca_health'; status=new_status}
+          in
 
           let atk_poca' =
             match move.effect with

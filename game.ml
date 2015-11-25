@@ -298,6 +298,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
         | MLeech -> wait_for_enter g_state p_state (Talking (
             p_state.active_pocamon.name ^ " drained " ^
             opp_p_state.active_pocamon.name ^ " 's health!"))
+        | Mohko -> wait_for_enter g_state p_state (Talking (
+            "It's a one hit KO!"))
         | _ -> wait_for_enter g_state p_state (Talking ("Not yet implemented"))
 
       else
