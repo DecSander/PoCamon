@@ -21,7 +21,7 @@ type pType = TNormal | TFire | TWater | TElectric | TGrass
 (*
 * The effectiveness of a move
 *)
-type pEffect = ESuper | ENormal | ENotVery
+type pEffect = ESuper | ENormal | ENotVery | EImmune
 
 (*
 * The move category (Special, Physical or Status)

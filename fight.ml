@@ -323,12 +323,15 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           let damage, damage_mult = calc_damage atk_poca effective_atk_stats
             def_poca effective_def_stats move in
 
-          let type_eff = if damage > 0.5 && (damage_mult -. 1.) > 0.01 then
-            ESuper
-          else if damage > 0.5 && (damage_mult -. 1.) < -0.25 then
-            ENotVery
-          else
-            ENormal in
+          let type_eff =
+            if damage > 0.5 && abs_float(damage_mult -. 2.) < 0.01 then
+              ESuper
+            else if damage > 0.5 && abs_float(damage_mult -. 0.5) < 0.01 then
+              ENotVery
+            else if abs_float(damage_mult) < 0.01 then
+              EImmune
+            else
+              ENormal in
 
           let def_poca_health = def_poca.health - int_of_float(damage) in
 
