@@ -222,6 +222,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             match a.atk_eff with
             | ESuper -> "It's super effective!"
             | ENotVery -> "It's not very effective..."
+            | EImmune ->
+              "It doesn't affect enemy " ^ opp_p_state.active_pocamon.name
             | _ -> "It's normal effective" (* should never happen *) in
           wait_for_enter g_state p_state (Talking eff)
         else
@@ -356,6 +358,21 @@ let rec run_game_turn g_state b_status : game_state =
     status_changed_game_state.player_two debuff_info.p2_debuff in
 
   let final_game_state = on_faint status_changed_game_state in
+
+  let () = print_endline "" in
+  let () = print_int (List.length g_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length new_g_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length faint_switch_game_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length status_changed_game_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length final_game_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = match p2_action with
+           | FSwitch m -> print_endline m.name
+           | _ -> () in
 
   run_game_turn final_game_state printfo
 

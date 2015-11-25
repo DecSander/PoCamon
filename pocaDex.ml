@@ -902,7 +902,7 @@ ascii="        Z       =
 
 let dexmap = PokeDex.add "METAPOD" {
 name="METAPOD";
-learnable_moves=["HARDEN";"HARDEN";];
+learnable_moves=["HARDEN";];
 stats={max_hp=50; attack=20; defense=55; speed=30; sp_attack=25;sp_defense=25;};
 poca_type=("BUG", "BUG");
 ascii="
