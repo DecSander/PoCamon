@@ -9,7 +9,7 @@ type attack_status = {
 }
 
 type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
-                    | Charge_Status
+                    | Charge_Status | Charge_Immune_Status
 
 type battle_status = {
       p1_went_first : bool;
@@ -301,11 +301,12 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
       end
     else
       begin
-      if (match move.effect with MCharge -> false | _ -> true)
+      if (match move.effect with MCharge | MChargeNoHit -> false | _ -> true)
         || (match charge_move with
             | Some _ -> true
             | None -> false) then
-        let missed = (Random.int 100) > move.accuracy in
+        let missed = (Random.int 100) > move.accuracy
+          || def_poca.attack_immunity in
 
         if missed then
           begin
@@ -374,7 +375,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           let def_poca'' =
             {def_poca' with stat_mods=def_poca_stat_mods} in
           let atk_poca'' =
-            {atk_poca' with stat_mods=atk_poca_stat_mods} in
+            {atk_poca' with stat_mods=atk_poca_stat_mods;
+                            attack_immunity=false} in
 
           let def_state' = {def_state with active_pocamon=def_poca''} in
           let atk_state' = {atk_state with active_pocamon=atk_poca''} in
@@ -393,14 +395,19 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           (g_state'', p_move_status)
           end
       else
-        let new_pocamon = {atk_state.active_pocamon with charging = Some move} in
+        let immune, charge_type = match move.effect with
+                     | MChargeNoHit -> true, Charge_Immune_Status
+                     | _ -> false, Charge_Status in
+        let new_pocamon = {atk_state.active_pocamon with
+                            charging = Some move;
+                            attack_immunity = immune} in
         let new_player = {atk_state with active_pocamon = new_pocamon} in
         let new_game_status = if p1_is_atk then
           {g_state with player_one = new_player}
         else
           {g_state with player_two = new_player} in
 
-        (new_game_status, Charge_Status)
+        (new_game_status, charge_type)
     end
 
   | SSleep t | SFreeze t ->

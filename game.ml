@@ -192,6 +192,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
   match m_status, action with
   | Charge_Status, _ -> wait_for_enter g_state p_state
       (Talking (p_state.active_pocamon.name ^ " is charging!"))
+  | Charge_Immune_Status, _ -> wait_for_enter g_state p_state
+      (Talking (p_state.active_pocamon.name ^ " went out of range!"))
   | Switch_Status, _ ->
     let screen_message = Talking (p_state.name ^
       " switched to " ^
@@ -243,7 +245,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             (Talking change_string) else ()) in
 
         match a.spec_eff with
-        | MNone | MExplode | MCharge -> ()
+        | MNone | MExplode | MCharge | MChargeNoHit-> ()
         | MRecover | MRecoil | MAttack _ | MDefense _ | MSpecAttack _
         | MSpecDefense _ | MSpeed _ | MAllStatsUp ->
           wait_for_enter g_state p_state (Talking (

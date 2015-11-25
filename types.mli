@@ -8,8 +8,10 @@ type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
               | MConfuse
 
 type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
-| MSpecAttack of int | MSpecDefense of int | MSpeed of int| MAllStatsUp | MLoop
-| Mohko | MRecoil | MRecover | MChargeNoHit | MCharge
+| MSpecAttack of int | MSpecDefense of int | MSpeed of int| MAllStatsUp
+| MRecoil | MRecover | MChargeNoHit | MCharge
+| Mohko
+| MLoop
 
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness
@@ -76,6 +78,7 @@ type pocamon = {
       stat_mods : poca_stat_mods;
       ascii : bytes;
       charging : move option;
+      attack_immunity : bool
       }
 
  type dex_pocamon = {

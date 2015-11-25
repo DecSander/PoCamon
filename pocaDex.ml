@@ -3386,6 +3386,7 @@ let get_pocamon_by_name (name) : pocamon =
 	  stats = new_stats ;
     stat_mods = base_stat_mods ;
     charging = None;
+    attack_immunity = false;
 	  ascii = dexmon.ascii;  }
 
 
@@ -3415,5 +3416,6 @@ let get_random_pocamon () : pocamon =
 	  stats = new_stats ;
     stat_mods = base_stat_mods ;
     charging = None;
+    attack_immunity = false;
 	  ascii = dexmon.ascii;  }
 
