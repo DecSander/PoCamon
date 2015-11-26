@@ -12,6 +12,17 @@ DATA FORMAT:
 }, ...
 }'''
 
+def process_moves(s):
+
+    i=0
+    while i < len(s):
+        if(">" in s[i] or len(s[i])< 2):
+            del s[i]
+        else:
+            s[i] = s[i].upper().replace("\n","")
+            i += 1
+    return s
+
 # returns data as described in DATA FORMAT
 def scrap_base_stats(lines):
     i = 0
@@ -95,6 +106,12 @@ data = scrap_evos_attacks(evos_attacks, data)
 data = scrap_ascii(ascii_art, data)
 
 allmoves = set()
+
+with open("effects.txt") as f:
+    real_moves = f.readlines()
+
+real_moves = process_moves(real_moves)
+
 with open("pocadex.ml", 'w') as f:
 
     f.write('module PokeDex = Map.Make(String)\n')
@@ -113,7 +130,7 @@ with open("pocadex.ml", 'w') as f:
         allmoves.remove
         moves = '['
         for move in data[pocamon]["moves"]:
-            if move.upper() in ['POUND', 'KARATE CHOP', 'MEGA PUNCH', 'SCRATCH', 'VICEGRIP', 'CUT', 'WING ATTACK', 'SLAM', 'VINE WHIP', 'MEGA KICK', 'HORN ATTACK', 'TACKLE', 'WATER GUN', 'HYDRO PUMP', 'SURF', 'PECK', 'DRILL PECK', 'STRENGTH', 'RAZOR LEAF', 'ROCK THROW', 'EGG BOMB', 'WATERFALL', 'CRABHAMMER', 'SLASH', 'AEROBLAST', 'MEGAHORN', 'CROSS CHOP', 'SWIFT', 'FAINT ATTACK', 'VITAL THROW', 'JUMP KICK', 'HI JUMP KICK', 'QUICK ATTACK', 'MACH PUNCH', 'EXTREMESPEED', 'FURY CUTTER', 'NORMAL HIT', 'SPLASH', 'STOMP', 'THUNDER', 'FLAME WHEEL', 'ABSORB', 'MEGA DRAIN', 'LEECH LIFE', 'GIGA DRAIN', 'LEECH HIT', 'SELFDESTRUCT', 'EXPLOSION', 'MEDITATE', 'SHARPEN', 'HARDEN', 'WITHDRAW', 'GROWTH', 'SWORDS DANCE', 'BARRIER', 'ACID ARMOR', 'DEFENSE CURL', 'AGILITY', 'AMNESIA', 'GROWL', 'TAIL WHIP', 'LEER', 'STRING SHOT', 'CHARM', 'SCREECH', 'COTTONSPORE', 'SCARYFACE', 'AURORABEAM', 'ACID', 'IRONTAIL', 'ROCKSMASH', 'BUBBLEBEAM', 'CONSTRICT', 'BUBBLE', 'ICYWIND', 'PSYCHIC', 'CRUNCH', 'SHADOW BALL', 'ANCIENTPOWER', 'DOUBLESLAP', 'COMET PUNCH', 'FURY ATTACK', 'PIN MISSILE', 'SPIKE CANNON', 'BARRAGE', 'FURY SWIPES', 'BONE RUSH', 'DOUBLE KICK', 'BONEMERANG', 'TWINEEDLE', 'GUILLOTINE', 'HORN DRILL', 'FISSURE', 'TAKE DOWN', 'DOUBLE EDGE', 'SUBMISSION', 'STRUGGLE', 'RECOVER', 'SOFTBOILED', 'MILK DRINK', 'HEAL', 'FLY', 'DIG', 'SOLARBEAM', 'SKY ATTACK', 'RAZOR WIND', 'HYPER BEAM']:
+            if move.upper() in real_moves:
                 moves += '"{0}";'.format(move)
         moves += "]"
         types = '("{0}", "{1}")'.format(data[pocamon]["types"][0], data[pocamon]["types"][1])
@@ -121,6 +138,7 @@ with open("pocadex.ml", 'w') as f:
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
         f.write('let dexmap = PokeDex.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2};\npoca_type={3}; \nascii="{4}"}} dexmap\n\n'.format(pocamon, moves, stats, types, data[pocamon]['ascii']))
+
 
 print '[',
 for move in allmoves:

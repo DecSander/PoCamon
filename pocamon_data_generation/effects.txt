@@ -39,6 +39,37 @@ Splash
 Stomp
 Thunder
 Flame Wheel
+FirePunch
+Ember
+Flamethrower
+FireBlast
+IcePunch
+IceBeam
+Blizzard
+PowderSnow
+Thunderpunch
+BodySlam
+Thundershock
+Thunderbolt
+Lick
+ZapCannon
+Spark
+Dragonbreath
+Sing
+SleepPowder
+Hypnosis
+LovelyKiss
+Spore
+PoisonSting
+Smog
+Sludge
+SludgeBomb
+Toxic
+Poisonpowder
+PoisonGas
+StunSpore
+ThunderWave
+Glare
 >MNone
 
 Absorb
@@ -119,20 +150,6 @@ Shadow Ball
 Ancientpower
 >MAllStatsUp
 
-Doubleslap
-Comet Punch
-Fury Attack
-Pin Missile
-Spike Cannon
-Barrage
-Fury Swipes
-Bone Rush
-Double Kick
-Bonemerang
-Multi Hit
-Twineedle
->MLoop
-
 Guillotine
 Horn Drill
 Fissure
@@ -146,7 +163,6 @@ Struggle
 
 Recover
 Softboiled
-Rest
 Milk Drink
 >MRecover
 
@@ -158,4 +174,4 @@ Solarbeam
 Sky Attack
 Razor Wind
 Hyper Beam
->MCharge
+>MChargeNoHit
