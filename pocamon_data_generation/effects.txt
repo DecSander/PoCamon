@@ -30,9 +30,6 @@ Faint Attack
 Vital Throw
 Jump Kick
 Hi Jump Kick
-Quick Attack
-Mach Punch
-Extremespeed
 Fury Cutter
 Normal Hit
 Splash
@@ -160,10 +157,17 @@ Softboiled
 Milk Drink
 >MRecover
 
-Solarbeam
-Sky Attack
 Razor Wind
+Sky Attack
+Solarbeam
 Hyper Beam
+>MCharge
+
 Fly
 Dig
 >MChargeNoHit
+
+Mach Punch
+Extremespeed
+Quick Attack
+>MPriorityHit
