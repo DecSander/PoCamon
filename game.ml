@@ -190,10 +190,8 @@ let on_faint g_state : game_state =
 
 let print_result action g_state p_state m_status opp_p_state : unit =
   match m_status, action with
-  | Charge_Status, _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is charging!"))
-  | Charge_Immune_Status, _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " went out of range!"))
+  | Charge_Status m, _ -> wait_for_enter g_state p_state
+      (Talking (p_state.active_pocamon.name ^ " is charging " ^ m.name ^ "!"))
   | Switch_Status, _ ->
     let screen_message = Talking (p_state.name ^
       " switched to " ^
