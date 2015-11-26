@@ -3,8 +3,6 @@ module MoveDex = Map.Make(String)
 let movedex = MoveDex.empty
 let movedex = MoveDex.add "POUND" {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=40; max_pp=35; effect=MNone; pp=35; move_category=ESpecial} movedex
 let movedex = MoveDex.add "KARATE CHOP" {name="KARATE CHOP"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=100; damage=50; max_pp=25; effect=MNone; pp=25; move_category=ESpecial} movedex
-let movedex = MoveDex.add "DOUBLESLAP" {name="DOUBLESLAP"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=15; max_pp=10; effect=MLoop; pp=10; move_category=ESpecial} movedex
-let movedex = MoveDex.add "COMET PUNCH" {name="COMET PUNCH"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=18; max_pp=15; effect=MLoop; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "MEGA PUNCH" {name="MEGA PUNCH"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=80; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SCRATCH" {name="SCRATCH"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=40; max_pp=35; effect=MNone; pp=35; move_category=ESpecial} movedex
 let movedex = MoveDex.add "VICEGRIP" {name="VICEGRIP"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=55; max_pp=30; effect=MNone; pp=30; move_category=ESpecial} movedex
@@ -17,17 +15,13 @@ let movedex = MoveDex.add "FLY" {name="FLY"; move_type=TFlying; status_effect=MN
 let movedex = MoveDex.add "SLAM" {name="SLAM"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=75; damage=80; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "VINE WHIP" {name="VINE WHIP"; move_type=TGrass; status_effect=MNormal; status_probability=0; accuracy=100; damage=35; max_pp=10; effect=MNone; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "STOMP" {name="STOMP"; move_type=TNormal; status_effect=MNormal; status_probability=30; accuracy=100; damage=65; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
-let movedex = MoveDex.add "DOUBLE KICK" {name="DOUBLE KICK"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=100; damage=30; max_pp=30; effect=MLoop; pp=30; move_category=ESpecial} movedex
 let movedex = MoveDex.add "MEGA KICK" {name="MEGA KICK"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=75; damage=120; max_pp=5; effect=MNone; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "JUMP KICK" {name="JUMP KICK"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=95; damage=70; max_pp=25; effect=MNone; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "HORN ATTACK" {name="HORN ATTACK"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=65; max_pp=25; effect=MNone; pp=25; move_category=ESpecial} movedex
-let movedex = MoveDex.add "FURY ATTACK" {name="FURY ATTACK"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=15; max_pp=20; effect=MLoop; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "HORN DRILL" {name="HORN DRILL"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=30; damage=1; max_pp=5; effect=Mohko; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "TACKLE" {name="TACKLE"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=95; damage=35; max_pp=35; effect=MNone; pp=35; move_category=ESpecial} movedex
 let movedex = MoveDex.add "TAKE DOWN" {name="TAKE DOWN"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=90; max_pp=20; effect=MRecoil; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "DOUBLE EDGE" {name="DOUBLE EDGE"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=120; max_pp=15; effect=MRecoil; pp=15; move_category=ESpecial} movedex
-let movedex = MoveDex.add "TWINEEDLE" {name="TWINEEDLE"; move_type=TBug; status_effect=MNormal; status_probability=20; accuracy=100; damage=25; max_pp=20; effect=MLoop; pp=20; move_category=ESpecial} movedex
-let movedex = MoveDex.add "PIN MISSILE" {name="PIN MISSILE"; move_type=TBug; status_effect=MNormal; status_probability=0; accuracy=85; damage=14; max_pp=20; effect=MLoop; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "ACID" {name="ACID"; move_type=TPoison; status_effect=MNormal; status_probability=10; accuracy=100; damage=40; max_pp=30; effect=MDefense (-1); pp=30; move_category=ESpecial} movedex
 let movedex = MoveDex.add "WATER GUN" {name="WATER GUN"; move_type=TWater; status_effect=MNormal; status_probability=0; accuracy=100; damage=40; max_pp=25; effect=MNone; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "HYDRO PUMP" {name="HYDRO PUMP"; move_type=TWater; status_effect=MNormal; status_probability=0; accuracy=80; damage=120; max_pp=5; effect=MNone; pp=5; move_category=ESpecial} movedex
@@ -61,12 +55,10 @@ let movedex = MoveDex.add "SELFDESTRUCT" {name="SELFDESTRUCT"; move_type=TNormal
 let movedex = MoveDex.add "EGG BOMB" {name="EGG BOMB"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=75; damage=100; max_pp=10; effect=MNone; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "WATERFALL" {name="WATERFALL"; move_type=TWater; status_effect=MNormal; status_probability=0; accuracy=100; damage=80; max_pp=15; effect=MNone; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SWIFT" {name="SWIFT"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=60; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
-let movedex = MoveDex.add "SPIKE CANNON" {name="SPIKE CANNON"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=20; max_pp=15; effect=MLoop; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "CONSTRICT" {name="CONSTRICT"; move_type=TNormal; status_effect=MNormal; status_probability=10; accuracy=100; damage=10; max_pp=35; effect=MSpeed (-1); pp=35; move_category=ESpecial} movedex
 let movedex = MoveDex.add "AMNESIA" {name="AMNESIA"; move_type=TPsychic; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=20; effect=MSpecDefense (2); pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SOFTBOILED" {name="SOFTBOILED"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=10; effect=MRecover; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "HI JUMP KICK" {name="HI JUMP KICK"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=90; damage=85; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
-let movedex = MoveDex.add "BARRAGE" {name="BARRAGE"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=85; damage=15; max_pp=20; effect=MLoop; pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "LEECH LIFE" {name="LEECH LIFE"; move_type=TBug; status_effect=MNormal; status_probability=0; accuracy=100; damage=20; max_pp=15; effect=MLeech; pp=15; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SKY ATTACK" {name="SKY ATTACK"; move_type=TFlying; status_effect=MNormal; status_probability=0; accuracy=90; damage=140; max_pp=5; effect=MCharge; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "BUBBLE" {name="BUBBLE"; move_type=TWater; status_effect=MNormal; status_probability=10; accuracy=100; damage=20; max_pp=30; effect=MSpeed (-1); pp=30; move_category=ESpecial} movedex
@@ -74,8 +66,6 @@ let movedex = MoveDex.add "SPLASH" {name="SPLASH"; move_type=TNormal; status_eff
 let movedex = MoveDex.add "ACID ARMOR" {name="ACID ARMOR"; move_type=TPoison; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; effect=MDefense (2); pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "CRABHAMMER" {name="CRABHAMMER"; move_type=TWater; status_effect=MNormal; status_probability=0; accuracy=85; damage=90; max_pp=10; effect=MNone; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "EXPLOSION" {name="EXPLOSION"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=250; max_pp=5; effect=MExplode; pp=5; move_category=ESpecial} movedex
-let movedex = MoveDex.add "FURY SWIPES" {name="FURY SWIPES"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=80; damage=18; max_pp=15; effect=MLoop; pp=15; move_category=ESpecial} movedex
-let movedex = MoveDex.add "BONEMERANG" {name="BONEMERANG"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=90; damage=50; max_pp=10; effect=MLoop; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "REST" {name="REST"; move_type=TPsychic; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=10; effect=MRecover; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SHARPEN" {name="SHARPEN"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=30; effect=MAttack (1); pp=30; move_category=ESpecial} movedex
 let movedex = MoveDex.add "SLASH" {name="SLASH"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=70; max_pp=20; effect=MNone; pp=20; move_category=ESpecial} movedex
@@ -83,7 +73,6 @@ let movedex = MoveDex.add "STRUGGLE" {name="STRUGGLE"; move_type=TNormal; status
 let movedex = MoveDex.add "FLAME WHEEL" {name="FLAME WHEEL"; move_type=TFire; status_effect=MNormal; status_probability=10; accuracy=100; damage=60; max_pp=25; effect=MNone; pp=25; move_category=ESpecial} movedex
 let movedex = MoveDex.add "AEROBLAST" {name="AEROBLAST"; move_type=TFlying; status_effect=MNormal; status_probability=0; accuracy=95; damage=100; max_pp=5; effect=MNone; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "MACH PUNCH" {name="MACH PUNCH"; move_type=TFighting; status_effect=MNormal; status_probability=0; accuracy=100; damage=40; max_pp=30; effect=MNone; pp=30; move_category=ESpecial} movedex
-let movedex = MoveDex.add "BONE RUSH" {name="BONE RUSH"; move_type=TGround; status_effect=MNormal; status_probability=0; accuracy=80; damage=25; max_pp=10; effect=MLoop; pp=10; move_category=ESpecial} movedex
 let movedex = MoveDex.add "GIGA DRAIN" {name="GIGA DRAIN"; move_type=TGrass; status_effect=MNormal; status_probability=0; accuracy=100; damage=60; max_pp=5; effect=MLeech; pp=5; move_category=ESpecial} movedex
 let movedex = MoveDex.add "CHARM" {name="CHARM"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=20; effect=MAttack (-2); pp=20; move_category=ESpecial} movedex
 let movedex = MoveDex.add "MILK DRINK" {name="MILK DRINK"; move_type=TNormal; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=10; effect=MRecover; pp=10; move_category=ESpecial} movedex
@@ -146,7 +135,7 @@ ascii="              :?
 
 let dexmap = PokeDex.add "DODRIO" {
 name="DODRIO";
-learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"GROWL";"FURY ATTACK";"FURY ATTACK";"DRILL PECK";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"GROWL";"DRILL PECK";"AGILITY";];
 stats={max_hp=60; attack=110; defense=70; speed=100; sp_attack=60;sp_defense=60;};
 poca_type=("NORMAL", "FLYING");
 ascii="          8?? ??7    OI  OII
@@ -209,7 +198,7 @@ ascii="
 
 let dexmap = PokeDex.add "SANDSLASH" {
 name="SANDSLASH";
-learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"DEFENSE CURL";"DEFENSE CURL";"SLASH";"SWIFT";"FURY SWIPES";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"DEFENSE CURL";"DEFENSE CURL";"SLASH";"SWIFT";];
 stats={max_hp=75; attack=100; defense=110; speed=65; sp_attack=45;sp_defense=55;};
 poca_type=("GROUND", "GROUND");
 ascii="             8  88
@@ -251,7 +240,7 @@ ascii="
 
 let dexmap = PokeDex.add "POLIWAG" {
 name="POLIWAG";
-learnable_moves=["DEFENSE CURL";"SURF";"WATERFALL";"BUBBLE";"WATER GUN";"DOUBLESLAP";"HYDRO PUMP";];
+learnable_moves=["DEFENSE CURL";"SURF";"WATERFALL";"BUBBLE";"WATER GUN";"HYDRO PUMP";];
 stats={max_hp=40; attack=50; defense=40; speed=90; sp_attack=40;sp_defense=40;};
 poca_type=("WATER", "WATER");
 ascii="
@@ -272,7 +261,7 @@ ascii="
 
 let dexmap = PokeDex.add "SPEAROW" {
 name="SPEAROW";
-learnable_moves=["SWIFT";"FLY";"PECK";"GROWL";"LEER";"FURY ATTACK";"DRILL PECK";"AGILITY";];
+learnable_moves=["SWIFT";"FLY";"PECK";"GROWL";"LEER";"DRILL PECK";"AGILITY";];
 stats={max_hp=40; attack=60; defense=30; speed=70; sp_attack=31;sp_defense=31;};
 poca_type=("NORMAL", "FLYING");
 ascii="
@@ -356,7 +345,7 @@ N,787+::+++7N7       7.7
 
 let dexmap = PokeDex.add "FEAROW" {
 name="FEAROW";
-learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"GROWL";"LEER";"FURY ATTACK";"LEER";"FURY ATTACK";"DRILL PECK";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"FLY";"GROWL";"LEER";"LEER";"DRILL PECK";"AGILITY";];
 stats={max_hp=65; attack=90; defense=65; speed=100; sp_attack=61;sp_defense=61;};
 poca_type=("NORMAL", "FLYING");
 ascii="      ?8?????:     Z?$88$Z$?
@@ -398,7 +387,7 @@ ascii="
 
 let dexmap = PokeDex.add "OMASTAR" {
 name="OMASTAR";
-learnable_moves=["HYPER BEAM";"SURF";"WITHDRAW";"WATER GUN";"LEER";"SPIKE CANNON";"ANCIENTPOWER";"HYDRO PUMP";];
+learnable_moves=["HYPER BEAM";"SURF";"WITHDRAW";"WATER GUN";"LEER";"ANCIENTPOWER";"HYDRO PUMP";];
 stats={max_hp=70; attack=60; defense=125; speed=55; sp_attack=115;sp_defense=70;};
 poca_type=("ROCK", "WATER");
 ascii="
@@ -419,7 +408,7 @@ ascii="
 
 let dexmap = PokeDex.add "PERSIAN" {
 name="PERSIAN";
-learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"GROWL";"SCREECH";"FURY SWIPES";"SLASH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"GROWL";"SCREECH";"SLASH";];
 stats={max_hp=65; attack=70; defense=60; speed=115; sp_attack=65;sp_defense=65;};
 poca_type=("NORMAL", "NORMAL");
 ascii="     NNO   N$IN
@@ -524,7 +513,7 @@ $N~NNN++:::::::~~~I++++IIIII
 
 let dexmap = PokeDex.add "RHYDON" {
 name="RHYDON";
-learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"FURY CUTTER";"SURF";"STRENGTH";"TAIL WHIP";"STOMP";"FURY ATTACK";"STOMP";"FURY ATTACK";"HORN DRILL";"TAKE DOWN";];
+learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"FURY CUTTER";"SURF";"STRENGTH";"TAIL WHIP";"STOMP";"STOMP";"HORN DRILL";"TAKE DOWN";];
 stats={max_hp=105; attack=130; defense=120; speed=40; sp_attack=45;sp_defense=45;};
 poca_type=("GROUND", "ROCK");
 ascii="      IIZZZZI
@@ -545,7 +534,7 @@ NIIIII  ~Z?~~?~Z~~IN~~N NZ~~IZ
 
 let dexmap = PokeDex.add "CLEFABLE" {
 name="CLEFABLE";
-learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";];
 stats={max_hp=95; attack=70; defense=73; speed=60; sp_attack=85;sp_defense=90;};
 poca_type=("NORMAL", "NORMAL");
 ascii="
@@ -587,7 +576,7 @@ ascii="           NN88+IIIIIZ
 
 let dexmap = PokeDex.add "MR.MIME" {
 name="MR.MIME";
-learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"MEDITATE";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"MEDITATE";];
 stats={max_hp=40; attack=45; defense=65; speed=90; sp_attack=100;sp_defense=120;};
 poca_type=("PSYCHIC", "PSYCHIC");
 ascii="          OOI
@@ -629,7 +618,7 @@ ascii="
 
 let dexmap = PokeDex.add "PSYDUCK" {
 name="PSYDUCK";
-learnable_moves=["DIG";"SWIFT";"SURF";"STRENGTH";"WATERFALL";"SCRATCH";"TAIL WHIP";"SCREECH";"FURY SWIPES";"HYDRO PUMP";];
+learnable_moves=["DIG";"SWIFT";"SURF";"STRENGTH";"WATERFALL";"SCRATCH";"TAIL WHIP";"SCREECH";"HYDRO PUMP";];
 stats={max_hp=50; attack=52; defense=48; speed=55; sp_attack=65;sp_defense=50;};
 poca_type=("WATER", "WATER");
 ascii="
@@ -692,7 +681,7 @@ ascii="     :=   7::::::N7==7==
 
 let dexmap = PokeDex.add "BEEDRILL" {
 name="BEEDRILL";
-learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SWIFT";"FURY CUTTER";"CUT";"FURY ATTACK";"TWINEEDLE";"PIN MISSILE";"AGILITY";];
+learnable_moves=["HYPER BEAM";"GIGA DRAIN";"SWIFT";"FURY CUTTER";"CUT";"AGILITY";];
 stats={max_hp=65; attack=80; defense=40; speed=75; sp_attack=45;sp_defense=80;};
 poca_type=("BUG", "POISON");
 ascii="               I,      ==
@@ -839,7 +828,7 @@ ascii="      II ???  I   8?IOOOOO
 
 let dexmap = PokeDex.add "RHYHORN" {
 name="RHYHORN";
-learnable_moves=["THUNDER";"DIG";"STRENGTH";"HORN ATTACK";"TAIL WHIP";"STOMP";"FURY ATTACK";"HORN DRILL";"TAKE DOWN";];
+learnable_moves=["THUNDER";"DIG";"STRENGTH";"HORN ATTACK";"TAIL WHIP";"STOMP";"HORN DRILL";"TAKE DOWN";];
 stats={max_hp=80; attack=85; defense=95; speed=25; sp_attack=30;sp_defense=30;};
 poca_type=("GROUND", "ROCK");
 ascii="                ~~~
@@ -965,7 +954,7 @@ ascii="
 
 let dexmap = PokeDex.add "POLIWRATH" {
 name="POLIWRATH";
-learnable_moves=["HYPER BEAM";"DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";"DOUBLESLAP";"SUBMISSION";"SUBMISSION";];
+learnable_moves=["HYPER BEAM";"DEFENSE CURL";"SURF";"STRENGTH";"WATERFALL";"SUBMISSION";"SUBMISSION";];
 stats={max_hp=90; attack=85; defense=95; speed=70; sp_attack=70;sp_defense=90;};
 poca_type=("WATER", "FIGHTING");
 ascii="         ZOIN   OIIII
@@ -1028,7 +1017,7 @@ ascii="
 
 let dexmap = PokeDex.add "NIDORINO" {
 name="NIDORINO";
-learnable_moves=["THUNDER";"DEFENSE CURL";"STRENGTH";"LEER";"TACKLE";"HORN ATTACK";"DOUBLE KICK";"FURY ATTACK";"HORN DRILL";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"STRENGTH";"LEER";"TACKLE";"HORN ATTACK";"HORN DRILL";];
 stats={max_hp=61; attack=72; defense=57; speed=65; sp_attack=55;sp_defense=55;};
 poca_type=("POISON", "POISON");
 ascii="        Z=      ==
@@ -1049,7 +1038,7 @@ ascii="        Z=      ==
 
 let dexmap = PokeDex.add "NIDORINA" {
 name="NIDORINA";
-learnable_moves=["THUNDER";"DEFENSE CURL";"STRENGTH";"GROWL";"TACKLE";"SCRATCH";"DOUBLE KICK";"TAIL WHIP";"FURY SWIPES";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"STRENGTH";"GROWL";"TACKLE";"SCRATCH";"TAIL WHIP";];
 stats={max_hp=70; attack=62; defense=67; speed=56; sp_attack=55;sp_defense=55;};
 poca_type=("POISON", "POISON");
 ascii="        I
@@ -1112,7 +1101,7 @@ ascii="                   ~+~~O
 
 let dexmap = PokeDex.add "NIDORANF" {
 name="NIDORANF";
-learnable_moves=["THUNDER";"DEFENSE CURL";"GROWL";"TACKLE";"SCRATCH";"DOUBLE KICK";"TAIL WHIP";"FURY SWIPES";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"GROWL";"TACKLE";"SCRATCH";"TAIL WHIP";];
 stats={max_hp=55; attack=47; defense=52; speed=41; sp_attack=40;sp_defense=40;};
 poca_type=("POISON", "POISON");
 ascii="
@@ -1133,7 +1122,7 @@ ascii="
 
 let dexmap = PokeDex.add "CUBONE" {
 name="CUBONE";
-learnable_moves=["DIG";"STRENGTH";"GROWL";"TAIL WHIP";"LEER";"BONEMERANG";"BONE RUSH";];
+learnable_moves=["DIG";"STRENGTH";"GROWL";"TAIL WHIP";"LEER";];
 stats={max_hp=50; attack=50; defense=95; speed=35; sp_attack=40;sp_defense=50;};
 poca_type=("GROUND", "GROUND");
 ascii="
@@ -1154,7 +1143,7 @@ ascii="
 
 let dexmap = PokeDex.add "NIDORANM" {
 name="NIDORANM";
-learnable_moves=["THUNDER";"DEFENSE CURL";"LEER";"TACKLE";"HORN ATTACK";"DOUBLE KICK";"FURY ATTACK";"HORN DRILL";];
+learnable_moves=["THUNDER";"DEFENSE CURL";"LEER";"TACKLE";"HORN ATTACK";"HORN DRILL";];
 stats={max_hp=46; attack=57; defense=40; speed=50; sp_attack=40;sp_defense=40;};
 poca_type=("POISON", "POISON");
 ascii="
@@ -1301,7 +1290,7 @@ ascii="
 
 let dexmap = PokeDex.add "NIDOKING" {
 name="NIDOKING";
-learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"FURY CUTTER";"SURF";"STRENGTH";"HORN ATTACK";"DOUBLE KICK";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"FURY CUTTER";"SURF";"STRENGTH";"HORN ATTACK";];
 stats={max_hp=81; attack=92; defense=77; speed=85; sp_attack=85;sp_defense=75;};
 poca_type=("POISON", "GROUND");
 ascii="    $ON N  NOI$$$$I
@@ -1553,7 +1542,7 @@ ascii="  IIO:?              :OIIIII
 
 let dexmap = PokeDex.add "MANKEY" {
 name="MANKEY";
-learnable_moves=["THUNDER";"DIG";"SWIFT";"DEFENSE CURL";"STRENGTH";"SCRATCH";"LEER";"KARATE CHOP";"FURY SWIPES";"CROSS CHOP";"SCREECH";];
+learnable_moves=["THUNDER";"DIG";"SWIFT";"DEFENSE CURL";"STRENGTH";"SCRATCH";"LEER";"KARATE CHOP";"CROSS CHOP";"SCREECH";];
 stats={max_hp=40; attack=80; defense=35; speed=70; sp_attack=35;sp_defense=45;};
 poca_type=("FIGHTING", "FIGHTING");
 ascii="
@@ -1826,7 +1815,7 @@ ascii="                      Z+:::::=N
 
 let dexmap = PokeDex.add "NIDOQUEEN" {
 name="NIDOQUEEN";
-learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"FURY CUTTER";"SURF";"STRENGTH";"SCRATCH";"DOUBLE KICK";"TAIL WHIP";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"FURY CUTTER";"SURF";"STRENGTH";"SCRATCH";"TAIL WHIP";];
 stats={max_hp=90; attack=82; defense=87; speed=76; sp_attack=75;sp_defense=85;};
 poca_type=("POISON", "GROUND");
 ascii="        I~~~I:??ZZ?IN
@@ -1847,7 +1836,7 @@ ascii="        I~~~I:??ZZ?IN
 
 let dexmap = PokeDex.add "GOLDUCK" {
 name="GOLDUCK";
-learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"FURY CUTTER";"SURF";"STRENGTH";"WATERFALL";"TAIL WHIP";"TAIL WHIP";"SCREECH";"FURY SWIPES";"HYDRO PUMP";];
+learnable_moves=["HYPER BEAM";"DIG";"SWIFT";"FURY CUTTER";"SURF";"STRENGTH";"WATERFALL";"TAIL WHIP";"TAIL WHIP";"SCREECH";"HYDRO PUMP";];
 stats={max_hp=80; attack=82; defense=78; speed=85; sp_attack=95;sp_defense=80;};
 poca_type=("WATER", "WATER");
 ascii="           I O+ ++
@@ -1889,7 +1878,7 @@ I        IO$$$OO$$$   OI
 
 let dexmap = PokeDex.add "GOLDEEN" {
 name="GOLDEEN";
-learnable_moves=["SWIFT";"SURF";"WATERFALL";"PECK";"TAIL WHIP";"HORN ATTACK";"FURY ATTACK";"WATERFALL";"HORN DRILL";"AGILITY";];
+learnable_moves=["SWIFT";"SURF";"WATERFALL";"PECK";"TAIL WHIP";"HORN ATTACK";"WATERFALL";"HORN DRILL";"AGILITY";];
 stats={max_hp=45; attack=67; defense=60; speed=63; sp_attack=35;sp_defense=50;};
 poca_type=("WATER", "WATER");
 ascii="
@@ -1994,7 +1983,7 @@ ascii="         7?77
 
 let dexmap = PokeDex.add "MEOWTH" {
 name="MEOWTH";
-learnable_moves=["THUNDER";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"SCRATCH";"GROWL";"SCREECH";"FURY SWIPES";"SLASH";];
+learnable_moves=["THUNDER";"SHADOW BALL";"SWIFT";"DEFENSE CURL";"SCRATCH";"GROWL";"SCREECH";"SLASH";];
 stats={max_hp=40; attack=45; defense=35; speed=90; sp_attack=40;sp_defense=40;};
 poca_type=("NORMAL", "NORMAL");
 ascii="
@@ -2183,7 +2172,7 @@ N=====NN8====8==N===========INN
 
 let dexmap = PokeDex.add "DODUO" {
 name="DODUO";
-learnable_moves=["SWIFT";"FLY";"PECK";"GROWL";"FURY ATTACK";"DRILL PECK";"AGILITY";];
+learnable_moves=["SWIFT";"FLY";"PECK";"GROWL";"DRILL PECK";"AGILITY";];
 stats={max_hp=35; attack=85; defense=45; speed=75; sp_attack=35;sp_defense=35;};
 poca_type=("NORMAL", "FLYING");
 ascii="                  8++8  7
@@ -2204,7 +2193,7 @@ ascii="                  8++8  7
 
 let dexmap = PokeDex.add "MAROWAK" {
 name="MAROWAK";
-learnable_moves=["HYPER BEAM";"DIG";"STRENGTH";"TAIL WHIP";"TAIL WHIP";"LEER";"BONEMERANG";"BONE RUSH";];
+learnable_moves=["HYPER BEAM";"DIG";"STRENGTH";"TAIL WHIP";"TAIL WHIP";"LEER";];
 stats={max_hp=60; attack=80; defense=110; speed=45; sp_attack=50;sp_defense=80;};
 poca_type=("GROUND", "GROUND");
 ascii="   I O
@@ -2225,7 +2214,7 @@ ascii="   I O
 
 let dexmap = PokeDex.add "PRIMEAPE" {
 name="PRIMEAPE";
-learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"SWIFT";"DEFENSE CURL";"STRENGTH";"LEER";"KARATE CHOP";"FURY SWIPES";"CROSS CHOP";"SCREECH";];
+learnable_moves=["HYPER BEAM";"THUNDER";"DIG";"SWIFT";"DEFENSE CURL";"STRENGTH";"LEER";"KARATE CHOP";"CROSS CHOP";"SCREECH";];
 stats={max_hp=65; attack=105; defense=60; speed=95; sp_attack=60;sp_defense=70;};
 poca_type=("FIGHTING", "FIGHTING");
 ascii="        7 O    O7.O
@@ -2267,7 +2256,7 @@ ascii=":Z:?=    ?Z Z==?     Z:=?7??8
 
 let dexmap = PokeDex.add "CLOYSTER" {
 name="CLOYSTER";
-learnable_moves=["HYPER BEAM";"SWIFT";"SURF";"SPIKE CANNON";];
+learnable_moves=["HYPER BEAM";"SWIFT";"SURF";];
 stats={max_hp=50; attack=95; defense=180; speed=70; sp_attack=85;sp_defense=45;};
 poca_type=("WATER", "ICE");
 ascii="  8                 7~~+N
@@ -2351,7 +2340,7 @@ ascii="
 
 let dexmap = PokeDex.add "SEAKING" {
 name="SEAKING";
-learnable_moves=["HYPER BEAM";"SWIFT";"SURF";"WATERFALL";"TAIL WHIP";"TAIL WHIP";"HORN ATTACK";"FURY ATTACK";"WATERFALL";"HORN DRILL";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"SURF";"WATERFALL";"TAIL WHIP";"TAIL WHIP";"HORN ATTACK";"WATERFALL";"HORN DRILL";"AGILITY";];
 stats={max_hp=80; attack=92; defense=65; speed=68; sp_attack=65;sp_defense=80;};
 poca_type=("WATER", "WATER");
 ascii="                       II
@@ -2414,7 +2403,7 @@ ascii="
 
 let dexmap = PokeDex.add "SANDSHREW" {
 name="SANDSHREW";
-learnable_moves=["DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"SCRATCH";"DEFENSE CURL";"SLASH";"SWIFT";"FURY SWIPES";];
+learnable_moves=["DIG";"SWIFT";"DEFENSE CURL";"FURY CUTTER";"CUT";"STRENGTH";"SCRATCH";"DEFENSE CURL";"SLASH";"SWIFT";];
 stats={max_hp=50; attack=75; defense=85; speed=40; sp_attack=20;sp_defense=30;};
 poca_type=("GROUND", "GROUND");
 ascii="
@@ -2498,7 +2487,7 @@ ascii="              OO
 
 let dexmap = PokeDex.add "FARFETCHD" {
 name="FARFETCHD";
-learnable_moves=["SWIFT";"CUT";"FLY";"LEER";"FURY ATTACK";"SWORDS DANCE";"AGILITY";"SLASH";];
+learnable_moves=["SWIFT";"CUT";"FLY";"LEER";"SWORDS DANCE";"AGILITY";"SLASH";];
 stats={max_hp=52; attack=65; defense=55; speed=60; sp_attack=58;sp_defense=62;};
 poca_type=("NORMAL", "FLYING");
 ascii="
@@ -2540,7 +2529,7 @@ ascii="
 
 let dexmap = PokeDex.add "EXEGGCUTE" {
 name="EXEGGCUTE";
-learnable_moves=["GIGA DRAIN";"SOLARBEAM";"STRENGTH";"BARRAGE";"SOLARBEAM";];
+learnable_moves=["GIGA DRAIN";"SOLARBEAM";"STRENGTH";"SOLARBEAM";];
 stats={max_hp=60; attack=40; defense=80; speed=40; sp_attack=60;sp_defense=45;};
 poca_type=("GRASS", "PSYCHIC");
 ascii="
@@ -2603,7 +2592,7 @@ ascii="           III?IIZZZZ
 
 let dexmap = PokeDex.add "JOLTEON" {
 name="JOLTEON";
-learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"SWIFT";"TAIL WHIP";"QUICK ATTACK";"DOUBLE KICK";"PIN MISSILE";"AGILITY";"THUNDER";];
+learnable_moves=["HYPER BEAM";"THUNDER";"SHADOW BALL";"SWIFT";"TAIL WHIP";"QUICK ATTACK";"AGILITY";"THUNDER";];
 stats={max_hp=65; attack=65; defense=60; speed=130; sp_attack=110;sp_defense=95;};
 poca_type=("ELECTRIC", "ELECTRIC");
 ascii="
@@ -2645,7 +2634,7 @@ ascii="
 
 let dexmap = PokeDex.add "WIGGLYTUFF" {
 name="WIGGLYTUFF";
-learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DEFENSE CURL";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DEFENSE CURL";];
 stats={max_hp=140; attack=70; defense=45; speed=45; sp_attack=75;sp_defense=50;};
 poca_type=("NORMAL", "NORMAL");
 ascii="       N 7            ON
@@ -2897,7 +2886,7 @@ ascii="           I++IZ
 
 let dexmap = PokeDex.add "JIGGLYPUFF" {
 name="JIGGLYPUFF";
-learnable_moves=["SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DEFENSE CURL";"POUND";"DOUBLESLAP";"DOUBLE EDGE";];
+learnable_moves=["SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"DEFENSE CURL";"POUND";"DOUBLE EDGE";];
 stats={max_hp=115; attack=45; defense=20; speed=20; sp_attack=45;sp_defense=25;};
 poca_type=("NORMAL", "NORMAL");
 ascii="
@@ -2939,7 +2928,7 @@ ascii="           :        $
 
 let dexmap = PokeDex.add "JYNX" {
 name="JYNX";
-learnable_moves=["HYPER BEAM";"SHADOW BALL";"DOUBLESLAP";];
+learnable_moves=["HYPER BEAM";"SHADOW BALL"];
 stats={max_hp=65; attack=50; defense=35; speed=95; sp_attack=115;sp_defense=95;};
 poca_type=("ICE", "PSYCHIC");
 ascii="          ,=?==,,,?
@@ -3191,7 +3180,7 @@ ascii="
 
 let dexmap = PokeDex.add "CHANSEY" {
 name="CHANSEY";
-learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"POUND";"GROWL";"TAIL WHIP";"SOFTBOILED";"DOUBLESLAP";"EGG BOMB";"DEFENSE CURL";"DOUBLE EDGE";];
+learnable_moves=["HYPER BEAM";"SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"POUND";"GROWL";"TAIL WHIP";"SOFTBOILED";"EGG BOMB";"DEFENSE CURL";"DOUBLE EDGE";];
 stats={max_hp=250; attack=05; defense=05; speed=50; sp_attack=35;sp_defense=105;};
 poca_type=("NORMAL", "NORMAL");
 ascii="
@@ -3233,7 +3222,7 @@ ascii="
 
 let dexmap = PokeDex.add "CLEFAIRY" {
 name="CLEFAIRY";
-learnable_moves=["SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"POUND";"GROWL";"DOUBLESLAP";"DEFENSE CURL";];
+learnable_moves=["SOLARBEAM";"THUNDER";"SHADOW BALL";"DEFENSE CURL";"STRENGTH";"POUND";"GROWL";"DEFENSE CURL";];
 stats={max_hp=70; attack=45; defense=48; speed=35; sp_attack=60;sp_defense=65;};
 poca_type=("NORMAL", "NORMAL");
 ascii="
@@ -3254,7 +3243,7 @@ ascii="
 
 let dexmap = PokeDex.add "RAPIDASH" {
 name="RAPIDASH";
-learnable_moves=["HYPER BEAM";"SWIFT";"GROWL";"TAIL WHIP";"GROWL";"TAIL WHIP";"STOMP";"TAKE DOWN";"FURY ATTACK";"AGILITY";];
+learnable_moves=["HYPER BEAM";"SWIFT";"GROWL";"TAIL WHIP";"GROWL";"TAIL WHIP";"STOMP";"TAKE DOWN";"AGILITY";];
 stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
 poca_type=("FIRE", "FIRE");
 ascii="   , ??OO==??    7===Z
