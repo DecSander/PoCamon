@@ -97,9 +97,6 @@ with open("evos_attacks.asm") as f:
 with open("ascii_art.txt") as f:
     ascii_art = f.readlines()
 
-with open("battle_moves.s") as f:
-    battle_moves = f.readlines()
-
 
 data = scrap_base_stats(base_stats)
 data = scrap_evos_attacks(evos_attacks, data)

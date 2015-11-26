@@ -39,36 +39,36 @@ Splash
 Stomp
 Thunder
 Flame Wheel
-FirePunch
+Fire Punch
 Ember
 Flamethrower
-FireBlast
-IcePunch
-IceBeam
+Fire Blast
+Ice Punch
+Ice Beam
 Blizzard
-PowderSnow
+Powder Snow
 Thunderpunch
-BodySlam
+Body Slam
 Thundershock
 Thunderbolt
 Lick
-ZapCannon
+Zap Cannon
 Spark
 Dragonbreath
 Sing
-SleepPowder
+Sleep Powder
 Hypnosis
-LovelyKiss
+Lovely Kiss
 Spore
-PoisonSting
+Poison Sting
 Smog
 Sludge
-SludgeBomb
+Sludge Bomb
 Toxic
-Poisonpowder
-PoisonGas
-StunSpore
-ThunderWave
+Poison powder
+Poison Gas
+Stun Spore
+Thunder Wave
 Glare
 >MNone
 
@@ -114,17 +114,17 @@ Charm
 Screech
 >MDefense -2
 
-CottonSpore
-ScaryFace
+Cotton Spore
+Scary Face
 >MSpeed -2
 
-AuroraBeam
+Aurora Beam
 Growl
 >MAttack -1
 
 Acid
-IronTail
-RockSmash
+Iron Tail
+Rock Smash
 Tail Whip
 Leer
 >MDefense -1
@@ -132,7 +132,7 @@ Leer
 Bubblebeam
 Constrict
 Bubble
-IcyWind
+Icy Wind
 String Shot
 >MSpeed -1
 
