@@ -286,9 +286,12 @@ let rec string_contains s sub : bool =
 
 let find_matches words acc =
   let words = List.map (fun s -> String.lowercase s) words in
-  List.sort (fun v1 v2 -> String.compare v1 v2)
-              (List.filter (fun s -> (String.sub s 0
-                (min (String.length (get_word acc)) (String.length s)))= get_word acc) words)
+  let words = List.map (fun s -> String.lowercase s) words in
+  let matches = (List.filter (fun s -> (String.sub s 0
+                (min (String.length (get_word acc)) (String.length s))) 
+                = String.lowercase (get_word acc)) words) in
+  List.sort (fun v1 v2 -> String.compare v1 v2) matches
+              
 
 let print_text s : unit=
    print_string ("\r"^(Bytes.make (70) ' '));
@@ -308,21 +311,15 @@ let get_input (words: string list) (defaults: string list) =
      let acc = remove_last_one acc in
      match find_matches words acc with
       | [] ->   failwith "error this should be handled by handle_typing"
-      | h::t -> print_string ("\r"^(Bytes.make (70) ' '));
-                print_string ("\027[37m\r|> \027[32m"^(String.capitalize h));
+
+      | h::t -> print_int (String.length (get_word acc));
+      print_int (String.length h);
+                let completed_word = (get_word acc)^(String.sub h (String.length (get_word acc)) (String.length h - String.length (get_word acc))) in
+                print_string ("\r"^(Bytes.make (70) ' '));
+                print_string ("\027[37m\r|> \027[32m"^(completed_word));
                 flush Pervasives.stdout;
                 let c = really_input_string Pervasives.stdin 1 in
-                go ([String.lowercase h]@[String.lowercase c]) in
- (*let () = print_string (Bytes.make (80) ' ') in
-          if (string_contains h "Switch" && (String.length (get_word acc) < 6))
-          then
-              let () = print_string ("\027[37m\r|> \027[32m"^"Switch ") in
-              let () = flush Pervasives.stdout in
-              go  (acc@["w"]@["i"]@["t"]@["c"]@["h"])
-          else
-              let () = print_string ("\027[37m\r|> \027[32m"^h) in
-              let () = flush Pervasives.stdout in
-              go (acc@[h]) in *)
+                go ([h]@[c]) in
 
     let handle_typing (): string =
       match find_matches words acc with
@@ -335,7 +332,7 @@ let get_input (words: string list) (defaults: string list) =
           print_string ("\r\027[37m   "^h);
           print_string ("\r|> \027[32m"^w);
           flush Pervasives.stdout;
-          go (acc@[String.lowercase(really_input_string Pervasives.stdin 1)]) in
+          go (acc@[really_input_string Pervasives.stdin 1]) in
 
     let handle_defaults () =
       print_string ("\r"^(Bytes.make (70) ' '));
@@ -344,7 +341,7 @@ let get_input (words: string list) (defaults: string list) =
       List.iter (fun s -> print_string (" | "^s)) (List.tl defaults);
       print_string ("\r|> ");
       flush Pervasives.stdout;
-      go (acc@[String.lowercase (really_input_string Pervasives.stdin 1)]) in
+      go (acc@[really_input_string Pervasives.stdin 1]) in
 
 
 
