@@ -108,16 +108,6 @@ Agility
 Amnesia
 >MSpecDefense 2
 
-Growl
->MAttack -1
-
-Tail Whip
-Leer
->MDefense -1
-
-String Shot
->MSpeed -1
-
 Charm
 >MAttack -2
 
@@ -129,17 +119,21 @@ ScaryFace
 >MSpeed -2
 
 AuroraBeam
+Growl
 >MAttack -1
 
 Acid
 IronTail
 RockSmash
+Tail Whip
+Leer
 >MDefense -1
 
 Bubblebeam
 Constrict
 Bubble
 IcyWind
+String Shot
 >MSpeed -1
 
 Psychic
@@ -166,12 +160,10 @@ Softboiled
 Milk Drink
 >MRecover
 
-Fly
-Dig
->MChargeNoHit
-
 Solarbeam
 Sky Attack
 Razor Wind
 Hyper Beam
+Fly
+Dig
 >MChargeNoHit
