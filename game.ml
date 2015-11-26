@@ -206,11 +206,11 @@ let print_result action g_state p_state m_status opp_p_state : unit =
 
     begin match snd a.self_status_change with
     | SSleep _ -> wait_for_enter g_state p_state
-      (Talking (p_state.name ^ " is asleep!"))
+      (Talking (p_state.active_pocamon.name ^ " is asleep!"))
     | SFreeze _ -> wait_for_enter g_state p_state
-      (Talking (p_state.name ^ " is frozen!"))
+      (Talking (p_state.active_pocamon.name ^ " is frozen!"))
     | SParalyze -> wait_for_enter g_state p_state
-      (Talking (p_state.name ^ " is paralyzed! It can't move!"))
+      (Talking (p_state.active_pocamon.name ^ " is paralyzed! It can't move!"))
     | _ ->
       (let poca_used_move = Talking (p_state.name ^ "'s " ^
         p_state.active_pocamon.name ^ " used " ^ poca_move.name) in
