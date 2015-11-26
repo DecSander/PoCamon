@@ -9,7 +9,7 @@ type attack_status = {
 }
 
 type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
-                    | Charge_Status
+                    | Charge_Status | Charge_Immune_Status
 
 type battle_status = {
       p1_went_first : bool;
