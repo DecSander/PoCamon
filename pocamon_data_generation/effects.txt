@@ -119,20 +119,6 @@ Shadow Ball
 Ancientpower
 >MAllStatsUp
 
-Doubleslap
-Comet Punch
-Fury Attack
-Pin Missile
-Spike Cannon
-Barrage
-Fury Swipes
-Bone Rush
-Double Kick
-Bonemerang
-Multi Hit
-Twineedle
->MLoop
-
 Guillotine
 Horn Drill
 Fissure

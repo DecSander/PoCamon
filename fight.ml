@@ -339,6 +339,8 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           let def_poca_health' =
             if def_poca_health < 0 then 0 else def_poca_health in
 
+          let leech_health = (def_poca.health - def_poca_health') / 2 in
+
           let status_eff =
             (Random.int 100) <= move.status_probability in
 
@@ -367,8 +369,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
                   atk_state.active_pocamon.stats.max_hp/2)
                 atk_state.active_pocamon.stats.max_hp}
             | MLeech -> {atk_state.active_pocamon with health = min
-                (atk_state.active_pocamon.health +
-                  int_of_float(damage/.2.))
+                (atk_state.active_pocamon.health + leech_health)
                 atk_state.active_pocamon.stats.max_hp}
             | _ -> atk_state.active_pocamon
           in
