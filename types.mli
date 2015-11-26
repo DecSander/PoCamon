@@ -9,7 +9,7 @@ type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
 
 type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
 | MSpecAttack of int | MSpecDefense of int | MSpeed of int| MAllStatsUp
-| MRecoil | MRecover | MChargeNoHit | MCharge | Mohko
+| MRecoil | MRecover | MChargeNoHit | MCharge | Mohko | MPriorityHit
 
 (*
 * The type of a pocamon or a move, which is used to determine effectiveness

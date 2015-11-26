@@ -30,9 +30,6 @@ Faint Attack
 Vital Throw
 Jump Kick
 Hi Jump Kick
-Quick Attack
-Mach Punch
-Extremespeed
 Fury Cutter
 Normal Hit
 Splash
@@ -169,3 +166,8 @@ Hyper Beam
 Fly
 Dig
 >MChargeNoHit
+
+Mach Punch
+Extremespeed
+Quick Attack
+>MPriorityHit

@@ -243,7 +243,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             (Talking change_string) else ()) in
 
         match a.spec_eff with
-        | MNone | MExplode | MCharge | MChargeNoHit-> ()
+        | MNone | MExplode | MCharge | MChargeNoHit | MPriorityHit -> ()
         | MRecover | MRecoil | MAttack _ | MDefense _ | MSpecAttack _
         | MSpecDefense _ | MSpeed _ | MAllStatsUp ->
           wait_for_enter g_state p_state (Talking (
