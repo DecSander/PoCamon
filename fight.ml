@@ -288,6 +288,12 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
         else {g_state with player_two=atk_state'}
       | _ -> g_state in
 
+    let atk_state, def_state = if p1_is_atk then
+      g_state'.player_one, g_state'.player_two
+    else
+      g_state'.player_two, g_state'.player_one
+    in
+
 
     if is_paralyzed then
       begin
@@ -302,14 +308,14 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
     else
       begin
       if (match move.effect with MCharge | MChargeNoHit -> false | _ -> true)
-        || (match charge_move with
-            | Some _ -> true
-            | None -> false) then
+        || (match charge_move with Some _ -> true | None -> false) then
+
         let missed = (Random.int 100) > move.accuracy
           || def_poca.attack_immunity in
 
         if missed then
           begin
+
           let p_move_status =
             Attack_Status {atk_eff = ENormal;
                        spec_eff = MNone;
@@ -325,11 +331,11 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             def_poca effective_def_stats move in
 
           let type_eff =
-            if damage > 0.5 && abs_float(damage_mult -. 2.) < 0.01 then
+            if move.damage > 0 && abs_float(damage_mult -. 2.) < 0.01 then
               ESuper
-            else if damage > 0.5 && abs_float(damage_mult -. 0.5) < 0.01 then
+            else if move.damage > 0 && abs_float(damage_mult -. 0.5) < 0.01 then
               ENotVery
-            else if abs_float(damage_mult) < 0.01 then
+            else if move.damage > 0 && abs_float(damage_mult) < 0.01 then
               EImmune
             else
               ENormal in
@@ -346,9 +352,16 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
 
           let new_status, def_status_change = if status_eff
-            then begin match move.status_effect with
-            | MNormal -> def_poca.status, false
-            | _ -> (mStatus_to_pStatus move.status_effect), true end
+            then begin match move.status_effect, def_poca.status with
+            | MNormal, _ -> def_poca.status, false
+            | MFreeze, SFreeze _ -> def_poca.status, false
+            | MSleep, SSleep _ -> def_poca.status, false
+            | _ ->
+              if (mStatus_to_pStatus move.status_effect) <> def_poca.status then
+                (mStatus_to_pStatus move.status_effect), true
+              else
+                def_poca.status, false
+              end
             else def_poca.status, false in
 
           let def_poca' =
@@ -475,10 +488,13 @@ let apply_fight_sequence g_state p1_action p2_action =
     match p1_poca.status with
     | SParalyze -> 0.25
     | _ -> 1. in
-  let p1_switch_priority =
+  let p1_switch_priority, p1_priority_hit =
     match p1_action with
-    | FMove _ | FCharge _ -> false
-    | FSwitch _ -> true in
+    | FMove x | FCharge x -> false, (
+      begin match x.effect with
+      | MPriorityHit -> true
+      | _ -> false end)
+    | FSwitch _ -> true, false in
 
   let p1_poca = g_state.player_one.active_pocamon in
   let p2_poca = g_state.player_two.active_pocamon in
@@ -518,16 +534,25 @@ let apply_fight_sequence g_state p1_action p2_action =
     match p2_poca.status with
     | SParalyze -> 0.25
     | _ -> 1. in
-  let p2_switch_priority =
+  let p2_switch_priority, p2_priority_hit =
     match p2_action with
-    | FMove _ | FCharge _ -> false
-    | FSwitch _ -> true in
+    | FMove x | FCharge x -> false, (
+      begin match x.effect with
+      | MPriorityHit -> true
+      | _ -> false end)
+    | FSwitch _ -> true, false in
 
   let p1_goes_first =
-    if (((float_of_int effective_p1_stats.speed)*.p1_status_speed_multiplier >=
-      (float_of_int effective_p2_stats.speed) *.p2_status_speed_multiplier)
-      && not p2_switch_priority) || p1_switch_priority
-    then true else false in
+    if p1_switch_priority then
+      true
+    else if p2_switch_priority then
+      false
+    else if p1_priority_hit = p2_priority_hit then
+      ((float_of_int effective_p1_stats.speed)*.p1_status_speed_multiplier >=
+        (float_of_int effective_p2_stats.speed) *.p2_status_speed_multiplier)
+    else
+      p1_priority_hit
+  in
 
   if p1_goes_first
   then
