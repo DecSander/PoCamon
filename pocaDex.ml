@@ -106,7 +106,6 @@ let movedex = MoveDex.add "LEER" {name="LEER"; move_type=TNormal; status_effect=
 let movedex = MoveDex.add "STRING SHOT" {name="STRING SHOT"; move_type=TBug; status_effect=MNormal; status_probability=0; accuracy=100; damage=0; max_pp=40; effect=MSpeed (-1); pp=40; move_category=ESpecial} movedex
 let movedex = MoveDex.add "AURORA BEAM" {name="AURORA BEAM"; move_type=TIce; status_effect=MNormal; status_probability=0; accuracy=100; damage=65; max_pp=20; effect=MAttack (-1); pp=20; move_category=ESpecial} movedex
 
-
 module PokeDex = Map.Make(String)
 let dexmap = PokeDex.empty
 let dexmap = PokeDex.add "ELECTABUZZ" {
@@ -1201,6 +1200,26 @@ ascii="        OZN      8=I
                                
                                "} dexmap
 
+let dexmap = PokeDex.add "DITTO" {
+name="DITTO"; 
+learnable_moves=[];
+stats={max_hp=48; attack=48; defense=48; speed=48; sp_attack=48;sp_defense=48;};
+poca_type=("NORMAL", "NORMAL"); 
+ascii="                               
+                               
+                               
+             ,= Z              
+         I,=======I            
+          ===========          
+          Z==========          
+          ==========I          
+        II+========IIII        
+         IIIIIIIIIIIIIZ        
+                               
+                               
+                               
+                               
+                               "} dexmap
 
 let dexmap = PokeDex.add "KOFFING" {
 name="KOFFING"; 
@@ -3358,13 +3377,23 @@ let get_pocamon_by_name (name) : pocamon =
 	let pType = (type_of_string (fst dexmon.poca_type),
 		         type_of_string (snd dexmon.poca_type)) in
 	let new_stats = update_stats dexmon.stats in
+  let base_stat_mods =
+  {
+    attack = 0;
+    defense = 0;
+    sp_defense = 0;
+    sp_attack = 0;
+    speed = 0
+  } in
 	{ name = pocamon_name;
 	  status = SNormal;
 	  moves = get_four_moves dexmon.learnable_moves;
 	  poca_type = pType ;
 	  health  = new_stats.max_hp;
 	  stats = new_stats ;
+    stat_mods = base_stat_mods ;
     charging = None;
+    attack_immunity = false;
 	  ascii = dexmon.ascii;  }
 
 
@@ -3377,12 +3406,23 @@ let get_random_pocamon () : pocamon =
 	let pType = (type_of_string (fst dexmon.poca_type),
 		         type_of_string (snd dexmon.poca_type)) in
 	let new_stats = update_stats dexmon.stats in
+  let base_stat_mods =
+  {
+    attack = 0;
+    defense = 0;
+    sp_defense = 0;
+    sp_attack = 0;
+    speed = 0
+  } in
+
 	{ name = pocamon_name;
 	  status = SNormal;
 	  moves = get_four_moves dexmon.learnable_moves;
 	  poca_type = pType ;
 	  health  = new_stats.max_hp;
 	  stats = new_stats ;
+    stat_mods = base_stat_mods ;
     charging = None;
+    attack_immunity = false;
 	  ascii = dexmon.ascii;  }
 

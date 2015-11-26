@@ -192,6 +192,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
   match m_status, action with
   | Charge_Status, _ -> wait_for_enter g_state p_state
       (Talking (p_state.active_pocamon.name ^ " is charging!"))
+  | Charge_Immune_Status, _ -> wait_for_enter g_state p_state
+      (Talking (p_state.active_pocamon.name ^ " went out of range!"))
   | Switch_Status, _ ->
     let screen_message = Talking (p_state.name ^
       " switched to " ^
@@ -222,6 +224,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             match a.atk_eff with
             | ESuper -> "It's super effective!"
             | ENotVery -> "It's not very effective..."
+            | EImmune ->
+              "It doesn't affect enemy " ^ opp_p_state.active_pocamon.name
             | _ -> "It's normal effective" (* should never happen *) in
           wait_for_enter g_state p_state (Talking eff)
         else
@@ -241,7 +245,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             (Talking change_string) else ()) in
 
         match a.spec_eff with
-        | MNone | MExplode -> ()
+        | MNone | MExplode | MCharge | MChargeNoHit-> ()
         | MRecover | MRecoil | MAttack _ | MDefense _ | MSpecAttack _
         | MSpecDefense _ | MSpeed _ | MAllStatsUp ->
           wait_for_enter g_state p_state (Talking (
@@ -288,12 +292,14 @@ let print_result action g_state p_state m_status opp_p_state : unit =
             | MSpeed (-2) ->
               opp_p_state.active_pocamon.name ^ "'s speed sharply fell!"
             | MAllStatsUp -> p_state.active_pocamon.name ^ "'s stats rose!"
-            | _ -> failwith "Stat changes must be between -2 and 2" end )))
+            | _ -> failwith "Stat changes must be nonzero and  between -2 and 2"
+            end )))
 
         | MLeech -> wait_for_enter g_state p_state (Talking (
             p_state.active_pocamon.name ^ " drained " ^
             opp_p_state.active_pocamon.name ^ " 's health!"))
-        | _ -> wait_for_enter g_state p_state (Talking ("Not yet implemented"))
+        | Mohko -> wait_for_enter g_state p_state (Talking (
+            "It's a one hit KO!"))
 
       else
         wait_for_enter g_state p_state (Talking ("The attack missed!")))
@@ -355,6 +361,21 @@ let rec run_game_turn g_state b_status : game_state =
     status_changed_game_state.player_two debuff_info.p2_debuff in
 
   let final_game_state = on_faint status_changed_game_state in
+
+  let () = print_endline "" in
+  let () = print_int (List.length g_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length new_g_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length faint_switch_game_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length status_changed_game_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_int (List.length final_game_state.player_two.pocamon_list) in
+  let () = print_endline "" in
+  let () = match p2_action with
+           | FSwitch m -> print_endline m.name
+           | _ -> () in
 
   run_game_turn final_game_state printfo
 

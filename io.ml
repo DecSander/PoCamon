@@ -247,9 +247,9 @@ let setup () =
   Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH newterminfo;
   terminfo
 
-let breakdown (terminfo) : unit = 
+let breakdown (terminfo) : unit =
   print_string "\n\nbreakdown!\n\n";
-  Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo 
+  Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo
 
 let get_word (lst: string list) =
   List.fold_right (fun v a -> v^a) lst ""
