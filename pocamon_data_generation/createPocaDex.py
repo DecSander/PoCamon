@@ -66,7 +66,7 @@ def scrap_evos_attacks(lines, data):
                     if len(m) > 1:
                         newMoves.append(m)
                     i += 1
-                data[name]["moves"] += newMoves
+                data[name]["moves"] = set(newMoves).union(set(data[name]["moves"]))
         i += 1
     return data
 
@@ -138,7 +138,6 @@ with open("pocadex.ml", 'w') as f:
         #  need double brances because of the .format
         stats = "{{max_hp={0}; attack={1}; defense={2}; speed={3}; sp_attack={4};sp_defense={5};}}".format(sd["HP"], sd["ATK"], sd["DEF"], sd["SPD"], sd["SAT"], sd["SDP"] )
         f.write('let dexmap = PokeDex.add "{0}" {{\nname="{0}"; \nlearnable_moves={1};\nstats={2};\npoca_type={3}; \nascii="{4}"}} dexmap\n\n'.format(pocamon, moves, stats, types, data[pocamon]['ascii']))
-
 
 print '[',
 for move in allmoves:
