@@ -121,7 +121,7 @@ def gen_command(lsts):
       pCategory = "EPhysical"
     else:
       pCategory = "ESpecial"
-    if k[6] == 0:
+    if k[6] == '0':
       k[6] = str(100)
     newlst.append("let movedex = MoveDex.add \"" + k[0] + "\" {" + "name=\"" + k[0] + "\"; move_type=" + k[3] + "; status_effect=" + k[1] + "; status_probability=" + k[6] + "; accuracy=" + k[4] + "; damage=" + k[2] + "; max_pp=" + k[5] + "; effect=" + k[7] + "; pp=" + k[5] + "; move_category=" + pCategory + "}" + " movedex")
   return newlst
