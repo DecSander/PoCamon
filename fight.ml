@@ -9,7 +9,7 @@ type attack_status = {
 }
 
 type move_status = Attack_Status of attack_status | Switch_Status | Faint_Status
-                    | Charge_Status | Charge_Immune_Status
+                  | Charge_Status of move
 
 type battle_status = {
       p1_went_first : bool;
@@ -400,9 +400,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           (g_state'', p_move_status)
           end
       else
-        let immune, charge_type = match move.effect with
-                     | MChargeNoHit -> true, Charge_Immune_Status
-                     | _ -> false, Charge_Status in
+        let immune = match move.effect with MChargeNoHit -> true | _ -> false in
         let new_pocamon = {atk_state.active_pocamon with
                             charging = Some move;
                             attack_immunity = immune} in
@@ -412,7 +410,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
         else
           {g_state with player_two = new_player} in
 
-        (new_game_status, charge_type)
+        (new_game_status, Charge_Status move)
     end
 
   | SSleep t | SFreeze t ->
