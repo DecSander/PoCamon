@@ -302,14 +302,14 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
     else
       begin
       if (match move.effect with MCharge | MChargeNoHit -> false | _ -> true)
-        || (match charge_move with
-            | Some _ -> true
-            | None -> false) then
+        || (match charge_move with Some _ -> true | None -> false) then
+
         let missed = (Random.int 100) > move.accuracy
           || def_poca.attack_immunity in
 
         if missed then
           begin
+
           let p_move_status =
             Attack_Status {atk_eff = ENormal;
                        spec_eff = MNone;

@@ -160,10 +160,12 @@ Softboiled
 Milk Drink
 >MRecover
 
-Solarbeam
-Sky Attack
 Razor Wind
+Sky Attack
+Solarbeam
 Hyper Beam
+>MCharge
+
 Fly
 Dig
 >MChargeNoHit
