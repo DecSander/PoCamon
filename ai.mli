@@ -9,3 +9,5 @@ type ai_player = P1 | P2
 * take given the current state of the game. Uses the minimax algorithm.
 *)
 val get_ai_action : ai_player -> game_state -> battle_status -> fAction
+
+val get_switch_poca: player_state -> player_state -> bool -> game_state -> pocamon
