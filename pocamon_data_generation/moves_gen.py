@@ -22,6 +22,7 @@ for l in new_effects:
   else:
     current.append(l.upper())
 
+
 mystr = ""
 with open("moves.asm") as f:
   strlst = f.readlines()
