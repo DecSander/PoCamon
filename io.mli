@@ -21,6 +21,8 @@ val print_screen : player_state -> public_info -> screen_state -> unit
 
 val print_start : string -> unit
 
+val print_size_screen : unit -> unit
+
 (* Collects input with autocomplete magic
  * [get_input words defaults] gets the input where user can autocomple to
  * [words] and is shown defaults [defaults]
@@ -30,5 +32,5 @@ val get_input : string list -> string list -> string
 (* Setup the terminal for nonconical input to use the autocorrect *)
 val setup : unit -> Unix.terminal_io
 
-(* Setup the terminal back to its normal state *)
+(* Return the terminal back to its normal state *)
 val breakdown: Unix.terminal_io -> unit

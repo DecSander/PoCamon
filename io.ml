@@ -120,7 +120,7 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
     match art1, art2 with
     | h1::t1, h2::t2 ->
       art_help t1 t2
-        (res ^ "\n" ^ (add_spaces h1 36) ^ "   \027[37m ||    " ^ (add_spaces h2 36))
+        (res ^ "\n"^(add_spaces h1 36)^"   \027[37m ||    "^(add_spaces h2 36))
     | _, _ -> res in
   (art_help (Str.split (Str.regexp "\n") art1)
             (Str.split (Str.regexp "\n") art2) "") ^ "\027[37m"
@@ -214,6 +214,8 @@ let print_screen ps pi ss =
 
 let ascii_pokeball = " \027[34m
 
+
+
                               .;:**'
                               `
   .:XHHHHk.              db.   .;;.     dH  MX               \027[33m
@@ -233,20 +235,57 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
 
 
 "
+let size_screen = "
+|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                     Please size your terminal window.                        |
+|                                                                              |
+|                             ENTER to contiune.                               |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|                                                                              |
+|.                                                                            .|
+"
+let print_size_screen () = 
+  print_string size_screen;
+  let _ = read_line () in ()
+
 
 let print_start s =
   print_string (ascii_pokeball ^ star_bar ^ "\n" ^
                 (string_to_box s) ^ "\n")
 
+
+(*****************************************************************************)
+(*                                 Autocompleter                             *)
+(*****************************************************************************)
+
+(* Setup the terminal for nonconical input to use the autocorrect
+ * Credit to Niki Yoshiuchi from 
+ *http://stackoverflow.com/questions/4130048/recognizing-arrow-keys-with-stdin*)
 let setup () =
-  (* Credit to Niki Yoshiuchi from http://stackoverflow.com/questions/4130048/recognizing-arrow-keys-with-stdin*)
   let terminfo = Unix.tcgetattr Unix.stdin in
   let newterminfo = Unix.{terminfo with c_icanon = false; c_vmin = 1;
   c_vtime = 100000; c_echoe=false} in
-  at_exit (fun _ -> Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo); (* reset stdin when you quit*)
+  at_exit (fun _ -> Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo);
   Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH newterminfo;
   terminfo
 
+(* Return the terminal back to its normal state *)
 let breakdown (terminfo) : unit =
   print_string "\n\nbreakdown!\n\n";
   Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo
@@ -276,29 +315,27 @@ let remove_last_one (lst: string list): string list =
 
 let rec string_contains s sub : bool =
   let sub_length = String.length sub in
-  if String.length s < sub_length then
-    false
-  else
-    if String.sub s 0 sub_length = sub then
-      true
-    else
-      string_contains (String.sub s 1 ((String.length s) - 1)) sub
+  if String.length s < sub_length then false
+  else if String.sub s 0 sub_length = sub then true
+  else string_contains (String.sub s 1 ((String.length s) - 1)) sub
 
 let find_matches words acc =
-  let words = List.map (fun s -> String.lowercase s) words in
   let words = List.map (fun s -> String.lowercase s) words in
   let matches = (List.filter (fun s -> (String.sub s 0
                 (min (String.length (get_word acc)) (String.length s))) 
                 = String.lowercase (get_word acc)) words) in
   List.sort (fun v1 v2 -> String.compare v1 v2) matches
-              
 
 let print_text s : unit=
    print_string ("\r"^(Bytes.make (70) ' '));
    print_string("\r|>"^(s));
    flush Pervasives.stdout
 
-(* Pre: defaults must be non-empty *)
+
+(* Collects input with autocomplete magic
+ * [get_input words defaults] gets the input where user can autocomple to
+ * [words] and is shown defaults [defaults]
+ * Preconditon: [defaults] is not empty *)
 let get_input (words: string list) (defaults: string list) =
   let rec go (acc: string list): string =
 
@@ -309,17 +346,17 @@ let get_input (words: string list) (defaults: string list) =
 
     let handle_tab (): string =
      let acc = remove_last_one acc in
-     match find_matches words acc with
-      | [] ->   failwith "error this should be handled by handle_typing"
-
-      | h::t -> print_int (String.length (get_word acc));
-      print_int (String.length h);
-                let completed_word = (get_word acc)^(String.sub h (String.length (get_word acc)) (String.length h - String.length (get_word acc))) in
-                print_string ("\r"^(Bytes.make (70) ' '));
-                print_string ("\027[37m\r|> \027[32m"^(completed_word));
-                flush Pervasives.stdout;
-                let c = really_input_string Pervasives.stdin 1 in
-                go ([h]@[c]) in
+      match find_matches words acc with
+      | [] ->   failwith "Error: this should be handled by handle_typing"
+      | h::t -> 
+         let w = get_word acc in
+         let completed_word = w^
+         (String.sub h (String.length w) (String.length h - String.length w)) in
+         print_string ("\r"^(Bytes.make (70) ' '));
+         print_string ("\027[37m\r|> \027[32m"^(completed_word));
+         flush Pervasives.stdout;
+         let c = really_input_string Pervasives.stdin 1 in
+         go ([h]@[c]) in
 
     let handle_typing (): string =
       match find_matches words acc with
@@ -343,12 +380,10 @@ let get_input (words: string list) (defaults: string list) =
       flush Pervasives.stdout;
       go (acc@[really_input_string Pervasives.stdin 1]) in
 
-
-
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
     | _, _, true, _ -> print_string ("\027[37m "); get_word acc
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
-  String.trim (go [])
+    String.trim (go [])

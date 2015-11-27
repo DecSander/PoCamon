@@ -31,6 +31,7 @@ let create_public_info g_state : public_info =
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
+  print_size_screen ();
   print_start "What is your name, player one?";
   print_string "|> ";
   let player_one_name = read_line () in
@@ -124,7 +125,6 @@ let rec get_player_action g_state p_state s_state : fAction =
     | Talking _ -> ["\'\'"], [""]
   in
   let input = get_input (fst defaults) (snd defaults) in
-  print_endline input;
   begin match (process_input input), s_state with
   | Some Action (Move x), Moves ->
     let move_option = try Some (List.find (fun (m:move) -> m.name = x)
