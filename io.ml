@@ -260,7 +260,7 @@ let size_screen = "
 |                                                                              |
 |.                                                                            .|
 "
-let print_size_screen () = 
+let print_size_screen () =
   print_string size_screen;
   let _ = read_line () in ()
 
@@ -275,7 +275,7 @@ let print_start s =
 (*****************************************************************************)
 
 (* Setup the terminal for nonconical input to use the autocorrect
- * Credit to Niki Yoshiuchi from 
+ * Credit to Niki Yoshiuchi from
  *http://stackoverflow.com/questions/4130048/recognizing-arrow-keys-with-stdin*)
 let setup () =
   let terminfo = Unix.tcgetattr Unix.stdin in
@@ -322,7 +322,7 @@ let rec string_contains s sub : bool =
 let find_matches words acc =
   let words = List.map (fun s -> String.lowercase s) words in
   let matches = (List.filter (fun s -> (String.sub s 0
-                (min (String.length (get_word acc)) (String.length s))) 
+                (min (String.length (get_word acc)) (String.length s)))
                 = String.lowercase (get_word acc)) words) in
   List.sort (fun v1 v2 -> String.compare v1 v2) matches
 
@@ -348,7 +348,7 @@ let get_input (words: string list) (defaults: string list) =
      let acc = remove_last_one acc in
       match find_matches words acc with
       | [] ->   failwith "Error: this should be handled by handle_typing"
-      | h::t -> 
+      | h::t ->
          let w = get_word acc in
          let completed_word = w^
          (String.sub h (String.length w) (String.length h - String.length w)) in
