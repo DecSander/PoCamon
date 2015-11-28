@@ -199,5 +199,5 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) : fActio
 
   let best_score = List.fold_left find_best (-8.0) m_list in
   (print_endline ("Final: " ^string_of_float(best_score)^ " " ^ string_of_float(switch_score)));
-  if best_score >= switch_score
+  if best_score >= switch_score || switch_poca = active_player.active_pocamon
     then FMove (List.nth moves !i) else FSwitch switch_poca
