@@ -331,11 +331,11 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             def_poca effective_def_stats move in
 
           let type_eff =
-            if move.damage > 0 && abs_float(damage_mult -. 2.) < 0.01 then
+            if move.damage >= 1 && abs_float(damage_mult -. 2.) < 0.01 then
               ESuper
-            else if move.damage > 0 && abs_float(damage_mult -. 0.5) < 0.01 then
+            else if move.damage >= 1 && abs_float(damage_mult -. 0.5) < 0.01 then
               ENotVery
-            else if move.damage > 0 && abs_float(damage_mult) < 0.01 then
+            else if move.damage >= 1 && abs_float(damage_mult) < 0.01 then
               EImmune
             else
               ENormal in
