@@ -102,7 +102,7 @@ ENDM
 	move EARTHQUAKE,   EFFECT_EARTHQUAKE,        100, GROUND,   100, 10,   0
 	move FISSURE,      EFFECT_OHKO,                1, GROUND,    30,  5,   0
 	move DIG,          EFFECT_FLY,                60, GROUND,   100, 10,   0
-	move TOXIC,        EFFECT_POISON_HIT,               0, POISON,    85, 10,   0
+	move TOXIC,        EFFECT_POISON_HIT,          0, POISON,    85, 10,   0
 	move CONFUSION,    EFFECT_CONFUSE_HIT,        50, PSYCHIC,  100, 25,  10
 	move PSYCHIC,      EFFECT_SP_DEF_DOWN_HIT,    90, PSYCHIC,  100, 10,  10
 	move HYPNOSIS,     EFFECT_SLEEP,               0, PSYCHIC,   60, 20,   0

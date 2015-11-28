@@ -87,7 +87,7 @@ let gen_initial_state () : game_state =
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let () = print_endline "" in
-  let input = get_input ["\'\'"] [""] in
+  let input = get_input [""] [""] in
   match (process_input input) with
   | Some Enter -> ()
   | _ -> wait_for_enter g_state p_state s_state
@@ -122,7 +122,7 @@ let rec get_player_action g_state p_state s_state : fAction =
         (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list)
         @ ["BACK";"UP";"DOWN";"SWITCH "],
         ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
-    | Talking _ -> ["\'\'"], [""]
+    | Talking _ -> [""], [""]
   in
   let input = get_input (fst defaults) (snd defaults) in
   begin match (process_input input), s_state with
@@ -182,9 +182,9 @@ let on_faint g_state : game_state =
       let () = wait_for_enter g_state g_state.player_two
         (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
         if List.length g_state.player_two.pocamon_list > 0 then
-          if g_state.player_two.is_computer = false then 
+          if g_state.player_two.is_computer = false then
               choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
-          else fst (switch_pocamon (get_switch_poca g_state.player_one g_state.player_two false g_state) g_state.player_two g_state true) 
+          else fst (switch_pocamon (get_switch_poca g_state.player_one g_state.player_two false g_state) g_state.player_two g_state true)
         else
           game_over g_state g_state.player_one
   else

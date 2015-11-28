@@ -118,7 +118,8 @@ def mapType(lsts):
 def gen_command(lsts):
   newlst = []
   for k in lsts:
-    if k[3] in ["PNormal", "PFighting", "PFlying", "PGround", "PRock", "PBug", "PGhost", "PPoison"]:
+    print k[3]
+    if k[3] in ["TNormal", "TFighting", "TFlying", "TGround", "TRock", "TBug", "TGhost", "TPoison"]:
       pCategory = "EPhysical"
     else:
       pCategory = "ESpecial"
