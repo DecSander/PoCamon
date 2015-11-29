@@ -315,14 +315,20 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
         if missed then
           begin
-
+          let new_attacker =
+            {atk_state.active_pocamon with attack_immunity=false} in
+          let new_atk_state = {atk_state with active_pocamon=new_attacker} in
+          let g_state'' = if p1_is_atk then
+            {player_one=new_atk_state; player_two=def_state}
+          else
+            {player_one=def_state; player_two=new_atk_state} in
           let p_move_status =
             Attack_Status {atk_eff = ENormal;
                        spec_eff = MNone;
                        self_status_change = new_status_change;
                        opp_status_change = (false, def_poca.status);
                        missed = true } in
-          (g_state', p_move_status)
+          (g_state'', p_move_status)
           end
         else
           begin
