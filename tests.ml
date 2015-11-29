@@ -1,8 +1,13 @@
-open Assertions
-open PocaDex
 open Types
+open Assertions
 
-let moves = [ "CONVERSION2"; "GROWL"; "SELFDESTRUCT"; "SKULL BASH"; "SPITE"; "LOCK ON"; "PSYCHIC"; "RAZOR LEAF"; "TOXIC"; "SWORDS DANCE"; "DOUBLE TEAM"; "HYPER BEAM"; "TAKE DOWN"; "PECK"; "POISON STING"; "ROLLING KICK"; "SUPERSONIC"; "STRENGTH"; "CONFUSE RAY"; "ROAR"; "GUST"; "SUNNY DAY"; "SOFTBOILED"; "PAY DAY"; "ROLLOUT"; "LOVELY KISS"; "ABSORB"; "HYPER FANG"; "DRILL PECK"; "HAZE"; "BUBBLEBEAM"; "MIND READER"; "DYNAMICPUNCH"; "ICE PUNCH"; "BODY SLAM"; "HYDRO PUMP"; "SLUDGE BOMB"; "LEECH SEED"; "FURY ATTACK"; "SLASH"; "GUILLOTINE"; "ICY WIND"; "TWISTER"; "POISON GAS"; "SUBSTITUTE"; "DIZZY PUNCH"; "SHADOW BALL"; "HORN ATTACK"; "BUBBLE"; "SEISMIC TOSS"; "TRI ATTACK"; "EXTREMESPEED"; "MEGA PUNCH"; "PIN MISSILE"; "DRAGON RAGE"; "ENDURE"; "SUPER FANG"; "THUNDERPUNCH"; "FLY"; "MIRROR MOVE"; "RETURN"; "ICE BEAM"; "THUNDER WAVE"; "NIGHTMARE"; "FLASH"; "DREAM EATER"; "TACKLE"; "DISABLE"; "VINE WHIP"; "EARTHQUAKE"; "WHIRLWIND"; "REFLECT"; "THUNDERBOLT"; "BARRIER"; "RAGE"; "FOCUS ENERGY"; "FURY SWIPES"; "SPORE"; "HEADBUTT"; "FIRE PUNCH"; "SOLARBEAM"; "RAIN DANCE"; "HI JUMP KICK"; "SWIFT"; "ENCORE"; "FLAIL"; "SWEET SCENT"; "MEAN LOOK"; "EMBER"; "HORN DRILL"; "BONE CLUB"; "DOUBLESLAP"; "AMNESIA"; "FRUSTRATION"; "OUTRAGE"; "GLARE"; "SHARPEN"; "MIST"; "TELEPORT"; "VICEGRIP"; "FLAME WHEEL"; "ROCK THROW"; "PERISH SONG"; "CONFUSION"; "ZAP CANNON"; "NIGHT SHADE"; "MAGNITUDE"; "FLAMETHROWER"; "WATER GUN"; "RECOVER"; "STOMP"; "SLEEP POWDER"; "SURF"; "DEFENSE CURL"; "ROCK SMASH"; "THUNDER"; "PETAL DANCE"; "MEGA KICK"; "MOONLIGHT"; "MEDITATE"; "GIGA DRAIN"; "KARATE CHOP"; "SLUDGE"; "SNORE"; "LICK"; "ACID"; "STUN SPORE"; "LEECH LIFE"; "AGILITY"; "DRAGONBREATH"; "CROSS CHOP"; "BITE"; "BONE RUSH"; "DESTINY BOND"; "SPLASH"; "FURY CUTTER"; "SYNTHESIS"; "TWINEEDLE"; "PROTECT"; "CUT"; "FISSURE"; "POISONPOWDER"; "SCREECH"; "TRANSFORM"; "ACID ARMOR"; "SLAM"; "COUNTER"; "REVERSAL"; "SLEEP TALK"; "VITAL THROW"; "CONSTRICT"; "ANCIENTPOWER"; "WHIRLPOOL"; "CLAMP"; "CONVERSION"; "KINESIS"; "ATTRACT"; "TAIL WHIP"; "CRABHAMMER"; "BATON PASS"; "LIGHT SCREEN"; "SCRATCH"; "RAPID SPIN"; "SAFEGUARD"; "JUMP KICK"; "FIRE BLAST"; "QUICK ATTACK"; "DIG"; "DOUBLE KICK"; "PSYBEAM"; "WING ATTACK"; "MACH PUNCH"; "THUNDERSHOCK"; "WRAP"; "SING"; "SWAGGER"; "DOUBLE EDGE"; "BLIZZARD"; "SUBMISSION"; "HYPNOSIS"; "HARDEN"; "SPIKES"; "BARRAGE"; "SMOKESCREEN"; "SMOG"; "MEGA DRAIN"; "FUTURE SIGHT"; "PURSUIT"; "STRING SHOT"; "SONICBOOM"; "METRONOME"; "PSYCH UP"; "FALSE SWIPE"; "POWDER SNOW"; "SCARY FACE"; "REST"; "FORESIGHT"; "LOW KICK"; "DETECT"; "BONEMERANG"; "EXPLOSION"; "SKY ATTACK"; "SPIKE CANNON"; "SANDSTORM"; "AURORA BEAM"; "POUND"; "LEER"; "BIND"; "HIDDEN POWER"; "MUD SLAP"; "SAND ATTACK"; "EGG BOMB"; "WATERFALL"; "MINIMIZE"; "GROWTH"; "FIRE SPIN"; "WITHDRAW"; "THRASH"; "MIRROR COAT"; ]
+(******************************************************************************)
+(** Unit tests for PocaDex ****************************************************)
+(******************************************************************************)
+open PocaDex
+
+
+let moves = [ "GROWL"; "SELFDESTRUCT"; "RAZOR LEAF"; "TOXIC"; "SWORDS DANCE"; "HYPER BEAM"; "TAKE DOWN"; "PECK"; "POISON STING"; "STRENGTH"; "SOFTBOILED"; "LOVELY KISS"; "ABSORB"; "BUBBLEBEAM"; "ICE PUNCH"; "BODY SLAM"; "HYDRO PUMP"; "SLUDGE BOMB"; "SLASH"; "GUILLOTINE"; "ICY WIND"; "POISON GAS"; "SHADOW BALL"; "HORN ATTACK"; "BUBBLE"; "EXTREMESPEED"; "MEGA PUNCH"; "THUNDERPUNCH"; "FLY"; "ICE BEAM"; "THUNDER WAVE"; "TACKLE"; "VINE WHIP"; "THUNDERBOLT"; "BARRIER"; "SPORE"; "FIRE PUNCH"; "SOLARBEAM"; "HI JUMP KICK"; "SWIFT"; "EMBER"; "HORN DRILL"; "AMNESIA"; "GLARE"; "SHARPEN"; "VICEGRIP"; "FLAME WHEEL"; "ROCK THROW"; "ZAP CANNON"; "FLAMETHROWER"; "WATER GUN"; "RECOVER"; "STOMP"; "SLEEP POWDER"; "SURF"; "DEFENSE CURL"; "ROCK SMASH"; "THUNDER"; "MEGA KICK"; "MEDITATE"; "GIGA DRAIN"; "KARATE CHOP"; "SLUDGE"; "LICK"; "ACID"; "STUN SPORE"; "LEECH LIFE"; "AGILITY"; "DRAGONBREATH"; "CROSS CHOP"; "SPLASH"; "FURY CUTTER"; "CUT"; "FISSURE"; "SCREECH"; "ACID ARMOR"; "SLAM"; "VITAL THROW"; "CONSTRICT"; "ANCIENTPOWER"; "DRILL PECK"; "TAIL WHIP"; "CRABHAMMER"; "SCRATCH"; "JUMP KICK"; "FIRE BLAST"; "QUICK ATTACK"; "DIG"; "WING ATTACK"; "MACH PUNCH"; "THUNDERSHOCK"; "SING"; "DOUBLE EDGE"; "BLIZZARD"; "SUBMISSION"; "HYPNOSIS"; "HARDEN"; "SMOG"; "MEGA DRAIN"; "STRING SHOT"; "POWDER SNOW"; "SCARY FACE"; "EXPLOSION"; "SKY ATTACK"; "AURORA BEAM"; "POUND"; "LEER"; "EGG BOMB"; "WATERFALL"; "GROWTH"; "WITHDRAW"; ]
 
 
 TEST_UNIT "Try to find all moves" =
@@ -12,111 +17,33 @@ TEST_UNIT "Try to find all moves" =
   if (String.length errors) = 0
   then () else failwith errors
 
-TEST "normal get move name" = (get_move "POUND").name = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.name
-TEST "normal get move move_type" = (get_move "POUND").move_type = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.move_type
-TEST "normal get move status_effect" = (get_move "POUND").status_effect = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.status_effect
-TEST "normal get move status_probability" = (get_move "POUND").status_probability = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.status_probability
-TEST "normal get move accuracy" = (get_move "POUND").accuracy = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.accuracy
-TEST "normal get move damage" = (get_move "POUND").damage = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.damage
-TEST "normal get move max_pp" = (get_move "POUND").max_pp = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.max_pp
-TEST "normal get move pp" = (get_move "POUND").pp = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.pp
-TEST "normal get move move_category" = (get_move "POUND").move_category = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}.move_category
-TEST "normal get move" = (get_move "POUND") = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=ESpecial; effect=MNone}
+TEST "normal get move name" = (get_move "POUND").name = "POUND"
+TEST "normal get move move_type" = (get_move "POUND").move_type = TNormal
+TEST "normal get move status_effect" = (get_move "POUND").status_effect = MNormal
+TEST "normal get move status_probability" = (get_move "POUND").status_probability = 100
+TEST "normal get move accuracy" = (get_move "POUND").accuracy = 100
+TEST "normal get move damage" = (get_move "POUND").damage = 40
+TEST "normal get move max_pp" = (get_move "POUND").max_pp = 35
+TEST "normal get move pp" = (get_move "POUND").pp = 35
+TEST "normal get move move_category" = (get_move "POUND").move_category = EPhysical
+TEST "normal get move move_category" = (get_move "POUND").effect = MNone
+TEST "normal get move" = (get_move "POUND") = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=EPhysical; effect=MNone}
 
 TEST "bad input throws exception" =
-  try let _ =  get_move "Not_A_MOve" in false
+  try let _ =  get_move "Not_A_Move" in false
   with _ -> true
 
-TEST "normal get_pocamon name" = (get_pocamon "RAPIDASH").name = {
-  name="RAPIDASH";
-  learnable_moves=["HEADBUTT";"TOXIC";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"FIRE BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"GROWL";"TAIL WHIP";"EMBER";"GROWL";"TAIL WHIP";"EMBER";"STOMP";"FIRE SPIN";"TAKE DOWN";"FURY ATTACK";"AGILITY";"FIRE BLAST";];
-  stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
-  poca_type=("FIRE", "FIRE");
-ascii="   , ??OO==??    7===Z
-  O ,?7O??=?????????7ZZZ7Z7Z
-   O~ ,,~?77??????ZZZ
-     ,?O~~ Z7ZZZZ ZZZ         Z
-     O,~Z~~Z ZZZZ     ==??Z=7 Z
-      ~~~~~    7?==7=???????ZZZ
-       O~~~~Z?????7Z7ZZ7ZZ??7
-       O~~~,,,~,,,,,ZZZ7ZZZZ
-     7  ~~,,,,,,,,,,,Z77777
-     77?Z~~,,,,,,~~~~~====777
-     O??? ?,,,Z~ZZ~~~ =====7777
-    ,~77   ,,~  ??~~~?===?==777
-     ~     ~,  77?7 ???==?7=777
-      ?O   ?7???O?77? ?=?7?77??
-           ~7ZZ O?===??ZZ77??=="}.name
+TEST "normal get_pocamon name" = (get_pocamon "RAPIDASH").name =  "RAPIDASH" 
 
-TEST "normal get_pocamon learnable_moves" = (get_pocamon "RAPIDASH").learnable_moves = {
-  name="RAPIDASH";
-  learnable_moves=["HEADBUTT";"TOXIC";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"FIRE BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"GROWL";"TAIL WHIP";"EMBER";"GROWL";"TAIL WHIP";"EMBER";"STOMP";"FIRE SPIN";"TAKE DOWN";"FURY ATTACK";"AGILITY";"FIRE BLAST";];
-  stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
-  poca_type=("FIRE", "FIRE");
-ascii="   , ??OO==??    7===Z
-  O ,?7O??=?????????7ZZZ7Z7Z
-   O~ ,,~?77??????ZZZ
-     ,?O~~ Z7ZZZZ ZZZ         Z
-     O,~Z~~Z ZZZZ     ==??Z=7 Z
-      ~~~~~    7?==7=???????ZZZ
-       O~~~~Z?????7Z7ZZ7ZZ??7
-       O~~~,,,~,,,,,ZZZ7ZZZZ
-     7  ~~,,,,,,,,,,,Z77777
-     77?Z~~,,,,,,~~~~~====777
-     O??? ?,,,Z~ZZ~~~ =====7777
-    ,~77   ,,~  ??~~~?===?==777
-     ~     ~,  77?7 ???==?7=777
-      ?O   ?7???O?77? ?=?7?77??
-           ~7ZZ O?===??ZZ77??=="}.learnable_moves
+TEST "normal get_pocamon learnable_moves" = (get_pocamon "RAPIDASH").learnable_moves = ["FIRE BLAST";"GROWL";"EMBER";"HYPER BEAM";"TOXIC";"TAKE DOWN";"AGILITY";"SWIFT";"STOMP";"TAIL WHIP";"FLAMETHROWER";]
 
-TEST "normal get_pocamon stats" = (get_pocamon "RAPIDASH").stats = {
-  name="RAPIDASH";
-  learnable_moves=["HEADBUTT";"TOXIC";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"FIRE BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"GROWL";"TAIL WHIP";"EMBER";"GROWL";"TAIL WHIP";"EMBER";"STOMP";"FIRE SPIN";"TAKE DOWN";"FURY ATTACK";"AGILITY";"FIRE BLAST";];
-  stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
-  poca_type=("FIRE", "FIRE");
-ascii="   , ??OO==??    7===Z
-  O ,?7O??=?????????7ZZZ7Z7Z
-   O~ ,,~?77??????ZZZ
-     ,?O~~ Z7ZZZZ ZZZ         Z
-     O,~Z~~Z ZZZZ     ==??Z=7 Z
-      ~~~~~    7?==7=???????ZZZ
-       O~~~~Z?????7Z7ZZ7ZZ??7
-       O~~~,,,~,,,,,ZZZ7ZZZZ
-     7  ~~,,,,,,,,,,,Z77777
-     77?Z~~,,,,,,~~~~~====777
-     O??? ?,,,Z~ZZ~~~ =====7777
-    ,~77   ,,~  ??~~~?===?==777
-     ~     ~,  77?7 ???==?7=777
-      ?O   ?7???O?77? ?=?7?77??
-           ~7ZZ O?===??ZZ77??=="}.stats
+TEST "normal get_pocamon stats" = (get_pocamon "RAPIDASH").stats = {max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;}
 
-TEST "normal get_pocamon poca_type" = (get_pocamon "RAPIDASH").poca_type = {
-  name="RAPIDASH";
-  learnable_moves=["HEADBUTT";"TOXIC";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"FIRE BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"GROWL";"TAIL WHIP";"EMBER";"GROWL";"TAIL WHIP";"EMBER";"STOMP";"FIRE SPIN";"TAKE DOWN";"FURY ATTACK";"AGILITY";"FIRE BLAST";];
-  stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
-  poca_type=("FIRE", "FIRE");
-ascii="   , ??OO==??    7===Z
-  O ,?7O??=?????????7ZZZ7Z7Z
-   O~ ,,~?77??????ZZZ
-     ,?O~~ Z7ZZZZ ZZZ         Z
-     O,~Z~~Z ZZZZ     ==??Z=7 Z
-      ~~~~~    7?==7=???????ZZZ
-       O~~~~Z?????7Z7ZZ7ZZ??7
-       O~~~,,,~,,,,,ZZZ7ZZZZ
-     7  ~~,,,,,,,,,,,Z77777
-     77?Z~~,,,,,,~~~~~====777
-     O??? ?,,,Z~ZZ~~~ =====7777
-    ,~77   ,,~  ??~~~?===?==777
-     ~     ~,  77?7 ???==?7=777
-      ?O   ?7???O?77? ?=?7?77??
-           ~7ZZ O?===??ZZ77??=="}.poca_type
+TEST "normal get_pocamon poca_type" = (get_pocamon "RAPIDASH").poca_type = ("FIRE", "FIRE")
 
-TEST "normal get_pocamon ascii" = (get_pocamon "RAPIDASH").ascii = {
-  name="RAPIDASH";
-  learnable_moves=["HEADBUTT";"TOXIC";"HIDDEN POWER";"SUNNY DAY";"SNORE";"HYPER BEAM";"PROTECT";"ENDURE";"FRUSTRATION";"RETURN";"DOUBLE TEAM";"SWAGGER";"SLEEP TALK";"FIRE BLAST";"SWIFT";"REST";"ATTRACT";"FLAMETHROWER";"GROWL";"TAIL WHIP";"EMBER";"GROWL";"TAIL WHIP";"EMBER";"STOMP";"FIRE SPIN";"TAKE DOWN";"FURY ATTACK";"AGILITY";"FIRE BLAST";];
-  stats={max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;};
-  poca_type=("FIRE", "FIRE");
-ascii="   , ??OO==??    7===Z
+TEST "normal get_pocamon ascii" = (get_pocamon "RAPIDASH").ascii = 
+
+"   , ??OO==??    7===Z
   O ,?7O??=?????????7ZZZ7Z7Z
    O~ ,,~?77??????ZZZ
      ,?O~~ Z7ZZZZ ZZZ         Z
@@ -130,7 +57,7 @@ ascii="   , ??OO==??    7===Z
     ,~77   ,,~  ??~~~?===?==777
      ~     ~,  77?7 ???==?7=777
       ?O   ?7???O?77? ?=?7?77??
-           ~7ZZ O?===??ZZ77??=="}.ascii
+           ~7ZZ O?===??ZZ77??=="
 
 TEST_UNIT "get_random_pocamon name" =
   let errors = ref "" in
@@ -141,18 +68,37 @@ TEST_UNIT "get_random_pocamon name" =
   if (String.length (!errors)) = 0
   then () else failwith !errors
 
+(******************************************************************************)
+(** Unit tests for IO *********************************************************)
+(******************************************************************************)
+open Io
 
-(*
-let sum_stats stats =
-  stats.max_hp + stats.attack + stats.defense + stats.speed +
-  stats.sp_attack + stats.sp_defense
+TEST "Up" = process_input "up" = Some Up
+TEST "Down" = process_input "down" = Some Down
+TEST "Trim" = process_input " down \t" = Some Down
+TEST "Uppercase" = process_input "DOWN" = Some Down
+TEST "Lowercase" = process_input "down" = Some Down
+TEST "Mixed Case" = process_input "dOwN" = Some Down
+TEST "Enter" = process_input "" = Some Enter
+TEST "Fight" = process_input "fight" = Some Fight
+TEST "Pocamon" = process_input "pocamon" = Some Pocamon
+TEST "Run" = process_input "run" = Some Run
+TEST "Back" = process_input "back" = Some Back
+TEST "Save" = process_input "save" = Some Save
+TEST "Load" = process_input "load" = Some Load
+TEST "Switch" = process_input "switch raichu" = Some (Action (Switch "RAICHU"))
+TEST "Bad Switch" = process_input "switch james jfsdf" = None
+TEST "Move" = process_input "win" = Some (Action (Move "WIN"))
+TEST "2-word move" = process_input "two move" = Some (Action (Move "TWO MOVE"))
 
-let base_stats = {max_hp=65; attack=100; defense=70; speed=105;
-          sp_attack=80;sp_defense=80;}
-TEST "get_random_pocamon stats" = sum_stats (get_random_pocamon () ).stats =
-(sum_stats (get_pocamon (get_random_pocamon ()).name).stats) + 500
-*)
-
+TEST "Yes" = process_selection "Yes" = Some Yes
+TEST "No" = process_selection "No" = Some No
+TEST "y" = process_selection "y" = Some Yes
+TEST "n" = process_selection "n" = Some No
+TEST "Trim" = process_selection "  \t yes \t  " = Some Yes
+TEST "Bad input" = process_selection "sfdsd" = None
+TEST "No at end" = process_selection "jamno" = None
+TEST "Yes in middle" = process_selection "jkyeskl" = None
 
 
 let () = Pa_ounit_lib.Runtime.summarize()
