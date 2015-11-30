@@ -8,13 +8,20 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
   "Steroids are bad - how could you do that to an innocent pocamon?";
   "Don't do drugs, kids"]
 
-let trainers = [|{start_text="sid_start"; name="sid"; end_text="sid_end"};
-                 {start_text="mike_start"; name="mike"; end_text="mike_end"};
-                 {start_text="white_start"; name="white"; end_text="white_end"};
-                 {start_text="fan_start"; name="fan"; end_text="fan_end"};
-                 {start_text="gries_start"; name="gries"; end_text="gries_end"};
-                 {start_text="kleinberg_start"; name="kleinberg"; end_text="kleinberg_end"};
-                 {start_text="clarkson_start"; name="clarkson"; end_text="clarkson_end"}|]
+let trainers = [|{start_text="sid_start"; name="sid"; end_text="sid_end";
+                  pocamon_list=["PIKACHU"; "BULBASAUR"; "SLOWPOKE"; "SPEAROW"; "SHELLDER"; "KRABBY"]};
+                 {start_text="mike_start"; name="mike"; end_text="mike_end";
+                  pocamon_list=["EXEGGUTOR"; "MAGNEMITE"; "RHYDON"; "CLEFABLE"; "ARBOK"; "MR.MIME"]};
+                 {start_text="white_start"; name="white"; end_text="white_end";
+                  pocamon_list=["GROWLITHE"; "GRIMER"; "PIDGEOT"; "DRAGONITE"; "CHARMELEON"; "KADABRA"]};
+                 {start_text="fan_start"; name="fan"; end_text="fan_end";
+                  pocamon_list=["ODDISH"; "PSYDUCK"; "CHARIZARD"; "ONIX"; "BEEDRILL"; "ELECTRODE"]};
+                 {start_text="gries_start"; name="gries"; end_text="gries_end";
+                  pocamon_list=["EEVEE"; "VILEPUME"; "POLIWRATH"; "HAUNTER"; "NIDORINO"; "MACHOKE"]};
+                 {start_text="kleinberg_start"; name="kleinberg"; end_text="kleinberg_end";
+                  pocamon_list=["CUBONE"; "MAGNETON"; "KOFFING"; "GASTLY"; "PARAS"; "VENOMOTH"]};
+                 {start_text="clarkson_start"; name="clarkson"; end_text="clarkson_end";
+                  pocamon_list=["TANGELA"; "TENTACRUEL"; "MANKEY"; "GOLEM"; "MEWTWO"; "DRAGONAIR"]}|]
 
 let current_trainer = ref 0
 
@@ -79,7 +86,8 @@ let gen_next_state initial_state g_state : game_state =
     pocamon_list = List.tl player_two_pocamon;
     is_computer = against_ai
   } in
-  wait_for_enter g_state (g_state.player_one) (Talking (trainers.(!current_trainer).start_text));
+  wait_for_enter g_state (g_state.player_one)
+                (Talking (trainers.(!current_trainer).start_text));
 
   {
     player_one = player_one_rec;
@@ -115,8 +123,12 @@ let gen_initial_state () : game_state =
   let _ = setup () in
   let player_one_pocamon = (List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()]) in
-  let player_two_pocamon = List.fold_left
-    (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
+  let player_two_pocamon =
+    if against_ai
+    then List.map (fun x -> get_pocamon_by_name x)
+                  trainers.(!current_trainer).pocamon_list
+    else List.fold_left
+      (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_one_active_pocamon = List.hd player_one_pocamon in
   let player_two_active_pocamon = List.hd player_two_pocamon in
   let player_one_rec =
