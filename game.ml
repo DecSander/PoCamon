@@ -6,7 +6,8 @@ open PocaDex
 
 let bag_jokes = ["There is a time and a place for everything. But not now";
   "Steroids are bad - how could you do that to an innocent pocamon?";
-  "Don't do drugs, kids"]
+  "Don't do drugs, kids";
+  "Swig, swag, grab my bag... Or not"]
 
 let trainers = [|{start_text="sid_start"; name="sid"; end_text="sid_end";
                   pocamon_list=["PIKACHU"; "BULBASAUR"; "SLOWPOKE"; "SPEAROW"; "SHELLDER"; "KRABBY"]};
@@ -245,7 +246,9 @@ let on_faint g_state : game_state =
         if List.length g_state.player_two.pocamon_list > 0 then
           if not g_state.player_two.is_computer then
               choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
-          else fst (switch_pocamon (get_switch_poca g_state.player_one g_state.player_two false g_state) g_state.player_two g_state true)
+          else
+            let new_poca = get_switch_poca g_state.player_one g_state.player_two false g_state in
+            fst (switch_pocamon new_poca g_state.player_two g_state true)
         else
           if g_state.player_two.is_computer then gen_next_state initial g_state
           else game_over g_state g_state.player_one
@@ -412,7 +415,8 @@ let rec run_game_turn g_state b_status : game_state =
           printfo.p1_move_status new_g_state.player_two)
     in
 
-  let faint_switch_game_state = on_faint new_g_state in
+  let () = print_int (List.length new_g_state.player_two.pocamon_list) in
+  let faint_switch_game_state = on_faint(on_faint new_g_state) in
 
   let status_changed_game_state, debuff_info =
     apply_status_debuffs faint_switch_game_state in
@@ -423,21 +427,6 @@ let rec run_game_turn g_state b_status : game_state =
     status_changed_game_state.player_two debuff_info.p2_debuff in
 
   let final_game_state = on_faint status_changed_game_state in
-
-  let () = print_endline "" in
-  let () = print_int (List.length g_state.player_two.pocamon_list) in
-  let () = print_endline "" in
-  let () = print_int (List.length new_g_state.player_two.pocamon_list) in
-  let () = print_endline "" in
-  let () = print_int (List.length faint_switch_game_state.player_two.pocamon_list) in
-  let () = print_endline "" in
-  let () = print_int (List.length status_changed_game_state.player_two.pocamon_list) in
-  let () = print_endline "" in
-  let () = print_int (List.length final_game_state.player_two.pocamon_list) in
-  let () = print_endline "" in
-  let () = match p2_action with
-           | FSwitch m -> print_endline m.name
-           | _ -> () in
 
   run_game_turn final_game_state printfo
 
