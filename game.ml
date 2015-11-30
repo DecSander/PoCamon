@@ -8,6 +8,16 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
   "Steroids are bad - how could you do that to an innocent pocamon?";
   "Don't do drugs, kids"]
 
+let trainers = [|{start_text="sid_start"; name="sid"; end_text="sid_end"};
+                 {start_text="mike_start"; name="mike"; end_text="mike_end"};
+                 {start_text="white_start"; name="white"; end_text="white_end"};
+                 {start_text="fan_start"; name="fan"; end_text="fan_end"};
+                 {start_text="gries_start"; name="gries"; end_text="gries_end"};
+                 {start_text="kleinberg_start"; name="kleinberg"; end_text="kleinberg_end"};
+                 {start_text="clarkson_start"; name="clarkson"; end_text="clarkson_end"}|]
+
+let current_trainer = ref 0
+
 let rec get_new_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
   if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
@@ -28,6 +38,53 @@ let create_public_info g_state : public_info =
       List.length (g_state.player_one.pocamon_list);
   }
 
+let rec wait_for_enter g_state p_state s_state : unit =
+  let () = print_screen p_state (create_public_info g_state) s_state in
+  let () = print_endline "" in
+  let input = get_input [""] [""] in
+  match (process_input input) with
+  | Some Enter -> ()
+  | _ -> wait_for_enter g_state p_state s_state
+
+
+let gen_next_state initial_state g_state : game_state =
+  if !current_trainer = 6 then
+    let () = wait_for_enter g_state g_state.player_one (Talking ("You won!")) in
+    exit 0
+  else
+  wait_for_enter g_state (g_state.player_one) (Talking (trainers.(!current_trainer).end_text));
+  (current_trainer := !current_trainer + 1);
+  let player_one_name = g_state.player_one.name in
+  let tinfo = setup () in
+  breakdown tinfo;
+  let against_ai = true in
+  let trainer = trainers.(!current_trainer) in
+  let player_two_name = trainer.name in
+  let player_one_pocamon = initial_state.player_one.pocamon_list in
+  let player_two_pocamon = List.fold_left
+    (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
+  let player_one_active_pocamon = List.hd player_one_pocamon in
+  let player_two_active_pocamon = List.hd player_two_pocamon in
+  let player_one_rec =
+  {
+    name = player_one_name;
+    active_pocamon = player_one_active_pocamon;
+    pocamon_list = List.tl player_one_pocamon;
+    is_computer = false
+  } in
+  let player_two_rec =
+  {
+    name = player_two_name;
+    active_pocamon = player_two_active_pocamon;
+    pocamon_list = List.tl player_two_pocamon;
+    is_computer = against_ai
+  } in
+  wait_for_enter g_state (g_state.player_one) (Talking (trainers.(!current_trainer).start_text));
+
+  {
+    player_one = player_one_rec;
+    player_two = player_two_rec;
+  }
 
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
@@ -49,9 +106,7 @@ let gen_initial_state () : game_state =
   let against_ai = get_against_ai () in
   breakdown tinfo;
   let player_two_name = if against_ai then
-      (print_start "What is your rival's name?";
-      print_string "|> ";
-      read_line ())
+      trainers.(!current_trainer).name
     else
       (print_start "What is your name, player two?";
       print_string "|> ";
@@ -84,13 +139,7 @@ let gen_initial_state () : game_state =
     player_two = player_two_rec;
   }
 
-let rec wait_for_enter g_state p_state s_state : unit =
-  let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
-  let input = get_input [""] [""] in
-  match (process_input input) with
-  | Some Enter -> ()
-  | _ -> wait_for_enter g_state p_state s_state
+let initial = gen_initial_state ()
 
 let process_screen_action comm s_state g_state : screen_state =
   match comm, s_state with
@@ -182,11 +231,12 @@ let on_faint g_state : game_state =
       let () = wait_for_enter g_state g_state.player_two
         (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
         if List.length g_state.player_two.pocamon_list > 0 then
-          if g_state.player_two.is_computer = false then
+          if not g_state.player_two.is_computer then
               choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
           else fst (switch_pocamon (get_switch_poca g_state.player_one g_state.player_two false g_state) g_state.player_two g_state true)
         else
-          game_over g_state g_state.player_one
+          if g_state.player_two.is_computer then gen_next_state initial g_state
+          else game_over g_state g_state.player_one
   else
     g_state
 
@@ -379,7 +429,7 @@ let rec run_game_turn g_state b_status : game_state =
 
   run_game_turn final_game_state printfo
 
-let start () : unit =
+let start_from_state g_state : unit =
   let () = Random.self_init () in
 
   let a_status1 = {
@@ -396,6 +446,8 @@ let start () : unit =
       p2_move_status = Attack_Status a_status1;
   } in
 
-  ignore (run_game_turn (gen_initial_state ()) b_status)
+  ignore (run_game_turn g_state b_status)
+
+let start () = wait_for_enter initial initial.player_one (Talking trainers.(0).start_text);start_from_state initial
 
 let _ = start ()

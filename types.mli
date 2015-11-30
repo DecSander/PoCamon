@@ -7,6 +7,8 @@ type pStatus = SNormal | SPoison | SBurn | SSleep of int | SParalyze
 type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
               | MConfuse
 
+type trainer = {start_text: bytes; end_text: bytes; name: bytes}
+
 type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
 | MSpecAttack of int | MSpecDefense of int | MSpeed of int| MAllStatsUp
 | MRecoil | MRecover | MChargeNoHit | MCharge | Mohko | MPriorityHit
