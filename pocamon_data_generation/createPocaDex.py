@@ -138,6 +138,7 @@ with open("pocadex.ml", 'w') as f:
 
 print '[',
 for move in allmoves:
-    print '"{0}";'.format(move),
+    if move.upper() in real_moves:
+        print '"{0}";'.format(move),
 print "]"
 
