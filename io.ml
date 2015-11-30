@@ -66,19 +66,19 @@ let add_spaces (s: bytes) (len: int) :bytes =
 
 let create_pocamon_ascii (pc: pocamon) :bytes =
   let color = "\027" ^ (match fst pc.poca_type with
-  | TNormal -> "[37m"
+  | TNormal -> "[97m"
   | TFire -> "[31m"
   | TWater -> "[34m"
   | TElectric -> "[33m"
   | TGrass -> "[32m"
-  | TIce -> "[36m"
-  | TFighting -> "[37m"
-  | TPoison -> "[35m"
-  | TGround -> "[37m"
-  | TFlying -> "[37m"
+  | TIce -> "[94m"
+  | TFighting -> "[90m"
+  | TPoison -> "[95m"
+  | TGround -> "[90m"
+  | TFlying -> "[93m"
   | TPsychic -> "[35m"
-  | TBug -> "[32m"
-  | TRock -> "[37m"
+  | TBug -> "[92m"
+  | TRock -> "[90m"
   | TGhost -> "[35m"
   | TDragon -> "[35m") in
   let _ = "" in
@@ -120,10 +120,10 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
     match art1, art2 with
     | h1::t1, h2::t2 ->
       art_help t1 t2
-        (res ^ "\n"^(add_spaces h1 36)^"   \027[37m ||    "^(add_spaces h2 36))
+        (res ^ "\n"^(add_spaces h1 36)^"   \027[97m ||    "^(add_spaces h2 36))
     | _, _ -> res in
   (art_help (Str.split (Str.regexp "\n") art1)
-            (Str.split (Str.regexp "\n") art2) "") ^ "\027[37m"
+            (Str.split (Str.regexp "\n") art2) "") ^ "\027[97m"
 
 let gen_moves ps :bytes =
   let rec moves_help (m_list: move list) i (res: bytes) :bytes =
@@ -229,7 +229,7 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
       'MMM.                                             IMX
        ~M!M                                             IMP
 
-\027[37m
+\027[97m
                     PSHSHSHSHSHSHHSSHS - Kraby #93
 
 
@@ -302,15 +302,15 @@ let find_tab (lst: string list): bool =
 let find_newline (lst: string list): bool =
   List.mem "\n" lst
 
+let remove_last_one (lst: string list): string list =
+  match List.rev lst with
+  | [] -> []
+  | h::t -> List.rev t
+
 let remove_last_two (lst: string list): string list =
   match List.rev lst with
   | [] -> []
   | h1::h2::t -> List.rev t
-  | h::t -> List.rev t
-
-let remove_last_one (lst: string list): string list =
-  match List.rev lst with
-  | [] -> []
   | h::t -> List.rev t
 
 let rec string_contains s sub : bool =
@@ -353,7 +353,7 @@ let get_input (words: string list) (defaults: string list) =
          let completed_word = w^
          (String.sub h (String.length w) (String.length h - String.length w)) in
          print_string ("\r"^(Bytes.make (70) ' '));
-         print_string ("\027[37m\r|> \027[32m"^(completed_word));
+         print_string ("\027[97m\r|> \027[32m"^(completed_word));
          flush Pervasives.stdout;
          let c = really_input_string Pervasives.stdin 1 in
          go ([h]@[c]) in
@@ -366,14 +366,14 @@ let get_input (words: string list) (defaults: string list) =
           go newl
       | h::t -> let w = get_word acc in
           print_string ("\r"^(Bytes.make (70) ' '));
-          print_string ("\r\027[37m   "^h);
+          print_string ("\r\027[97m   "^h);
           print_string ("\r|> \027[32m"^w);
           flush Pervasives.stdout;
           go (acc@[really_input_string Pervasives.stdin 1]) in
 
     let handle_defaults () =
       print_string ("\r"^(Bytes.make (70) ' '));
-      print_string ("\r\027[37m   ");
+      print_string ("\r\027[97m   ");
       print_string (List.hd defaults);
       List.iter (fun s -> print_string (" | "^s)) (List.tl defaults);
       print_string ("\r|> ");
@@ -382,7 +382,7 @@ let get_input (words: string list) (defaults: string list) =
 
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
-    | _, _, true, _ -> print_string ("\027[37m "); get_word acc
+    | _, _, true, _ -> print_string ("\027[97m "); get_word acc
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
