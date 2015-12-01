@@ -117,12 +117,12 @@ let gen_initial_state () : game_state =
   let rec get_against_ai () : ai =
     print_start "Would you like to play against your rival, or a human?";
     let input = String.uppercase
-      (get_input ["RIVAL";"HUMAN"; "ELITE7"] ["RIVAL";"HUMAN"; "ELITE7"]) in
+      (get_input ["RIVAL";"HUMAN"; "ELITE 7"] ["RIVAL";"HUMAN"; "ELITE 7"]) in
       if input = "RIVAL" then
         Rival
       else if input = "HUMAN" then
         Human
-      else if input = "ELITE7" then
+      else if input = "ELITE 7" then
         Elite
       else
         get_against_ai () in
@@ -256,7 +256,10 @@ let on_faint g_state : game_state =
   let () = print_endline "" in
   let () = print_string "Player two remaining: " in
   let () = print_int (List.length g_state.player_two.pocamon_list) in
-  let () = print_endline "" in
+  let () = print_endline "player one pocamon: " in
+  let _ = List.map (fun (x:pocamon) -> print_endline x.name) g_state.player_one.pocamon_list in
+  let () = print_endline "player two pocamon: " in
+  let _ = List.map (fun (x:pocamon) -> print_endline x.name) g_state.player_two.pocamon_list in
   if g_state.player_one.active_pocamon.health <= 0 then
       let () = wait_for_enter g_state g_state.player_one
         (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
