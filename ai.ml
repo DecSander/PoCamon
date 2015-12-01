@@ -71,7 +71,7 @@ let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
     match e_list, p_list with
     | [], [] -> best
     | e_hd::e_tl, p_hd::p_tl ->
-      let best_poca = if (e_hd > acc && (p_hd.health > 0)) || (best.health < 0) then p_hd else best in
+      let best_poca = if (e_hd > acc && (p_hd.health > 0)) || (best.health <= 0) then p_hd else best in
       let acc' = if e_hd > acc then e_hd else acc in
       get_best_poca e_tl p_tl acc' best_poca
     | _ -> failwith "this should never happen" in
