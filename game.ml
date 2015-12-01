@@ -233,6 +233,12 @@ let game_over g_state winner : game_state =
   exit 0
 
 let on_faint g_state : game_state =
+  let () = print_string "Player one remaining: " in
+  let () = print_int (List.length g_state.player_one.pocamon_list) in
+  let () = print_endline "" in
+  let () = print_string "Player two remaining: " in
+  let () = print_int (List.length g_state.player_two.pocamon_list) in
+  let () = print_endline "" in
   if g_state.player_one.active_pocamon.health <= 0 then
       let () = wait_for_enter g_state g_state.player_one
         (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
@@ -247,7 +253,9 @@ let on_faint g_state : game_state =
           if not g_state.player_two.is_computer then
               choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
           else
+            let () = print_endline "getting AI pocamon" in
             let new_poca = get_switch_poca g_state.player_one g_state.player_two false g_state in
+            let () = print_endline ("Switching to: " ^ new_poca.name) in
             fst (switch_pocamon new_poca g_state.player_two g_state true)
         else
           if g_state.player_two.is_computer then gen_next_state initial g_state
