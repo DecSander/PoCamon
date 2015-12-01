@@ -252,25 +252,33 @@ let game_over g_state winner : game_state =
   exit 0
 
 let on_faint g_state : game_state =
-  if g_state.player_one.active_pocamon.health <= 0 then
-      let () = wait_for_enter g_state g_state.player_one
-        (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
-        if List.length g_state.player_one.pocamon_list > 0 then
-          choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
-        else
-          game_over g_state g_state.player_two
-  else if g_state.player_two.active_pocamon.health <= 0 then
-      let () = wait_for_enter g_state g_state.player_two
-        (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
-        if List.length g_state.player_two.pocamon_list > 0 then
-          if is_human g_state.player_two.is_computer then
-              choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
-          else
-            let new_poca = get_switch_poca g_state.player_one g_state.player_two false g_state in
-            fst (switch_pocamon new_poca g_state.player_two g_state true)
-        else
-          if not (is_human g_state.player_two.is_computer) then gen_next_state initial g_state
-          else game_over g_state g_state.player_one
+  let wfe1 s = wait_for_enter g_state g_state.player_one (Talking s) in
+  let wfe2 s = wait_for_enter g_state g_state.player_two (Talking s) in
+  let ap s = g_state.player_one.active_pocamon.name ^ s in
+  let oap s = g_state.player_two.active_pocamon.name ^ s in
+  let pocamon_health1 = g_state.player_one.active_pocamon.health in
+  let number_of_pocamon1 = List.length g_state.player_one.pocamon_list in
+  let pocamon_health2 = g_state.player_two.active_pocamon.health in
+  let number_of_pocamon2 = List.length g_state.player_two.pocamon_list in
+
+  if  pocamon_health1 <= 0 then
+      let () = wfe1 (ap " fainted!") in
+      if   number_of_pocamon1 > 0 
+      then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
+      else game_over g_state g_state.player_two
+  
+  else if pocamon_health2 <= 0 then
+      let () = wfe2 (oap " fainted!") in
+      if   number_of_pocamon2 > 0 then
+        if is_human g_state.player_two.is_computer 
+        then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
+        else let new_poca = 
+          get_switch_poca g_state.player_one g_state.player_two false g_state in
+          fst (switch_pocamon new_poca g_state.player_two g_state true)
+      else
+        if not (is_human g_state.player_two.is_computer) 
+        then gen_next_state initial g_state
+        else game_over g_state g_state.player_one
   else
     g_state
 
