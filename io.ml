@@ -287,7 +287,6 @@ let setup () =
 
 (* Return the terminal back to its normal state *)
 let breakdown (terminfo) : unit =
-  print_string "\n\nbreakdown!\n\n";
   Unix.tcsetattr Unix.stdin Unix.TCSAFLUSH terminfo
 
 let get_word (lst: string list) =

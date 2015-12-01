@@ -12,6 +12,8 @@ type trainer = {start_text: bytes;
                 name: bytes;
                 pocamon_list: bytes list}
 
+type ai = Human | Rival | Elite
+
 type mEffect = MNone | MLeech | MExplode | MAttack of int | MDefense of int
 | MSpecAttack of int | MSpecDefense of int | MSpeed of int| MAllStatsUp
 | MRecoil | MRecover | MChargeNoHit | MCharge | Mohko | MPriorityHit
@@ -107,7 +109,7 @@ type player_state = {
         name : bytes;
         active_pocamon : pocamon;
         pocamon_list : pocamon list;
-        is_computer : bool
+        is_computer : ai
   }
 
 (*
