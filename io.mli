@@ -31,9 +31,3 @@ val print_size_screen : unit -> unit
  * [words] and is shown defaults [defaults]
  * Preconditon: [defaults] is not empty *)
 val get_input : string list -> string list -> string
-
-(* Setup the terminal for nonconical input to use the autocorrect *)
-val setup : unit -> Unix.terminal_io
-
-(* Return the terminal back to its normal state *)
-val breakdown: Unix.terminal_io -> unit

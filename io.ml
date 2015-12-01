@@ -339,6 +339,7 @@ let print_text s : unit=
  * [words] and is shown defaults [defaults]
  * Preconditon: [defaults] is not empty *)
 let get_input (words: string list) (defaults: string list) =
+  let tinfo = setup () in
   print_newline () ;
   let rec go (acc: string list): string =
 
@@ -363,7 +364,7 @@ let get_input (words: string list) (defaults: string list) =
 
     let handle_typing (): string =
       match find_matches words acc with
-      | [] -> let _ = Sys.command "printf '\a'" in
+      | [] -> let _ = Sys.command "printf '\\a'" in
           let newl = remove_last_one acc in
           print_text (get_word newl);
           go newl
@@ -385,7 +386,7 @@ let get_input (words: string list) (defaults: string list) =
 
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
-    | _, _, true, _ -> print_string ("\027[97m "); get_word acc
+    | _, _, true, _ -> print_string ("\027[97m "); breakdown tinfo; get_word acc
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
