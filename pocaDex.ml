@@ -3391,7 +3391,7 @@ let get_four_moves (moves: string list): move list =
 	List.nth mlst (List.nth randos 2); List.nth mlst (List.nth randos 3)]
 
 
-let get_pocamon_by_name (name) : pocamon =
+let get_pocamon_by_name (name: string) : pocamon =
 	let pocamon_name = name in
 	let dexmon = get_pocamon pocamon_name in
 	let pType = (type_of_string (fst dexmon.poca_type),

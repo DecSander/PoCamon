@@ -6,23 +6,11 @@ type ai_player = P1 | P2
 let status_score (s: pStatus) :float =
   match s with
   | SNormal -> 0.
-  | SPoison -> 1.
-  | SBurn -> 1.
-  | SSleep n -> (float_of_int n) *. 0.5
-  | SParalyze -> 0.9
-  | SFreeze n -> (float_of_int n) *. 0.5
-
-(*let rec health_score (p_list: pocamon list) (score: float) :float =
-  match p_list with
-  | [] -> score
-  | h::t -> score +. health_score t
-    ((((float_of_int h.health) /.
-                (float_of_int h.stats.max_hp))) ** 2.0)
-
-let player_score (ps: player_state) :float =
-  let status = status_score ps.active_pocamon.status in
-  let health = health_score ps.pocamon_list 0. in
-  health -. status *)
+  | SPoison -> 0.4
+  | SBurn -> 0.4
+  | SSleep n -> (float_of_int n) *. 0.1
+  | SParalyze -> 0.3
+  | SFreeze n -> (float_of_int n) *. 0.1
 
 let poca_score acc poca =
   let health_score = (((float_of_int poca.health) /.
@@ -52,7 +40,6 @@ let print_gamestate gs =
 
 
 let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
-  (* should be elaborated *)
 
   let get_eff_score poca =
     let active_player' = {active_player with active_pocamon=poca} in
@@ -84,7 +71,7 @@ let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
     match e_list, p_list with
     | [], [] -> best
     | e_hd::e_tl, p_hd::p_tl ->
-      let best_poca = if (e_hd > acc && (p_hd.health > 0)) || (best.health < 0) then p_hd else best in
+      let best_poca = if (e_hd > acc && (p_hd.health > 0)) || (best.health <= 0) then p_hd else best in
       let acc' = if e_hd > acc then e_hd else acc in
       get_best_poca e_tl p_tl acc' best_poca
     | _ -> failwith "this should never happen" in
