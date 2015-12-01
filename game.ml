@@ -68,7 +68,8 @@ let gen_next_state initial_state g_state : game_state =
   let against_ai = Elite in
   let trainer = trainers.(!current_trainer) in
   let player_two_name = trainer.name in
-  let player_one_pocamon = initial_state.player_one.pocamon_list in
+  let player_one_pocamon = initial_state.player_one.active_pocamon ::
+                           initial_state.player_one.pocamon_list in
   let player_two_pocamon = List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()] in
   let player_one_active_pocamon = List.hd player_one_pocamon in
