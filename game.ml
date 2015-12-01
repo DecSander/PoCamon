@@ -460,6 +460,11 @@ let start_from_state g_state : unit =
 
   ignore (run_game_turn g_state b_status)
 
-let start () = wait_for_enter initial initial.player_one (Talking trainers.(0).start_text);start_from_state initial
+let start () =
+  let () =
+  if initial.player_two.is_computer then
+  wait_for_enter initial initial.player_one (Talking trainers.(0).start_text)
+  else () in
+  start_from_state initial
 
 let _ = start ()
