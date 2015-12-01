@@ -968,7 +968,7 @@ ascii="        I
 
 let dexmap = PokeDex.add "DIGLETT" {
 name="DIGLETT"; 
-learnable_moves=["GROWL";"FISSURE";"ROCK SMASH";"DIG";"SLUDGE BOMB";"SLASH";"TOXIC";"CUT";"SCRATCH";];
+learnable_moves=["GROWL";"FISSURE";"ROCK SMASH";"DIG";"SLASH";"TOXIC";"CUT";"SCRATCH";"SLUDGE BOMB";];
 stats={max_hp=10; attack=55; defense=25; speed=95; sp_attack=35;sp_defense=45;};
 poca_type=("GROUND", "GROUND"); 
 ascii="                               
@@ -2102,7 +2102,7 @@ ascii="                  8++8  7
 
 let dexmap = PokeDex.add "MAROWAK" {
 name="MAROWAK"; 
-learnable_moves=["FIRE BLAST";"ICE BEAM";"DIG";"TOXIC";"HYPER BEAM";"THUNDERPUNCH";"FIRE PUNCH";"ROCK SMASH";"BLIZZARD";"STRENGTH";"ICY WIND";"LEER";"TAIL WHIP";"FLAMETHROWER";];
+learnable_moves=["FIRE BLAST";"ICE BEAM";"DIG";"TOXIC";"HYPER BEAM";"FIRE PUNCH";"ROCK SMASH";"THUNDERPUNCH";"BLIZZARD";"STRENGTH";"ICY WIND";"LEER";"TAIL WHIP";"FLAMETHROWER";];
 stats={max_hp=60; attack=80; defense=110; speed=45; sp_attack=50;sp_defense=80;};
 poca_type=("GROUND", "GROUND"); 
 ascii="   I O                         
