@@ -113,7 +113,7 @@ let gen_initial_state () : game_state =
   print_size_screen ();
   print_start "What is your name, player one?";
   print_string "|> ";
-  let player_one_name = read_line () in
+  let player_one_name = readl io_channel in
   let tinfo = setup () in
   let rec get_against_ai () : ai =
     print_start "Would you like to play against your rival, or a human?";
@@ -134,11 +134,11 @@ let gen_initial_state () : game_state =
     else if is_rival against_ai then
       (print_start "What is your rival's name?";
       print_string "|> ";
-      read_line ())
+      readl io_channel)
     else
       (print_start "What is your name, player two?";
       print_string "|> ";
-      read_line ())
+      readl io_channel)
     in
   let _ = setup () in
   let player_one_pocamon = (List.fold_left

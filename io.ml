@@ -7,6 +7,10 @@ type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
 type yn = Yes | No
 
+(*let io_channel = open_in "test_inputs.txt"*)
+let io_channel = Pervasives.stdin
+let readl io = flush stdout; input_line stdin
+
 let match_phrase (str: bytes) (regex: bytes) :bool =
   Str.string_match (Str.regexp regex) str 0
 
@@ -81,7 +85,6 @@ let create_pocamon_ascii (pc: pocamon) :bytes =
   | TRock -> "[90m"
   | TGhost -> "[35m"
   | TDragon -> "[35m") in
-  let _ = "" in
 
   let rec ascii_help (art: bytes list) (res: bytes) :bytes =
     match art with
@@ -262,7 +265,7 @@ let size_screen = "
 "
 let print_size_screen () =
   print_string size_screen;
-  let _ = read_line () in ()
+  let _ = readl io_channel in ()
 
 
 let print_start s =
@@ -354,7 +357,7 @@ let get_input (words: string list) (defaults: string list) =
          print_string ("\r"^(Bytes.make (70) ' '));
          print_string ("\027[97m\r|> \027[32m"^(completed_word));
          flush Pervasives.stdout;
-         let c = really_input_string Pervasives.stdin 1 in
+         let c = really_input_string io_channel 1 in
          go ([h]@[c]) in
 
     let handle_typing (): string =
@@ -368,7 +371,7 @@ let get_input (words: string list) (defaults: string list) =
           print_string ("\r\027[97m   "^h);
           print_string ("\r|> \027[32m"^w);
           flush Pervasives.stdout;
-          go (acc@[really_input_string Pervasives.stdin 1]) in
+          go (acc@[really_input_string io_channel 1]) in
 
     let handle_defaults () =
       print_string ("\r"^(Bytes.make (70) ' '));
@@ -377,7 +380,7 @@ let get_input (words: string list) (defaults: string list) =
       List.iter (fun s -> print_string (" | "^s)) (List.tl defaults);
       print_string ("\r|> ");
       flush Pervasives.stdout;
-      go (acc@[really_input_string Pervasives.stdin 1]) in
+      go (acc@[really_input_string io_channel 1]) in
 
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
