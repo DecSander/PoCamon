@@ -65,7 +65,7 @@ let gen_next_state initial_state g_state : game_state =
   let player_one_name = g_state.player_one.name in
   let tinfo = setup () in
   breakdown tinfo;
-  let against_ai = true in
+  let against_ai = Elite in
   let trainer = trainers.(!current_trainer) in
   let player_two_name = trainer.name in
   let player_one_pocamon = initial_state.player_one.pocamon_list in
@@ -78,7 +78,7 @@ let gen_next_state initial_state g_state : game_state =
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
     pocamon_list = List.tl player_one_pocamon;
-    is_computer = false
+    is_computer = Human
   } in
   let player_two_rec =
   {
@@ -95,6 +95,18 @@ let gen_next_state initial_state g_state : game_state =
     player_two = player_two_rec;
   }
 
+let is_human = function
+  | Human -> true
+  | _ -> false
+
+let is_elite = function
+  | Elite -> true
+  | _ -> false
+
+let is_rival = function
+  | Rival -> true
+  | _ -> false
+
 let gen_initial_state () : game_state =
   (* Must request players name and whether to play against a computer *)
   print_size_screen ();
@@ -102,20 +114,26 @@ let gen_initial_state () : game_state =
   print_string "|> ";
   let player_one_name = read_line () in
   let tinfo = setup () in
-  let rec get_against_ai () : bool =
+  let rec get_against_ai () : ai =
     print_start "Would you like to play against your rival, or a human?";
     let input = String.uppercase
-      (get_input ["RIVAL";"HUMAN"] ["RIVAL";"HUMAN"]) in
+      (get_input ["RIVAL";"HUMAN"; "ELITE7"] ["RIVAL";"HUMAN"; "ELITE7"]) in
       if input = "RIVAL" then
-        true
+        Rival
       else if input = "HUMAN" then
-        false
+        Human
+      else if input = "ELITE7" then
+        Elite
       else
         get_against_ai () in
   let against_ai = get_against_ai () in
   breakdown tinfo;
-  let player_two_name = if against_ai then
+  let player_two_name = if is_elite against_ai then
       trainers.(!current_trainer).name
+    else if is_rival against_ai then
+      (print_start "What is your rival's name?";
+      print_string "|> ";
+      read_line ())
     else
       (print_start "What is your name, player two?";
       print_string "|> ";
@@ -125,7 +143,7 @@ let gen_initial_state () : game_state =
   let player_one_pocamon = (List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()]) in
   let player_two_pocamon =
-    if against_ai
+    if is_elite against_ai
     then List.map (fun x -> get_pocamon_by_name x)
                   trainers.(!current_trainer).pocamon_list
     else List.fold_left
@@ -137,7 +155,7 @@ let gen_initial_state () : game_state =
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
     pocamon_list = List.tl player_one_pocamon;
-    is_computer = false
+    is_computer = Human
   } in
   let player_two_rec =
   {
@@ -244,13 +262,13 @@ let on_faint g_state : game_state =
       let () = wait_for_enter g_state g_state.player_two
         (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
         if List.length g_state.player_two.pocamon_list > 0 then
-          if not g_state.player_two.is_computer then
+          if is_human g_state.player_two.is_computer then
               choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
           else
             let new_poca = get_switch_poca g_state.player_one g_state.player_two false g_state in
             fst (switch_pocamon new_poca g_state.player_two g_state true)
         else
-          if g_state.player_two.is_computer then gen_next_state initial g_state
+          if not (is_human g_state.player_two.is_computer) then gen_next_state initial g_state
           else game_over g_state g_state.player_one
   else
     g_state
@@ -392,7 +410,7 @@ let rec run_game_turn g_state b_status : game_state =
       FCharge m in
   let p2_action =
     match g_state.player_two.active_pocamon.charging with
-    | None -> if g_state.player_two.is_computer then
+    | None -> if not (is_human g_state.player_two.is_computer) then
         get_ai_action P2 g_state b_status
         else get_player_action g_state g_state.player_two Out
     | Some m -> let () = wait_for_enter g_state g_state.player_two
@@ -451,7 +469,7 @@ let start_from_state g_state : unit =
 
 let start () =
   let () =
-  if initial.player_two.is_computer then
+  if (is_elite initial.player_two.is_computer) then
   wait_for_enter initial initial.player_one (Talking trainers.(0).start_text)
   else () in
   start_from_state initial
