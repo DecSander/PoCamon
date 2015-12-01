@@ -339,6 +339,7 @@ let print_text s : unit=
  * [words] and is shown defaults [defaults]
  * Preconditon: [defaults] is not empty *)
 let get_input (words: string list) (defaults: string list) =
+  print_newline () ;
   let rec go (acc: string list): string =
 
     let handle_back (): string =
