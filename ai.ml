@@ -28,7 +28,7 @@ let poca_score acc poca =
   let health_score = (((float_of_int poca.health) /.
     (float_of_int poca.stats.max_hp)) ** 2.0) in
   let status_score = status_score poca.status in
-  acc +. (health_score -. status_score)
+  acc +. (max (health_score -. status_score) 0.)
 
 
 let get_player_score p_state =
