@@ -215,7 +215,7 @@ let mStatus_to_pStatus move_status =
   | MSleep -> SSleep ((Random.int 2) + 3)
   | MParalyze -> SParalyze
   | MFreeze -> SFreeze ((Random.int 2) + 3)
-  | MConfuse -> failwith "TODO"
+  | _ -> failwith "TODO"
 
 (*
 * Applys the single attack to the game state
