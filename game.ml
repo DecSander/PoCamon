@@ -256,122 +256,82 @@ let on_faint g_state : game_state =
     g_state
 
 let print_result action g_state p_state m_status opp_p_state : unit =
+  (* wait for enter *)
+  let wfe s = wait_for_enter g_state p_state (Talking s) in
+  (* active pocamon *)
+  let ap s = p_state.active_pocamon.name ^ s in
+  (* opponent's active pocamon *)
+  let oap s = opp_p_state.active_pocamon.name ^ s in
+  (* active player/user *)
+  let user s = p_state.name ^ s in
+
+  let print_if_healed b = if b then wfe (ap " became healthy!") in
+  
+  let print_attack move = wfe (user ("'s "^ap(" used "^move))) in
+
+  let print_effectiveness = function
+    | ENormal -> () 
+    | ESuper ->  wfe "It's super effective!"
+    | ENotVery -> wfe "It's not very effective..."
+    | EImmune -> wfe ("It doesn't affect enemy "^ (oap "")) in
+
+  let print_status_change = function
+      | true, SPoison ->  wfe (user ("'s "^ap " became poisoned!"))
+      | true, SBurn ->  wfe (user ("'s "^ap " was burned!"))
+      | true, SSleep _ ->  wfe (user ("'s "^ap " fell asleep!"))
+      | true, SParalyze ->  wfe (user ("'s "^ap " became paralyzed!"))
+      | true, SFreeze _ ->  wfe (user ("'s "^ap " became frozen!"))
+      | true, SNormal -> wfe (user ("'s "^ap " is healthy again!"))(*This should never happen *)
+      | false, _ -> () in
+
+  let print_effect = function 
+    | MNone | MExplode | MCharge | MChargeNoHit | MPriorityHit -> ()
+    | MRecover -> wfe (ap " recovered health!")
+    | MRecoil -> wfe (ap " is hit with recoil!")
+    | MAttack 1 -> wfe (ap  "'s attack rose!")
+    | MAttack 2 -> wfe (ap  "'s attack sharply rose!")
+    | MAttack (-1) -> wfe (oap "'s attack fell!")
+    | MAttack (-2) -> wfe (oap "'s attack sharply fell!")
+    | MDefense 1 -> wfe (ap "'s defense rose!")
+    | MDefense 2 -> wfe (ap "'s defense sharply rose!")
+    | MDefense (-1) -> wfe (ap "'s defense fell!")
+    | MDefense (-2) -> wfe (oap "'s defense sharply fell!")
+    | MSpecDefense 1 -> wfe (ap "'s special defense rose!")
+    | MSpecDefense 2 -> wfe (ap "'s special defense sharply rose!")
+    | MSpecDefense (-1) -> wfe (oap "'s special defense fell!") 
+    | MSpecDefense (-2) -> wfe (oap "'s special defense sharply fell!")
+    | MSpecAttack 1 -> wfe (ap "'s special attack rose!")
+    | MSpecAttack 2 -> wfe (ap  "'s special attack sharply rose!")
+    | MSpecAttack (-1) -> wfe (ap "'s special attack fell!")
+    | MSpecAttack (-2) -> wfe (oap  "'s special attack sharply fell!")
+    | MSpeed 1 -> wfe (ap "'s speed rose!")
+    | MSpeed 2 -> wfe (ap "'s speed sharply rose!") 
+    | MSpeed (-1) -> wfe (oap "'s speed fell!")
+    | MSpeed (-2) -> wfe (oap "'s speed sharply fell!")
+    | MAllStatsUp -> wfe (ap "'s stats rose!")
+    | MLeech -> wfe (ap (" drained " ^ oap (" 's health!")))
+    | Mohko -> wfe "It's a one hit KO!"
+    | _ -> failwith "Stat changes must be nonzero and  between -2 and 2" in
+
+  let print_attack_sequence (a: attack_status) (poca_move: Types.move) = 
+    match snd a.self_status_change with
+     | SSleep _ -> wfe (ap " is asleep !")
+     | SFreeze _ -> wfe (ap " is frozen!")
+     | SParalyze -> wfe (ap " is paralyzed! It can't move!")
+     | _ ->  print_if_healed (fst a.self_status_change);
+             print_attack poca_move.name;
+             if a.missed then wfe "The attack missed!"
+             else let () = print_effectiveness a.atk_eff in 
+                  let () = print_status_change a.opp_status_change in
+                  let () = print_effect a.spec_eff in () in 
+
   match m_status, action with
-  | Charge_Status m, _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is charging " ^ m.name ^ "!"))
-  | Switch_Status, _ ->
-    let screen_message = Talking (p_state.name ^
-      " switched to " ^
-      p_state.active_pocamon.name) in
-    wait_for_enter g_state p_state screen_message
-  | Attack_Status a, FMove poca_move | Attack_Status a, FCharge poca_move ->
-
-    let () = (if fst a.self_status_change then
-      wait_for_enter g_state p_state
-        (Talking (p_state.active_pocamon.name ^ " became healthy!"))
-      else ()) in
-
-    begin match snd a.self_status_change with
-    | SSleep _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is asleep!"))
-    | SFreeze _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is frozen!"))
-    | SParalyze -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is paralyzed! It can't move!"))
-    | _ ->
-      (let poca_used_move = Talking (p_state.name ^ "'s " ^
-        p_state.active_pocamon.name ^ " used " ^ poca_move.name) in
-
-      let () = wait_for_enter g_state p_state poca_used_move in
-      if not a.missed then
-        let () = if (match a.atk_eff with ENormal -> false | _ -> true) then
-          let eff =
-            match a.atk_eff with
-            | ESuper -> "It's super effective!"
-            | ENotVery -> "It's not very effective..."
-            | EImmune ->
-              "It doesn't affect enemy " ^ opp_p_state.active_pocamon.name
-            | _ -> "It's normal effective" (* should never happen *) in
-          wait_for_enter g_state p_state (Talking eff)
-        else
-          () in
-
-        let () = (if fst a.opp_status_change then
-          let change_string = opp_p_state.name ^ "'s " ^
-          opp_p_state.active_pocamon.name ^
-            (match snd a.opp_status_change with
-            | SNormal -> " is healthy again!" (*This should never happen *)
-            | SPoison -> " became poisoned!"
-            | SBurn -> " was burned!"
-            | SSleep _ -> " fell asleep!"
-            | SParalyze -> " became paralyzed!"
-            | SFreeze _ -> " became frozen!") in
-          wait_for_enter g_state p_state
-            (Talking change_string) else ()) in
-
-        match a.spec_eff with
-        | MNone | MExplode | MCharge | MChargeNoHit | MPriorityHit -> ()
-        | MRecover | MRecoil | MAttack _ | MDefense _ | MSpecAttack _
-        | MSpecDefense _ | MSpeed _ | MAllStatsUp ->
-          wait_for_enter g_state p_state (Talking (
-            (begin match a.spec_eff with
-            | MRecover -> p_state.active_pocamon.name ^ " recovered health!"
-            | MRecoil -> p_state.active_pocamon.name ^ " is hit with recoil!"
-            | MAttack 1 -> p_state.active_pocamon.name ^ "'s attack rose!"
-            | MAttack 2 ->
-              p_state.active_pocamon.name ^ "'s attack sharply rose!"
-            | MAttack (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s attack fell!"
-            | MAttack (-2) ->
-              opp_p_state.active_pocamon.name ^ "'s attack sharply fell!"
-            | MDefense 1 -> p_state.active_pocamon.name ^ "'s defense rose!"
-            | MDefense 2 ->
-              p_state.active_pocamon.name ^ "'s defense sharply rose!"
-            | MDefense (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s defense fell!"
-            | MDefense (-2) ->
-              opp_p_state.active_pocamon.name ^ "'s defense sharply fell!"
-            | MSpecDefense 1 ->
-              p_state.active_pocamon.name ^ "'s special defense rose!"
-            | MSpecDefense 2 ->
-              p_state.active_pocamon.name ^ "'s special defense sharply rose!"
-            | MSpecDefense (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s special defense fell!"
-            | MSpecDefense (-2) ->
-              opp_p_state.active_pocamon.name ^
-              "'s special defense sharply fell!"
-            | MSpecAttack 1 ->
-              p_state.active_pocamon.name ^ "'s special attack rose!"
-            | MSpecAttack 2 ->
-              p_state.active_pocamon.name ^ "'s special attack sharply rose!"
-            | MSpecAttack (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s special attack fell!"
-            | MSpecAttack (-2) ->
-              opp_p_state.active_pocamon.name ^
-              "'s special attack sharply fell!"
-            | MSpeed 1 -> p_state.active_pocamon.name ^ "'s speed rose!"
-            | MSpeed 2 ->
-              p_state.active_pocamon.name ^ "'s speed sharply rose!"
-            | MSpeed (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s speed fell!"
-            | MSpeed (-2) ->
-              opp_p_state.active_pocamon.name ^ "'s speed sharply fell!"
-            | MAllStatsUp -> p_state.active_pocamon.name ^ "'s stats rose!"
-            | _ -> failwith "Stat changes must be nonzero and  between -2 and 2"
-            end )))
-
-        | MLeech -> wait_for_enter g_state p_state (Talking (
-            p_state.active_pocamon.name ^ " drained " ^
-            opp_p_state.active_pocamon.name ^ " 's health!"))
-        | Mohko -> wait_for_enter g_state p_state (Talking (
-            "It's a one hit KO!"))
-
-      else
-        wait_for_enter g_state p_state (Talking ("The attack missed!")))
-    end
-
+  | Charge_Status m, _ -> wfe (ap (" is charging "^m.name^"!"))
+  | Switch_Status, _ -> wfe (user (" switched to "^(ap "")))
   | Faint_Status, _ -> ()
-  | _ -> failwith "This should never happen (famous last words)"
+  | Attack_Status a, FMove poca_move
+  | Attack_Status a, FCharge poca_move -> print_attack_sequence a poca_move
+  | _ -> failwith "Error: print_result did not find a match"
 
 let print_debuff_info g_state p_state p_debuff : unit =
     match p_debuff with
