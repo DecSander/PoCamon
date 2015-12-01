@@ -7,6 +7,9 @@ type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
 type yn = Yes | No
 
+val io_channel : in_channel
+val readl : in_channel -> string
+
 (*
  * Takes a string and parses it using regex to return the command corresponding
  * to that string. If the parser is unable to determind the command, None is
