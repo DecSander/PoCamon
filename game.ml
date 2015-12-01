@@ -29,10 +29,8 @@ let current_trainer = ref 0
 let rec get_new_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
   if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
-  then
-    new_poca
-  else
-    get_new_pocamon p_list
+  then new_poca
+  else get_new_pocamon p_list
 
 let create_public_info g_state : public_info =
   {
@@ -62,8 +60,6 @@ let gen_next_state initial_state g_state : game_state =
   wait_for_enter g_state (g_state.player_one) (Talking (trainers.(!current_trainer).end_text));
   (current_trainer := !current_trainer + 1);
   let player_one_name = g_state.player_one.name in
-  let tinfo = setup () in
-  breakdown tinfo;
   let against_ai = Elite in
   let trainer = trainers.(!current_trainer) in
   let player_two_name = trainer.name in
@@ -113,7 +109,6 @@ let gen_initial_state () : game_state =
   print_start "What is your name, player one?";
   print_string "|> ";
   let player_one_name = readl io_channel in
-  let tinfo = setup () in
   let rec get_against_ai () : ai =
     print_start "Would you like to play against your rival, or a human?";
     let input = String.uppercase
@@ -127,7 +122,6 @@ let gen_initial_state () : game_state =
       else
         get_against_ai () in
   let against_ai = get_against_ai () in
-  breakdown tinfo;
   let player_two_name = if is_elite against_ai then
       trainers.(!current_trainer).name
     else if is_rival against_ai then
@@ -139,7 +133,6 @@ let gen_initial_state () : game_state =
       print_string "|> ";
       readl io_channel)
     in
-  let _ = setup () in
   let player_one_pocamon = (List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()]) in
   let player_two_pocamon =
