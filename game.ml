@@ -48,7 +48,6 @@ let create_public_info g_state : public_info =
 
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
   let input = get_input [""] [""] in
   match (process_input input) with
   | Some Enter -> ()
@@ -191,7 +190,6 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
   let defaults =
     match s_state with
     | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"],
@@ -225,7 +223,6 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
   let auto_complete_info =
     (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @
     ["UP";"DOWN";"SWITCH"],
@@ -233,22 +230,24 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
 
+  let switch_if_real_pocamon p = 
+    try let p' = List.find (fun (poca:pocamon) -> poca.name = p) 
+                 p_state.pocamon_list in 
+        fst (switch_pocamon p' p_state g_state true)
+    with Not_found -> choose_new_pocamon g_state p_state s_state in 
+
+
   match (process_input input) with
-  | Some Action (Switch p) ->
-    let poca_option = try Some (List.find (fun (poca:pocamon) -> poca.name = p)
-      p_state.pocamon_list) with _ -> None in
-    begin match poca_option with
-    | Some poca -> fst (switch_pocamon poca p_state g_state true)
-    | None -> choose_new_pocamon g_state p_state s_state end
+  | Some Action (Switch p) -> switch_if_real_pocamon p 
   | Some Up -> choose_new_pocamon g_state p_state
-            (Pocamon_List (if n > 0 then n - 1 else 0))
+               (Pocamon_List (if n > 0 then n - 1 else 0))
   | Some Down -> choose_new_pocamon g_state p_state
-              (Pocamon_List (if n < 1 then n + 1 else 1))
+                 (Pocamon_List (if n < 1 then n + 1 else 1))
   | _ -> choose_new_pocamon g_state p_state s_state
 
 let game_over g_state winner : game_state =
   let end_message = Talking (winner.name ^ " has won!") in
-  let () = wait_for_enter g_state winner end_message in
+  wait_for_enter g_state winner end_message;
   exit 0
 
 let on_faint g_state : game_state =
