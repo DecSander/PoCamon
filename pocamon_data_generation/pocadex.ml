@@ -1092,7 +1092,6 @@ ascii="        OZN      8=I
                                
                                "} dexmap
 
-
 let dexmap = PokeDex.add "KOFFING" {
 name="KOFFING"; 
 learnable_moves=["FIRE BLAST";"SELFDESTRUCT";"THUNDER";"SLUDGE BOMB";"SLUDGE";"TACKLE";"POISON GAS";"THUNDERBOLT";"EXPLOSION";"TOXIC";"ZAP CANNON";"SMOG";"FLAMETHROWER";];
