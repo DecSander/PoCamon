@@ -72,16 +72,13 @@ let gen_next_state (trainer_list: trainer list) initial_state
   }
 
 let is_human = function
-  | Human -> true
-  | _ -> false
+  | Human -> true | _ -> false
 
 let is_elite = function
-  | Elite -> true
-  | _ -> false
+  | Elite -> true | _ -> false
 
 let is_rival = function
-  | Rival -> true
-  | _ -> false
+  | Rival -> true | _ -> false
 
 let gen_initial_state () : game_state =
     (* Must request players name and whether to play against a computer *)
@@ -223,16 +220,11 @@ let check_faint trainer_list initial_state g_state : game_state =
           fst (switch_pocamon new_poca g_state.player_two g_state true)
       else
         if not (is_human g_state.player_two.is_computer)
-        then
-        let rst = (match trainer_list with
-        | [] ->
-          wait_for_enter g_state g_state.player_one (Talking ("You won!"));
-          exit 0
-        | h::t ->
-          wait_for_enter g_state (g_state.player_one)
-            (Talking h.end_text); t) in
-        gen_next_state rst initial_state g_state
-        else game_over g_state g_state.player_one
+        then  let rst = match trainer_list with
+                | [] -> wfe1 "You won!"; exit 0
+                | h::t -> wfe1 h.end_text; t in
+              gen_next_state rst initial_state g_state
+        else  game_over g_state g_state.player_one
   else
     g_state
 
@@ -259,7 +251,6 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | ESuper ->  wfe "It's super effective!"
     | ENotVery -> wfe "It's not very effective..."
     | EImmune -> wfe ("It doesn't affect enemy "^ (oap "")) in
-
 
   let print_status_change = function
       | true, SPoison ->  wfe (ouser ("'s "^oap " became poisoned!"))
@@ -395,11 +386,9 @@ let start_from_state trainer_list g_state : unit =
 let start () =
   let start_state = gen_initial_state () in
   let trainer_list = trainers in
-  let () =
-  if (is_elite start_state.player_two.is_computer) then
-  wait_for_enter start_state start_state.player_one
-    (Talking (List.hd trainer_list).start_text)
-  else () in
+  if (is_elite start_state.player_two.is_computer) 
+  then wait_for_enter start_state start_state.player_one
+       (Talking (List.hd trainer_list).start_text);
   start_from_state trainer_list start_state
 
 let _ = start ()
