@@ -31,3 +31,9 @@ val print_size_screen : unit -> unit
  * [words] and is shown defaults [defaults]
  * Preconditon: [defaults] is not empty *)
 val get_input : string list -> string list -> string
+
+val create_public_info: game_state -> public_info 
+
+val get_against_ai: unit -> ai 
+
+val wait_for_enter: game_state -> player_state -> screen_state -> unit
