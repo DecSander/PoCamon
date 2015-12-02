@@ -362,12 +362,13 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             | MNormal, _ -> def_poca.status, false
             | MFreeze, SFreeze _ -> def_poca.status, false
             | MSleep, SSleep _ -> def_poca.status, false
-            | _ ->
+            | _, SNormal ->
               if (mStatus_to_pStatus move.status_effect) <> def_poca.status then
                 (mStatus_to_pStatus move.status_effect), true
               else
                 def_poca.status, false
-              end
+            | _ -> def_poca.status, false
+            end
             else def_poca.status, false in
 
           let def_poca' =
