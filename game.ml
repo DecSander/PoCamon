@@ -180,15 +180,15 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
 
-  let switch_if_real_pocamon p = 
-    try let p' = List.find (fun (poca:pocamon) -> poca.name = p) 
-                 p_state.pocamon_list in 
+  let switch_if_real_pocamon p =
+    try let p' = List.find (fun (poca:pocamon) -> poca.name = p)
+                 p_state.pocamon_list in
         fst (switch_pocamon p' p_state g_state true)
-    with Not_found -> choose_new_pocamon g_state p_state s_state in 
+    with Not_found -> choose_new_pocamon g_state p_state s_state in
 
 
   match (process_input input) with
-  | Some Action (Switch p) -> switch_if_real_pocamon p 
+  | Some Action (Switch p) -> switch_if_real_pocamon p
   | Some Up -> choose_new_pocamon g_state p_state
                (Pocamon_List (if n > 0 then n - 1 else 0))
   | Some Down -> choose_new_pocamon g_state p_state
@@ -213,20 +213,20 @@ let check_faint g_state : game_state =
 
   if  pocamon_health1 <= 0 then
       let () = wfe1 (ap " fainted!") in
-      if   number_of_pocamon1 > 0 
+      if   number_of_pocamon1 > 0
       then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
       else game_over g_state g_state.player_two
-  
+
   else if pocamon_health2 <= 0 then
       let () = wfe2 (oap " fainted!") in
       if   number_of_pocamon2 > 0 then
-        if is_human g_state.player_two.is_computer 
+        if is_human g_state.player_two.is_computer
         then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
-        else let new_poca = 
+        else let new_poca =
           get_switch_poca g_state.player_one g_state.player_two false g_state in
           fst (switch_pocamon new_poca g_state.player_two g_state true)
       else
-        if not (is_human g_state.player_two.is_computer) 
+        if not (is_human g_state.player_two.is_computer)
         then gen_next_state initial g_state
         else game_over g_state g_state.player_one
   else
@@ -247,25 +247,26 @@ let print_result action g_state p_state m_status opp_p_state : unit =
   let health = opp_p_state.active_pocamon.health in 
 
   let print_if_healed b = if b then wfe (ap " became healthy!") in
-  
+
   let print_attack move = wfe (user ("'s "^ap(" used "^move))) in
 
-  let print_status_change = function
-    | true, SPoison ->  wfe (ouser ("'s "^oap " became poisoned!"))
-    | true, SBurn ->  wfe (ouser ("'s "^oap " was burned!"))
-    | true, SSleep _ ->  wfe (ouser ("'s "^oap " fell asleep!"))
-    | true, SParalyze ->  wfe (ouser ("'s "^oap " became paralyzed!"))
-    | true, SFreeze _ ->  wfe (ouser ("'s "^oap " became frozen!"))
-    | true, SNormal -> ()
-    | false, _ -> () in
-
   let print_effectiveness = function
-    | ENormal -> () 
+    | ENormal -> ()
     | ESuper ->  wfe "It's super effective!"
     | ENotVery -> wfe "It's not very effective..."
     | EImmune -> wfe ("It doesn't affect enemy "^ (oap "")) in
 
-  let print_effect = function 
+
+  let print_status_change = function
+      | true, SPoison ->  wfe (ouser ("'s "^oap " became poisoned!"))
+      | true, SBurn ->  wfe (ouser ("'s "^oap " was burned!"))
+      | true, SSleep _ ->  wfe (ouser ("'s "^oap " fell asleep!"))
+      | true, SParalyze ->  wfe (ouser ("'s "^oap " became paralyzed!"))
+      | true, SFreeze _ ->  wfe (ouser ("'s "^oap " became frozen!"))
+      | true, SNormal -> wfe (ouser ("'s "^oap " is healthy again!"))(*This should never happen *)
+      | false, _ -> () in
+
+  let print_effect = function
     | MNone | MExplode | MCharge | MChargeNoHit | MPriorityHit -> ()
     | MRecover -> wfe (ap " recovered health!")
     | MRecoil -> wfe (ap " is hit with recoil!")
@@ -279,14 +280,14 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | MDefense (-2) -> wfe (oap "'s defense sharply fell!")
     | MSpecDefense 1 -> wfe (ap "'s special defense rose!")
     | MSpecDefense 2 -> wfe (ap "'s special defense sharply rose!")
-    | MSpecDefense (-1) -> wfe (oap "'s special defense fell!") 
+    | MSpecDefense (-1) -> wfe (oap "'s special defense fell!")
     | MSpecDefense (-2) -> wfe (oap "'s special defense sharply fell!")
     | MSpecAttack 1 -> wfe (ap "'s special attack rose!")
     | MSpecAttack 2 -> wfe (ap  "'s special attack sharply rose!")
     | MSpecAttack (-1) -> wfe (ap "'s special attack fell!")
     | MSpecAttack (-2) -> wfe (oap  "'s special attack sharply fell!")
     | MSpeed 1 -> wfe (ap "'s speed rose!")
-    | MSpeed 2 -> wfe (ap "'s speed sharply rose!") 
+    | MSpeed 2 -> wfe (ap "'s speed sharply rose!")
     | MSpeed (-1) -> wfe (oap "'s speed fell!")
     | MSpeed (-2) -> wfe (oap "'s speed sharply fell!")
     | MAllStatsUp -> wfe (ap "'s stats rose!")
@@ -294,17 +295,19 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | Mohko -> wfe "It's a one hit KO!"
     | _ -> failwith "Stat changes must be nonzero and  between -2 and 2" in
 
-  let print_attack_sequence (a: attack_status) (poca_move: Types.move) = 
+  let print_attack_sequence (a: attack_status) (poca_move: Types.move) =
     match snd a.self_status_change with
      | SSleep _ -> wfe (ap " is asleep !")
      | SFreeze _ -> wfe (ap " is frozen!")
      | SParalyze -> wfe (ap " is paralyzed! It can't move!")
-     | _ ->  print_if_healed (fst a.self_status_change);
-             print_attack poca_move.name;
-             if a.missed then wfe "The attack missed!" 
-             else print_effectiveness a.atk_eff;
-                  if health <= 0 then print_status_change a.opp_status_change;
-                  (print_effect a.spec_eff) in
+     | _ ->  
+       print_if_healed (fst a.self_status_change);
+       print_attack poca_move.name;
+       if a.missed 
+       then wfe "The attack missed!"
+       else print_effectiveness a.atk_eff;
+            if health <= 0 then print_status_change a.opp_status_change;
+            print_effect a.spec_eff in
 
   match m_status, action with
   | Charge_Status m, _ -> wfe (ap (" is charging "^m.name^"!"))

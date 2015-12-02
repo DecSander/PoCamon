@@ -17,9 +17,6 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
 
 PoCamon Instructions
 
-To run PoCamon, enter the following command into terminal:
-sh run.sh
-
 Alternatively, you may compile and run the game yourself by:
 cs3110 compile -p str game.ml
 cs3110 run game.ml
@@ -27,8 +24,11 @@ cs3110 run game.ml
 How To Play
 
 To play the game, resize your window, select if you want to play
-a human or against the AI (Rival). The AI will start a series of battles
-against the Elite 7 CS Professors.
+a human, your rival, or the Elite 7. Playing against a human will allow two
+people to control individual players. Playing your rival will start a single
+battle against a single AI-controlled opponent. Playing the Elite 7 will give
+you a single team you will need to use to defeat 7 players consecutively (health
+will restore between battles)
 
 The game has tab completion and takes into account aspects of the original
 pokemon including super effectivenes, status effects, pocamon stats charging
@@ -37,4 +37,34 @@ moves, and many more.
 On any turn, you can use your current pocamon's move by going into Fight
 and using the move. Alternatively, you can switch pocamon by going into
 PoCamon and switching pocamon. You can also check your Bag at any time
-to see if there's anything in there or try to Run.
+to see if there's anything in there or try to Run. The goal of the game
+is to reduce all of your opponent's pocamon to 0 health.
+
+Different moves do different things - some affect the stats of your own pocamon
+or your opponents, lowering or increasing speed, defense, special defense,
+attack, or special attack. Some inflict straight damage. Some inflict a status
+condition on the opponent - causing him to be unable to move, to lose health
+each turn, or other, special effects! Experiment and find what works! (Or cheat
+and look at pocadex.ml to see what each move does)
+
+
+
+CREDITS:
+
+ASCII Art generated using: http://www.glassgiant.com/ascii/
+
+Pokemon sprites from: http://www.pokemondb.net
+
+Splash screen from: http://ascii.co.uk/art/pokemon
+
+Terminal autocorrect setup script from: Niki Yoshiuchi at
+  http://stackoverflow.com/questions/4130048/recognizing-arrow-keys-with-stdin
+
+Move and pokemon data retrieved from:
+  https://github.com/pret/pokered
+  https://github.com/pret/pokecrystal
+
+Much information about game mechanics from:
+  http://bulbapedia.bulbagarden.net
+  http://pokemon.wikia.com
+
