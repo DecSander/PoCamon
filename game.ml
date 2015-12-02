@@ -311,7 +311,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
        if a.missed
        then wfe "The attack missed!"
        else print_effectiveness a.atk_eff;
-            if health <= 0 then print_status_change a.opp_status_change;
+            if health > 0 then print_status_change a.opp_status_change;
             print_effect a.spec_eff in
 
   match m_status, action with
