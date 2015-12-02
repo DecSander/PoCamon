@@ -17,7 +17,7 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
 
 PoCamon Instructions
 
-Alternatively, you may compile and run the game yourself by:
+You can compile and run the game yourself by:
 cs3110 compile -p str game.ml
 cs3110 run game.ml
 
