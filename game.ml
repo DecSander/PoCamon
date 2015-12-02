@@ -386,9 +386,9 @@ let start_from_state trainer_list g_state : unit =
 let start () =
   let start_state = gen_initial_state () in
   let trainer_list = trainers in
-  if (is_elite start_state.player_two.is_computer) 
+  if (is_elite start_state.player_two.is_computer)
   then wait_for_enter start_state start_state.player_one
        (Talking (List.hd trainer_list).start_text);
   start_from_state trainer_list start_state
 
-let _ = start ()
+(*let _ = start ()*)
