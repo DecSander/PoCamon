@@ -14,49 +14,20 @@ let tackle = {
           effect = MNone
       }
 
-let attack_up = {
-          name = "ATTACK UP";
-          move_type = TNormal;
-          status_effect = MNormal;
-          status_probability = 100;
-          accuracy = 100;
-          damage = 0;
-          max_pp = 20;
-          pp = 20;
-          move_category = EPhysical;
-          effect = MAttack 1
-      }
-
-let speed_down = {
-          name = "SPEED DOWN";
-          move_type = TNormal;
-          status_effect = MNormal;
-          status_probability = 100;
-          accuracy = 100;
-          damage = 0;
-          max_pp = 20;
-          pp = 20;
-          move_category = EPhysical;
-          effect = MSpeed (-1)
-      }
-
-let priority_hit = {
-          name = "PRIORITY HIT";
-          move_type = TNormal;
-          status_effect = MNormal;
-          status_probability = 100;
-          accuracy = 100;
-          damage = 0;
-          max_pp = 20;
-          pp = 20;
-          move_category = EPhysical;
-          effect = MPriorityHit
-      }
+let dummy_move = {tackle with damage=0}
+let attack_up = {dummy_move with effect=MAttack 1}
+let speed_down = {dummy_move with effect=MSpeed (-1)}
+let priority_hit = {dummy_move with effect=MPriorityHit}
+let drain = {tackle with effect=MLeech}
+let explode = {tackle with effect=MExplode}
+let recover = {dummy_move with effect=MRecover}
+let charge_hit = {tackle with effect=MCharge}
+let charge_no_hit = {tackle with effect=MChargeNoHit}
 
 let poca1 = {
       name = "p1 poca one";
       status = SNormal;
-      moves = [tackle;tackle;tackle;tackle];
+      moves = [tackle;tackle;tackle;dummy_move];
       poca_type = TFire, TGrass;
       health = 200;
       stats =
@@ -88,7 +59,11 @@ let poca4 = {poca1 with name="p2 poca two"}
 let asleep_poca1 = {poca1 with status=SSleep 4}
 let poisoned_poca1 = {poca1 with status=SPoison}
 let stat_changer_poca = {poca1 with moves=[attack_up;speed_down]}
-let priority_poca = {poca1 with moves=[priority_hit];stats={poca1.stats with speed=0}}
+let priority_poca = {poca1 with moves=[priority_hit];
+  stats={poca1.stats with speed=0}}
+let health_changer = {poca1 with moves=[explode;recover;drain]; health=100}
+let charger = {poca1 with moves=[charge_hit; charge_no_hit; dummy_move];
+                          stats={poca1.stats with speed=1000}}
 
 let simple_game =
 {
@@ -195,13 +170,12 @@ TEST "Test multi turn sleep with debuffs" = let sleep_game =
   | SSleep x -> false
   | _ -> true)
 
-
-TEST "Test attacks" =
-  let rec get_attack_status x =
+let rec get_attack_status x =
     match x with
     | Attack_Status a -> a
-    | _ -> failwith "Error - wrong type" in
+    | _ -> failwith "Error - wrong type"
 
+TEST "Test attacks" =
   let new_state, info = apply_fight_sequence simple_game (FMove tackle) (FMove tackle) in
   let new_state', info' = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
   (if (get_attack_status info.p1_move_status).missed then
@@ -240,11 +214,11 @@ TEST "Test stat change moves" =
     {simple_game with player_one=
       {simple_game.player_one with active_pocamon=stat_changer_poca}} in
 
-  let use_attack_up = fun s -> apply_fight_sequence s (FMove attack_up) (FMove tackle) in
+  let use_attack_up = fun s -> apply_fight_sequence s (FMove attack_up) (FMove dummy_move) in
   let used_attack_up_once = fight_x_times 1 stat_change_state use_attack_up in
   let used_attack_up_a_lot = fight_x_times 10 stat_change_state use_attack_up in
 
-  let use_speed_down = fun s -> apply_fight_sequence s (FMove speed_down) (FMove tackle) in
+  let use_speed_down = fun s -> apply_fight_sequence s (FMove speed_down) (FMove dummy_move) in
   let used_speed_down_once = fight_x_times 1 stat_change_state use_speed_down in
   let used_speed_down_a_lot = fight_x_times 10 stat_change_state use_speed_down in
 
@@ -257,5 +231,49 @@ TEST "Test stat change moves" =
 TEST "test MPriorityHit" =
   let priority_game = {simple_game with player_one=
       {simple_game.player_one with active_pocamon=priority_poca}} in
-  let _, info = apply_fight_sequence priority_game (FMove priority_hit) (FMove tackle) in
+  let _, info = apply_fight_sequence priority_game (FMove priority_hit) (FMove dummy_move) in
   info.p1_went_first
+
+TEST "Test health-effecting effects" =
+  let health_game = {simple_game with player_one={
+    simple_game.player_one with active_pocamon=health_changer}} in
+
+  let used_recover, _ = apply_fight_sequence health_game
+    (FMove recover) (FMove dummy_move) in
+  let used_explode, _ = apply_fight_sequence health_game
+    (FMove explode) (FMove dummy_move) in
+  let used_drain, _ = apply_fight_sequence health_game
+    (FMove drain) (FMove dummy_move) in
+
+  (used_recover.player_one.active_pocamon.health > 100) &&
+  (used_explode.player_one.active_pocamon.health = 0) &&
+  (used_explode.player_two.active_pocamon.health < 200) &&
+  (used_drain.player_one.active_pocamon.health > 100) &&
+  (used_drain.player_two.active_pocamon.health < 200)
+
+let charge_game = {simple_game with player_one={
+    simple_game.player_one with active_pocamon=health_changer}}
+
+let used_charge, _ = apply_fight_sequence charge_game
+    (FMove charge_hit) (FMove dummy_move)
+let charge_finished, _ = apply_fight_sequence used_charge
+    (FMove dummy_move) (FMove dummy_move)
+
+let used_charge_no_hit, _ = apply_fight_sequence charge_game
+    (FMove charge_no_hit) (FMove dummy_move)
+let charge_no_hit_finished, info = apply_fight_sequence used_charge_no_hit
+    (FMove dummy_move) (FMove dummy_move)
+
+TEST "charging field populated" = (used_charge.player_one.active_pocamon.charging <> None)
+  (not used_charge.player_one.active_pocamon.attack_immunity) &&
+  (used_charge.player_two.active_pocamon.health = 200) &&
+  (charge_finished.player_one.active_pocamon.charging = None) &&
+  (charge_finished.player_two.active_pocamon.health < 200) &&
+
+  (used_charge_no_hit.player_one.active_pocamon.charging <> None) &&
+  (used_charge_no_hit.player_one.active_pocamon.attack_immunity) &&
+  (used_charge_no_hit.player_two.active_pocamon.health = 200) &&
+  (charge_no_hit_finished.player_one.active_pocamon.charging = None) &&
+  (not charge_no_hit_finished.player_one.active_pocamon.attack_immunity) &&
+  (charge_no_hit_finished.player_two.active_pocamon.health < 200) &&
+  ((get_attack_status info.p2_move_status).missed)
