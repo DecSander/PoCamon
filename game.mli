@@ -17,7 +17,7 @@ val get_player_action : game_state -> player_state -> screen_state -> fAction
 *
 * Tail recursive
 *)
-val run_game_turn : game_state -> battle_status -> game_state
+val run_game_turn : trainer list -> game_state -> game_state -> battle_status -> game_state
 
 (*
 * Generates the initial state of the game using information from various text
@@ -34,6 +34,6 @@ val start : unit -> unit
 val process_screen_action : command option-> screen_state -> game_state -> screen_state
 
 (* Helper functions for unit tests. Uncomment to run tests *)
-val gen_next_state : game_state -> game_state -> game_state
+val gen_next_state : trainer list -> game_state -> game_state -> game_state
 val choose_new_pocamon : game_state -> player_state -> screen_state -> game_state
-val check_faint : game_state -> game_state
+val check_faint : trainer list -> game_state -> game_state -> game_state

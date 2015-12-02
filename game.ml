@@ -9,41 +9,40 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
   "Don't do drugs, kids";
   "Swig, swag, grab my bag... Or not"]
 
-let trainers = 
-  [|{start_text="sid_start"; name="sid"; end_text="sid_end";
-  pocamon_list=["PIKACHU"; "BULBASAUR"; 
+let trainers =
+  [{start_text="sid_start"; name="sid"; end_text="sid_end";
+  pocamon_list=["PIKACHU"; "BULBASAUR";
   "SLOWPOKE"; "SPEAROW"; "SHELLDER"; "KRABBY"]};
   {start_text="mike_start"; name="mike"; end_text="mike_end";
-  pocamon_list=["EXEGGUTOR"; "MAGNEMITE"; 
+  pocamon_list=["EXEGGUTOR"; "MAGNEMITE";
   "RHYDON"; "CLEFABLE"; "ARBOK"; "MR.MIME"]};
   {start_text="white_start"; name="white"; end_text="white_end";
-  pocamon_list=["GROWLITHE"; "GRIMER"; 
+  pocamon_list=["GROWLITHE"; "GRIMER";
   "PIDGEOT"; "DRAGONITE"; "CHARMELEON"; "KADABRA"]};
   {start_text="fan_start"; name="fan"; end_text="fan_end";
-  pocamon_list=["ODDISH"; "PSYDUCK"; 
+  pocamon_list=["ODDISH"; "PSYDUCK";
   "CHARIZARD"; "ONIX"; "BEEDRILL"; "ELECTRODE"]};
   {start_text="gries_start"; name="gries"; end_text="gries_end";
-  pocamon_list=["EEVEE"; "VILEPUME"; 
+  pocamon_list=["EEVEE"; "VILEPUME";
   "POLIWRATH"; "HAUNTER"; "NIDORINO"; "MACHOKE"]};
   {start_text="kleinberg_start"; name="kleinberg"; end_text="kleinberg_end";
-  pocamon_list=["CUBONE"; "MAGNETON"; 
+  pocamon_list=["CUBONE"; "MAGNETON";
   "KOFFING"; "GASTLY"; "PARAS"; "VENOMOTH"]};
   {start_text="clarkson_start"; name="clarkson"; end_text="clarkson_end";
-  pocamon_list=["TANGELA"; "TENTACRUEL"; 
-  "MANKEY"; "GOLEM"; "MEWTWO"; "DRAGONAIR"]}|]
+  pocamon_list=["TANGELA"; "TENTACRUEL";
+  "MANKEY"; "GOLEM"; "MEWTWO"; "DRAGONAIR"]}]
 
 let current_trainer = ref 0
 
-let gen_next_state initial_state g_state : game_state =
-  if !current_trainer = 6 then
+let gen_next_state (trainer_list: trainer list) initial_state
+                      g_state :game_state =
+  let trainer = (match trainer_list with
+  | [] ->
     let () = wait_for_enter g_state g_state.player_one (Talking ("You won!")) in
     exit 0
-  else
-  wait_for_enter g_state (g_state.player_one) (Talking (trainers.(!current_trainer).end_text));
-  (current_trainer := !current_trainer + 1);
+  | h::t -> h) in
   let player_one_name = g_state.player_one.name in
   let against_ai = Elite in
-  let trainer = trainers.(!current_trainer) in
   let player_two_name = trainer.name in
   let player_one_pocamon = initial_state.player_one.active_pocamon ::
                            initial_state.player_one.pocamon_list in
@@ -65,8 +64,7 @@ let gen_next_state initial_state g_state : game_state =
     pocamon_list = List.tl player_two_pocamon;
     is_computer = against_ai
   } in
-  wait_for_enter g_state (g_state.player_one)
-                (Talking (trainers.(!current_trainer).start_text));
+  wait_for_enter g_state (g_state.player_one) (Talking (trainer.start_text));
 
   {
     player_one = player_one_rec;
@@ -90,10 +88,10 @@ let gen_initial_state () : game_state =
     print_size_screen ();
     print_start "What is your name, player one?";
     print_string "\n|> ";
-    let player_one_name = readl io_channel in 
+    let player_one_name = readl io_channel in
     let against_ai = get_against_ai () in
     let player_two_name = if is_elite against_ai then
-        trainers.(!current_trainer).name
+        (List.hd trainers).name
       else if is_rival against_ai then
         (print_start "What is your rival's name?";
         print_string "\n|> ";
@@ -102,20 +100,20 @@ let gen_initial_state () : game_state =
         (print_start "What is your name, player two?";
         print_string "\n|> ";
         readl io_channel) in
-    
+
     let player_one_pocamon = (List.fold_left
       (fun a un -> (get_different_pocamon a)::a) [] [();();();();();()]) in
-    
+
     let player_two_pocamon =
       if is_elite against_ai
       then List.map (fun x -> get_pocamon_by_name x)
-                    trainers.(!current_trainer).pocamon_list
+                    (List.hd trainers).pocamon_list
       else List.fold_left
         (fun a un -> (get_different_pocamon a)::a) [] [();();();();();()] in
-   
+
     let player_one_active_pocamon = List.hd player_one_pocamon in
     let player_two_active_pocamon = List.hd player_two_pocamon in
-   
+
     let player_one_rec = {name = player_one_name;
                           active_pocamon = player_one_active_pocamon;
                           pocamon_list = List.tl player_one_pocamon;
@@ -127,8 +125,6 @@ let gen_initial_state () : game_state =
 
     { player_one = player_one_rec;
       player_two = player_two_rec; }
-
-let initial  =  gen_initial_state ()
 
 let process_screen_action comm s_state g_state : screen_state =
   match comm, s_state with
@@ -157,15 +153,15 @@ let rec get_player_action g_state p_state s_state : fAction =
         @ ["BACK";"UP";"DOWN";"SWITCH "],
         ["SWITCH <Pocamon>"; "UP"; "DOWN"; "BACK"]
     | Talking _ -> [""], [""] in
-  
+
   let input = get_input (fst defaults) (snd defaults) in
-    
+
   match process_input input, s_state with
   | Some Action (Move x), Moves ->
-     (try FMove (List.find (fun (m:move)->m.name=x) p_state.active_pocamon.moves)
+    (try FMove (List.find (fun (m:move)->m.name=x) p_state.active_pocamon.moves)
      with Not_found -> get_player_action g_state p_state s_state)
   | Some Action (Switch x), Pocamon_List _ ->
-     (try  FSwitch (List.find (fun (p:pocamon)->p.name = x) p_state.pocamon_list) 
+    (try  FSwitch (List.find (fun (p:pocamon)->p.name = x) p_state.pocamon_list)
      with Not_found -> get_player_action g_state p_state s_state)
   | c, _ -> get_player_action g_state p_state
       (process_screen_action c s_state g_state)
@@ -196,7 +192,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   | _ -> choose_new_pocamon g_state p_state s_state
 
 
-let check_faint g_state : game_state =
+let check_faint trainer_list initial_state g_state : game_state =
   let game_over g_state winner : game_state =
     let end_message = Talking (winner.name ^ " has won!") in
     wait_for_enter g_state winner end_message;
@@ -227,7 +223,15 @@ let check_faint g_state : game_state =
           fst (switch_pocamon new_poca g_state.player_two g_state true)
       else
         if not (is_human g_state.player_two.is_computer)
-        then gen_next_state initial g_state
+        then
+        let rst = (match trainer_list with
+        | [] ->
+          wait_for_enter g_state g_state.player_one (Talking ("You won!"));
+          exit 0
+        | h::t ->
+          wait_for_enter g_state (g_state.player_one)
+            (Talking h.end_text); t) in
+        gen_next_state rst initial_state g_state
         else game_over g_state g_state.player_one
   else
     g_state
@@ -244,7 +248,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
   (* other player/user *)
   let ouser s = opp_p_state.name ^ s in
 
-  let health = opp_p_state.active_pocamon.health in 
+  let health = opp_p_state.active_pocamon.health in
 
   let print_if_healed b = if b then wfe (ap " became healthy!") in
 
@@ -263,7 +267,8 @@ let print_result action g_state p_state m_status opp_p_state : unit =
       | true, SSleep _ ->  wfe (ouser ("'s "^oap " fell asleep!"))
       | true, SParalyze ->  wfe (ouser ("'s "^oap " became paralyzed!"))
       | true, SFreeze _ ->  wfe (ouser ("'s "^oap " became frozen!"))
-      | true, SNormal -> wfe (ouser ("'s "^oap " is healthy again!"))(*This should never happen *)
+      | true, SNormal -> wfe (ouser ("'s "^oap " is healthy again!"))
+                                            (*This should never happen *)
       | false, _ -> () in
 
   let print_effect = function
@@ -300,10 +305,10 @@ let print_result action g_state p_state m_status opp_p_state : unit =
      | SSleep _ -> wfe (ap " is asleep !")
      | SFreeze _ -> wfe (ap " is frozen!")
      | SParalyze -> wfe (ap " is paralyzed! It can't move!")
-     | _ ->  
+     | _ ->
        print_if_healed (fst a.self_status_change);
        print_attack poca_move.name;
-       if a.missed 
+       if a.missed
        then wfe "The attack missed!"
        else print_effectiveness a.atk_eff;
             if health <= 0 then print_status_change a.opp_status_change;
@@ -317,9 +322,9 @@ let print_result action g_state p_state m_status opp_p_state : unit =
   | Attack_Status a, FCharge poca_move -> print_attack_sequence a poca_move
   | _ -> failwith "Error: print_result did not find a match"
 
-let rec run_game_turn g_state b_status : game_state =
-  
-  let get_player_actions () = 
+let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
+
+  let get_player_actions () =
     let ap1 s = g_state.player_one.active_pocamon.name ^ s in
     let ap2 s = g_state.player_two.active_pocamon.name ^ s in
     let wfe1 s = wait_for_enter g_state g_state.player_one (Talking (ap1 s)) in
@@ -328,7 +333,7 @@ let rec run_game_turn g_state b_status : game_state =
       match g_state.player_one.active_pocamon.charging with
       | None -> get_player_action g_state g_state.player_one Out
       | Some m -> wfe1 "'s move is powering up!"; FCharge m in
-    
+
     let p2_action =
       match g_state.player_two.active_pocamon.charging with
       | None -> if not (is_human g_state.player_two.is_computer) then
@@ -337,38 +342,38 @@ let rec run_game_turn g_state b_status : game_state =
       | Some m -> wfe2 "'s move is powering up!"; FCharge m in
     apply_fight_sequence g_state p1_action p2_action, p1_action, p2_action in
 
-  let print_fight gs printfo p1_action p2_action = 
+  let print_fight gs printfo p1_action p2_action =
    let p1 = gs.player_one in
-   let p2 = gs.player_two in 
+   let p2 = gs.player_two in
    if printfo.p1_went_first then
       (print_result p1_action gs p1 printfo.p1_move_status p2;
        print_result p2_action gs p2 printfo.p2_move_status p1)
     else
      (print_result p2_action gs p2 printfo.p2_move_status p1;
-      print_result p1_action gs p1 printfo.p1_move_status p2) in 
-  
-  let print_debuffs debuff gs  = 
-    let print_debuff_info p_state a: unit = 
-      let wfe s = wait_for_enter gs p_state 
-         (Talking (p_state.active_pocamon.name ^ s)) in 
+      print_result p1_action gs p1 printfo.p1_move_status p2) in
+
+  let print_debuffs debuff gs  =
+    let print_debuff_info p_state a: unit =
+      let wfe s = wait_for_enter gs p_state
+         (Talking (p_state.active_pocamon.name ^ s)) in
       match a with
       | SPoison ->  wfe " was hurt by poison!"
       | SBurn -> wfe " was hurt by its burn!"
       | _ -> () in
 
     print_debuff_info gs.player_one debuff.p1_debuff;
-    print_debuff_info gs.player_two debuff.p2_debuff in 
+    print_debuff_info gs.player_two debuff.p2_debuff in
 
-  let (new_gs, printfo), p1a, p2a = get_player_actions () in 
-  let ()                          = print_fight new_gs printfo p1a p2a in 
-  let new_gs'                     = check_faint new_gs in
+  let (new_gs, printfo), p1a, p2a = get_player_actions () in
+  let ()                          = print_fight new_gs printfo p1a p2a in
+  let new_gs'                = check_faint trainer_list initial_state new_gs in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs                    = check_faint new_gs'' in
- 
-  run_game_turn final_gs printfo
+  let final_gs             = check_faint trainer_list initial_state new_gs'' in
 
-let start_from_state g_state : unit =
+  run_game_turn trainer_list initial_state final_gs printfo
+
+let start_from_state trainer_list g_state : unit =
   let () = Random.self_init () in
 
   let a_status1 = {
@@ -385,13 +390,16 @@ let start_from_state g_state : unit =
       p2_move_status = Attack_Status a_status1;
   } in
 
-  ignore (run_game_turn g_state b_status)
+  ignore (run_game_turn trainer_list g_state g_state b_status)
 
 let start () =
+  let start_state = gen_initial_state () in
+  let trainer_list = trainers in
   let () =
-  if (is_elite initial.player_two.is_computer) then
-  wait_for_enter initial initial.player_one (Talking trainers.(0).start_text)
+  if (is_elite start_state.player_two.is_computer) then
+  wait_for_enter start_state start_state.player_one
+    (Talking (List.hd trainer_list).start_text)
   else () in
-  start_from_state initial
+  start_from_state trainer_list start_state
 
 let _ = start ()
