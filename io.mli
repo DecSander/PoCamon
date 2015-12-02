@@ -7,6 +7,9 @@ type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
 type yn = Yes | No
 
+val io_channel : in_channel
+val readl : in_channel -> string
+
 (*
  * Takes a string and parses it using regex to return the command corresponding
  * to that string. If the parser is unable to determind the command, None is
@@ -28,9 +31,3 @@ val print_size_screen : unit -> unit
  * [words] and is shown defaults [defaults]
  * Preconditon: [defaults] is not empty *)
 val get_input : string list -> string list -> string
-
-(* Setup the terminal for nonconical input to use the autocorrect *)
-val setup : unit -> Unix.terminal_io
-
-(* Return the terminal back to its normal state *)
-val breakdown: Unix.terminal_io -> unit

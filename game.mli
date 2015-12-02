@@ -29,6 +29,11 @@ val gen_initial_state : unit -> game_state
 (*
 * Calls gen_initial_state then passes it into run_game_turn to start the game
 *)
-val start  : unit -> unit
+val start : unit -> unit
 
 val process_screen_action : command option-> screen_state -> game_state -> screen_state
+
+(* Helper functions for unit tests. Uncomment to run tests *)
+val gen_next_state : game_state -> game_state -> game_state
+val choose_new_pocamon : game_state -> player_state -> screen_state -> game_state
+val on_faint : game_state -> game_state

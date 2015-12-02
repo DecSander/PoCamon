@@ -50,3 +50,8 @@ val apply_fight_sequence : game_state -> fAction -> fAction ->
 
 
 val apply_status_debuffs : game_state -> game_state * debuff_state
+
+
+(* Helper functions for unit testing. Uncomment to run tests *)
+val calc_damage: pocamon -> poca_stats -> pocamon -> poca_stats ->
+                 move -> float * float
