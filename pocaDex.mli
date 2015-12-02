@@ -12,3 +12,5 @@ val get_random_pocamon: unit -> pocamon
 
 (* Returns the pocamon designated by name with randomized stats *)
 val get_pocamon_by_name: string -> pocamon 
+
+val get_different_pocamon: pocamon list -> pocamon
