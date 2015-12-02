@@ -29,10 +29,8 @@ let current_trainer = ref 0
 let rec get_new_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
   if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
-  then
-    new_poca
-  else
-    get_new_pocamon p_list
+  then new_poca
+  else get_new_pocamon p_list
 
 let create_public_info g_state : public_info =
   {
@@ -48,7 +46,6 @@ let create_public_info g_state : public_info =
 
 let rec wait_for_enter g_state p_state s_state : unit =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
   let input = get_input [""] [""] in
   match (process_input input) with
   | Some Enter -> ()
@@ -63,8 +60,6 @@ let gen_next_state initial_state g_state : game_state =
   wait_for_enter g_state (g_state.player_one) (Talking (trainers.(!current_trainer).end_text));
   (current_trainer := !current_trainer + 1);
   let player_one_name = g_state.player_one.name in
-  let tinfo = setup () in
-  breakdown tinfo;
   let against_ai = Elite in
   let trainer = trainers.(!current_trainer) in
   let player_two_name = trainer.name in
@@ -113,8 +108,7 @@ let gen_initial_state () : game_state =
   print_size_screen ();
   print_start "What is your name, player one?";
   print_string "|> ";
-  let player_one_name = read_line () in
-  let tinfo = setup () in
+  let player_one_name = readl io_channel in
   let rec get_against_ai () : ai =
     print_start "Would you like to play against your rival, or a human?";
     let input = String.uppercase
@@ -128,19 +122,17 @@ let gen_initial_state () : game_state =
       else
         get_against_ai () in
   let against_ai = get_against_ai () in
-  breakdown tinfo;
   let player_two_name = if is_elite against_ai then
       trainers.(!current_trainer).name
     else if is_rival against_ai then
       (print_start "What is your rival's name?";
       print_string "|> ";
-      read_line ())
+      readl io_channel)
     else
       (print_start "What is your name, player two?";
       print_string "|> ";
-      read_line ())
+      readl io_channel)
     in
-  let _ = setup () in
   let player_one_pocamon = (List.fold_left
     (fun acc un -> (get_new_pocamon acc)::acc) [] [();();();();();()]) in
   let player_two_pocamon =
@@ -191,7 +183,6 @@ let process_screen_action comm s_state g_state : screen_state =
 
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
   let defaults =
     match s_state with
     | Out -> ["FIGHT";"BAG";"POCAMON";"RUN"],
@@ -225,7 +216,6 @@ let rec get_player_action g_state p_state s_state : fAction =
 
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
-  let () = print_endline "" in
   let auto_complete_info =
     (List.map (fun (x:pocamon) -> "SWITCH " ^ x.name) p_state.pocamon_list) @
     ["UP";"DOWN";"SWITCH"],
@@ -233,175 +223,134 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   let input = get_input (fst auto_complete_info) (snd auto_complete_info) in
   let n = match s_state with Pocamon_List x -> x | _ -> -1 in
 
+  let switch_if_real_pocamon p =
+    try let p' = List.find (fun (poca:pocamon) -> poca.name = p)
+                 p_state.pocamon_list in
+        fst (switch_pocamon p' p_state g_state true)
+    with Not_found -> choose_new_pocamon g_state p_state s_state in
+
+
   match (process_input input) with
-  | Some Action (Switch p) ->
-    let poca_option = try Some (List.find (fun (poca:pocamon) -> poca.name = p)
-      p_state.pocamon_list) with _ -> None in
-    begin match poca_option with
-    | Some poca -> fst (switch_pocamon poca p_state g_state true)
-    | None -> choose_new_pocamon g_state p_state s_state end
+  | Some Action (Switch p) -> switch_if_real_pocamon p
   | Some Up -> choose_new_pocamon g_state p_state
-            (Pocamon_List (if n > 0 then n - 1 else 0))
+               (Pocamon_List (if n > 0 then n - 1 else 0))
   | Some Down -> choose_new_pocamon g_state p_state
-              (Pocamon_List (if n < 1 then n + 1 else 1))
+                 (Pocamon_List (if n < 1 then n + 1 else 1))
   | _ -> choose_new_pocamon g_state p_state s_state
 
 let game_over g_state winner : game_state =
   let end_message = Talking (winner.name ^ " has won!") in
-  let () = wait_for_enter g_state winner end_message in
+  wait_for_enter g_state winner end_message;
   exit 0
 
 let on_faint g_state : game_state =
-  let () = print_string "Player one remaining: " in
-  let () = print_int (List.length g_state.player_one.pocamon_list) in
-  let () = print_endline "" in
-  let () = print_string "Player two remaining: " in
-  let () = print_int (List.length g_state.player_two.pocamon_list) in
-  let () = print_endline "player one pocamon: " in
-  let _ = List.map (fun (x:pocamon) -> print_endline x.name) g_state.player_one.pocamon_list in
-  let () = print_endline "player two pocamon: " in
-  let _ = List.map (fun (x:pocamon) -> print_endline x.name) g_state.player_two.pocamon_list in
-  if g_state.player_one.active_pocamon.health <= 0 then
-      let () = wait_for_enter g_state g_state.player_one
-        (Talking (g_state.player_one.active_pocamon.name ^ " fainted!")) in
-        if List.length g_state.player_one.pocamon_list > 0 then
-          choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
-        else
-          game_over g_state g_state.player_two
-  else if g_state.player_two.active_pocamon.health <= 0 then
-      let () = wait_for_enter g_state g_state.player_two
-        (Talking (g_state.player_two.active_pocamon.name ^ " fainted!")) in
-        if List.length g_state.player_two.pocamon_list > 0 then
-          if is_human g_state.player_two.is_computer then
-              choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
-          else
-            let () = print_endline "getting AI pocamon" in
-            let new_poca = get_switch_poca g_state.player_one g_state.player_two false g_state in
-            let () = print_endline ("Switching to: " ^ new_poca.name) in
-            fst (switch_pocamon new_poca g_state.player_two g_state true)
-        else
-          if not (is_human g_state.player_two.is_computer) then gen_next_state initial g_state
-          else game_over g_state g_state.player_one
+  let wfe1 s = wait_for_enter g_state g_state.player_one (Talking s) in
+  let wfe2 s = wait_for_enter g_state g_state.player_two (Talking s) in
+  let ap s = g_state.player_one.active_pocamon.name ^ s in
+  let oap s = g_state.player_two.active_pocamon.name ^ s in
+  let pocamon_health1 = g_state.player_one.active_pocamon.health in
+  let number_of_pocamon1 = List.length g_state.player_one.pocamon_list in
+  let pocamon_health2 = g_state.player_two.active_pocamon.health in
+  let number_of_pocamon2 = List.length g_state.player_two.pocamon_list in
+
+  if  pocamon_health1 <= 0 then
+      let () = wfe1 (ap " fainted!") in
+      if   number_of_pocamon1 > 0
+      then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
+      else game_over g_state g_state.player_two
+
+  else if pocamon_health2 <= 0 then
+      let () = wfe2 (oap " fainted!") in
+      if   number_of_pocamon2 > 0 then
+        if is_human g_state.player_two.is_computer
+        then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
+        else let new_poca =
+          get_switch_poca g_state.player_one g_state.player_two false g_state in
+          fst (switch_pocamon new_poca g_state.player_two g_state true)
+      else
+        if not (is_human g_state.player_two.is_computer)
+        then gen_next_state initial g_state
+        else game_over g_state g_state.player_one
   else
     g_state
 
 let print_result action g_state p_state m_status opp_p_state : unit =
+  (* wait for enter *)
+  let wfe s = wait_for_enter g_state p_state (Talking s) in
+  (* active pocamon *)
+  let ap s = p_state.active_pocamon.name ^ s in
+  (* opponent's active pocamon *)
+  let oap s = opp_p_state.active_pocamon.name ^ s in
+  (* active player/user *)
+  let user s = p_state.name ^ s in
+
+  let print_if_healed b = if b then wfe (ap " became healthy!") in
+
+  let print_attack move = wfe (user ("'s "^ap(" used "^move))) in
+
+  let print_effectiveness = function
+    | ENormal -> ()
+    | ESuper ->  wfe "It's super effective!"
+    | ENotVery -> wfe "It's not very effective..."
+    | EImmune -> wfe ("It doesn't affect enemy "^ (oap "")) in
+
+  let print_status_change = function
+      | true, SPoison ->  wfe (user ("'s "^ap " became poisoned!"))
+      | true, SBurn ->  wfe (user ("'s "^ap " was burned!"))
+      | true, SSleep _ ->  wfe (user ("'s "^ap " fell asleep!"))
+      | true, SParalyze ->  wfe (user ("'s "^ap " became paralyzed!"))
+      | true, SFreeze _ ->  wfe (user ("'s "^ap " became frozen!"))
+      | true, SNormal -> wfe (user ("'s "^ap " is healthy again!"))(*This should never happen *)
+      | false, _ -> () in
+
+  let print_effect = function
+    | MNone | MExplode | MCharge | MChargeNoHit | MPriorityHit -> ()
+    | MRecover -> wfe (ap " recovered health!")
+    | MRecoil -> wfe (ap " is hit with recoil!")
+    | MAttack 1 -> wfe (ap  "'s attack rose!")
+    | MAttack 2 -> wfe (ap  "'s attack sharply rose!")
+    | MAttack (-1) -> wfe (oap "'s attack fell!")
+    | MAttack (-2) -> wfe (oap "'s attack sharply fell!")
+    | MDefense 1 -> wfe (ap "'s defense rose!")
+    | MDefense 2 -> wfe (ap "'s defense sharply rose!")
+    | MDefense (-1) -> wfe (ap "'s defense fell!")
+    | MDefense (-2) -> wfe (oap "'s defense sharply fell!")
+    | MSpecDefense 1 -> wfe (ap "'s special defense rose!")
+    | MSpecDefense 2 -> wfe (ap "'s special defense sharply rose!")
+    | MSpecDefense (-1) -> wfe (oap "'s special defense fell!")
+    | MSpecDefense (-2) -> wfe (oap "'s special defense sharply fell!")
+    | MSpecAttack 1 -> wfe (ap "'s special attack rose!")
+    | MSpecAttack 2 -> wfe (ap  "'s special attack sharply rose!")
+    | MSpecAttack (-1) -> wfe (ap "'s special attack fell!")
+    | MSpecAttack (-2) -> wfe (oap  "'s special attack sharply fell!")
+    | MSpeed 1 -> wfe (ap "'s speed rose!")
+    | MSpeed 2 -> wfe (ap "'s speed sharply rose!")
+    | MSpeed (-1) -> wfe (oap "'s speed fell!")
+    | MSpeed (-2) -> wfe (oap "'s speed sharply fell!")
+    | MAllStatsUp -> wfe (ap "'s stats rose!")
+    | MLeech -> wfe (ap (" drained " ^ oap (" 's health!")))
+    | Mohko -> wfe "It's a one hit KO!"
+    | _ -> failwith "Stat changes must be nonzero and  between -2 and 2" in
+
+  let print_attack_sequence (a: attack_status) (poca_move: Types.move) =
+    match snd a.self_status_change with
+     | SSleep _ -> wfe (ap " is asleep !")
+     | SFreeze _ -> wfe (ap " is frozen!")
+     | SParalyze -> wfe (ap " is paralyzed! It can't move!")
+     | _ ->  print_if_healed (fst a.self_status_change);
+             print_attack poca_move.name;
+             if a.missed then wfe "The attack missed!"
+             else let () = print_effectiveness a.atk_eff in
+                  let () = print_status_change a.opp_status_change in
+                  let () = print_effect a.spec_eff in () in
+
   match m_status, action with
-  | Charge_Status m, _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is charging " ^ m.name ^ "!"))
-  | Switch_Status, _ ->
-    let screen_message = Talking (p_state.name ^
-      " switched to " ^
-      p_state.active_pocamon.name) in
-    wait_for_enter g_state p_state screen_message
-  | Attack_Status a, FMove poca_move | Attack_Status a, FCharge poca_move ->
-
-    let () = (if fst a.self_status_change then
-      wait_for_enter g_state p_state
-        (Talking (p_state.active_pocamon.name ^ " became healthy!"))
-      else ()) in
-
-    begin match snd a.self_status_change with
-    | SSleep _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is asleep!"))
-    | SFreeze _ -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is frozen!"))
-    | SParalyze -> wait_for_enter g_state p_state
-      (Talking (p_state.active_pocamon.name ^ " is paralyzed! It can't move!"))
-    | _ ->
-      (let poca_used_move = Talking (p_state.name ^ "'s " ^
-        p_state.active_pocamon.name ^ " used " ^ poca_move.name) in
-
-      let () = wait_for_enter g_state p_state poca_used_move in
-      if not a.missed then
-        let () = if (match a.atk_eff with ENormal -> false | _ -> true) then
-          let eff =
-            match a.atk_eff with
-            | ESuper -> "It's super effective!"
-            | ENotVery -> "It's not very effective..."
-            | EImmune ->
-              "It doesn't affect enemy " ^ opp_p_state.active_pocamon.name
-            | _ -> "It's normal effective" (* should never happen *) in
-          wait_for_enter g_state p_state (Talking eff)
-        else
-          () in
-
-        let () = (if fst a.opp_status_change then
-          let change_string = opp_p_state.name ^ "'s " ^
-          opp_p_state.active_pocamon.name ^
-            (match snd a.opp_status_change with
-            | SNormal -> " is healthy again!" (*This should never happen *)
-            | SPoison -> " became poisoned!"
-            | SBurn -> " was burned!"
-            | SSleep _ -> " fell asleep!"
-            | SParalyze -> " became paralyzed!"
-            | SFreeze _ -> " became frozen!") in
-          wait_for_enter g_state p_state
-            (Talking change_string) else ()) in
-
-        match a.spec_eff with
-        | MNone | MExplode | MCharge | MChargeNoHit | MPriorityHit -> ()
-        | MRecover | MRecoil | MAttack _ | MDefense _ | MSpecAttack _
-        | MSpecDefense _ | MSpeed _ | MAllStatsUp ->
-          wait_for_enter g_state p_state (Talking (
-            (begin match a.spec_eff with
-            | MRecover -> p_state.active_pocamon.name ^ " recovered health!"
-            | MRecoil -> p_state.active_pocamon.name ^ " is hit with recoil!"
-            | MAttack 1 -> p_state.active_pocamon.name ^ "'s attack rose!"
-            | MAttack 2 ->
-              p_state.active_pocamon.name ^ "'s attack sharply rose!"
-            | MAttack (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s attack fell!"
-            | MAttack (-2) ->
-              opp_p_state.active_pocamon.name ^ "'s attack sharply fell!"
-            | MDefense 1 -> p_state.active_pocamon.name ^ "'s defense rose!"
-            | MDefense 2 ->
-              p_state.active_pocamon.name ^ "'s defense sharply rose!"
-            | MDefense (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s defense fell!"
-            | MDefense (-2) ->
-              opp_p_state.active_pocamon.name ^ "'s defense sharply fell!"
-            | MSpecDefense 1 ->
-              p_state.active_pocamon.name ^ "'s special defense rose!"
-            | MSpecDefense 2 ->
-              p_state.active_pocamon.name ^ "'s special defense sharply rose!"
-            | MSpecDefense (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s special defense fell!"
-            | MSpecDefense (-2) ->
-              opp_p_state.active_pocamon.name ^
-              "'s special defense sharply fell!"
-            | MSpecAttack 1 ->
-              p_state.active_pocamon.name ^ "'s special attack rose!"
-            | MSpecAttack 2 ->
-              p_state.active_pocamon.name ^ "'s special attack sharply rose!"
-            | MSpecAttack (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s special attack fell!"
-            | MSpecAttack (-2) ->
-              opp_p_state.active_pocamon.name ^
-              "'s special attack sharply fell!"
-            | MSpeed 1 -> p_state.active_pocamon.name ^ "'s speed rose!"
-            | MSpeed 2 ->
-              p_state.active_pocamon.name ^ "'s speed sharply rose!"
-            | MSpeed (-1) ->
-              opp_p_state.active_pocamon.name ^ "'s speed fell!"
-            | MSpeed (-2) ->
-              opp_p_state.active_pocamon.name ^ "'s speed sharply fell!"
-            | MAllStatsUp -> p_state.active_pocamon.name ^ "'s stats rose!"
-            | _ -> failwith "Stat changes must be nonzero and  between -2 and 2"
-            end )))
-
-        | MLeech -> wait_for_enter g_state p_state (Talking (
-            p_state.active_pocamon.name ^ " drained " ^
-            opp_p_state.active_pocamon.name ^ " 's health!"))
-        | Mohko -> wait_for_enter g_state p_state (Talking (
-            "It's a one hit KO!"))
-
-      else
-        wait_for_enter g_state p_state (Talking ("The attack missed!")))
-    end
-
+  | Charge_Status m, _ -> wfe (ap (" is charging "^m.name^"!"))
+  | Switch_Status, _ -> wfe (user (" switched to "^(ap "")))
   | Faint_Status, _ -> ()
-  | _ -> failwith "This should never happen (famous last words)"
+  | Attack_Status a, FMove poca_move
+  | Attack_Status a, FCharge poca_move -> print_attack_sequence a poca_move
+  | _ -> failwith "Error: print_result did not find a match"
 
 let print_debuff_info g_state p_state p_debuff : unit =
     match p_debuff with
