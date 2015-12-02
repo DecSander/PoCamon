@@ -3446,3 +3446,8 @@ let get_random_pocamon () : pocamon =
     attack_immunity = false;
 	  ascii = dexmon.ascii;  }
 
+let rec get_different_pocamon p_list : pocamon =
+  let new_poca = get_random_pocamon () in
+  if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
+  then new_poca
+  else get_different_pocamon p_list
