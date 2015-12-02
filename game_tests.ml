@@ -16,5 +16,3 @@ TEST "test gen_initial_state" =
   not (List.mem false (List.fold_left (fun acc (x:game_state) ->
     (has_no_duplicates(x.player_one.pocamon_list)) ::
     (has_no_duplicates(x.player_two.pocamon_list)) :: acc) [] states))
-
-

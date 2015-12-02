@@ -7,8 +7,11 @@ type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
 type yn = Yes | No
 
-(*let io_channel = open_in "test_inputs.txt"*)
-let io_channel = Pervasives.stdin
+(*let out_channel = Pervasives.stdout
+let io_channel = Pervasives.stdin*)
+let out_channel = open_out "/dev/null"
+let io_channel = open_in "test_inputs.txt"
+let prints s = output_string out_channel s
 let readl io = flush stdout; input_line stdin
 
 let match_phrase (str: bytes) (regex: bytes) :bool =
@@ -213,7 +216,7 @@ let print_screen_debug ps pi ss =
 
 let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
-  print_string str
+  prints str
 
 let ascii_pokeball = " \027[34m
 
@@ -264,12 +267,12 @@ let size_screen = "
 |.                                                                            .|
 "
 let print_size_screen () =
-  print_string size_screen;
+  prints size_screen;
   let _ = readl io_channel in ()
 
 
 let print_start s =
-  print_string (ascii_pokeball ^ star_bar ^ "\n" ^
+  prints (ascii_pokeball ^ star_bar ^ "\n" ^
                 (string_to_box s))
 
 
@@ -329,8 +332,8 @@ let find_matches words acc =
   List.sort (fun v1 v2 -> String.compare v1 v2) matches
 
 let print_text s : unit=
-   print_string ("\r"^(Bytes.make (70) ' '));
-   print_string("\r|>"^(s));
+   prints ("\r"^(Bytes.make (70) ' '));
+   prints("\r|>"^(s));
    flush Pervasives.stdout
 
 
@@ -356,8 +359,8 @@ let get_input (words: string list) (defaults: string list) =
          let w = get_word acc in
          let completed_word = w^
          (String.sub h (String.length w) (String.length h - String.length w)) in
-         print_string ("\r"^(Bytes.make (70) ' '));
-         print_string ("\027[97m\r|> \027[32m"^(completed_word));
+         prints ("\r"^(Bytes.make (70) ' '));
+         prints ("\027[97m\r|> \027[32m"^(completed_word));
          flush Pervasives.stdout;
          let c = really_input_string io_channel 1 in
          go ([h]@[c]) in
@@ -369,24 +372,24 @@ let get_input (words: string list) (defaults: string list) =
           print_text (get_word newl);
           go newl
       | h::t -> let w = get_word acc in
-          print_string ("\r"^(Bytes.make (70) ' '));
-          print_string ("\r\027[97m   "^h);
-          print_string ("\r|> \027[32m"^w);
+          prints ("\r"^(Bytes.make (70) ' '));
+          prints ("\r\027[97m   "^h);
+          prints ("\r|> \027[32m"^w);
           flush Pervasives.stdout;
           go (acc@[really_input_string io_channel 1]) in
 
     let handle_defaults () =
-      print_string ("\r"^(Bytes.make (70) ' '));
-      print_string ("\r\027[97m   ");
-      print_string (List.hd defaults);
-      List.iter (fun s -> print_string (" | "^s)) (List.tl defaults);
-      print_string ("\r|> ");
+      prints ("\r"^(Bytes.make (70) ' '));
+      prints ("\r\027[97m   ");
+      prints (List.hd defaults);
+      List.iter (fun s -> prints (" | "^s)) (List.tl defaults);
+      prints ("\r|> ");
       flush Pervasives.stdout;
       go (acc@[really_input_string io_channel 1]) in
 
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
-    | _, _, true, _ -> print_string ("\027[97m "); breakdown tinfo; get_word acc
+    | _, _, true, _ -> prints ("\027[97m "); breakdown tinfo; get_word acc
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
