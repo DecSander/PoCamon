@@ -115,7 +115,7 @@ with open("pocadex.ml", 'w') as f:
     f.write('let dexmap = PokeDex.empty\n')
     for pocamon in data.keys():
         if pocamon == "ditto": continue
-        lst = ["IRON TAIL", "THIEF", "STEEL WING", "TR MORNDAY", "TR NITE", 'CURSE',  "FAINT ATTACK", "FIRE STONE", "BELLY DRUM", "PSYCHIC"]
+        lst = ["IRON TAIL", "THIEF", "STEEL WING", "TR MORNDAY", "TR NITE", 'CURSE',  "FAINT ATTACK", "FIRE STONE", "BELLY DRUM"]
         for m in lst:
             try:
                 data[pocamon]["moves"].remove(m)
