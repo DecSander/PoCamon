@@ -270,7 +270,7 @@ let print_size_screen () =
 
 let print_start s =
   print_string (ascii_pokeball ^ star_bar ^ "\n" ^
-                (string_to_box s) ^ "\n")
+                (string_to_box s))
 
 
 (*****************************************************************************)
@@ -391,3 +391,36 @@ let get_input (words: string list) (defaults: string list) =
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
     String.trim (go [])
+
+(*****************************************************************************)
+(*                                 Actions                                   *)
+(*****************************************************************************)
+let create_public_info g_state : public_info =
+  {
+    player_one_name = g_state.player_one.name;
+    player_two_name = g_state.player_one.name;
+    player_one_active_pocamon = g_state.player_one.active_pocamon;
+    player_two_active_pocamon = g_state.player_two.active_pocamon;
+    player_one_remaining_pocamon =
+      List.length (g_state.player_one.pocamon_list);
+    player_two_remaining_pocamon =
+      List.length (g_state.player_one.pocamon_list);
+  }
+
+let rec wait_for_enter g_state p_state s_state : unit =
+  let () = print_screen p_state (create_public_info g_state) s_state in
+  let input = get_input [""] [""] in
+  match (process_input input) with
+  | Some Enter -> ()
+  | _ -> wait_for_enter g_state p_state s_state
+
+
+let rec get_against_ai () : ai =
+  print_start "Would you like to play against your rival, or a human?";
+  let input = String.uppercase
+    (get_input ["RIVAL";"HUMAN"; "ELITE7"] ["RIVAL";"HUMAN"; "ELITE7"]) in
+    if input = "RIVAL" then Rival
+    else if input = "HUMAN" then Human
+    else if input = "ELITE7" then Elite
+    else get_against_ai ()
+
