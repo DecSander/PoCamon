@@ -218,7 +218,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
 
 let check_faint trainer_list initial_state g_state: (game_state * trainer list)=
   let game_over g_state winner : game_state =
-    let end_message = Talking (winner.name ^ " has won!") in
+    let end_message = Talking (List.hd trainer_list).win_text in
     wait_for_enter g_state winner end_message;
     exit 0 in
 
