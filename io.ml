@@ -421,9 +421,9 @@ let rec wait_for_enter g_state p_state s_state : unit =
 let rec get_against_ai () : ai =
   print_start "Would you like to play against your rival, or a human?";
   let input = String.uppercase
-    (get_input ["RIVAL";"HUMAN"; "ELITE7"] ["RIVAL";"HUMAN"; "ELITE7"]) in
+    (get_input ["RIVAL";"HUMAN"; "ELITE 7"] ["RIVAL";"HUMAN"; "ELITE 7"]) in
     if input = "RIVAL" then Rival
     else if input = "HUMAN" then Human
-    else if input = "ELITE7" then Elite
+    else if input = "ELITE 7" then Elite
     else get_against_ai ()
 

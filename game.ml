@@ -7,7 +7,8 @@ open PocaDex
 let bag_jokes = ["There is a time and a place for everything. But not now";
   "Steroids are bad - how could you do that to an innocent pocamon?";
   "Don't do drugs, kids";
-  "Swig, swag, grab my bag... Or not"]
+  "Swig, swag, grab my bag... Or not";
+  "Rare candy is one hell of a drug"]
 
 let trainers =
   [{start_text="Prof. White: Welcome to the Elite 7, now prepare to lose";
@@ -31,8 +32,8 @@ let trainers =
   {start_text="Team Rocket: Prepare for Trouble ... and make it Double";
   name="Team Rocket";
   end_text="Team Rocket: Oh this is PoCamon? We thought it was Pokemon";
-  pocamon_list=["NIDOKING"; "MAGNETON";
-  "KOFFING"; "GASTLY"; "PIKACHU"; "HITMONCHAN"]};
+  pocamon_list=["EKANS"; "BELLSPROUT";
+  "KOFFING"; "MEOWTH"; "PIKACHU"; "GASTLY"]};
 
   {start_text="Prof. Hopcroft: I won this turing award for beating kids like you";
   name="Prof. Hopcroft";
@@ -42,13 +43,13 @@ let trainers =
 
   {start_text="Prof. George: My NFA beats your DFA anyday";
   name="Prof. George";
-  end_text="Prof. George: This isn't over ...";
+  end_text="Prof. George: I guess optimzing pocamon is an NP hard problem...";
   pocamon_list=["DRAGONAIR"; "CHARIZARD";
   "RHYDON"; "MEW"; "FLAREON"; "BLASTOISE"]};
 
   {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
   name="Prof. Clarkson";
-  end_text="Prof. Clarkson: Wow! I ca-ca-ca-can't believe I lost. Congrats!!!";
+  end_text="Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost. Congrats!!!";
   pocamon_list=["DRAGONITE"; "ALAKAZAM";
   "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 
