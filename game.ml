@@ -44,12 +44,12 @@ let trainers =
   name="Prof. George";
   end_text="Prof. George: This isn't over ...";
   pocamon_list=["DRAGONAIR"; "CHARIZARD";
-  "RHYDON"; "MEW"; "FLAREON"; "CHANCY"]};
+  "RHYDON"; "MEW"; "FLAREON"; "BLASTOISE"]};
 
   {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
   name="Prof. Clarkson";
   end_text="Prof. Clarkson: Wow! I ca-ca-ca-can't believe I lost. Congrats!!!";
-  pocamon_list=["DRAGONITE"; "ALAKAZM";
+  pocamon_list=["DRAGONITE"; "ALAKAZAM";
   "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 
 let gen_next_state (trainer_list: trainer list) initial_state
