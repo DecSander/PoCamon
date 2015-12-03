@@ -11,11 +11,11 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
 
 let trainers =
   [{start_text="sid_start"; name="sid"; end_text="sid_end";
-  pocamon_list=["PIKACHU"; "BULBASAUR";
-  "SLOWPOKE"; "SPEAROW"; "SHELLDER"; "KRABBY"]};
+  pocamon_list=["VILEPLUME"; "BULBASAUR";
+  "ODDISH"; "SPEAROW"; "SHELLDER"; "KRABBY"]};
   {start_text="mike_start"; name="mike"; end_text="mike_end";
-  pocamon_list=["EXEGGUTOR"; "MAGNEMITE";
-  "RHYDON"; "CLEFABLE"; "ARBOK"; "MR.MIME"]};
+  pocamon_list=["PIDGEY"; "KAKUNA";
+  "ODDISH"; "METAPOD"; "SPEAROW"; "NIDORINO"]};
   {start_text="white_start"; name="white"; end_text="white_end";
   pocamon_list=["GROWLITHE"; "GRIMER";
   "PIDGEOT"; "DRAGONITE"; "CHARMELEON"; "KADABRA"]};
@@ -24,15 +24,13 @@ let trainers =
   "CHARIZARD"; "ONIX"; "BEEDRILL"; "ELECTRODE"]};
   {start_text="gries_start"; name="gries"; end_text="gries_end";
   pocamon_list=["EEVEE"; "VILEPUME";
-  "POLIWRATH"; "HAUNTER"; "NIDORINO"; "MACHOKE"]};
+  "POLIWRATH"; "HAUNTER"; "MR.MIME"; "MACHOKE"]};
   {start_text="kleinberg_start"; name="kleinberg"; end_text="kleinberg_end";
   pocamon_list=["CUBONE"; "MAGNETON";
   "KOFFING"; "GASTLY"; "PARAS"; "VENOMOTH"]};
   {start_text="clarkson_start"; name="clarkson"; end_text="clarkson_end";
   pocamon_list=["TANGELA"; "TENTACRUEL";
-  "MANKEY"; "GOLEM"; "MEWTWO"; "DRAGONAIR"]}]
-
-let current_trainer = ref 0
+  "RHYDON"; "GOLEM"; "MEWTWO"; "DRAGONAIR"]}]
 
 let gen_next_state (trainer_list: trainer list) initial_state
                       g_state :game_state =
@@ -189,7 +187,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   | _ -> choose_new_pocamon g_state p_state s_state
 
 
-let check_faint trainer_list initial_state g_state : game_state =
+let check_faint trainer_list initial_state g_state : (game_state * trainer list) =
   let game_over g_state winner : game_state =
     let end_message = Talking (winner.name ^ " has won!") in
     wait_for_enter g_state winner end_message;
@@ -207,26 +205,27 @@ let check_faint trainer_list initial_state g_state : game_state =
   if  pocamon_health1 <= 0 then
       let () = wfe1 (ap " fainted!") in
       if   number_of_pocamon1 > 0
-      then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0)
-      else game_over g_state g_state.player_two
+      then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0), trainer_list
+      else game_over g_state g_state.player_two, trainer_list
 
   else if pocamon_health2 <= 0 then
       let () = wfe2 (oap " fainted!") in
       if   number_of_pocamon2 > 0 then
         if is_human g_state.player_two.is_computer
-        then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0)
+        then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0), trainer_list
         else let new_poca =
           get_switch_poca g_state.player_one g_state.player_two false g_state in
-          fst (switch_pocamon new_poca g_state.player_two g_state true)
+          fst (switch_pocamon new_poca g_state.player_two g_state true), trainer_list
       else
         if not (is_human g_state.player_two.is_computer)
-        then  let rst = (match trainer_list with
+        then  (match trainer_list with
                 | [] -> wfe1 "You won!"; exit 0
-                | h::t -> wfe1 h.end_text; t) in
-              gen_next_state rst initial_state g_state
-        else  game_over g_state g_state.player_one
+                | trainer::tail ->
+                (print_string (List.hd tail).start_text); wfe1 trainer.end_text;
+                    gen_next_state tail initial_state g_state, tail)
+        else  game_over g_state g_state.player_one, trainer_list
   else
-    g_state
+    g_state, trainer_list
 
 let print_result action g_state p_state m_status opp_p_state : unit =
   (* wait for enter *)
@@ -357,12 +356,11 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
 
   let (new_gs, printfo), p1a, p2a = get_player_actions () in
   let ()                          = print_fight new_gs printfo p1a p2a in
-  let new_gs'                = check_faint trainer_list initial_state new_gs in
+  let new_gs', trainers           = check_faint trainer_list initial_state new_gs in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs             = check_faint trainer_list initial_state new_gs'' in
-
-  run_game_turn trainer_list initial_state final_gs printfo
+  let final_gs, trainers          = check_faint trainer_list initial_state new_gs'' in
+  run_game_turn trainers initial_state final_gs printfo
 
 let start_from_state trainer_list g_state : unit =
   let () = Random.self_init () in
@@ -391,4 +389,4 @@ let start () =
        (Talking (List.hd trainer_list).start_text);
   start_from_state trainer_list start_state
 
-(*let _ = start ()*)
+let _ = start ()

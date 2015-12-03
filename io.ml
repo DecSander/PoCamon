@@ -7,10 +7,10 @@ type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
 type yn = Yes | No
 
-(*let out_channel = Pervasives.stdout
-let io_channel = Pervasives.stdin*)
 let out_channel = open_out "/dev/null"
 let io_channel = open_in "game_inputs.txt"
+let out_channel = Pervasives.stdout
+let io_channel = Pervasives.stdin
 let prints s = output_string out_channel s
 let readl io = flush stdout; input_line stdin
 
