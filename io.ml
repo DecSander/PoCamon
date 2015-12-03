@@ -57,7 +57,7 @@ let string_of_type = function
     | TBug -> "\027[92m BUG \027[97m"
     | TRock -> "\027[90m ROCK \027[97m"
     | TGhost -> "\027[35m GHOST \027[97m"
-    | TDragon -> "\027[35m DRAGON \027[97m" 
+    | TDragon -> "\027[35m DRAGON \027[97m"
 
 
 let string_to_box (s: bytes) :bytes =
@@ -112,20 +112,20 @@ let create_pocamon_ascii (pc: pocamon) :bytes =
     | _ -> res in
   ascii_help (Str.split (Str.regexp "\n") pc.ascii) ""
 
+let status_to_string (status: pStatus) :bytes =
+  match status with
+  | SNormal -> "   "
+  | SPoison -> "PSN"
+  | SBurn -> "BRN"
+  | SSleep _ -> "SLP"
+  | SParalyze -> "PAR"
+  | SFreeze _ -> "FRZ"
+
 let create_health_bar (pc: pocamon) :bytes =
   let rec gen_hp_bar (equals: int) (empty: int) (s: bytes) :bytes =
     if empty <= 0 && equals <= 0 then s ^ "]"
     else if equals <= 0 then gen_hp_bar 0 (empty - 1) (s ^ " ")
     else gen_hp_bar (equals - 1) empty (s ^ "=") in
-
-  let status_to_string (status: pStatus) :bytes =
-    match status with
-    | SNormal -> "   "
-    | SPoison -> "PSN"
-    | SBurn -> "BRN"
-    | SSleep _ -> "SLP"
-    | SParalyze -> "PAR"
-    | SFreeze _ -> "FRZ" in
 
   let frac = (float_of_int pc.health) /. (float_of_int pc.stats.max_hp) in
   let max_hp_int = 22 in
@@ -150,7 +150,7 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
 
 let gen_moves ps :bytes =
   let string_of_move (m: move) : string=
-    let buffer = String.make (20 - (String.length m.name)) ' ' in 
+    let buffer = String.make (20 - (String.length m.name)) ' ' in
     m.name ^ buffer ^ (string_of_type m.move_type) in
 
   let rec moves_help (m_list: move list) i (res: bytes) :bytes =
@@ -158,7 +158,7 @@ let gen_moves ps :bytes =
     | [] -> if i <> 0
       then moves_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
       else res
-    | h::t -> moves_help t (i-1) (res ^ (string_to_box 
+    | h::t -> moves_help t (i-1) (res ^ (string_to_box
       (string_of_move h)) ^ "\n") in
   moves_help ps.active_pocamon.moves 4 ""
 
@@ -178,16 +178,19 @@ let gen_pocamon (ps: player_state) i :bytes =
   let start = i in
   let end_lst = min (i+3) ((List.length ps.pocamon_list) - 1) in
   let ellipses = end_lst = ((List.length ps.pocamon_list) - 1) in
-  let string_of_pocamon (p: pocamon): string = 
-   let buf1 = String.make (12 - (String.length p.name)) ' ' in 
+  let string_of_pocamon (p: pocamon): string =
+   let buf1 = String.make (12 - (String.length p.name)) ' ' in
    let buf2 = String.make (5 - (String.length (string_of_int p.health))) ' ' in
-   let buf3 = String.make 
+   let buf3 = String.make
               (20 - (String.length (string_of_type (fst p.poca_type)))) ' ' in
+   let buf4 = String.make
+              (22 - (String.length (string_of_type (snd p.poca_type)))) ' ' in
 
    (p.name ^ buf1 ^ "(" ^ (string_of_int p.health) ^ "/" ^
-    (string_of_int p.stats.max_hp) ^ ")" ^ buf2 ^ 
-    (string_of_type (fst p.poca_type))  ^ buf3 ^ 
-    (string_of_type (snd p.poca_type))) in 
+    (string_of_int p.stats.max_hp) ^ ")" ^ buf2 ^
+    (string_of_type (fst p.poca_type))  ^ buf3 ^
+    (string_of_type (snd p.poca_type)) ^ buf4 ^
+    (status_to_string p.status)) in
   let p_strings =
     List.map (fun (p:pocamon) -> string_of_pocamon p) ps.pocamon_list in
   let pl =
@@ -200,7 +203,7 @@ let gen_pocamon (ps: player_state) i :bytes =
     | [] -> if i <> 0
       then pocamon_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
       else res ^ "\n"
-    | h::t -> pocamon_help t (i-1) (res ^ "\n" ^ 
+    | h::t -> pocamon_help t (i-1) (res ^ "\n" ^
       (string_to_box h)) in
   Bytes.sub (pocamon_help pl 4 "") 1 (Bytes.length (pocamon_help pl 4 "") - 1)
 
