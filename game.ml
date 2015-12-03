@@ -14,21 +14,21 @@ let trainers =
   [{start_text="Prof. White: Welcome to the Elite 7, now prepare to lose";
   name="Prof. White";
   end_text="Prof. White: The next game design project is gonna be to beat you";
-  win_text="";
+  win_text="CS might not be right for you. Maybe try OR";
   pocamon_list=["HORSEA"; "METAPOD";
   "PIDGEOT"; "SPEAROW"; "POLIWAG"; "MEOWTH"]};
 
   {start_text="Prof. Bracy: Prepare to have your cache cleared";
   name="Prof. Bracy";
   end_text="Prof. Bracy: You optimized the common case faster than I could :(";
-  win_text="";
+  win_text="Am I surprised? Not even a BIT";
   pocamon_list=["ODDISH"; "BELLSPROUT";
   "PARAS"; "CUBONE"; "BEEDRILL"; "VENOMOTH"]};
 
   {start_text="Prof. Gries: You're gonna need more than just java after this";
-  name="David Gries";
+  name="Prof. Gries";
   end_text="Prof. Gries: I guess I need more loop invariants";
-  win_text="";
+  win_text="Don't worry. There's always the optional final";
   pocamon_list=["EEVEE"; "VILEPLUME";
   "POLIWRATH"; "HAUNTER"; "MR.MIME"; "PSYDUCK"]};
 
@@ -39,19 +39,19 @@ let trainers =
   pocamon_list=["EKANS"; "VAPOREON";
   "KOFFING"; "MEOWTH"; "PIKACHU"; "GASTLY"]};
 
-  {start_text="Prof. Hopcroft: I won my turing award for beating kids like you";
+  {start_text="Prof. Hopcroft: I won my Turing Award for beating kids like you";
   name="Prof. Hopcroft";
   end_text="Prof. Hopcroft: If only I had more 2-3 Trees";
-  win_text="";
+  win_text="I didn't win the Turing Award for nothing";
   pocamon_list=["ARCANINE"; "CHANSEY";
-  "MACHAMP"; "ONIX"; "AERODACTYL"; "MOLTRES"]};
+  "MACHAMP"; "ONIX"; "AERODACTYL"; "GYARADOS"]};
 
   {start_text="Prof. George: My NFA beats your DFA anyday";
   name="Prof. George";
   end_text="Prof. George: I guess optimzing pocamon is an NP hard problem...";
   win_text="";
   pocamon_list=["DRAGONAIR"; "CHARIZARD";
-  "RHYDON"; "MEW"; "FLAREON"; "BLASTOISE"]};
+  "RHYDON"; "MEW"; "SNORLAX"; "BLASTOISE"]};
 
   {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
   name="Prof. Clarkson";
