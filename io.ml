@@ -44,6 +44,23 @@ let process_selection (s: bytes) :yn option =
   else if match_phrase trim_s "^N" then Some No
   else None
 
+let string_of_type = function
+    | TNormal -> "\027[97m NORMAL \027[97m"
+    | TFire -> "\027[31m FIRE \027[97m"
+    | TWater -> "\027[34m WATER \027[97m"
+    | TElectric -> "\027[33m ELECTRIC \027[97m"
+    | TGrass -> "\027[32m GRASS \027[97m"
+    | TIce -> "\027[94m ICE \027[97m"
+    | TFighting -> "\027[90ms FIGHTING \027[97m"
+    | TPoison -> "\027[95m POSION \027[97m"
+    | TGround -> "\027[90m GROUND \027[97m"
+    | TFlying -> "\027[93m FLYING \027[97m"
+    | TPsychic -> "\027[35m PSYCHIC \027[97m"
+    | TBug -> "\027[92m BUG \027[97m"
+    | TRock -> "\027[90m ROCK \027[97m"
+    | TGhost -> "\027[35m GHOST \027[97m"
+    | TDragon -> "\027[35m DRAGON \027[97m" 
+
 
 let string_to_box (s: bytes) :bytes =
   "* " ^ s
@@ -89,6 +106,8 @@ let create_pocamon_ascii (pc: pocamon) :bytes =
   | TGhost -> "[35m"
   | TDragon -> "[35m") in
 
+
+
   let rec ascii_help (art: bytes list) (res: bytes) :bytes =
     match art with
     | h::t -> ascii_help t (res ^ "\n" ^ color ^ h)
@@ -132,12 +151,17 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
             (Str.split (Str.regexp "\n") art2) "") ^ "\027[97m"
 
 let gen_moves ps :bytes =
+  let string_of_move (m: move) : string=
+    let buffer = String.make (20 - (String.length m.name)) ' ' in 
+    m.name ^ buffer ^ (string_of_type m.move_type) in
+
   let rec moves_help (m_list: move list) i (res: bytes) :bytes =
     match m_list with
     | [] -> if i <> 0
       then moves_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
       else res
-    | h::t -> moves_help t (i-1) (res ^ (string_to_box h.name) ^ "\n") in
+    | h::t -> moves_help t (i-1) (res ^ (string_to_box 
+      (string_of_move h)) ^ "\n") in
   moves_help ps.active_pocamon.moves 4 ""
 
 (*From 99 Problems in OCaml https://ocaml.org/learn/tutorials/99problems.html*)
@@ -156,18 +180,30 @@ let gen_pocamon (ps: player_state) i :bytes =
   let start = i in
   let end_lst = min (i+3) ((List.length ps.pocamon_list) - 1) in
   let ellipses = end_lst = ((List.length ps.pocamon_list) - 1) in
+  let string_of_pocamon (p: pocamon): string = 
+   let buf1 = String.make (12 - (String.length p.name)) ' ' in 
+   let buf2 = String.make (5 - (String.length (string_of_int p.health))) ' ' in
+   let buf3 = String.make 
+              (20 - (String.length (string_of_type (fst p.poca_type)))) ' ' in
+
+   (p.name ^ buf1 ^ "(" ^ (string_of_int p.health) ^ "/" ^
+    (string_of_int p.stats.max_hp) ^ ")" ^ buf2 ^ 
+    (string_of_type (fst p.poca_type))  ^ buf3 ^ 
+    (string_of_type (snd p.poca_type))) in 
   let p_strings =
-    List.map (fun (p:pocamon) -> p.name) ps.pocamon_list in
+    List.map (fun (p:pocamon) -> string_of_pocamon p) ps.pocamon_list in
   let pl =
     if ellipses
     then slice p_strings start end_lst
     else (slice p_strings start (end_lst - 1))@["..."] in
+
   let rec pocamon_help (lines: string list) i (res :bytes) :bytes =
     match lines with
     | [] -> if i <> 0
       then pocamon_help [] (i-1) (res ^ (string_to_box " ") ^ "\n")
       else res ^ "\n"
-    | h::t -> pocamon_help t (i-1) (res ^ "\n" ^ (string_to_box h)) in
+    | h::t -> pocamon_help t (i-1) (res ^ "\n" ^ 
+      (string_to_box h)) in
   Bytes.sub (pocamon_help pl 4 "") 1 (Bytes.length (pocamon_help pl 4 "") - 1)
 
 let gen_talking (s: bytes) :bytes =
