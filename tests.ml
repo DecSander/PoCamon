@@ -85,8 +85,6 @@ TEST "Fight" = process_input "fight" = Some Fight
 TEST "Pocamon" = process_input "pocamon" = Some Pocamon
 TEST "Run" = process_input "run" = Some Run
 TEST "Back" = process_input "back" = Some Back
-TEST "Save" = process_input "save" = Some Save
-TEST "Load" = process_input "load" = Some Load
 TEST "Switch" = process_input "switch raichu" = Some (Action (Switch "RAICHU"))
 TEST "Bad Switch" = process_input "switch james jfsdf" = None
 TEST "Move" = process_input "win" = Some (Action (Move "WIN"))

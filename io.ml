@@ -1,7 +1,7 @@
 open Types
 
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
-| Run | Back | Save | Load | Bag
+| Run | Back | Bag
 
 type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
@@ -33,8 +33,6 @@ let process_input (s: bytes) :command option =
   else if match_phrase trim_s "^BAG$" then Some Bag
   else if match_phrase trim_s "^RUN$" then Some Run
   else if match_phrase trim_s "^BACK$" then Some Back
-  else if match_phrase trim_s "^SAVE$" then Some Save
-  else if match_phrase trim_s "^LOAD$" then Some Load
   else if match_phrase trim_s "^SWITCH" then get_switch trim_s
   else Some (Action (Move trim_s))
 
