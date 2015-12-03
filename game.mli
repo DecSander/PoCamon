@@ -36,4 +36,4 @@ val process_screen_action : command option-> screen_state -> game_state -> scree
 (* Helper functions for unit tests. Uncomment to run tests *)
 val gen_next_state : trainer list -> game_state -> game_state -> game_state
 val choose_new_pocamon : game_state -> player_state -> screen_state -> game_state
-val check_faint : trainer list -> game_state -> game_state -> game_state
+val check_faint : trainer list -> game_state -> game_state -> game_state * trainer list
