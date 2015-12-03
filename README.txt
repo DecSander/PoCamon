@@ -47,6 +47,8 @@ condition on the opponent - causing him to be unable to move, to lose health
 each turn, or other, special effects! Experiment and find what works! (Or cheat
 and look at pocadex.ml to see what each move does)
 
+Note: The last few trainers in the Elite 7 are extremely difficult, don't get
+too upset if you can't beat all of them.
 
 
 CREDITS:
