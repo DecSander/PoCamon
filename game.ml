@@ -10,27 +10,47 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
   "Swig, swag, grab my bag... Or not"]
 
 let trainers =
-  [{start_text="sid_start"; name="sid"; end_text="sid_end";
-  pocamon_list=["VILEPLUME"; "BULBASAUR";
-  "ODDISH"; "SPEAROW"; "SHELLDER"; "KRABBY"]};
-  {start_text="mike_start"; name="mike"; end_text="mike_end";
-  pocamon_list=["PIDGEY"; "KAKUNA";
-  "ODDISH"; "METAPOD"; "SPEAROW"; "NIDORINO"]};
-  {start_text="white_start"; name="white"; end_text="white_end";
-  pocamon_list=["GROWLITHE"; "GRIMER";
-  "PIDGEOT"; "DRAGONITE"; "CHARMELEON"; "KADABRA"]};
-  {start_text="fan_start"; name="fan"; end_text="fan_end";
-  pocamon_list=["ODDISH"; "PSYDUCK";
-  "CHARIZARD"; "ONIX"; "BEEDRILL"; "ELECTRODE"]};
-  {start_text="gries_start"; name="gries"; end_text="gries_end";
+  [{start_text="Prof. White: Welcome to the Elite 8, now prepare to lose";
+  name="Prof. Daisy-Fan";
+  end_text="Prof. White: The next game design project is gonna be to beat you";
+  pocamon_list=["HORSEA"; "METAPOD";
+  "PIDGEOT"; "SPEAROW"; "POLIWAG"; "MEOWTH"]};
+
+  {start_text="Prof. Bracy: Prepare to have your cache cleared";
+  name="Prof. Bracy";
+  end_text="Prof. Bracy: You optimized the common case faster than I could :(";
+  pocamon_list=["ODDISH"; "CHANSEY";
+  "PARAS"; "CUBONE"; "BEEDRILL"; "VENOMOTH"]};
+
+  {start_text="Prof. Gries: You're gonna need more than just java after this";
+  name="David Gries";
+  end_text="Prof. Gries: I guess I need more loop invariants";
   pocamon_list=["EEVEE"; "VILEPUME";
-  "POLIWRATH"; "HAUNTER"; "MR.MIME"; "MACHOKE"]};
-  {start_text="kleinberg_start"; name="kleinberg"; end_text="kleinberg_end";
-  pocamon_list=["CUBONE"; "MAGNETON";
-  "KOFFING"; "GASTLY"; "PARAS"; "VENOMOTH"]};
-  {start_text="clarkson_start"; name="clarkson"; end_text="clarkson_end";
-  pocamon_list=["TANGELA"; "TENTACRUEL";
-  "RHYDON"; "GOLEM"; "MEWTWO"; "DRAGONAIR"]}]
+  "POLIWRATH"; "HAUNTER"; "MR.MIME"; "PSYDUCK"]};
+
+  {start_text="Team Rocket: Prepare for Trouble ... and make it Double";
+  name="Team Rocket";
+  end_text="Team Rocket: Oh this is PoCamon? We thought it was Pokemon";
+  pocamon_list=["NIDOKING"; "MAGNETON";
+  "KOFFING"; "GASTLY"; "PIKACHU"; "HITMONCHAN"]};
+
+  {start_text="Prof. Hopcroft: I won this turing award for beating kids like you";
+  name="Prof. Hopcroft";
+  end_text="Prof. Hopcroft: If only I had more 2-3 Trees";
+  pocamon_list=["ARCANINE"; "VAPOREON";
+  "MACHAMP"; "ONIX"; "AERODACTYL"; "MOLTRES"]};
+
+  {start_text="Prof. George: My NFA beats your DFA anyday";
+  name="Prof. George";
+  end_text="Prof. George: This isn't over ...";
+  pocamon_list=["DRAGONAIR"; "CHARIZARD";
+  "RHYDON"; "MEW"; "FLAREON"; "CHANCY"]};
+
+  {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
+  name="Prof. Clarkson";
+  end_text="Prof. Clarkson: Wow! I ca-ca-ca-can't believe I lost. Congrats!!!";
+  pocamon_list=["DRAGONITE"; "ALAKAZM";
+  "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 
 let gen_next_state (trainer_list: trainer list) initial_state
                       g_state :game_state =
