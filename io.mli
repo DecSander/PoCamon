@@ -1,7 +1,7 @@
 open Types
 
 type command = Up | Down | Enter | Action of action | Fight | Pocamon
-| Run | Back | Save | Load | Bag
+| Run | Back | Bag
 
 type screen_state = Out | Moves | Pocamon_List of int | Talking of string
 
