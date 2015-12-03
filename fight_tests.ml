@@ -96,7 +96,8 @@ TEST "Test empty debuff" = let new_state, _ =
   new_state = simple_game
 
 TEST "Test single poisoned poca" = let poison_game =
-  {simple_game with player_one = {simple_game.player_one with active_pocamon = poisoned_poca1}} in
+  {simple_game with player_one = {simple_game.player_one with
+                                  active_pocamon = poisoned_poca1}} in
   let new_state, _ = apply_status_debuffs poison_game in
   new_state.player_one.active_pocamon.health <
   new_state.player_one.active_pocamon.stats.max_hp
@@ -130,19 +131,23 @@ let _, _ = apply_status_debuffs new_state''''
 
 TEST "Turn one sleep works" =
   (match new_state.player_one.active_pocamon.status with
-  | SSleep x -> x = 3 && (new_state.player_two.active_pocamon.health = start_health)
+  | SSleep x -> x = 3 &&
+    (new_state.player_two.active_pocamon.health = start_health)
   | _ -> false)
 TEST "Turn two sleep works" =
   (match new_state'.player_one.active_pocamon.status with
-  | SSleep x -> x = 2 && (new_state'.player_two.active_pocamon.health = start_health)
+  | SSleep x -> x = 2 &&
+    (new_state'.player_two.active_pocamon.health = start_health)
   | _ -> false)
 TEST "Turn three sleep works" =
   (match new_state''.player_one.active_pocamon.status with
-  | SSleep x -> x = 1 && (new_state''.player_two.active_pocamon.health = start_health)
+  | SSleep x -> x = 1 &&
+    (new_state''.player_two.active_pocamon.health = start_health)
   | _ -> false)
 TEST "Turn four sleep works" =
   (match new_state'''.player_one.active_pocamon.status with
-  | SSleep x -> x = 0 && (new_state'''.player_two.active_pocamon.health = start_health)
+  | SSleep x -> x = 0 &&
+    (new_state'''.player_two.active_pocamon.health = start_health)
   | _ -> true)
 TEST "Turn five sleep works" =
   (match new_state''''.player_one.active_pocamon.status with
