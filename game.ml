@@ -31,8 +31,8 @@ let trainers =
   {start_text="Team Rocket: Prepare for Trouble ... and make it Double";
   name="Team Rocket";
   end_text="Team Rocket: Oh this is PoCamon? We thought it was Pokemon";
-  pocamon_list=["NIDOKING"; "MAGNETON";
-  "KOFFING"; "GASTLY"; "PIKACHU"; "HITMONCHAN"]};
+  pocamon_list=["EKANS"; "BELLSPROUT";
+  "KOFFING"; "MEOWTH"; "PIKACHU"; "GASTLY"]};
 
   {start_text="Prof. Hopcroft: I won this turing award for beating kids like you";
   name="Prof. Hopcroft";
