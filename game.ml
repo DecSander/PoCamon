@@ -383,8 +383,12 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
   let new_gs', trainers1     = check_faint trainer_list initial_state new_gs in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs, _          = check_faint trainer_list initial_state new_gs'' in
-  run_game_turn trainers1 initial_state final_gs printfo
+  let final_gs, trainers2   = check_faint trainer_list initial_state new_gs'' in
+  let new_trainers =
+    if (List.length trainers1) > (List.length trainers2)
+    then trainers2
+    else trainers1 in
+  run_game_turn new_trainers initial_state final_gs printfo
 
 let start_from_state trainer_list g_state : unit =
   let () = Random.self_init () in
