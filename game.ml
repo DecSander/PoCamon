@@ -60,7 +60,6 @@ let gen_next_state (trainer_list: trainer list) initial_state
     let () = wait_for_enter g_state g_state.player_one (Talking ("You won!")) in
     exit 0
   | h::t -> h) in
-  print_string trainer.start_text;
   let player_one_name = g_state.player_one.name in
   let against_ai = Elite in
   let player_two_name = trainer.name in
