@@ -339,7 +339,7 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           let type_eff =
             if move.damage >= 1 && abs_float(damage_mult -. 2.) < 0.01 then
               ESuper
-            else if move.damage >= 1 && abs_float(damage_mult -. 0.5) < 0.01 then
+            else if move.damage>=1 && abs_float(damage_mult -. 0.5) < 0.01 then
               ENotVery
             else if move.damage >= 1 && abs_float(damage_mult) < 0.01 then
               EImmune
@@ -412,10 +412,10 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
 
           let p_move_status =
             Attack_Status {atk_eff = type_eff;
-                       spec_eff = move.effect;
-                       self_status_change = new_status_change;
-                       opp_status_change = (def_status_change, def_poca'.status);
-                       missed = false } in
+               spec_eff = move.effect;
+               self_status_change = new_status_change;
+               opp_status_change = (def_status_change, def_poca'.status);
+               missed = false } in
 
           (g_state'', p_move_status)
           end
@@ -483,7 +483,8 @@ let do_single_move player_state foe_state action p_state_is_p1 g_state =
     | _ -> action in
 
   match action with
-  | FMove m | FCharge m -> apply_attack player_state foe_state m p_state_is_p1 g_state
+  | FMove m | FCharge m ->
+    apply_attack player_state foe_state m p_state_is_p1 g_state
   | FSwitch s_p ->
     switch_pocamon s_p player_state g_state false
 
