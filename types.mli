@@ -10,6 +10,7 @@ type mStatus = MNormal | MPoison | MBurn | MSleep | MParalyze | MFreeze
 type trainer = {start_text: bytes;
                 end_text: bytes;
                 name: bytes;
+                win_text: bytes;
                 pocamon_list: bytes list}
 
 type ai = Human | Rival | Elite
