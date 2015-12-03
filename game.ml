@@ -35,7 +35,8 @@ let trainers =
   pocamon_list=["EKANS"; "BELLSPROUT";
   "KOFFING"; "MEOWTH"; "PIKACHU"; "GASTLY"]};
 
-  {start_text="Prof. Hopcroft: I won this turing award for beating kids like you";
+  {start_text=
+    "Prof. Hopcroft: I won this turing award for beating kids like you";
   name="Prof. Hopcroft";
   end_text="Prof. Hopcroft: If only I had more 2-3 Trees";
   pocamon_list=["ARCANINE"; "VAPOREON";
@@ -49,7 +50,8 @@ let trainers =
 
   {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
   name="Prof. Clarkson";
-  end_text="Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost. Congrats!!!";
+  end_text=
+    "Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost. Congrats!!!";
   pocamon_list=["DRAGONITE"; "ALAKAZAM";
   "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 

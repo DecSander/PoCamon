@@ -7,7 +7,30 @@ open Assertions
 open PocaDex
 
 
-let moves = [ "GROWL"; "SELFDESTRUCT"; "PSYCHIC"; "RAZOR LEAF"; "TOXIC"; "SWORDS DANCE"; "HYPER BEAM"; "TAKE DOWN"; "PECK"; "POISON STING"; "STRENGTH"; "SOFTBOILED"; "LOVELY KISS"; "ABSORB"; "DRILL PECK"; "BUBBLEBEAM"; "ICE PUNCH"; "BODY SLAM"; "HYDRO PUMP"; "SLUDGE BOMB"; "SLASH"; "GUILLOTINE"; "ICY WIND"; "POISON GAS"; "SHADOW BALL"; "HORN ATTACK"; "SWIFT"; "EXTREMESPEED"; "MEGA PUNCH"; "THUNDERPUNCH"; "SURF"; "ICE BEAM"; "THUNDER WAVE"; "TACKLE"; "VINE WHIP"; "THUNDERBOLT"; "BARRIER"; "SPORE"; "FIRE PUNCH"; "SOLARBEAM"; "HI JUMP KICK"; "BUBBLE"; "EMBER"; "HORN DRILL"; "AMNESIA"; "GLARE"; "SHARPEN"; "VICEGRIP"; "FLAME WHEEL"; "ROCK THROW"; "ZAP CANNON"; "FLAMETHROWER"; "WATER GUN"; "RECOVER"; "STOMP"; "SLEEP POWDER"; "FLY"; "DEFENSE CURL"; "ROCK SMASH"; "THUNDER"; "MEGA KICK"; "MEDITATE"; "GIGA DRAIN"; "KARATE CHOP"; "SLUDGE"; "LICK"; "ACID"; "STUN SPORE"; "LEECH LIFE"; "AGILITY"; "DRAGONBREATH"; "SPLASH"; "FURY CUTTER"; "CUT"; "FISSURE"; "SCREECH"; "ACID ARMOR"; "SLAM"; "VITAL THROW"; "CONSTRICT"; "ANCIENTPOWER"; "TAIL WHIP"; "CRABHAMMER"; "SCRATCH"; "JUMP KICK"; "FIRE BLAST"; "QUICK ATTACK"; "DIG"; "WING ATTACK"; "MACH PUNCH"; "THUNDERSHOCK"; "SING"; "CROSS CHOP"; "DOUBLE EDGE"; "BLIZZARD"; "SUBMISSION"; "HYPNOSIS"; "HARDEN"; "SMOG"; "MEGA DRAIN"; "STRING SHOT"; "POWDER SNOW"; "SCARY FACE"; "EXPLOSION"; "SKY ATTACK"; "AURORA BEAM"; "POUND"; "LEER"; "EGG BOMB"; "WATERFALL"; "GROWTH"; "WITHDRAW"; ]
+let moves = [ "GROWL"; "SELFDESTRUCT"; "PSYCHIC"; "RAZOR LEAF"; "TOXIC";
+              "SWORDS DANCE"; "HYPER BEAM"; "TAKE DOWN"; "PECK"; "POISON STING";
+              "STRENGTH"; "SOFTBOILED"; "LOVELY KISS"; "ABSORB"; "DRILL PECK";
+              "BUBBLEBEAM"; "ICE PUNCH"; "BODY SLAM"; "HYDRO PUMP";
+              "SLUDGE BOMB"; "SLASH"; "GUILLOTINE"; "ICY WIND"; "POISON GAS";
+              "SHADOW BALL"; "HORN ATTACK"; "SWIFT"; "EXTREMESPEED";
+              "MEGA PUNCH"; "THUNDERPUNCH"; "SURF"; "ICE BEAM"; "THUNDER WAVE";
+              "TACKLE"; "VINE WHIP"; "THUNDERBOLT"; "BARRIER"; "SPORE";
+              "FIRE PUNCH"; "SOLARBEAM"; "HI JUMP KICK"; "BUBBLE"; "EMBER";
+              "HORN DRILL"; "AMNESIA"; "GLARE"; "SHARPEN"; "VICEGRIP";
+              "FLAME WHEEL"; "ROCK THROW"; "ZAP CANNON"; "FLAMETHROWER";
+              "WATER GUN"; "RECOVER"; "STOMP"; "SLEEP POWDER"; "FLY";
+              "DEFENSE CURL"; "ROCK SMASH"; "THUNDER"; "MEGA KICK"; "MEDITATE";
+              "GIGA DRAIN"; "KARATE CHOP"; "SLUDGE"; "LICK"; "ACID";
+              "STUN SPORE"; "LEECH LIFE"; "AGILITY"; "DRAGONBREATH"; "SPLASH";
+              "FURY CUTTER"; "CUT"; "FISSURE"; "SCREECH"; "ACID ARMOR"; "SLAM";
+              "VITAL THROW"; "CONSTRICT"; "ANCIENTPOWER"; "TAIL WHIP";
+              "CRABHAMMER"; "SCRATCH"; "JUMP KICK"; "FIRE BLAST";
+              "QUICK ATTACK"; "DIG"; "WING ATTACK"; "MACH PUNCH";
+              "THUNDERSHOCK"; "SING"; "CROSS CHOP"; "DOUBLE EDGE"; "BLIZZARD";
+              "SUBMISSION"; "HYPNOSIS"; "HARDEN"; "SMOG"; "MEGA DRAIN";
+              "STRING SHOT"; "POWDER SNOW"; "SCARY FACE"; "EXPLOSION";
+              "SKY ATTACK"; "AURORA BEAM"; "POUND"; "LEER"; "EGG BOMB";
+              "WATERFALL"; "GROWTH"; "WITHDRAW"; ]
 
 
 
@@ -28,21 +51,35 @@ TEST "normal get move max_pp" = (get_move "POUND").max_pp = 35
 TEST "normal get move pp" = (get_move "POUND").pp = 35
 TEST "normal get move move_category" = (get_move "POUND").move_category = EPhysical
 TEST "normal get move move_category" = (get_move "POUND").effect = MNone
-TEST "normal get move" = (get_move "POUND") = {name="POUND"; move_type=TNormal; status_effect=MNormal; status_probability=100; accuracy=100; damage=40; max_pp=35; pp=35; move_category=EPhysical; effect=MNone}
+TEST "normal get move" = (get_move "POUND") =
+  { name="POUND";
+    move_type=TNormal;
+    status_effect=MNormal;
+    status_probability=100;
+    accuracy=100; damage=40;
+    max_pp=35;
+    pp=35;
+    move_category=EPhysical;
+    effect=MNone}
 
 TEST "bad input throws exception" =
   try let _ =  get_move "Not_A_Move" in false
   with _ -> true
 
-TEST "normal get_pocamon name" = (get_pocamon "RAPIDASH").name =  "RAPIDASH" 
+TEST "normal get_pocamon name" = (get_pocamon "RAPIDASH").name =  "RAPIDASH"
 
-TEST "normal get_pocamon learnable_moves" = (get_pocamon "RAPIDASH").learnable_moves = ["FIRE BLAST";"GROWL";"EMBER";"HYPER BEAM";"TOXIC";"TAKE DOWN";"AGILITY";"SWIFT";"STOMP";"TAIL WHIP";"FLAMETHROWER";]
+TEST "normal get_pocamon learnable_moves" =
+  (get_pocamon "RAPIDASH").learnable_moves =
+    ["FIRE BLAST";"GROWL";"EMBER";"HYPER BEAM";"TOXIC";
+    "TAKE DOWN";"AGILITY";"SWIFT";"STOMP";"TAIL WHIP";"FLAMETHROWER";]
 
-TEST "normal get_pocamon stats" = (get_pocamon "RAPIDASH").stats = {max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;}
+TEST "normal get_pocamon stats" = (get_pocamon "RAPIDASH").stats =
+  {max_hp=65; attack=100; defense=70; speed=105; sp_attack=80;sp_defense=80;}
 
-TEST "normal get_pocamon poca_type" = (get_pocamon "RAPIDASH").poca_type = ("FIRE", "FIRE")
+TEST "normal get_pocamon poca_type" = (get_pocamon "RAPIDASH").poca_type =
+  ("FIRE", "FIRE")
 
-TEST "normal get_pocamon ascii" = (get_pocamon "RAPIDASH").ascii = 
+TEST "normal get_pocamon ascii" = (get_pocamon "RAPIDASH").ascii =
 
 "   , ??OO==??    7===Z
   O ,?7O??=?????????7ZZZ7Z7Z
