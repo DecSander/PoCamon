@@ -443,5 +443,4 @@ TEST "health down" =
   (charge_no_hit_finished.player_two.active_pocamon.health < 200)
 TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
 
-
 let () = Pa_ounit_lib.Runtime.summarize()
