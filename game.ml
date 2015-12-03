@@ -103,18 +103,18 @@ let gen_initial_state () : game_state =
     (* Must request players name and whether to play against a computer *)
     print_size_screen ();
     print_start "What is your name, player one?";
-    print_string "\n|> ";
+    prints "\n|> ";
     let player_one_name = readl io_channel in
     let against_ai = get_against_ai () in
     let player_two_name = if is_elite against_ai then
         (List.hd trainers).name
       else if is_rival against_ai then
         (print_start "What is your rival's name?";
-        print_string "\n|> ";
+        prints "\n|> ";
         readl io_channel)
       else
         (print_start "What is your name, player two?";
-        print_string "\n|> ";
+        prints "\n|> ";
         readl io_channel) in
 
     let player_one_pocamon = (List.fold_left
@@ -241,8 +241,7 @@ let check_faint trainer_list initial_state g_state : (game_state * trainer list)
         if not (is_human g_state.player_two.is_computer)
         then  (match trainer_list with
                 | [] -> wfe1 "You won!"; exit 0
-                | trainer::tail ->
-                (print_string (List.hd tail).start_text); wfe1 trainer.end_text;
+                | trainer::tail -> wfe1 trainer.end_text;
                     gen_next_state tail initial_state g_state, tail)
         else  game_over g_state g_state.player_one, trainer_list
   else
