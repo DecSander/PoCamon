@@ -101,104 +101,86 @@ TEST "Test single poisoned poca" = let poison_game =
   new_state.player_one.active_pocamon.health <
   new_state.player_one.active_pocamon.stats.max_hp
 
-TEST "Test multi turn sleep" = let sleep_game =
-  {simple_game with player_one = {simple_game.player_one with active_pocamon = asleep_poca1}} in
-  let start_health = simple_game.player_two.active_pocamon.health in
-  let new_state, _ = apply_fight_sequence sleep_game (FMove tackle) (FMove tackle) in
-  let new_state', _ = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
-  let new_state'', _ = apply_fight_sequence new_state' (FMove tackle) (FMove tackle) in
-  let new_state''', _ = apply_fight_sequence new_state'' (FMove tackle) (FMove tackle) in
-  let new_state'''', _ = apply_fight_sequence new_state''' (FMove tackle) (FMove tackle) in
+
+let sleep_game = {simple_game with player_one = {simple_game.player_one with
+                                                active_pocamon = asleep_poca1}}
+let start_health = simple_game.player_two.active_pocamon.health
+
+let new_state, _ = apply_fight_sequence sleep_game
+  (FMove tackle) (FMove tackle)
+let debuff_state, debuffs = apply_status_debuffs new_state
+
+let new_state', _ = apply_fight_sequence debuff_state
+  (FMove tackle) (FMove tackle)
+let debuff_state', debuffs' = apply_status_debuffs new_state'
+
+let new_state'', _ = apply_fight_sequence debuff_state'
+  (FMove tackle) (FMove tackle)
+let debuff_state'', debuffs'' = apply_status_debuffs new_state''
+
+
+let new_state''', _ = apply_fight_sequence debuff_state''
+  (FMove tackle) (FMove tackle)
+let debuff_state''', debuffs''' = apply_status_debuffs new_state'''
+
+
+let new_state'''', _ = apply_fight_sequence debuff_state'''
+  (FMove tackle) (FMove tackle)
+let _, _ = apply_status_debuffs new_state''''
+
+TEST "Turn one sleep works" =
   (match new_state.player_one.active_pocamon.status with
   | SSleep x -> x = 3 && (new_state.player_two.active_pocamon.health = start_health)
   | _ -> false)
-  &&
+TEST "Turn two sleep works" =
   (match new_state'.player_one.active_pocamon.status with
   | SSleep x -> x = 2 && (new_state'.player_two.active_pocamon.health = start_health)
   | _ -> false)
-  &&
+TEST "Turn three sleep works" =
   (match new_state''.player_one.active_pocamon.status with
   | SSleep x -> x = 1 && (new_state''.player_two.active_pocamon.health = start_health)
   | _ -> false)
-  &&
+TEST "Turn four sleep works" =
   (match new_state'''.player_one.active_pocamon.status with
   | SSleep x -> x = 0 && (new_state'''.player_two.active_pocamon.health = start_health)
   | _ -> true)
-  &&
+TEST "Turn five sleep works" =
   (match new_state''''.player_one.active_pocamon.status with
   | SSleep x -> false
   | _ -> true)
 
-TEST "Test multi turn sleep with debuffs" = let sleep_game =
-  {simple_game with player_one = {simple_game.player_one with active_pocamon = asleep_poca1}} in
-  let start_health = simple_game.player_two.active_pocamon.health in
-
-  let new_state, _ = apply_fight_sequence sleep_game (FMove tackle) (FMove tackle) in
-  let debuff_state, debuffs = apply_status_debuffs new_state in
-
-  let new_state', _ = apply_fight_sequence debuff_state (FMove tackle) (FMove tackle) in
-  let debuff_state', debuffs' = apply_status_debuffs new_state' in
-
-  let new_state'', _ = apply_fight_sequence debuff_state' (FMove tackle) (FMove tackle) in
-  let debuff_state'', debuffs'' = apply_status_debuffs new_state'' in
-
-
-  let new_state''', _ = apply_fight_sequence debuff_state'' (FMove tackle) (FMove tackle) in
-  let debuff_state''', debuffs''' = apply_status_debuffs new_state''' in
-
-
-  let new_state'''', _ = apply_fight_sequence debuff_state''' (FMove tackle) (FMove tackle) in
-  let _, _ = apply_status_debuffs new_state'''' in
-
-  (match new_state.player_one.active_pocamon.status with
-  | SSleep x -> x = 3 && (new_state.player_two.active_pocamon.health = start_health)
-  | _ -> false)
-  &&
-  (match new_state'.player_one.active_pocamon.status with
-  | SSleep x -> x = 2 && (new_state'.player_two.active_pocamon.health = start_health)
-  | _ -> false)
-  &&
-  (match new_state''.player_one.active_pocamon.status with
-  | SSleep x -> x = 1 && (new_state''.player_two.active_pocamon.health = start_health)
-  | _ -> false)
-  &&
-  (match new_state'''.player_one.active_pocamon.status with
-  | SSleep x -> x = 0 && (new_state'''.player_two.active_pocamon.health = start_health)
-  | _ -> true)
-  &&
-  (match new_state''''.player_one.active_pocamon.status with
-  | SSleep x -> false
-  | _ -> true)
 
 let rec get_attack_status x =
     match x with
     | Attack_Status a -> a
     | _ -> failwith "Error - wrong type"
 
-TEST "Test attacks" =
-  let new_state, info = apply_fight_sequence simple_game (FMove tackle) (FMove tackle) in
-  let new_state', info' = apply_fight_sequence new_state (FMove tackle) (FMove tackle) in
+let new_state, info = apply_fight_sequence simple_game
+  (FMove tackle) (FMove tackle)
+let new_state', info' = apply_fight_sequence new_state
+  (FMove tackle) (FMove tackle)
+TEST "p1 tackle worked" =
   (if (get_attack_status info.p1_move_status).missed then
     new_state.player_two.active_pocamon.health =
     simple_game.player_two.active_pocamon.health
   else
     new_state.player_two.active_pocamon.health <
     simple_game.player_two.active_pocamon.health)
-  &&
+TEST "p2 tackle worked" =
   (if (get_attack_status info.p2_move_status).missed then
     new_state.player_one.active_pocamon.health =
     simple_game.player_one.active_pocamon.health
   else
     new_state.player_one.active_pocamon.health <
     simple_game.player_one.active_pocamon.health)
-  &&
+TEST "p1 tackle 2 worked" =
   (if (get_attack_status info'.p1_move_status).missed then
     new_state'.player_two.active_pocamon.health =
     new_state.player_two.active_pocamon.health
   else
     new_state'.player_two.active_pocamon.health <
     new_state.player_two.active_pocamon.health)
-  &&
+TEST "p2 tackle 2 worked" =
   (if (get_attack_status info'.p2_move_status).missed then
     new_state'.player_one.active_pocamon.health =
     new_state.player_one.active_pocamon.health
@@ -206,49 +188,58 @@ TEST "Test attacks" =
     new_state'.player_one.active_pocamon.health <
     new_state.player_one.active_pocamon.health)
 
-TEST "Test stat change moves" =
-  let rec fight_x_times x state func =
-    if x = 0 then state else
-      fight_x_times (x-1) (fst (func state)) func in
-  let stat_change_state =
-    {simple_game with player_one=
-      {simple_game.player_one with active_pocamon=stat_changer_poca}} in
+let rec fight_x_times x state func =
+  if x = 0 then state else
+    fight_x_times (x-1) (fst (func state)) func
+let stat_change_state =
+  {simple_game with player_one=
+    {simple_game.player_one with active_pocamon=stat_changer_poca}}
 
-  let use_attack_up = fun s -> apply_fight_sequence s (FMove attack_up) (FMove dummy_move) in
-  let used_attack_up_once = fight_x_times 1 stat_change_state use_attack_up in
-  let used_attack_up_a_lot = fight_x_times 10 stat_change_state use_attack_up in
+let use_attack_up = fun s -> apply_fight_sequence s
+  (FMove attack_up) (FMove dummy_move)
+let used_attack_up_once = fight_x_times 1 stat_change_state use_attack_up
+let used_attack_up_a_lot = fight_x_times 10 stat_change_state use_attack_up
 
-  let use_speed_down = fun s -> apply_fight_sequence s (FMove speed_down) (FMove dummy_move) in
-  let used_speed_down_once = fight_x_times 1 stat_change_state use_speed_down in
-  let used_speed_down_a_lot = fight_x_times 10 stat_change_state use_speed_down in
+let use_speed_down = fun s -> apply_fight_sequence s
+  (FMove speed_down) (FMove dummy_move)
+let used_speed_down_once = fight_x_times 1 stat_change_state use_speed_down
+let used_speed_down_a_lot = fight_x_times 10 stat_change_state use_speed_down
 
-  (used_attack_up_once.player_one.active_pocamon.stat_mods.attack = 1) &&
-  (used_attack_up_a_lot.player_one.active_pocamon.stat_mods.attack = 6) &&
-  (used_speed_down_once.player_two.active_pocamon.stat_mods.speed = -1) &&
+TEST "Attack increased by 1" =
+  (used_attack_up_once.player_one.active_pocamon.stat_mods.attack = 1)
+TEST "Attack increased to a max of 6" =
+  (used_attack_up_a_lot.player_one.active_pocamon.stat_mods.attack = 6)
+TEST "Speed decreased by 1" =
+  (used_speed_down_once.player_two.active_pocamon.stat_mods.speed = -1)
+TEST "Speed decreased to a min of -6" =
   (used_speed_down_a_lot.player_two.active_pocamon.stat_mods.speed = -6)
 
 
-TEST "test MPriorityHit" =
-  let priority_game = {simple_game with player_one=
-      {simple_game.player_one with active_pocamon=priority_poca}} in
-  let _, info = apply_fight_sequence priority_game (FMove priority_hit) (FMove dummy_move) in
+TEST "Test priority hit goes first" = let priority_game =
+  {simple_game with player_one= {simple_game.player_one with
+                                active_pocamon=priority_poca}} in
+  let _, info = apply_fight_sequence priority_game
+                (FMove priority_hit) (FMove dummy_move) in
   info.p1_went_first
 
-TEST "Test health-effecting effects" =
-  let health_game = {simple_game with player_one={
-    simple_game.player_one with active_pocamon=health_changer}} in
+let health_game = {simple_game with player_one={
+  simple_game.player_one with active_pocamon=health_changer}}
 
-  let used_recover, _ = apply_fight_sequence health_game
-    (FMove recover) (FMove dummy_move) in
-  let used_explode, _ = apply_fight_sequence health_game
-    (FMove explode) (FMove dummy_move) in
-  let used_drain, _ = apply_fight_sequence health_game
-    (FMove drain) (FMove dummy_move) in
+let used_recover, _ = apply_fight_sequence health_game
+  (FMove recover) (FMove dummy_move)
+let used_explode, _ = apply_fight_sequence health_game
+  (FMove explode) (FMove dummy_move)
+let used_drain, _ = apply_fight_sequence health_game
+  (FMove drain) (FMove dummy_move)
 
-  (used_recover.player_one.active_pocamon.health > 100) &&
-  (used_explode.player_one.active_pocamon.health = 0) &&
-  (used_explode.player_two.active_pocamon.health < 200) &&
-  (used_drain.player_one.active_pocamon.health > 100) &&
+TEST "Recover increased health" =
+  (used_recover.player_one.active_pocamon.health > 100)
+TEST "Explode killed user" = (used_explode.player_one.active_pocamon.health = 0)
+TEST "Explode dealt damage" =
+  (used_explode.player_two.active_pocamon.health < 200)
+TEST "Drain increased health" =
+  (used_drain.player_one.active_pocamon.health > 100)
+TEST "Drain damaged opponent" =
   (used_drain.player_two.active_pocamon.health < 200)
 
 let charge_game = {simple_game with player_one={
@@ -264,16 +255,27 @@ let used_charge_no_hit, info = apply_fight_sequence charge_game
 let charge_no_hit_finished, _ = apply_fight_sequence used_charge_no_hit
     (FMove dummy_move) (FMove dummy_move)
 
-TEST "charging field populated" = (used_charge.player_one.active_pocamon.charging <> None)
-TEST "Attack_immunity false" = (not used_charge.player_one.active_pocamon.attack_immunity)
-TEST "Health unchanged" = (used_charge.player_two.active_pocamon.health = 200)
-TEST "charge off" = (charge_finished.player_one.active_pocamon.charging = None)
-TEST "health down" = (charge_finished.player_two.active_pocamon.health < 200)
+TEST "charging field populated" =
+  (used_charge.player_one.active_pocamon.charging <> None)
+TEST "Attack_immunity false" =
+  (not used_charge.player_one.active_pocamon.attack_immunity)
+TEST "Health unchanged" =
+  (used_charge.player_two.active_pocamon.health = 200)
+TEST "charge off" =
+  (charge_finished.player_one.active_pocamon.charging = None)
+TEST "health down" =
+  (charge_finished.player_two.active_pocamon.health < 200)
 
-TEST "charging field populated" = (used_charge_no_hit.player_one.active_pocamon.charging <> None)
-TEST "attack immunity true" = (used_charge_no_hit.player_one.active_pocamon.attack_immunity)
-TEST "health unchanged" = (used_charge_no_hit.player_two.active_pocamon.health = 200)
-TEST "Charge off" = (charge_no_hit_finished.player_one.active_pocamon.charging = None)
-TEST "attack_immunity off" = (not charge_no_hit_finished.player_one.active_pocamon.attack_immunity)
-TEST "health down" = (charge_no_hit_finished.player_two.active_pocamon.health < 200)
+TEST "charging field populated" =
+  (used_charge_no_hit.player_one.active_pocamon.charging <> None)
+TEST "attack immunity true" =
+  (used_charge_no_hit.player_one.active_pocamon.attack_immunity)
+TEST "health unchanged" =
+  (used_charge_no_hit.player_two.active_pocamon.health = 200)
+TEST "Charge off" =
+  (charge_no_hit_finished.player_one.active_pocamon.charging = None)
+TEST "attack_immunity off" =
+  (not charge_no_hit_finished.player_one.active_pocamon.attack_immunity)
+TEST "health down" =
+  (charge_no_hit_finished.player_two.active_pocamon.health < 200)
 TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
