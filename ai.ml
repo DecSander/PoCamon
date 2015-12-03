@@ -21,8 +21,7 @@ let poca_score acc poca =
 
 let get_player_score p_state =
   let active_poca_score = poca_score 0. p_state.active_pocamon in
-  let party_score = List.fold_left poca_score active_poca_score
-                      p_state.pocamon_list in
+  let party_score = List.fold_left poca_score active_poca_score p_state.pocamon_list in
   party_score
 
 let game_score (gs: game_state) :float =
@@ -65,27 +64,16 @@ let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
     match e_list, p_list with
     | [], [] -> best
     | e_hd::e_tl, p_hd::p_tl ->
-<<<<<<< HEAD
       let best_poca = if (e_hd > acc && (p_hd.health > 0)) || (best.health <= 0)
         then p_hd else best in
-=======
-      let best_poca =
-        if (e_hd > acc && (p_hd.health > 0)) ||
-        (best.health <= 0) then p_hd else best in
->>>>>>> 259341744a5403483ac8f553e1852e9da6bf93a3
       let acc' = if e_hd > acc then e_hd else acc in
       get_best_poca e_tl p_tl acc' best_poca
     | _ -> failwith "this should never happen" in
 
   let eff_list = List.map get_eff_score active_player.pocamon_list in
-<<<<<<< HEAD
   let best_poca =
     get_best_poca eff_list active_player.pocamon_list 0.
                   active_player.active_pocamon in
-=======
-  let best_poca = get_best_poca eff_list active_player.pocamon_list 0.
-                    active_player.active_pocamon in
->>>>>>> 259341744a5403483ac8f553e1852e9da6bf93a3
   best_poca
 
 let assemble_actions is_ai_turn action (p1_act, p2_act) =
@@ -135,19 +123,12 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
           active_player (not is_ai_turn) g_state' in
         if switch_poca = active_player.active_pocamon then (None, 0.)
         else
-<<<<<<< HEAD
           let actions =
             assemble_actions is_ai_turn (FSwitch switch_poca)
                             (p1_act', p2_act') in
           let calcd_switch_score =
             mini_max
               g_state' b_status' (not is_ai_turn) actions (recs_left-1) in
-=======
-          let actions = assemble_actions is_ai_turn (FSwitch switch_poca)
-                          (p1_act', p2_act') in
-          let calcd_switch_score = mini_max g_state' b_status' (not is_ai_turn)
-                                    actions (recs_left-1) in
->>>>>>> 259341744a5403483ac8f553e1852e9da6bf93a3
         ((Some (FSwitch switch_poca)), calcd_switch_score)
       else
       (None, 0.) in
@@ -174,11 +155,7 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
       get_best best_move_score switch_score
     | None -> best_move_score
 
-<<<<<<< HEAD
 let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
-=======
-let get_ai_action (ai: ai_player) gs (bs : battle_status) : fAction =
->>>>>>> 259341744a5403483ac8f553e1852e9da6bf93a3
 
   let active_player = gs.player_two in
 
@@ -191,8 +168,7 @@ let get_ai_action (ai: ai_player) gs (bs : battle_status) : fAction =
 
   let depth = 7 in
 
-  let switch_score = mini_max gs bs false
-                      (None, Some (FSwitch switch_poca)) depth in
+  let switch_score = mini_max gs bs false (None, Some (FSwitch switch_poca)) depth in
 
   let m_list = List.map (fun x ->
     (mini_max gs bs false (None, Some (FMove x)) depth)) moves in
@@ -204,7 +180,5 @@ let get_ai_action (ai: ai_player) gs (bs : battle_status) : fAction =
   if x > acc then let () = i := !i + 1 in x else acc in
 
   let best_score = List.fold_left find_best (-8.0) m_list in
-  (print_endline ("Final: " ^ string_of_float(best_score) ^ " "
-    ^ string_of_float(switch_score)));
   if best_score >= switch_score || switch_poca = active_player.active_pocamon
     then FMove (List.nth moves !i) else FSwitch switch_poca
