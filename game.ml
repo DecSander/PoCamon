@@ -20,7 +20,7 @@ let trainers =
   {start_text="Prof. Bracy: Prepare to have your cache cleared";
   name="Prof. Bracy";
   end_text="Prof. Bracy: You optimized the common case faster than I could :(";
-  pocamon_list=["ODDISH"; "CHANSEY";
+  pocamon_list=["ODDISH"; "BELLSPROUT";
   "PARAS"; "CUBONE"; "BEEDRILL"; "VENOMOTH"]};
 
   {start_text="Prof. Gries: You're gonna need more than just java after this";
@@ -32,14 +32,13 @@ let trainers =
   {start_text="Team Rocket: Prepare for Trouble ... and make it Double";
   name="Team Rocket";
   end_text="Team Rocket: Oh this is PoCamon? We thought it was Pokemon";
-  pocamon_list=["EKANS"; "BELLSPROUT";
+  pocamon_list=["EKANS"; "VAPOREON";
   "KOFFING"; "MEOWTH"; "PIKACHU"; "GASTLY"]};
 
-  {start_text=
-    "Prof. Hopcroft: I won this turing award for beating kids like you";
+  {start_text="Prof. Hopcroft: I won my turing award for beating kids like you";
   name="Prof. Hopcroft";
   end_text="Prof. Hopcroft: If only I had more 2-3 Trees";
-  pocamon_list=["ARCANINE"; "VAPOREON";
+  pocamon_list=["ARCANINE"; "CHANSEY";
   "MACHAMP"; "ONIX"; "AERODACTYL"; "MOLTRES"]};
 
   {start_text="Prof. George: My NFA beats your DFA anyday";
@@ -211,7 +210,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   | _ -> choose_new_pocamon g_state p_state s_state
 
 
-let check_faint trainer_list initial_state g_state : (game_state * trainer list) =
+let check_faint trainer_list initial_state g_state: (game_state * trainer list)=
   let game_over g_state winner : game_state =
     let end_message = Talking (winner.name ^ " has won!") in
     wait_for_enter g_state winner end_message;
@@ -229,17 +228,20 @@ let check_faint trainer_list initial_state g_state : (game_state * trainer list)
   if  pocamon_health1 <= 0 then
       let () = wfe1 (ap " fainted!") in
       if   number_of_pocamon1 > 0
-      then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0), trainer_list
+      then choose_new_pocamon g_state g_state.player_one (Pocamon_List 0),
+           trainer_list
       else game_over g_state g_state.player_two, trainer_list
 
   else if pocamon_health2 <= 0 then
       let () = wfe2 (oap " fainted!") in
       if  number_of_pocamon2 > 0 then
         if is_human g_state.player_two.is_computer
-        then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0), trainer_list
+        then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0),
+             trainer_list
         else let new_poca =
           get_switch_poca g_state.player_one g_state.player_two false g_state in
-          fst (switch_pocamon new_poca g_state.player_two g_state true), trainer_list
+          fst (switch_pocamon new_poca g_state.player_two g_state true),
+              trainer_list
       else
         if not (is_human g_state.player_two.is_computer)
         then  (match trainer_list with
@@ -379,11 +381,15 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
 
   let (new_gs, printfo), p1a, p2a = get_player_actions () in
   let ()                          = print_fight new_gs printfo p1a p2a in
-  let new_gs', trainers1           = check_faint trainer_list initial_state new_gs in
+  let new_gs', trainers1     = check_faint trainer_list initial_state new_gs in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs, _          = check_faint trainer_list initial_state new_gs'' in
-  run_game_turn trainers1 initial_state final_gs printfo
+  let final_gs, trainers2   = check_faint trainer_list initial_state new_gs'' in
+  let new_trainers =
+    if (List.length trainers1) > (List.length trainers2)
+    then trainers2
+    else trainers1 in
+  run_game_turn new_trainers initial_state final_gs printfo
 
 let start_from_state trainer_list g_state : unit =
   let () = Random.self_init () in
