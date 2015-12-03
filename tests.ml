@@ -34,7 +34,7 @@ TEST "bad input throws exception" =
   try let _ =  get_move "Not_A_Move" in false
   with _ -> true
 
-TEST "normal get_pocamon name" = (get_pocamon "RAPIDASH").name =  "RAPIDASH" 
+TEST "normal get_pocamon name" = (get_pocamon "RAPIDASH").name =  "RAPIDASH"
 
 TEST "normal get_pocamon learnable_moves" = (get_pocamon "RAPIDASH").learnable_moves = ["FIRE BLAST";"GROWL";"EMBER";"HYPER BEAM";"TOXIC";"TAKE DOWN";"AGILITY";"SWIFT";"STOMP";"TAIL WHIP";"FLAMETHROWER";]
 
@@ -42,7 +42,7 @@ TEST "normal get_pocamon stats" = (get_pocamon "RAPIDASH").stats = {max_hp=65; a
 
 TEST "normal get_pocamon poca_type" = (get_pocamon "RAPIDASH").poca_type = ("FIRE", "FIRE")
 
-TEST "normal get_pocamon ascii" = (get_pocamon "RAPIDASH").ascii = 
+TEST "normal get_pocamon ascii" = (get_pocamon "RAPIDASH").ascii =
 
 "   , ??OO==??    7===Z
   O ,?7O??=?????????7ZZZ7Z7Z
@@ -91,7 +91,6 @@ TEST "Switch" = process_input "switch raichu" = Some (Action (Switch "RAICHU"))
 TEST "Bad Switch" = process_input "switch james jfsdf" = None
 TEST "Move" = process_input "win" = Some (Action (Move "WIN"))
 TEST "2-word move" = process_input "two move" = Some (Action (Move "TWO MOVE"))
-
 TEST "Yes" = process_selection "Yes" = Some Yes
 TEST "No" = process_selection "No" = Some No
 TEST "y" = process_selection "y" = Some Yes
@@ -100,6 +99,5 @@ TEST "Trim" = process_selection "  \t yes \t  " = Some Yes
 TEST "Bad input" = process_selection "sfdsd" = None
 TEST "No at end" = process_selection "jamno" = None
 TEST "Yes in middle" = process_selection "jkyeskl" = None
-
 
 let () = Pa_ounit_lib.Runtime.summarize()

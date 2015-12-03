@@ -19,7 +19,7 @@ let match_phrase (str: bytes) (regex: bytes) :bool =
 
 let get_switch (str: bytes) :command option =
   let words = Str.split (Str.regexp " ") str in
-  if (List.length words < 2)
+  if (List.length words <> 2)
   then None
   else Some (Action (Switch (List.nth words 1)))
 
