@@ -259,21 +259,21 @@ let used_charge, _ = apply_fight_sequence charge_game
 let charge_finished, _ = apply_fight_sequence used_charge
     (FMove dummy_move) (FMove dummy_move)
 
-let used_charge_no_hit, _ = apply_fight_sequence charge_game
+let used_charge_no_hit, info = apply_fight_sequence charge_game
     (FMove charge_no_hit) (FMove dummy_move)
-let charge_no_hit_finished, info = apply_fight_sequence used_charge_no_hit
+let charge_no_hit_finished, _ = apply_fight_sequence used_charge_no_hit
     (FMove dummy_move) (FMove dummy_move)
 
 TEST "charging field populated" = (used_charge.player_one.active_pocamon.charging <> None)
-  (not used_charge.player_one.active_pocamon.attack_immunity) &&
-  (used_charge.player_two.active_pocamon.health = 200) &&
-  (charge_finished.player_one.active_pocamon.charging = None) &&
-  (charge_finished.player_two.active_pocamon.health < 200) &&
+TEST "Attack_immunity false" = (not used_charge.player_one.active_pocamon.attack_immunity)
+TEST "Health unchanged" = (used_charge.player_two.active_pocamon.health = 200)
+TEST "charge off" = (charge_finished.player_one.active_pocamon.charging = None)
+TEST "health down" = (charge_finished.player_two.active_pocamon.health < 200)
 
-  (used_charge_no_hit.player_one.active_pocamon.charging <> None) &&
-  (used_charge_no_hit.player_one.active_pocamon.attack_immunity) &&
-  (used_charge_no_hit.player_two.active_pocamon.health = 200) &&
-  (charge_no_hit_finished.player_one.active_pocamon.charging = None) &&
-  (not charge_no_hit_finished.player_one.active_pocamon.attack_immunity) &&
-  (charge_no_hit_finished.player_two.active_pocamon.health < 200) &&
-  ((get_attack_status info.p2_move_status).missed)
+TEST "charging field populated" = (used_charge_no_hit.player_one.active_pocamon.charging <> None)
+TEST "attack immunity true" = (used_charge_no_hit.player_one.active_pocamon.attack_immunity)
+TEST "health unchanged" = (used_charge_no_hit.player_two.active_pocamon.health = 200)
+TEST "Charge off" = (charge_no_hit_finished.player_one.active_pocamon.charging = None)
+TEST "attack_immunity off" = (not charge_no_hit_finished.player_one.active_pocamon.attack_immunity)
+TEST "health down" = (charge_no_hit_finished.player_two.active_pocamon.health < 200)
+TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
