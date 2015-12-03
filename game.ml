@@ -49,7 +49,8 @@ let trainers =
 
   {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
   name="Prof. Clarkson";
-  end_text="Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost";
+  end_text=
+    "Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost. Congrats!!!";
   pocamon_list=["DRAGONITE"; "ALAKAZAM";
   "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 
