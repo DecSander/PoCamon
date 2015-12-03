@@ -9,6 +9,8 @@ type yn = Yes | No
 
 val io_channel : in_channel
 val readl : in_channel -> string
+val out_channel: out_channel
+val prints : string -> unit
 
 (*
  * Takes a string and parses it using regex to return the command corresponding
@@ -32,8 +34,8 @@ val print_size_screen : unit -> unit
  * Preconditon: [defaults] is not empty *)
 val get_input : string list -> string list -> string
 
-val create_public_info: game_state -> public_info 
+val create_public_info: game_state -> public_info
 
-val get_against_ai: unit -> ai 
+val get_against_ai: unit -> ai
 
 val wait_for_enter: game_state -> player_state -> screen_state -> unit
