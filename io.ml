@@ -49,7 +49,7 @@ let string_of_type = function
     | TElectric -> "\027[33m ELECTRIC \027[97m"
     | TGrass -> "\027[32m GRASS \027[97m"
     | TIce -> "\027[94m ICE \027[97m"
-    | TFighting -> "\027[90ms FIGHTING \027[97m"
+    | TFighting -> "\027[90m FIGHTING \027[97m"
     | TPoison -> "\027[95m POSION \027[97m"
     | TGround -> "\027[90m GROUND \027[97m"
     | TFlying -> "\027[93m FLYING \027[97m"
