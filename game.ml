@@ -10,8 +10,8 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
   "Swig, swag, grab my bag... Or not"]
 
 let trainers =
-  [{start_text="Prof. White: Welcome to the Elite 8, now prepare to lose";
-  name="Prof. Daisy-Fan";
+  [{start_text="Prof. White: Welcome to the Elite 7, now prepare to lose";
+  name="Prof. White";
   end_text="Prof. White: The next game design project is gonna be to beat you";
   pocamon_list=["HORSEA"; "METAPOD";
   "PIDGEOT"; "SPEAROW"; "POLIWAG"; "MEOWTH"]};
@@ -25,7 +25,7 @@ let trainers =
   {start_text="Prof. Gries: You're gonna need more than just java after this";
   name="David Gries";
   end_text="Prof. Gries: I guess I need more loop invariants";
-  pocamon_list=["EEVEE"; "VILEPUME";
+  pocamon_list=["EEVEE"; "VILEPLUME";
   "POLIWRATH"; "HAUNTER"; "MR.MIME"; "PSYDUCK"]};
 
   {start_text="Team Rocket: Prepare for Trouble ... and make it Double";
@@ -59,6 +59,7 @@ let gen_next_state (trainer_list: trainer list) initial_state
     let () = wait_for_enter g_state g_state.player_one (Talking ("You won!")) in
     exit 0
   | h::t -> h) in
+  print_string trainer.start_text;
   let player_one_name = g_state.player_one.name in
   let against_ai = Elite in
   let player_two_name = trainer.name in
@@ -230,7 +231,7 @@ let check_faint trainer_list initial_state g_state : (game_state * trainer list)
 
   else if pocamon_health2 <= 0 then
       let () = wfe2 (oap " fainted!") in
-      if   number_of_pocamon2 > 0 then
+      if  number_of_pocamon2 > 0 then
         if is_human g_state.player_two.is_computer
         then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0), trainer_list
         else let new_poca =
@@ -375,11 +376,11 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
 
   let (new_gs, printfo), p1a, p2a = get_player_actions () in
   let ()                          = print_fight new_gs printfo p1a p2a in
-  let new_gs', trainers           = check_faint trainer_list initial_state new_gs in
+  let new_gs', trainers1           = check_faint trainer_list initial_state new_gs in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs, trainers          = check_faint trainer_list initial_state new_gs'' in
-  run_game_turn trainers initial_state final_gs printfo
+  let final_gs, _          = check_faint trainer_list initial_state new_gs'' in
+  run_game_turn trainers1 initial_state final_gs printfo
 
 let start_from_state trainer_list g_state : unit =
   let () = Random.self_init () in
