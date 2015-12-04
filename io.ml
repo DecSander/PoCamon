@@ -242,7 +242,9 @@ let star_bar = "********************************************"^
   "*******************************"
 
 let select_quote () =
-  let lst = ["“This is my grandson. He’s been your rival since you were a baby.
+  let lst = [
+  "“This is my grandson.
+  He’s been your rival since you were a baby.
   …Erm, what is his name again?” -Professor Oak";
   "”We hope to see you again!”
   -Nurse Joy ";
@@ -252,8 +254,9 @@ let select_quote () =
   -Team Rocket Grunt at the Sevii Islands";
   "PSHSHSHSHSHSHHSSHS
   - Kraby #93";
-  "“Remember my super cool Rattata? My Rattata is different from regular Rattata.
-  It’s like my Rattata is in the top percentage of all Rattata.” -Youngster Joey";
+  "“Remember my super cool Rattata? My Rattata is different
+  from regular Rattata. It’s like my Rattata is in the top
+  percentage of all Rattata.” -Youngster Joey";
   "“Mostly I breathe fire, but want to exchange numbers?”
   -Firebreather Walt";
   "“I don’t want to miss anything you do from now on!”
