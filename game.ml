@@ -133,7 +133,7 @@ let gen_initial_state () : game_state =
       then List.map (fun x -> get_pocamon_by_name x)
                     (List.hd trainers).pocamon_list
       else List.fold_left
-        (fun a un -> (get_different_pocamon a)::a) [] [();();();();();()] in
+        (fun a un -> (get_different_pocamon a)::a) [] [()] in
 
     let player_one_active_pocamon = List.hd player_one_pocamon in
     let player_two_active_pocamon = List.hd player_two_pocamon in
@@ -248,13 +248,15 @@ let check_faint trainer_list initial_state g_state: (game_state * trainer list)=
           get_switch_poca g_state.player_one g_state.player_two false g_state in
           fst (switch_pocamon new_poca g_state.player_two g_state true),
               trainer_list
-      else
+      else if (is_elite g_state.player_two.is_computer) then
         if not (is_human g_state.player_two.is_computer)
         then  (match trainer_list with
                 | [] -> wfe1 "You won!"; exit 0
                 | trainer::tail -> wfe1 trainer.end_text;
                     gen_next_state tail initial_state g_state, tail)
         else  game_over g_state g_state.player_one, trainer_list
+      else
+        (wfe1 "You won!"; exit 0)
   else
     g_state, trainer_list
 
