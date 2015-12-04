@@ -286,29 +286,29 @@ let print_screen ps pi ss =
   let str = print_screen_debug ps pi ss in
   prints str
 
-let ascii_pokeball = " \027[34m
+let splash_screen () =
+  let quote = select_quote () in
+  let ascii_pokeball = " \027[34m
 
 
 
-                              .;:**'
-                              `
-  .:XHHHHk.              db.   .;;.     dH  MX               \027[33m
-oMMMMMMMMMMM        MM  dMMP :MMMMMR   MMM  MR      ~MRMN
-QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
-  `MMM.   )M> :X!Hk. QMMM   XMQ.o'  .  MMMMMMM X?XMMM MMM>!MMP
-   'MMMb.dM! XM M'?M QMMMMX.`MMMMMMMM~ MM MHM XM    MX MMXXMM
-    ~MMMMM~ XMM. .XM XM`'MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP
-     ?MMM>  YMMMMMM! MM   `?MMRb.    `'''   !L'MMMMM XM IMMM
-      MMMX   'MMMM'  LM       ~%:           !Mh.''' dMI IMMP  \027[34m
-      'MMM.                                             IMX
-       ~M!M                                             IMP
+                                .;:**'
+                                `
+    .:XHHHHk.              db.   .;;.     dH  MX               \027[33m
+  oMMMMMMMMMMM        MM  dMMP :MMMMMR   MMM  MR      ~MRMN
+  QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
+    `MMM.   )M> :X!Hk. QMMM   XMQ.o'  .  MMMMMMM X?XMMM MMM>!MMP
+     'MMMb.dM! XM M'?M QMMMMX.`MMMMMMMM~ MM MHM XM    MX MMXXMM
+      ~MMMMM~ XMM. .XM XM`'MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP
+       ?MMM>  YMMMMMM! MM   `?MMRb.    `'''   !L'MMMMM XM IMMM
+        MMMX   'MMMM'  LM       ~%:           !Mh.''' dMI IMMP  \027[34m
+        'MMM.                                             IMX
+         ~M!M                                             IMP
 
-\027[97m
-                    PSHSHSHSHSHSHHSSHS - Kraby #93
-
+  \027[97m " ^ quote ^ "
 
 
-"
+  "
 let size_screen = "
 |¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|
 |                                                                              |
@@ -340,7 +340,7 @@ let print_size_screen () =
 
 
 let print_start s =
-  prints (ascii_pokeball ^ star_bar ^ "\n" ^
+  prints ((splash_screen ()) ^ star_bar ^ "\n" ^
                 (string_to_box s))
 
 
