@@ -26,14 +26,11 @@ let game_score (gs: game_state) :float =
   let ps2 = (get_player_score gs.player_two) in
   ((ps2) -. (ps1))
 
-let rec find_best best ml =
+let rec find_best (best: (float * 'a) option) (ml: (float * 'a) list) :(float * 'a) option =
   match ml with
-  | [] -> best
+  | [] -> None
   | h::t ->
-  let best_move = (match best with
-    | None -> -20.
-    | Some x -> (fst x)) in
-  if best_move > (fst h) then best else Some h
+  Some (List.hd (List.sort (fun v1 v2 -> int_of_float (10000. *. ((fst v2) -. (fst v1)))) ml))
 
 let expectation move = {move with accuracy=100;
   damage=move.damage*move.accuracy/100}

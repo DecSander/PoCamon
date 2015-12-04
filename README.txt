@@ -52,7 +52,7 @@ too upset if you can't beat all of them.
 
 TESTING:
 
-To test the program, comment out lines 12 and 13 in io.ml and line 448 in
+To test the program, comment out lines 12-13 in io.ml and line 445 in
 game.ml, then run:
 
 cs3110 compile -p str game.ml
@@ -62,6 +62,9 @@ cs3110 test tests.ml
 Remember to uncomment those lines out if you want to play the game normally
 again!
 
+NOTE:
+
+There is no types.ml, only types.mli
 
 CREDITS:
 
