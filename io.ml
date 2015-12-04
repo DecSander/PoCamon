@@ -11,6 +11,8 @@ let out_channel = open_out "/dev/null"
 let io_channel = open_in "game_inputs.txt"
 let out_channel = Pervasives.stdout
 let io_channel = Pervasives.stdin
+(* prints and readl replace print_string and read_line so that the io
+ * channel can be easily switched for testing *)
 let prints s = output_string out_channel s
 let readl io = flush out_channel; input_line io
 
@@ -23,6 +25,7 @@ let get_switch (str: bytes) :command option =
   then None
   else Some (Action (Switch (List.nth words 1)))
 
+(* Takes in the user's input and passes the results to game *)
 let process_input (s: bytes) :command option =
   let trim_s = String.uppercase (String.trim s) in
   if match_phrase trim_s "^UP$" then Some Up
@@ -69,6 +72,7 @@ let explode s =
     if i < 0 then l else exp (i - 1) (String.make 1 (s.[i]) :: l) in
   exp ((String.length s) - 1) []
 
+(* Ignores ANSI Color escape characters because they have no length *)
 let length_no_color (s: bytes) :int =
   let rec length_helper xs res :int =
     (match xs with
@@ -104,8 +108,6 @@ let create_pocamon_ascii (pc: pocamon) :bytes =
   | TGhost -> "[35m"
   | TDragon -> "[35m") in
 
-
-
   let rec ascii_help (art: bytes list) (res: bytes) :bytes =
     match art with
     | h::t -> ascii_help t (res ^ "\n" ^ color ^ h)
@@ -121,6 +123,7 @@ let status_to_string (status: pStatus) :bytes =
   | SParalyze -> "PAR"
   | SFreeze _ -> "FRZ"
 
+(* Generates a health bar for the active pocamon *)
 let create_health_bar (pc: pocamon) :bytes =
   let rec gen_hp_bar (equals: int) (empty: int) (s: bytes) :bytes =
     if empty <= 0 && equals <= 0 then s ^ "]"
@@ -138,6 +141,7 @@ let create_health_bar (pc: pocamon) :bytes =
   ^ " " ^ health_spaced ^ "/" ^ max_hp_spaced
   ^ " " ^ status_to_string (pc.status) ^ " "
 
+(*Combines ASCII art line-by-line to create one big ascii art containing both*)
 let art_joiner (art1: bytes) (art2: bytes) :bytes =
   let rec art_help (art1: bytes list) (art2: bytes list) res :bytes =
     match art1, art2 with
@@ -148,6 +152,7 @@ let art_joiner (art1: bytes) (art2: bytes) :bytes =
   (art_help (Str.split (Str.regexp "\n") art1)
             (Str.split (Str.regexp "\n") art2) "") ^ "\027[97m"
 
+(* For use in displaying moves *)
 let gen_moves ps :bytes =
   let string_of_move (m: move) : string=
     let buffer = String.make (20 - (String.length m.name)) ' ' in
@@ -174,6 +179,7 @@ let slice l i k =
   in
   take (k - i + 1) (drop i l)
 
+(* Generates pocamon for display, has ... if more pocamon available *)
 let gen_pocamon (ps: player_state) i :bytes =
   let start = i in
   let end_lst = min (i+3) ((List.length ps.pocamon_list) - 1) in
@@ -207,6 +213,7 @@ let gen_pocamon (ps: player_state) i :bytes =
       (string_to_box h)) in
   Bytes.sub (pocamon_help pl 4 "") 1 (Bytes.length (pocamon_help pl 4 "") - 1)
 
+(* Generates box containing string from Talking *)
 let gen_talking (s: bytes) :bytes =
   let rec talking_help (words: bytes list) i (res :bytes) :bytes =
     match words with
@@ -253,14 +260,14 @@ let select_quote =
   -Team Rocket Grunt at the Sevii Islands";
   "PSHSHSHSHSHSHHSSHS
   - Krabby #93";
-  "“Remember my super cool Rattata? My Rattata is different 
-  from regular Rattata. It’s like my Rattata is in the 
+  "“Remember my super cool Rattata? My Rattata is different
+  from regular Rattata. It’s like my Rattata is in the
   top percentage of all Rattata.” -Youngster Joey";
   "“Mostly I breathe fire, but want to exchange numbers?”
   -Firebreather Walt";
-  "“This brat’s tough. Tougher than I can put into words, 
+  "“This brat’s tough. Tougher than I can put into words,
   and I know a lot of words.” -Team Galactic Grunt at Floaroma Meadow";
-  "“I’m sure that you will be dazzled by my mentor’s 
+  "“I’m sure that you will be dazzled by my mentor’s
   breathtakingly elegant battle style.” -Wallace";
   "Pika- Pika! CHUUUU!-Pikachu #93"] in
 
@@ -277,6 +284,7 @@ let center_in_splash_screen str =
   let lines = Str.split (Str.regexp "\n") str in
   center_string_list lines
 
+(* Produces the string to be printed *)
 let print_screen_debug ps pi ss =
   let art = art_joiner (create_pocamon_ascii pi.player_one_active_pocamon)
   (create_pocamon_ascii pi.player_two_active_pocamon) in
@@ -459,7 +467,7 @@ let get_input (words: string list) (defaults: string list) =
       prints ("\r|> ");
       flush Pervasives.stdout;
       go (acc@[really_input_string io_channel 1]) in
- 
+
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
     | _, _, true, _ -> print_string "\027[97m\r"; breakdown tinfo; get_word acc
@@ -499,5 +507,3 @@ let rec get_against_ai () : ai =
     else if input = "HUMAN" then Human
     else if input = "ELITE 7" then Elite
     else get_against_ai ()
-
-

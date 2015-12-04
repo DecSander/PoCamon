@@ -3303,67 +3303,67 @@ ascii="   , ??OO==??    7===Z
 
 
 let get_move (name: string) : move  =
-	try MoveDex.find name movedex
-	with _ -> failwith ("Can't find move " ^ name)
+  try MoveDex.find name movedex
+  with _ -> failwith ("Can't find move " ^ name)
 
 
 let get_pocamon (name: string): dex_pocamon  =
-	try PokeDex.find name dexmap
-	with _ -> failwith ("Can't find pokemon " ^ name)
+  try PokeDex.find name dexmap
+  with _ -> failwith ("Can't find pokemon " ^ name)
 
 
 let type_of_string s : pType =
-	match s with
-	| "NORMAL" -> TNormal
-	| "FIRE" -> TFire
-	| "WATER" -> TWater
-	| "ELECTRIC" -> TElectric
-	| "GRASS" -> TGrass
-	| "ICE" -> TIce
-	| "FIGHTING" -> TFighting
-	| "POISON" -> TPoison
-	| "GROUND" -> TGround
-	| "FLYING" -> TFlying
-	| "PSYCHIC" -> TPsychic
-	| "BUG" -> TBug
-	| "ROCK" -> TRock
-	| "GHOST" -> TGhost
-	| "DRAGON" -> TDragon
-	| _ -> failwith ("not a type:" ^ s)
+  match s with
+  | "NORMAL" -> TNormal
+  | "FIRE" -> TFire
+  | "WATER" -> TWater
+  | "ELECTRIC" -> TElectric
+  | "GRASS" -> TGrass
+  | "ICE" -> TIce
+  | "FIGHTING" -> TFighting
+  | "POISON" -> TPoison
+  | "GROUND" -> TGround
+  | "FLYING" -> TFlying
+  | "PSYCHIC" -> TPsychic
+  | "BUG" -> TBug
+  | "ROCK" -> TRock
+  | "GHOST" -> TGhost
+  | "DRAGON" -> TDragon
+  | _ -> failwith ("not a type:" ^ s)
 
 let update_stats base_stats  : poca_stats =
-	let rec gen_ev stats (points: int) : poca_stats =
-		if points = 0 then stats else
-		let index = Random.int 6 in
-		let addPoints = Random.int 50 in
-		let addPoints = if addPoints < points then addPoints else points in
-		match index with
-		| 0 -> if stats.max_hp < 252
-			   then gen_ev {stats with max_hp = stats.max_hp + addPoints}
-			   (points - addPoints)
-			   else  gen_ev stats points
-		| 1 -> if stats.attack < 252
-			   then gen_ev {stats with attack = stats.attack + addPoints}
-			   (points - addPoints)
-			   else  gen_ev stats points
-		| 2 -> if stats.defense < 252
-			   then gen_ev {stats with defense = stats.defense + addPoints}
-			   (points - addPoints)
-			   else  gen_ev stats points
-		| 3 -> if stats.speed < 252
-			   then gen_ev {stats with speed = stats.speed + addPoints}
-			   (points - addPoints)
-			   else gen_ev stats points
-		| 4 -> if stats.sp_attack < 252
-			   then gen_ev {stats with sp_attack = stats.sp_attack + addPoints}
-			   (points - addPoints)
-			   else gen_ev stats points
-		| 5-> if stats.sp_defense < 252
-			   then gen_ev {stats with sp_defense = stats.sp_defense + addPoints}
-			   (points - addPoints)
-			   else  gen_ev stats points
-		| _ -> failwith "error in random number generation" in
-	let evs = gen_ev { max_hp = 0; attack = 0; defense = 0 ; sp_defense = 0;
+  let rec gen_ev stats (points: int) : poca_stats =
+    if points = 0 then stats else
+    let index = Random.int 6 in
+    let addPoints = Random.int 50 in
+    let addPoints = if addPoints < points then addPoints else points in
+    match index with
+    | 0 -> if stats.max_hp < 252
+         then gen_ev {stats with max_hp = stats.max_hp + addPoints}
+         (points - addPoints)
+         else  gen_ev stats points
+    | 1 -> if stats.attack < 252
+         then gen_ev {stats with attack = stats.attack + addPoints}
+         (points - addPoints)
+         else  gen_ev stats points
+    | 2 -> if stats.defense < 252
+         then gen_ev {stats with defense = stats.defense + addPoints}
+         (points - addPoints)
+         else  gen_ev stats points
+    | 3 -> if stats.speed < 252
+         then gen_ev {stats with speed = stats.speed + addPoints}
+         (points - addPoints)
+         else gen_ev stats points
+    | 4 -> if stats.sp_attack < 252
+         then gen_ev {stats with sp_attack = stats.sp_attack + addPoints}
+         (points - addPoints)
+         else gen_ev stats points
+    | 5-> if stats.sp_defense < 252
+         then gen_ev {stats with sp_defense = stats.sp_defense + addPoints}
+         (points - addPoints)
+         else  gen_ev stats points
+    | _ -> failwith "error in random number generation" in
+  let evs = gen_ev { max_hp = 0; attack = 0; defense = 0 ; sp_defense = 0;
             sp_attack = 0; speed = 0} 504 in
   let iv = Random.int 31 in
   let max_hp' = (base_stats.max_hp * 2 + iv + (evs.max_hp / 4)) + 110 in
@@ -3380,45 +3380,40 @@ let get_four_moves (moves: string list): move list =
   let mlst = List.map
        (fun move -> get_move move) moves in
   if List.length mlst <= 4 then mlst else
-	let rec get_four acc: int list =
-			if List.length acc = 4 then acc else
-			let rando: int = Random.int (List.length mlst) in
-			if List.mem rando acc then get_four acc else get_four (rando::acc)  in
-	let randos = get_four [] in
+  let rec get_four acc: int list =
+      if List.length acc = 4 then acc else
+      let rando: int = Random.int (List.length mlst) in
+      if List.mem rando acc then get_four acc else get_four (rando::acc)in
+  let randos = get_four [] in
 
-	(* List must contain four elements as defined above*)
-	[List.nth mlst (List.nth randos 0); List.nth mlst (List.nth randos 1);
-	List.nth mlst (List.nth randos 2); List.nth mlst (List.nth randos 3)]
+  (* List must contain four elements as defined above*)
+  [List.nth mlst (List.nth randos 0); List.nth mlst (List.nth randos 1);
+  List.nth mlst (List.nth randos 2); List.nth mlst (List.nth randos 3)]
 
 
 let get_pocamon_by_name (name: string) : pocamon =
-	let pocamon_name = name in
-	let dexmon = get_pocamon pocamon_name in
-	let pType = (type_of_string (fst dexmon.poca_type),
-		         type_of_string (snd dexmon.poca_type)) in
-	let new_stats = update_stats dexmon.stats in
-  let base_stat_mods =
-  {
-    attack = 0;
-    defense = 0;
-    sp_defense = 0;
-    sp_attack = 0;
-    speed = 0
-  } in
-	{ name = pocamon_name;
-	  status = SNormal;
-	  moves = get_four_moves dexmon.learnable_moves;
-	  poca_type = pType ;
-	  health  = new_stats.max_hp;
-	  stats = new_stats ;
+  let pocamon_name = name in
+  let dexmon = get_pocamon pocamon_name in
+  let pType = (type_of_string (fst dexmon.poca_type),
+             type_of_string (snd dexmon.poca_type)) in
+  let new_stats = update_stats dexmon.stats in
+  let base_stat_mods = { attack = 0; defense = 0; sp_defense = 0;
+                         speed = 0 ;  sp_attack = 0;  } in
+  
+  { name      = pocamon_name;
+    status    = SNormal;
+    moves     = get_four_moves dexmon.learnable_moves;
+    poca_type = pType ;
+    health    = new_stats.max_hp;
+    stats     = new_stats ;
     stat_mods = base_stat_mods ;
-    charging = None;
-    attack_immunity = false;
-	  ascii = dexmon.ascii;  }
+    charging  = None;
+    ascii     = dexmon.ascii;
+    attack_immunity = false;  }
 
 
 let get_random_pocamon () : pocamon =
-	let lst = ["BULBASAUR"; "IVYSAUR"; "VENUSAUR"; "CHARMANDER"; "CHARMELEON";
+  let lst = ["BULBASAUR"; "IVYSAUR"; "VENUSAUR"; "CHARMANDER"; "CHARMELEON";
             "CHARIZARD"; "SQUIRTLE"; "WARTORTLE";    "BLASTOISE"; "CATERPIE";
             "METAPOD"; "BUTTERFREE"; "WEEDLE"; "KAKUNA"; "BEEDRILL"; "PIDGEY";
             "PIDGEOTTO"; "PIDGEOT"; "RATTATA"; "RATICATE"; "SPEAROW"; "FEAROW";
@@ -3445,35 +3440,55 @@ let get_random_pocamon () : pocamon =
             "OMASTAR"; "KABUTO"; "KABUTOPS"; "AERODACTYL"; "SNORLAX";
             "ARTICUNO"; "ZAPDOS"; "MOLTRES"; "DRATINI"; "DRAGONAIR";
             "DRAGONITE"; "MEWTWO"; "MEW"] in
-	Random.self_init ();
-	let index = Random.int 150 in
-	let pocamon_name = List.nth lst index in
-	let dexmon = get_pocamon pocamon_name in
-	let pType = (type_of_string (fst dexmon.poca_type),
-		         type_of_string (snd dexmon.poca_type)) in
-	let new_stats = update_stats dexmon.stats in
-  let base_stat_mods =
-  {
-    attack = 0;
-    defense = 0;
-    sp_defense = 0;
-    sp_attack = 0;
-    speed = 0
-  } in
+  
+  Random.self_init ();
+  let index = Random.int (List.length lst) in
+  let pocamon_name = List.nth lst index in
+  let dexmon = get_pocamon pocamon_name in
+  let pType = (type_of_string (fst dexmon.poca_type),
+             type_of_string (snd dexmon.poca_type)) in
+  let new_stats = update_stats dexmon.stats in
+  let base_stat_mods = { attack = 0; defense = 0; sp_defense = 0; 
+                         sp_attack = 0; speed = 0 } in
 
-	{ name = pocamon_name;
-	  status = SNormal;
-	  moves = get_four_moves dexmon.learnable_moves;
-	  poca_type = pType ;
-	  health  = new_stats.max_hp;
-	  stats = new_stats ;
+  { name = pocamon_name;
+    status = SNormal;
+    moves = get_four_moves dexmon.learnable_moves;
+    poca_type = pType ;
+    health  = new_stats.max_hp;
+    stats = new_stats ;
     stat_mods = base_stat_mods ;
     charging = None;
     attack_immunity = false;
-	  ascii = dexmon.ascii;  }
+    ascii = dexmon.ascii;  }
 
 let rec get_different_pocamon p_list : pocamon =
   let new_poca = get_random_pocamon () in
   if not (List.mem new_poca.name (List.map (fun (x:pocamon) -> x.name) p_list))
   then new_poca
   else get_different_pocamon p_list
+
+(* precondtion: move_lst contains valid move names 
+ *              the size of move_lst is of length <= 4 
+ *              pocaname is a valid pocamon name *)
+let get_poca_with_moves (pocaname: string) (move_lst: string list) =  
+  let dexmon = get_pocamon pocaname in
+  let pType = (type_of_string (fst dexmon.poca_type),
+             type_of_string (snd dexmon.poca_type)) in
+  let new_stats = update_stats dexmon.stats in
+  let base_stat_mods = { attack = 0; defense = 0; sp_defense = 0; 
+                         sp_attack = 0; speed = 0 } in
+  let rec moves = function
+  | [] -> []
+  | h::t -> get_move h :: moves t in
+
+  { name = pocaname;
+    status = SNormal;
+    moves = moves move_lst; 
+    poca_type = pType ;
+    health  = new_stats.max_hp;
+    stats = new_stats ;
+    stat_mods = base_stat_mods ;
+    charging = None;
+    attack_immunity = false;
+    ascii = dexmon.ascii;  }

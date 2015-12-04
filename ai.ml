@@ -22,8 +22,19 @@ let game_score (gs: game_state) :float =
   let ps1 = (get_player_score gs.player_one) in
   let ps2 = (get_player_score gs.player_two) in
   ((ps2) -. (ps1))
+
+let rec find_best best ml =
+  match ml with
+  | [] -> best
+  | h::t ->
+  let best_move = (match best with
+    | None -> -20.
+    | Some x -> (fst x)) in
+  if best_move > (fst h) then best else Some h
+
 let expectation move = {move with accuracy=100;
   damage=move.damage*move.accuracy/100}
+
 let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
   let get_eff_score poca =
     let active_player' = {active_player with active_pocamon=poca} in
@@ -44,6 +55,7 @@ let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
     let max_foe = List.fold_left max 0 foe_move_vals in
     float_of_int(max_active)/.float_of_int(max_foe)
   in
+
   let rec get_best_poca e_list (p_list:pocamon list) acc best =
     match e_list, p_list with
     | [], [] -> best
@@ -59,10 +71,12 @@ let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
     get_best_poca eff_list active_player.pocamon_list 0.
                   active_player.active_pocamon in
   best_poca
+
 let assemble_actions is_ai_turn action (p1_act, p2_act) =
   match is_ai_turn with
   | true ->  p1_act, Some action
   | false -> Some action, p2_act
+
 let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
   let g_state', b_status', p1_act', p2_act' =
   match (p1_act, p2_act) with
@@ -136,22 +150,12 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
         get_best best_move_score switch_score
       | None -> best_move_score
     end
-let get_switch_poca_mm foe_player active_player is_p1 (gs: game_state) bs depth =
-  let m_list = List.map (fun x ->
-    (mini_max gs bs false (None, Some (FSwitch x)) depth)) active_player.pocamon_list in
-  let s_p_list = List.combine m_list active_player.pocamon_list in
-  (List.iter (fun (x: (float * Types.pocamon)) -> print_endline ((snd x).name ^ " " ^ (string_of_float (fst x)) )) s_p_list);
-  let find_best (acc_val, acc_poca) (x_val, x_poca) =
-  if x_val > acc_val then (x_val, x_poca) else (acc_val, acc_poca) in
-  let best_score, best_poca =
-    List.fold_left find_best (-8.0, List.hd active_player.pocamon_list) s_p_list in
-  best_poca
-let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
+
+let get_ai_action (gs: game_state) (bs : battle_status) =
   let active_player = gs.player_two in
     let foe_player = gs.player_one in
   let moves = active_player.active_pocamon.moves in
-  let switch_poca = get_switch_poca_mm foe_player
-          active_player false gs bs 7 in
+  let switch_poca = get_switch_poca foe_player active_player false gs in
   let depth = 7 in
   let switch_score = mini_max gs bs false (None, Some (FSwitch switch_poca)) depth in
   let m_list = List.map (fun x ->
@@ -160,8 +164,32 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
   (List.iter (fun (x: (float * Types.move)) -> print_endline ((snd x).name ^ " " ^ (string_of_float (fst x)) )) s_p_list);
   (print_endline ("switch score: " ^ switch_poca.name ^ " " ^ (string_of_float switch_score)));
   (List.iter (fun (x:pocamon) -> print_endline x.name) active_player.pocamon_list);
-  let find_best (acc_val, acc_move) (x_val, x_move) =
-  if x_val > acc_val then (x_val, x_move) else (acc_val, acc_move) in
-  let best_score, best_move = List.fold_left find_best (-8.0, List.hd moves) s_p_list in
+
+  let best_score, best_move = match find_best None s_p_list with
+     | None -> (-20., List.hd active_player.active_pocamon.moves) (* Dummy move if no moves available *)
+     | Some x -> x in
+
   if best_score >= switch_score || switch_poca = active_player.active_pocamon
     then FMove best_move else FSwitch switch_poca
+
+let get_switch_poca_mm (gs: game_state) (bs : battle_status)  =
+
+  let active_player = gs.player_two in
+  let foe_player = gs.player_one in
+
+  let poca = get_switch_poca foe_player active_player false gs in
+
+  let pocamon_list' = List.filter (fun x -> x <> poca) active_player.pocamon_list in
+  let pocamon_list'' = (active_player.active_pocamon)::(pocamon_list') in
+
+  let active_player' = {active_player with active_pocamon=poca;
+                                           pocamon_list=pocamon_list''} in
+
+  let gs' = {gs with player_two = active_player'} in
+  let action = get_ai_action gs' bs in
+
+  match action with
+  | FSwitch p -> p
+  | FMove _ -> poca
+  | _ -> failwith "invalid AI action"
+
