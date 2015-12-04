@@ -41,8 +41,8 @@ let trainers =
 
   {start_text="Prof. Hopcroft: I won my Turing Award for beating kids like you";
   name="Prof. Hopcroft";
-  end_text="Prof. Hopcroft: If only I had more 2-3 Trees";
-  win_text="Prof. Hopcroft: I didn't win the Turing Award for nothing";
+  end_text="Prof. Hopcroft: Well this isn't right but you get the idea";
+  win_text="Prof. Hopcroft: Maybe if you had more 2-3 trees, you might have won";
   pocamon_list=["ARCANINE"; "CHANSEY";
   "MACHAMP"; "ONIX"; "AERODACTYL"; "GYARADOS"]};
 
