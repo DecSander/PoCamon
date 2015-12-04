@@ -14,3 +14,19 @@ val get_random_pocamon: unit -> pocamon
 val get_pocamon_by_name: string -> pocamon 
 
 val get_different_pocamon: pocamon list -> pocamon
+
+
+(* FOR TESTING PURPOSES ONLY
+ * [get_poca_with_moves pocaname movelist] returns the pocamon designated by 
+ * [pocaname] with the moves designated in [movelist]
+ *
+ * Precondtion: [movelist] must contains valid, uppercase move names 
+ *              the size of [movelist] <= 4  and > 0
+ *              [pocaname] is a valid pocamon name      *)
+val get_poca_with_moves: string -> string list -> pocamon
+
+(* FOR TESTING PURPOSES ONLY 
+ * [get_move movename] returns the move designated by [movename] 
+ *
+ * Precondtion: [movename] is a valid, uppercase move *)
+val get_move: string -> move
