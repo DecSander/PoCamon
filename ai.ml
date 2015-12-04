@@ -1,5 +1,6 @@
 open Types
 open Fight
+open PocaDex
 
 type ai_player = P1 | P2
 
@@ -27,6 +28,15 @@ let game_score (gs: game_state) :float =
   let ps1 = (get_player_score gs.player_one) in
   let ps2 = (get_player_score gs.player_two) in
   ((ps2) -. (ps1))
+
+let rec find_best best ml =
+  match ml with
+  | [] -> best
+  | h::t ->
+    let best_move = (match best with
+  | None -> -20.
+  | Some x -> (fst x)) in
+    if best_move > (fst h) then best else Some h
 
 let expectation move = {move with accuracy=100;
   damage=move.damage*move.accuracy/100}
@@ -179,11 +189,10 @@ let get_switch_poca_mm foe_player active_player is_p1 (gs: game_state) bs depth 
 
   (List.iter (fun (x: (float * Types.pocamon)) -> print_endline ((snd x).name ^ " " ^ (string_of_float (fst x)) )) s_p_list);
 
-  let find_best (acc_val, acc_poca) (x_val, x_poca) =
-  if x_val > acc_val then (x_val, x_poca) else (acc_val, acc_poca) in
+  let best_score, best_poca = match find_best None s_p_list with
+    | None -> (-20., active_player.active_pocamon) (* Dummy pocamon if can't switch *)
+    | Some x -> x in
 
-  let best_score, best_poca =
-    List.fold_left find_best (-8.0, List.hd active_player.pocamon_list) s_p_list in
   best_poca
 
 let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
@@ -210,9 +219,9 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
   (print_endline ("switch score: " ^ switch_poca.name ^ " " ^ (string_of_float switch_score)));
   (List.iter (fun (x:pocamon) -> print_endline x.name) active_player.pocamon_list);
 
-  let find_best (acc_val, acc_move) (x_val, x_move) =
-  if x_val > acc_val then (x_val, x_move) else (acc_val, acc_move) in
+  let best_score, best_move = match find_best None s_p_list with
+    | None -> (-20., List.hd active_player.active_pocamon.moves) (* Dummy move if no moves available *)
+    | Some x -> x in 
 
-  let best_score, best_move = List.fold_left find_best (-8.0, List.hd moves) s_p_list in
   if best_score >= switch_score || switch_poca = active_player.active_pocamon
     then FMove best_move else FSwitch switch_poca
