@@ -257,19 +257,19 @@ let select_quote () =
   "“Mostly I breathe fire, but want to exchange numbers?”
   -Firebreather Walt";
   "“I don’t want to miss anything you do from now on!”
-  -Juggler Irwin"]
+  -Juggler Irwin"] in
 
     Random.self_init ();
-  List.nth (Random.int (List.length lst))
+  List.nth lst (Random.int (List.length lst))
 
 let center_in_splash_screen str =
-  let rec center_string_list lines=
+  let rec center_string_list lines =
     match lines with
-    | [] -> acc
+    | [] -> ""
     | h::t ->
-      String.make (40 - (String.length h)) ^ h ^ "\n" ^ center_string_list t
+      (String.make (35 - (String.length h)/2) ' ') ^ h ^ "\n" ^ center_string_list t
   in
-  let lines = Str.split (Str.regex "\n") str in
+  let lines = Str.split (Str.regexp "\n") str in
   center_string_list lines
 
 let print_screen_debug ps pi ss =
@@ -287,8 +287,8 @@ let print_screen ps pi ss =
   prints str
 
 let splash_screen () =
-  let quote = select_quote () in
-  let ascii_pokeball = " \027[34m
+  let quote = center_in_splash_screen (select_quote ()) in
+  " \027[34m
 
 
 
@@ -305,8 +305,8 @@ let splash_screen () =
         'MMM.                                             IMX
          ~M!M                                             IMP
 
-  \027[97m " ^ quote ^ "
 
+  \027[97m " ^ quote ^ "
 
   "
 let size_screen = "
