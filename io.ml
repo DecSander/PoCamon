@@ -251,7 +251,7 @@ let select_quote () =
   "“Develop amnesia conveniently and forget everything you heard!”
   -Team Rocket Grunt at the Sevii Islands";
   "PSHSHSHSHSHSHHSSHS
-  - Kraby #93";
+  - Krabby #93";
   "“Remember my super cool Rattata? My Rattata is different from regular Rattata.
   It’s like my Rattata is in the top percentage of all Rattata.” -Youngster Joey";
   "“Mostly I breathe fire, but want to exchange numbers?”
