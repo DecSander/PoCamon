@@ -241,10 +241,9 @@ let gen_text ps pi ss :bytes =
 let star_bar = "********************************************"^
   "*******************************"
 
-let select_quote () =
+let select_quote =
   let lst = [
-  "“This is my grandson.
-  He’s been your rival since you were a baby.
+  "“This is my grandson. He’s been your rival since you were a baby.
   …Erm, what is his name again?” -Professor Oak";
   "”We hope to see you again!”
   -Nurse Joy ";
@@ -254,13 +253,15 @@ let select_quote () =
   -Team Rocket Grunt at the Sevii Islands";
   "PSHSHSHSHSHSHHSSHS
   - Krabby #93";
-  "“Remember my super cool Rattata? My Rattata is different
-  from regular Rattata. It’s like my Rattata is in the top
-  percentage of all Rattata.” -Youngster Joey";
+  "“Remember my super cool Rattata? My Rattata is different 
+  from regular Rattata. It’s like my Rattata is in the 
+  top percentage of all Rattata.” -Youngster Joey";
   "“Mostly I breathe fire, but want to exchange numbers?”
   -Firebreather Walt";
-  "“I don’t want to miss anything you do from now on!”
-  -Juggler Irwin"] in
+  "“This brat’s tough. Tougher than I can put into words, 
+  and I know a lot of words.” -Team Galactic Grunt at Floaroma Meadow";
+  "“I’m sure that you will be dazzled by my mentor’s 
+  breathtakingly elegant battle style.” -Wallace"] in
 
     Random.self_init ();
   List.nth lst (Random.int (List.length lst))
@@ -290,7 +291,7 @@ let print_screen ps pi ss =
   prints str
 
 let splash_screen () =
-  let quote = center_in_splash_screen (select_quote ()) in
+  let quote = center_in_splash_screen select_quote in
   " \027[34m
 
 
