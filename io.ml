@@ -239,7 +239,7 @@ let gen_text ps pi ss :bytes =
   | Talking s -> gen_talking s
 
 let star_bar = "********************************************"^
-  "*******************************"
+  "************************************"
 
 let select_quote =
   let lst = [
@@ -261,7 +261,8 @@ let select_quote =
   "“This brat’s tough. Tougher than I can put into words, 
   and I know a lot of words.” -Team Galactic Grunt at Floaroma Meadow";
   "“I’m sure that you will be dazzled by my mentor’s 
-  breathtakingly elegant battle style.” -Wallace"] in
+  breathtakingly elegant battle style.” -Wallace";
+  "Pika- Pika! CHUUUU!-Pikachu #93"] in
 
     Random.self_init ();
   List.nth lst (Random.int (List.length lst))
@@ -416,8 +417,8 @@ let print_text s : unit=
 let get_input (words: string list) (defaults: string list) =
   let tinfo = setup () in
   prints "\n";
-  let rec go (acc: string list): string =
 
+  let rec go (acc: string list): string =
     let handle_back (): string =
       let newl = remove_last_two acc in
       print_text (get_word newl);
@@ -458,10 +459,10 @@ let get_input (words: string list) (defaults: string list) =
       prints ("\r|> ");
       flush Pervasives.stdout;
       go (acc@[really_input_string io_channel 1]) in
-
+ 
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
-    | _, _, true, _ -> prints ("\027[97m "); breakdown tinfo; get_word acc
+    | _, _, true, _ -> print_string "\027[97m\r"; breakdown tinfo; get_word acc
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
