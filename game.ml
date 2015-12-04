@@ -216,7 +216,7 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   | _ -> choose_new_pocamon g_state p_state s_state
 
 
-let check_faint trainer_list initial_state g_state: (game_state * trainer list)=
+let check_faint trainer_list initial_state g_state b_status: (game_state * trainer list)=
   let game_over g_state winner : game_state =
     let end_message = Talking (List.hd trainer_list).win_text in
     wait_for_enter g_state winner end_message;
@@ -245,7 +245,7 @@ let check_faint trainer_list initial_state g_state: (game_state * trainer list)=
         then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0),
              trainer_list
         else let new_poca =
-          get_switch_poca g_state.player_one g_state.player_two false g_state in
+          get_switch_poca_mm g_state.player_one g_state.player_two false g_state b_status 7 in
           fst (switch_pocamon new_poca g_state.player_two g_state true),
               trainer_list
       else
@@ -387,10 +387,10 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
 
   let (new_gs, printfo), p1a, p2a = get_player_actions () in
   let ()                          = print_fight new_gs printfo p1a p2a in
-  let new_gs', trainers1     = check_faint trainer_list initial_state new_gs in
+  let new_gs', trainers1     = check_faint trainer_list initial_state new_gs printfo in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs, trainers2   = check_faint trainer_list initial_state new_gs'' in
+  let final_gs, trainers2   = check_faint trainer_list initial_state new_gs'' printfo in
   let new_trainers =
     if (List.length trainers1) > (List.length trainers2)
     then trainers2
