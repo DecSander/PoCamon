@@ -24,6 +24,15 @@ let get_player_score p_state =
   let party_score = List.fold_left poca_score active_poca_score p_state.pocamon_list in
   party_score
 
+let rec find_best best ml =
+  match ml with
+  | [] -> best
+  | h::t ->
+    let best_move = (match best with
+    | None -> -20.
+    | Some x -> (fst x)) in
+    if best_move > (fst h) then best else Some h
+
 let game_score (gs: game_state) :float =
   let ps1 = (get_player_score gs.player_one) in
   let ps2 = (get_player_score gs.player_two) in
