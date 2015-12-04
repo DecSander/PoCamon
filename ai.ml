@@ -8,16 +8,15 @@ let status_score (s: pStatus) :float =
   | SNormal -> 0.
   | SPoison -> 0.4
   | SBurn -> 0.4
-  | SSleep n -> (float_of_int n) *. 0.1
+  | SSleep n -> (float_of_int n) *. 0.2
   | SParalyze -> 0.3
-  | SFreeze n -> (float_of_int n) *. 0.1
+  | SFreeze n -> (float_of_int n) *. 0.2
 
 let poca_score acc poca =
   let health_score = (((float_of_int poca.health) /.
     (float_of_int poca.stats.max_hp)) ** 2.0) in
   let status_score = status_score poca.status in
   acc +. (max (health_score -. status_score) 0.)
-
 
 let get_player_score p_state =
   let active_poca_score = poca_score 0. p_state.active_pocamon in
@@ -176,7 +175,6 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
   let i = ref (-1) in
 
   let find_best acc x =
-  print_endline (string_of_float x);
   if x > acc then let () = i := !i + 1 in x else acc in
 
   let best_score = List.fold_left find_best (-8.0) m_list in
