@@ -40,7 +40,7 @@ let rec find_best best ml =
 
 let expectation move = {move with accuracy=100;
   damage=move.damage*move.accuracy/100}
-
+(*
 let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
 
   let get_eff_score poca =
@@ -86,7 +86,7 @@ let get_switch_poca foe_player active_player is_p1 g_state : pocamon =
     get_best_poca eff_list active_player.pocamon_list 0.
                   active_player.active_pocamon in
   best_poca
-
+*)
 
 let assemble_actions is_ai_turn action (p1_act, p2_act) =
   match is_ai_turn with
@@ -123,8 +123,8 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
     | false -> g_state'.player_two in
 
     if active_player.active_pocamon.health <= 0 then
-      let switch_poca = get_switch_poca foe_player
-          active_player (not is_ai_turn) g_state' in
+      let switch_poca = get_switch_poca_mm foe_player
+          active_player (not is_ai_turn) g_state' b_status' (recs_left-1) in
       let actions =
         assemble_actions is_ai_turn (FSwitch switch_poca)
                             (p1_act', p2_act') in
@@ -143,8 +143,8 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
       (* if switch then add the switch option and check for best pokemon *)
       let switch_action_option, switch_score =
         if did_foe_switch then
-          let switch_poca = get_switch_poca foe_player
-            active_player (not is_ai_turn) g_state' in
+          let switch_poca = get_switch_poca_mm foe_player
+            active_player (not is_ai_turn) g_state' b_status' (recs_left-1) in
           if switch_poca = active_player.active_pocamon then (None, 0.)
           else
             let actions =
@@ -180,7 +180,8 @@ let rec mini_max g_state b_status is_ai_turn (p1_act, p2_act) recs_left =
       | None -> best_move_score
     end
 
-let get_switch_poca_mm foe_player active_player is_p1 (gs: game_state) bs depth =
+and get_switch_poca_mm
+  foe_player active_player is_p1 (gs: game_state) bs depth =
 
   let m_list = List.map (fun x ->
     (mini_max gs bs false (None, Some (FSwitch x)) depth)) active_player.pocamon_list in
