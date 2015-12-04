@@ -75,13 +75,21 @@ let gen_next_state (trainer_list: trainer list) initial_state
                            initial_state.player_one.pocamon_list in
   let player_two_pocamon =
     List.map (fun x -> get_pocamon_by_name x) trainer.pocamon_list in
-  let player_one_active_pocamon = g_state.player_one.active_pocamon in
+  let base_stat_mod =
+      { attack = 0; defense = 0; sp_defense = 0; sp_attack = 0; speed = 0 } in
+  let player_one_active_pocamon = {g_state.player_one.active_pocamon with 
+                    health = g_state.player_one.active_pocamon.stats.max_hp;
+                    status = SNormal;
+                    charging = None;
+                    stat_mods = base_stat_mod;
+                    attack_immunity = false;} in
   let player_two_active_pocamon = List.hd player_two_pocamon in
   let player_one_rec =
   {
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
-    pocamon_list = List.tl player_one_pocamon;
+    pocamon_list = List.filter (fun p -> p <> player_one_active_pocamon) 
+                   player_one_pocamon;
     is_computer = Human
   } in
   let player_two_rec =
