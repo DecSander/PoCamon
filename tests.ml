@@ -408,6 +408,7 @@ TEST "Drain damaged opponent" =
   (used_drain.player_two.active_pocamon.health < 200)
 
 let charge_game = {simple_game with player_one={
+  simple_game.player_one with active_pocamon=health_changer}}
 
 let used_charge, _ = apply_fight_sequence charge_game
     (FMove charge_hit) (FMove dummy_move)
