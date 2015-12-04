@@ -372,7 +372,10 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
             else def_poca.status, false in
 
           let def_poca' =
-            if match move.effect with Mohko -> true | _ -> false then
+            if match move.effect, type_eff with
+               | _, EImmune -> false
+               | Mohko, _ -> true
+               | _ -> false then
               {def_poca with health=0; status=new_status}
             else
               {def_poca with health=def_poca_health'; status=new_status}
@@ -381,8 +384,9 @@ let apply_attack atk_state def_state move p1_is_atk g_state =
           let atk_poca' =
             match move.effect with
             | MRecoil -> {atk_state.active_pocamon with
-                health=atk_state.active_pocamon.health -
-                int_of_float(damage/.3.)}
+                health=max
+                  (atk_state.active_pocamon.health - int_of_float(damage/.3.))
+                  0 }
             | MExplode -> {atk_state.active_pocamon with health = 0}
             | MRecover -> {atk_state.active_pocamon with health = min
                 (atk_state.active_pocamon.health +
