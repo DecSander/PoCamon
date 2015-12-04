@@ -9,10 +9,10 @@ type yn = Yes | No
 
 let out_channel = open_out "/dev/null"
 let io_channel = open_in "game_inputs.txt"
-(*let out_channel = Pervasives.stdout
-let io_channel = Pervasives.stdin*)
+let out_channel = Pervasives.stdout
+let io_channel = Pervasives.stdin
 let prints s = output_string out_channel s
-let readl io = flush stdout; input_line stdin
+let readl io = flush out_channel; input_line io
 
 let match_phrase (str: bytes) (regex: bytes) :bool =
   Str.string_match (Str.regexp regex) str 0
@@ -50,7 +50,7 @@ let string_of_type = function
     | TGrass -> "\027[32m GRASS \027[97m"
     | TIce -> "\027[94m ICE \027[97m"
     | TFighting -> "\027[90m FIGHTING \027[97m"
-    | TPoison -> "\027[95m POSION \027[97m"
+    | TPoison -> "\027[95m POISION \027[97m"
     | TGround -> "\027[90m GROUND \027[97m"
     | TFlying -> "\027[93m FLYING \027[97m"
     | TPsychic -> "\027[35m PSYCHIC \027[97m"
@@ -380,7 +380,7 @@ let print_text s : unit=
  * Preconditon: [defaults] is not empty *)
 let get_input (words: string list) (defaults: string list) =
   let tinfo = setup () in
-  print_newline () ;
+  prints "\n";
   let rec go (acc: string list): string =
 
     let handle_back (): string =
