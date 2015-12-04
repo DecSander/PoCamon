@@ -41,14 +41,14 @@ let trainers =
 
   {start_text="Prof. Hopcroft: I won my Turing Award for beating kids like you.";
   name="Prof. Hopcroft";
-  end_text="Prof. Hopcroft: Well this isn't right, but you get the idea.";
-  win_text="Prof. Hopcroft: Maybe if you used 2-3 trees you could have won.";
+  end_text="Prof. Hopcroft: Well this isn't right but you get the idea";
+  win_text="Prof. Hopcroft: Maybe if you had more 2-3 trees, you might have won";
   pocamon_list=["ARCANINE"; "CHANSEY";
   "MACHAMP"; "ONIX"; "AERODACTYL"; "GYARADOS"]};
 
   {start_text="Prof. George: My NFA beats your DFA anyday.";
   name="Prof. George";
-  end_text="Prof. George: I guess optimzing pocamon is an NP hard problem.";
+  end_text="Prof. George: I guess optimizing pocamon is an NP hard problem.";
   win_text="Prof. George: Good try, but your proof was backwards.";
   pocamon_list=["DRAGONAIR"; "CHARIZARD";
   "RHYDON"; "MEW"; "SNORLAX"; "BLASTOISE"]};
