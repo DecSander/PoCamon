@@ -75,13 +75,21 @@ let gen_next_state (trainer_list: trainer list) initial_state
                            initial_state.player_one.pocamon_list in
   let player_two_pocamon =
     List.map (fun x -> get_pocamon_by_name x) trainer.pocamon_list in
-  let player_one_active_pocamon = List.hd player_one_pocamon in
+  let base_stat_mod =
+      { attack = 0; defense = 0; sp_defense = 0; sp_attack = 0; speed = 0 } in
+  let player_one_active_pocamon = {g_state.player_one.active_pocamon with 
+                    health = g_state.player_one.active_pocamon.stats.max_hp;
+                    status = SNormal;
+                    charging = None;
+                    stat_mods = base_stat_mod;
+                    attack_immunity = false;} in
   let player_two_active_pocamon = List.hd player_two_pocamon in
   let player_one_rec =
   {
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
-    pocamon_list = List.tl player_one_pocamon;
+    pocamon_list = List.filter (fun p -> p <> player_one_active_pocamon) 
+                   player_one_pocamon;
     is_computer = Human
   } in
   let player_two_rec =
@@ -248,13 +256,15 @@ let check_faint trainer_list initial_state g_state b_status: (game_state * train
           get_switch_poca_mm g_state.player_one g_state.player_two false g_state b_status 7 in
           fst (switch_pocamon new_poca g_state.player_two g_state true),
               trainer_list
-      else
+      else if (is_elite g_state.player_two.is_computer) then
         if not (is_human g_state.player_two.is_computer)
         then  (match trainer_list with
                 | [] -> wfe1 "You won!"; exit 0
                 | trainer::tail -> wfe1 trainer.end_text;
                     gen_next_state tail initial_state g_state, tail)
         else  game_over g_state g_state.player_one, trainer_list
+      else
+        (wfe1 "You won!"; exit 0)
   else
     g_state, trainer_list
 
@@ -302,7 +312,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | MAttack (-2) -> wfe (oap "'s attack sharply fell!")
     | MDefense 1 -> wfe (ap "'s defense rose!")
     | MDefense 2 -> wfe (ap "'s defense sharply rose!")
-    | MDefense (-1) -> wfe (ap "'s defense fell!")
+    | MDefense (-1) -> wfe (oap "'s defense fell!")
     | MDefense (-2) -> wfe (oap "'s defense sharply fell!")
     | MSpecDefense 1 -> wfe (ap "'s special defense rose!")
     | MSpecDefense 2 -> wfe (ap "'s special defense sharply rose!")
@@ -310,7 +320,7 @@ let print_result action g_state p_state m_status opp_p_state : unit =
     | MSpecDefense (-2) -> wfe (oap "'s special defense sharply fell!")
     | MSpecAttack 1 -> wfe (ap "'s special attack rose!")
     | MSpecAttack 2 -> wfe (ap  "'s special attack sharply rose!")
-    | MSpecAttack (-1) -> wfe (ap "'s special attack fell!")
+    | MSpecAttack (-1) -> wfe (oap "'s special attack fell!")
     | MSpecAttack (-2) -> wfe (oap  "'s special attack sharply fell!")
     | MSpeed 1 -> wfe (ap "'s speed rose!")
     | MSpeed 2 -> wfe (ap "'s speed sharply rose!")

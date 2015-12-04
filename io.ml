@@ -50,7 +50,7 @@ let string_of_type = function
     | TGrass -> "\027[32m GRASS \027[97m"
     | TIce -> "\027[94m ICE \027[97m"
     | TFighting -> "\027[90m FIGHTING \027[97m"
-    | TPoison -> "\027[95m POISION \027[97m"
+    | TPoison -> "\027[95m POISON \027[97m"
     | TGround -> "\027[90m GROUND \027[97m"
     | TFlying -> "\027[93m FLYING \027[97m"
     | TPsychic -> "\027[35m PSYCHIC \027[97m"
@@ -239,12 +239,11 @@ let gen_text ps pi ss :bytes =
   | Talking s -> gen_talking s
 
 let star_bar = "********************************************"^
-  "*******************************"
+  "************************************"
 
-let select_quote () =
+let select_quote =
   let lst = [
-  "“This is my grandson.
-  He’s been your rival since you were a baby.
+  "“This is my grandson. He’s been your rival since you were a baby.
   …Erm, what is his name again?” -Professor Oak";
   "”We hope to see you again!”
   -Nurse Joy ";
@@ -254,13 +253,16 @@ let select_quote () =
   -Team Rocket Grunt at the Sevii Islands";
   "PSHSHSHSHSHSHHSSHS
   - Krabby #93";
-  "“Remember my super cool Rattata? My Rattata is different
-  from regular Rattata. It’s like my Rattata is in the top
-  percentage of all Rattata.” -Youngster Joey";
+  "“Remember my super cool Rattata? My Rattata is different 
+  from regular Rattata. It’s like my Rattata is in the 
+  top percentage of all Rattata.” -Youngster Joey";
   "“Mostly I breathe fire, but want to exchange numbers?”
   -Firebreather Walt";
-  "“I don’t want to miss anything you do from now on!”
-  -Juggler Irwin"] in
+  "“This brat’s tough. Tougher than I can put into words, 
+  and I know a lot of words.” -Team Galactic Grunt at Floaroma Meadow";
+  "“I’m sure that you will be dazzled by my mentor’s 
+  breathtakingly elegant battle style.” -Wallace";
+  "Pika- Pika! CHUUUU!-Pikachu #93"] in
 
     Random.self_init ();
   List.nth lst (Random.int (List.length lst))
@@ -290,7 +292,7 @@ let print_screen ps pi ss =
   prints str
 
 let splash_screen () =
-  let quote = center_in_splash_screen (select_quote ()) in
+  let quote = center_in_splash_screen select_quote in
   " \027[34m
 
 
@@ -415,8 +417,8 @@ let print_text s : unit=
 let get_input (words: string list) (defaults: string list) =
   let tinfo = setup () in
   prints "\n";
-  let rec go (acc: string list): string =
 
+  let rec go (acc: string list): string =
     let handle_back (): string =
       let newl = remove_last_two acc in
       print_text (get_word newl);
@@ -457,10 +459,10 @@ let get_input (words: string list) (defaults: string list) =
       prints ("\r|> ");
       flush Pervasives.stdout;
       go (acc@[really_input_string io_channel 1]) in
-
+ 
     match find_tab acc, find_back acc, find_newline acc, List.length acc with
     | _, _, _, 0 -> handle_defaults ()
-    | _, _, true, _ -> prints ("\027[97m "); breakdown tinfo; get_word acc
+    | _, _, true, _ -> print_string "\027[97m\r"; breakdown tinfo; get_word acc
     | _ , true, _, _ ->  handle_back ()
     | true, _, _, _ -> handle_tab ()
     | false, false, false, _ -> handle_typing () in
