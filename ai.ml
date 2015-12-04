@@ -176,7 +176,6 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
   let i = ref (-1) in
 
   let find_best acc x =
-  print_endline (string_of_float x);
   if x > acc then let () = i := !i + 1 in x else acc in
 
   let best_score = List.fold_left find_best (-8.0) m_list in

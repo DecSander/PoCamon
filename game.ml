@@ -11,53 +11,53 @@ let bag_jokes = ["There is a time and a place for everything. But not now";
   "Rare candy is one hell of a drug"]
 
 let trainers =
-  [{start_text="Prof. White: Welcome to the Elite 7, now prepare to lose";
+  [{start_text="Prof. White: Welcome to the Elite 7. Prepare to lose.";
   name="Prof. White";
-  end_text="Prof. White: The next game design project is gonna be to beat you";
-  win_text="Prof. White: CS might not be right for you. Maybe try OR";
+  end_text="Prof. White: The next game design project will be to beat you.";
+  win_text="Prof. White: CS might not be right for you. Maybe try History.";
   pocamon_list=["HORSEA"; "METAPOD";
   "PIDGEOT"; "SPEAROW"; "POLIWAG"; "MEOWTH"]};
 
-  {start_text="Prof. Bracy: Prepare to have your cache cleared";
+  {start_text="Prof. Bracy: Prepare to have your cache cleared.";
   name="Prof. Bracy";
-  end_text="Prof. Bracy: You optimized the common case faster than I could :(";
-  win_text="Prof. Bracy: Am I surprised? Not even a BIT";
+  end_text="Prof. Bracy: You optimized the common case faster than I could.";
+  win_text="Prof. Bracy: Am I surprised? Not even a BIT.";
   pocamon_list=["ODDISH"; "BELLSPROUT";
   "PARAS"; "CUBONE"; "BEEDRILL"; "VENOMOTH"]};
 
-  {start_text="Prof. Gries: You're gonna need more than just java after this";
+  {start_text="Prof. Gries: You are going to need more than just Java after this.";
   name="Prof. Gries";
-  end_text="Prof. Gries: I guess I need more loop invariants";
-  win_text="Prof. Gries: Don't worry. There's always the optional final";
+  end_text="Prof. Gries: You broke my loop invariant!";
+  win_text="Prof. Gries: Don't worry, there's always the optional final.";
   pocamon_list=["EEVEE"; "VILEPLUME";
   "POLIWRATH"; "HAUNTER"; "MR.MIME"; "PSYDUCK"]};
 
   {start_text="Team Rocket: Prepare for Trouble ... and make it Double";
   name="Team Rocket";
   end_text="Team Rocket: Oh this is PoCamon? We thought it was Pokemon";
-  win_text="Team Rocket: Team Rocket blasts off again!";
+  win_text="Team Rocket: Team Rocket, blast off at the speed of light!";
   pocamon_list=["EKANS"; "VAPOREON";
   "KOFFING"; "MEOWTH"; "PIKACHU"; "GASTLY"]};
 
-  {start_text="Prof. Hopcroft: I won my Turing Award for beating kids like you";
+  {start_text="Prof. Hopcroft: I won my Turing Award for beating kids like you.";
   name="Prof. Hopcroft";
-  end_text="Prof. Hopcroft: If only I had more 2-3 Trees";
-  win_text="Prof. Hopcroft: I didn't win the Turing Award for nothing";
+  end_text="Prof. Hopcroft: Well this isn't right, but you get the idea.";
+  win_text="Prof. Hopcroft: Maybe if you used 2-3 trees you could have won.";
   pocamon_list=["ARCANINE"; "CHANSEY";
   "MACHAMP"; "ONIX"; "AERODACTYL"; "GYARADOS"]};
 
-  {start_text="Prof. George: My NFA beats your DFA anyday";
+  {start_text="Prof. George: My NFA beats your DFA anyday.";
   name="Prof. George";
-  end_text="Prof. George: I guess optimizing pocamon is an NP hard problem...";
-  win_text="Prof. George: I think your proof is backwards";
+  end_text="Prof. George: I guess optimizing pocamon is an NP hard problem.";
+  win_text="Prof. George: Good try, but your proof was backwards.";
   pocamon_list=["DRAGONAIR"; "CHARIZARD";
   "RHYDON"; "MEW"; "SNORLAX"; "BLASTOISE"]};
 
-  {start_text="Prof. Clarkson: I'm gonna recurse you into oblivion";
+  {start_text="Prof. Clarkson: I'm going to recurse you into oblivion!";
   name="Prof. Clarkson";
   end_text=
-    "Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost. Congrats!!!";
-  win_text="Prof. Clarkson: You must have used imperative features!";
+    "Prof. Clarkson: Holy Zardoz! I ca-ca-can't believe I lost.";
+  win_text="Prof. Clarkson: Next time don't use imperative features.";
   pocamon_list=["DRAGONITE"; "ALAKAZAM";
   "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 
