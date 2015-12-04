@@ -241,18 +241,18 @@ let gen_text ps pi ss :bytes =
 let star_bar = "********************************************"^
   "*******************************"
 
-let select_quote () = 
-  let lst = ["“This is my grandson. He’s been your rival since you were a baby. 
+let select_quote () =
+  let lst = ["“This is my grandson. He’s been your rival since you were a baby.
   …Erm, what is his name again?” -Professor Oak";
-  "”We hope to see you again!” 
+  "”We hope to see you again!”
   -Nurse Joy ";
   "“I like shorts! They’re comfy and easy to wear!”
   -Youngster";
   "“Develop amnesia conveniently and forget everything you heard!”
   -Team Rocket Grunt at the Sevii Islands";
-  "PSHSHSHSHSHSHHSSHS 
+  "PSHSHSHSHSHSHHSSHS
   - Kraby #93";
-  "“Remember my super cool Rattata? My Rattata is different from regular Rattata. 
+  "“Remember my super cool Rattata? My Rattata is different from regular Rattata.
   It’s like my Rattata is in the top percentage of all Rattata.” -Youngster Joey";
   "“Mostly I breathe fire, but want to exchange numbers?”
   -Firebreather Walt";
@@ -260,7 +260,7 @@ let select_quote () =
   -Juggler Irwin"]
 
     Random.self_init ();
-  List.nth (Random.int 7)
+  List.nth (Random.int (List.length lst))
 
 let print_screen_debug ps pi ss =
   let art = art_joiner (create_pocamon_ascii pi.player_one_active_pocamon)
