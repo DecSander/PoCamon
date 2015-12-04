@@ -50,6 +50,18 @@ and look at pocadex.ml to see what each move does)
 Note: The last few trainers in the Elite 7 are extremely difficult, don't get
 too upset if you can't beat all of them.
 
+TESTING:
+
+To test the program, comment out lines 12 and 13 in io.ml and line 427 in io.ml,
+then run:
+
+cs3110 compile -p str game.ml
+cs3110 compile -p str tests.ml
+cs3110 test tests.ml
+
+Remember to comment those lines out again if you want to play the game normally
+again!
+
 
 CREDITS:
 

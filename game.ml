@@ -48,7 +48,7 @@ let trainers =
 
   {start_text="Prof. George: My NFA beats your DFA anyday";
   name="Prof. George";
-  end_text="Prof. George: I guess optimzing pocamon is an NP hard problem...";
+  end_text="Prof. George: I guess optimizing pocamon is an NP hard problem...";
   win_text="Prof. George: I think your proof is backwards";
   pocamon_list=["DRAGONAIR"; "CHARIZARD";
   "RHYDON"; "MEW"; "SNORLAX"; "BLASTOISE"]};
