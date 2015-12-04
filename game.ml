@@ -77,7 +77,7 @@ let gen_next_state (trainer_list: trainer list) initial_state
     List.map (fun x -> get_pocamon_by_name x) trainer.pocamon_list in
   let base_stat_mod =
       { attack = 0; defense = 0; sp_defense = 0; sp_attack = 0; speed = 0 } in
-  let player_one_active_pocamon = {g_state.player_one.active_pocamon with 
+  let player_one_active_pocamon = {g_state.player_one.active_pocamon with
                     health = g_state.player_one.active_pocamon.stats.max_hp;
                     status = SNormal;
                     charging = None;
@@ -88,7 +88,7 @@ let gen_next_state (trainer_list: trainer list) initial_state
   {
     name = player_one_name;
     active_pocamon = player_one_active_pocamon;
-    pocamon_list = List.filter (fun p -> p <> player_one_active_pocamon) 
+    pocamon_list = List.filter (fun p -> p <> player_one_active_pocamon)
                    player_one_pocamon;
     is_computer = Human
   } in
@@ -253,7 +253,7 @@ let check_faint trainer_list initial_state g_state b_status: (game_state * train
         then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0),
              trainer_list
         else let new_poca =
-          get_switch_poca_mm g_state.player_one g_state.player_two false g_state b_status 7 in
+          get_switch_poca_mm g_state.player_one g_state.player_two (None, None) false g_state b_status 7 in
           fst (switch_pocamon new_poca g_state.player_two g_state true),
               trainer_list
       else if (is_elite g_state.player_two.is_computer) then
