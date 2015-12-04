@@ -23,7 +23,7 @@ cs3110 run game.ml
 
 How To Play
 
-To play the game, resize your window, select if you want to play
+To play the game, resize your window to 80x25, select if you want to play
 a human, your rival, or the Elite 7. Playing against a human will allow two
 people to control individual players. Playing your rival will start a single
 battle against a single AI-controlled opponent. Playing the Elite 7 will give
