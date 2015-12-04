@@ -170,13 +170,19 @@ let get_ai_action (ai: ai_player) (gs: game_state) (bs : battle_status) =
   let switch_score = mini_max gs bs false (None, Some (FSwitch switch_poca)) depth in
 
   let m_list = List.map (fun x ->
-    (mini_max gs bs false (None, Some (FMove x)) depth)) moves in
+    (mini_max gs bs false (None, Some (FMove x)) depth), x) moves in
 
-  let i = ref (-1) in
+  let rec find_best (best: (float * move) option) (ml: (float * move) list) : (float * move) option =
+    match ml with
+    | [] -> best
+    | h::t ->
+      let best_move = (match best with
+      | None -> -20.
+      | Some x -> (fst x)) in
+      if best_move > (fst h) then best else Some h in
 
-  let find_best acc x =
-  if x > acc then let () = i := !i + 1 in x else acc in
-
-  let best_score = List.fold_left find_best (-8.0) m_list in
+  let best_score, best_move = match find_best None m_list with
+  | None -> failwith "pocamon had no moves"
+  | Some x -> x in
   if best_score >= switch_score || switch_poca = active_player.active_pocamon
-    then FMove (List.nth moves !i) else FSwitch switch_poca
+    then FMove best_move else FSwitch switch_poca
