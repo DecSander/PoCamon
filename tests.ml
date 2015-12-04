@@ -117,15 +117,16 @@ let has_no_duplicates lst : bool =
   =
   List.length lst
 
-
-TEST "test gen_initial_state" =
+let test_gen_initial_state =
   let rec gen_states x acc =
     if x = 0 then acc else
       gen_states (x-1) (gen_initial_state ()::acc) in
-  let states = gen_states 1000 [] in
+  let states = gen_states 6 [] in
   not (List.mem false (List.fold_left (fun acc (x:game_state) ->
     (has_no_duplicates(x.player_one.pocamon_list)) ::
     (has_no_duplicates(x.player_two.pocamon_list)) :: acc) [] states))
+
+TEST "test gen_initial_state" = test_gen_initial_state
 
 open Io
 
@@ -407,6 +408,7 @@ TEST "Drain damaged opponent" =
   (used_drain.player_two.active_pocamon.health < 200)
 
 let charge_game = {simple_game with player_one={
+  simple_game.player_one with active_pocamon=health_changer}}
 
 let used_charge, _ = apply_fight_sequence charge_game
     (FMove charge_hit) (FMove dummy_move)
