@@ -61,6 +61,11 @@ let trainers =
   pocamon_list=["DRAGONITE"; "ALAKAZAM";
   "GENGAR"; "VENUSAUR"; "MEWTWO"; "LAPRAS"]}]
 
+(* Takes the [initial_state] (to get the full pocamon list)
+ * and the [g_state] at the end of the last game as well as
+ * a [trainer_list] of remaining trainers that the user has yet to fight
+ * and produces a new game state for the beginning of fighting the next
+ * trainer in the list *)
 let gen_next_state (trainer_list: trainer list) initial_state
                       g_state :game_state =
   let trainer = (match trainer_list with
@@ -173,6 +178,7 @@ let process_screen_action comm s_state g_state : screen_state =
   | _ -> let () = wait_for_enter g_state g_state.player_one
     (Talking "You have entered an incorrect command") in s_state
 
+(* Figures out what the player wants to do at the current [s_state] *)
 let rec get_player_action g_state p_state s_state : fAction =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let defaults =
@@ -198,7 +204,7 @@ let rec get_player_action g_state p_state s_state : fAction =
   | c, _ -> get_player_action g_state p_state
       (process_screen_action c s_state g_state)
 
-
+(* Modifies the game state based on the switch that the user chooses *)
 let rec choose_new_pocamon g_state p_state s_state : game_state =
   let () = print_screen p_state (create_public_info g_state) s_state in
   let auto_complete_info =
@@ -222,7 +228,6 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
   | Some Down -> choose_new_pocamon g_state p_state
                  (Pocamon_List (if n < 1 then n + 1 else 1))
   | _ -> choose_new_pocamon g_state p_state s_state
-
 
 let check_faint trainer_list initial_state g_state b_status: (game_state * trainer list)=
   let game_over g_state winner : game_state =
@@ -353,8 +358,9 @@ let print_result action g_state p_state m_status opp_p_state : unit =
   | Attack_Status a, FCharge poca_move -> print_attack_sequence a poca_move
   | _ -> failwith "Error: print_result did not find a match"
 
+(* Runs a game turn given the moves that each player wants to use and returns
+ * the game state that results using apply_fight_sequence from fight.ml *)
 let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
-
   let get_player_actions () =
     let ap1 s = g_state.player_one.active_pocamon.name ^ s in
     let ap2 s = g_state.player_two.active_pocamon.name ^ s in
@@ -407,6 +413,7 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
     else trainers1 in
   run_game_turn new_trainers initial_state final_gs printfo
 
+(* Starts a game from an initial game state *)
 let start_from_state trainer_list g_state : unit =
   let () = Random.self_init () in
 
@@ -426,6 +433,7 @@ let start_from_state trainer_list g_state : unit =
 
   ignore (run_game_turn trainer_list g_state g_state b_status)
 
+(* Runs the game *)
 let start () =
   let start_state = gen_initial_state () in
   let trainer_list = trainers in
