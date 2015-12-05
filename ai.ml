@@ -169,7 +169,7 @@ let get_ai_action (gs: game_state) (bs : battle_status) =
   if best_score >= switch_score || switch_poca = active_player.active_pocamon
     then FMove best_move else FSwitch switch_poca
 
-let get_switch_poca_mm (gs: game_state) (bs : battle_status)  =
+let get_switch_poca_mm (gs: game_state) (bs : battle_status) :pocamon  =
 
   let active_player = gs.player_two in
   let foe_player = gs.player_one in
