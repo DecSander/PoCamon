@@ -443,50 +443,11 @@ TEST "attack_immunity off" =
 TEST "health down" =
   (charge_no_hit_finished.player_two.active_pocamon.health < 200)
 TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
-
-(******************************************************************************)
-(** Unit tests for AI *******************************************************)
-(******************************************************************************)
-open Ai
-open PocaDex
-open Types
-open Fight
-
-let poca1 = get_poca_with_moves "STARMIE"  ["MEGA DRAIN"; "WATER GUN";]
-let poca2 = get_poca_with_moves "VENUSAUR" ["VINE WHIP"; "TACKLE";]
-
-let player_one: player_state = {name="player one"; active_pocamon = poca1;
-          pocamon_list = []; is_computer = Human }
-
-let player_two: player_state ={ name = "player two"; active_pocamon = poca2;
-          pocamon_list = []; is_computer = Human; }
-
-let simple_game = {player_one=player_one; player_two=player_two;}
-
-
-
-let moves_status = 
-Attack_Status {
-  atk_eff = ENormal;
-  spec_eff = MNone;
-  self_status_change = false,  SNormal;
-  opp_status_change = false, SNormal;
-  missed = false; }
-
-let battle_status = {
-     p1_went_first = false;
-     p1_move_status = moves_status;
-     p2_move_status = moves_status;
-}
-    
-
-
-TEST "STAB (same type attack bonus" = get_ai_action P2 simple_game battle_status = FMove (get_move "VINE WHIP")
 (*
 let reverse_game = {player_one=player_two; player_two=player_one;}
 TEST "STAB reverse"  = get_ai_action P2 reverse_game battle_status = FMove (get_move "MEGA DRAIN")
 
-let game_with_different_moves = 
+let game_with_different_moves =
     {reverse_game with player_two=
       {player_two with active_pocamon=
         {reverse_game.player_two.active_pocamon with moves=
