@@ -117,16 +117,15 @@ let has_no_duplicates lst : bool =
   =
   List.length lst
 
-let test_gen_initial_state =
+
+TEST "test gen_initial_state" =
   let rec gen_states x acc =
     if x = 0 then acc else
       gen_states (x-1) (gen_initial_state ()::acc) in
-  let states = gen_states 6 [] in
+  let states = gen_states 1000 [] in
   not (List.mem false (List.fold_left (fun acc (x:game_state) ->
     (has_no_duplicates(x.player_one.pocamon_list)) ::
     (has_no_duplicates(x.player_two.pocamon_list)) :: acc) [] states))
-
-TEST "test gen_initial_state" = test_gen_initial_state
 
 open Io
 
@@ -444,5 +443,57 @@ TEST "attack_immunity off" =
 TEST "health down" =
   (charge_no_hit_finished.player_two.active_pocamon.health < 200)
 TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
+
+(******************************************************************************)
+(** Unit tests for AI *******************************************************)
+(******************************************************************************)
+open Ai
+open PocaDex
+open Types
+open Fight
+
+let poca1 = get_poca_with_moves "STARMIE"  ["MEGA DRAIN"; "WATER GUN";]
+let poca2 = get_poca_with_moves "VENUSAUR" ["VINE WHIP"; "TACKLE";]
+
+let player_one: player_state = {name="player one"; active_pocamon = poca1;
+          pocamon_list = []; is_computer = Human }
+
+let player_two: player_state ={ name = "player two"; active_pocamon = poca2;
+          pocamon_list = []; is_computer = Human; }
+
+let simple_game = {player_one=player_one; player_two=player_two;}
+
+
+
+let moves_status = 
+Attack_Status {
+  atk_eff = ENormal;
+  spec_eff = MNone;
+  self_status_change = false,  SNormal;
+  opp_status_change = false, SNormal;
+  missed = false; }
+
+let battle_status = {
+     p1_went_first = false;
+     p1_move_status = moves_status;
+     p2_move_status = moves_status;
+}
+    
+
+
+TEST "STAB (same type attack bonus" = get_ai_action P2 simple_game battle_status = FMove (get_move "VINE WHIP")
+(*
+let reverse_game = {player_one=player_two; player_two=player_one;}
+TEST "STAB reverse"  = get_ai_action P2 reverse_game battle_status = FMove (get_move "MEGA DRAIN")
+
+let game_with_different_moves = 
+    {reverse_game with player_two=
+      {player_two with active_pocamon=
+        {reverse_game.player_two.active_pocamon with moves=
+          [get_move "WATER GUN"; get_move "MEGA DRAIN";]}}}
+
+TEST "STAB with other move orders" = get_ai_action P2 game_with_different_moves battle_status = FMove (get_move "MEGA DRAIN")
+*)
+
 
 let () = Pa_ounit_lib.Runtime.summarize()
