@@ -18,7 +18,7 @@ let phyGra1 = {name="PHYSGRA"; move_type=TGrass; status_effect=MNormal;
                       effect=MNone; pp=35; move_category=EPhysical}
 
 let poca1 = get_poca_with_moves "VENUSAUR" [phyNor1; phyWat1; phyGra1 ]
-let poca2 = get_poca_with_moves "STARMIE"  [phyWat1; phyNor1;]
+let poca2 = get_poca_with_moves "STARMIE"  [phyWat1; phyNor1; phyGra1]
 
 let player_one: player_state = {name="player one"; active_pocamon = poca2;
           pocamon_list = []; is_computer = Human }
@@ -45,19 +45,20 @@ let battle_status = {
 }
     
 
-TEST "STAB (same type attack bonus)" = 
+TEST "Super Effective Move " = 
   get_ai_action simple_game battle_status = FMove phyGra1
 
 let reverse_game = {player_one=player_two; player_two=player_one;}
-TEST "STAB reverse"  = 
+TEST "Super Effective Move" = 
   get_ai_action reverse_game battle_status = FMove phyNor1
 
 let game_with_different_moves = 
     {reverse_game with player_two=
       {player_two with active_pocamon=
-        {reverse_game.player_two.active_pocamon with moves=
+        {reverse_game.player_two.active_pocamon with moves =
           [phyNor1; phyWat1;]}}}
 
-TEST "STAB with other move orders" = 
+TEST "Super Effective Move with other move orders" = 
 get_ai_action game_with_different_moves battle_status = FMove phyNor1
+
 
