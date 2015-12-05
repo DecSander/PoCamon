@@ -280,7 +280,8 @@ let center_in_splash_screen str =
     match lines with
     | [] -> ""
     | h::t ->
-      (String.make (35 - (String.length h)/2) ' ') ^ h ^ "\n" ^ center_string_list t
+      (String.make (35 - (String.length h)/2) ' ') ^ h ^ "\n"
+        ^ center_string_list t
   in
   let lines = Str.split (Str.regexp "\n") str in
   center_string_list lines
