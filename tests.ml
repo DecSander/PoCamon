@@ -122,7 +122,7 @@ TEST "test gen_initial_state" =
   let rec gen_states x acc =
     if x = 0 then acc else
       gen_states (x-1) (gen_initial_state ()::acc) in
-  let states = gen_states 1000 [] in
+  let states = gen_states 6 [] in
   not (List.mem false (List.fold_left (fun acc (x:game_state) ->
     (has_no_duplicates(x.player_one.pocamon_list)) ::
     (has_no_duplicates(x.player_two.pocamon_list)) :: acc) [] states))
@@ -443,18 +443,13 @@ TEST "attack_immunity off" =
 TEST "health down" =
   (charge_no_hit_finished.player_two.active_pocamon.health < 200)
 TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
-(*
-let reverse_game = {player_one=player_two; player_two=player_one;}
-TEST "STAB reverse"  = get_ai_action P2 reverse_game battle_status = FMove (get_move "MEGA DRAIN")
-
-let game_with_different_moves =
-    {reverse_game with player_two=
-      {player_two with active_pocamon=
-        {reverse_game.player_two.active_pocamon with moves=
-          [get_move "WATER GUN"; get_move "MEGA DRAIN";]}}}
-
-TEST "STAB with other move orders" = get_ai_action P2 game_with_different_moves battle_status = FMove (get_move "MEGA DRAIN")
-*)
+(******************************************************************************)
+(** Unit tests for AI *******************************************************)
+(******************************************************************************)
+open Ai
+open PocaDex
+open Types
+open Fight
 
 
 let () = Pa_ounit_lib.Runtime.summarize()

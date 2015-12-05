@@ -25,6 +25,11 @@ let phyPriorHit = {name="PHYSQUICK"; move_type=TNormal; status_effect=MNormal;
                      status_probability=100; accuracy=100; damage=20; max_pp=35;
                       effect=MNone; pp=35; move_category=EPhysical}
 
+let badMove = {name="badMove"; move_type=TGrass; status_effect=MNormal;
+                     status_probability=100; accuracy=100; damage=0; max_pp=35;
+                      effect=MNone; pp=35; move_category=EPhysical}
+
+let pocaBad = get_poca_with_moves "ODDISH"  [badMove;]
 let poca1 = get_poca_with_moves "VENUSAUR" [phyNor1; phyWat1; phyGra1 ]
 let poca2 = get_poca_with_moves "STARMIE"  [phyWat1; phyNor1;]
 let poca3 = get_poca_with_moves "BULBASAUR"  [phyGra1; phyElec1;phyNor1;phyNor1]
@@ -40,8 +45,7 @@ let player_two: player_state ={ name = "player two"; active_pocamon = poca1;
           pocamon_list = []; is_computer = Human; }
 
 let simple_game = {player_one=player_one; player_two=player_two;}
-
-
+let reverse_game = {player_one=player_two; player_two=player_one;}
 
 let moves_status =
 Attack_Status {
@@ -58,21 +62,17 @@ let battle_status = {
 }
 
 
-TEST "STAB (same type attack bonus)" =
+TEST "Super Effective Move " =
   get_ai_action simple_game battle_status = FMove phyGra1
 
-let reverse_game = {player_one=player_two; player_two=player_one;}
-TEST "STAB reverse"  =
+TEST "Super Effective Move" =
   get_ai_action reverse_game battle_status = FMove phyNor1
 
 let game_with_different_moves =
     {reverse_game with player_two=
       {player_two with active_pocamon=
-        {reverse_game.player_two.active_pocamon with moves=
+        {reverse_game.player_two.active_pocamon with moves =
           [phyNor1; phyWat1;]}}}
-
-TEST "STAB with other move orders" =
-get_ai_action game_with_different_moves battle_status = FMove phyNor1
 
 
 (* Both moves are super effective and deal the same damage, so should choose
@@ -88,3 +88,12 @@ TEST "Test uses quick attack if need speed to win" =
     {player_one={player_one with active_pocamon=fast_almost_dead};
      player_two={player_two with active_pocamon=prior_hitter}} in
   get_ai_action quick_game battle_status = FMove phyPriorHit
+
+TEST "Super Effective Move with other move orders" =
+get_ai_action game_with_different_moves battle_status = FMove phyNor1
+
+
+let player_two' = {player_two with pocamon_list=[poca1]; active_pocamon=pocaBad}
+let simple_game' = {simple_game with player_two=player_two'}
+TEST "No good moves, should Switch" =
+get_ai_action simple_game' battle_status = FSwitch poca1
