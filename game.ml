@@ -453,4 +453,4 @@ let start () =
        (Talking (List.hd trainer_list).start_text);
   start_from_state trainer_list start_state
 
-(*let _ = start ()*)
+let _ = start ()
