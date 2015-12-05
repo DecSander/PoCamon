@@ -158,9 +158,6 @@ let get_ai_action (gs: game_state) (bs : battle_status) =
   let m_list = List.map (fun x ->
     (mini_max gs bs false (None, Some (FMove x)) depth)) moves in
   let s_p_list = List.combine m_list moves in
-  (List.iter (fun (x: (float * Types.move)) -> print_endline ((snd x).name ^ " " ^ (string_of_float (fst x)) )) s_p_list);
-  (print_endline ("switch score: " ^ switch_poca.name ^ " " ^ (string_of_float switch_score)));
-  (List.iter (fun (x:pocamon) -> print_endline x.name) active_player.pocamon_list);
 
   let best_score, best_move = match find_best None s_p_list with
      | None -> (-20., List.hd active_player.active_pocamon.moves) (* Dummy move if no moves available *)
