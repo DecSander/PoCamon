@@ -6,7 +6,7 @@ open PocaDex
 
 let bag_jokes = ["There is a time and a place for everything. But not now";
   "Steroids are bad - how could you do that to an innocent pocamon?";
-  "Don't do drugs, kids";
+  "Don't do dorugs, kids";
   "Swig, swag, grab my bag... Or not";
   "Rare candy is one hell of a drug"]
 
@@ -239,7 +239,8 @@ let rec choose_new_pocamon g_state p_state s_state : game_state =
                  (Pocamon_List (if n < 1 then n + 1 else 1))
   | _ -> choose_new_pocamon g_state p_state s_state
 
-let check_faint trainer_list initial_state g_state b_status: (game_state * trainer list)=
+let check_faint trainer_list initial_state g_state b_status :
+  (game_state * trainer list)=
   let game_over g_state winner : game_state =
     let end_message = Talking (List.hd trainer_list).win_text in
     wait_for_enter g_state winner end_message;
