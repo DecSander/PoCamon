@@ -67,7 +67,7 @@ get_ai_action game_with_different_moves battle_status = FMove phyNor1
 
 let player_two' = {player_two with pocamon_list=[poca1]; active_pocamon=pocaBad}
 let simple_game' = {simple_game with player_two=player_two'}
-TEST "No good moves, should Switch" = 
+TEST "No good moves, should switch" = 
 get_ai_action simple_game' battle_status = FSwitch poca1
 
 
