@@ -6,7 +6,7 @@ open PocaDex
 
 let bag_jokes = ["There is a time and a place for everything. But not now";
   "Steroids are bad - how could you do that to an innocent pocamon?";
-  "Don't do dorugs, kids";
+  "Don't do drugs, kids";
   "Swig, swag, grab my bag... Or not";
   "Rare candy is one hell of a drug"]
 
@@ -404,10 +404,12 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
 
   let (new_gs, printfo), p1a, p2a = get_player_actions () in
   let ()                          = print_fight new_gs printfo p1a p2a in
-  let new_gs', trainers1     = check_faint trainer_list initial_state new_gs printfo in
+  let new_gs', trainers1          = check_faint trainer_list initial_state
+                                      new_gs printfo in
   let new_gs'', debuff_info       = apply_status_debuffs new_gs' in
   let ()                          = print_debuffs debuff_info new_gs'' in
-  let final_gs, trainers2   = check_faint trainer_list initial_state new_gs'' printfo in
+  let final_gs, trainers2         = check_faint trainer_list initial_state
+                                      new_gs'' printfo in
   let new_trainers =
     if (List.length trainers1) > (List.length trainers2)
     then trainers2
