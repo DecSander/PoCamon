@@ -258,7 +258,7 @@ let check_faint trainer_list initial_state g_state b_status: (game_state * train
         then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0),
              trainer_list
         else let new_poca =
-          get_switch_poca_mm g_state.player_one g_state.player_two false g_state b_status 7 in
+          get_switch_poca_mm g_state.player_one g_state.player_two (None, None) false g_state b_status 7 in
           fst (switch_pocamon new_poca g_state.player_two g_state true),
               trainer_list
       else if (is_elite g_state.player_two.is_computer) then
