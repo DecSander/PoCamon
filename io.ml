@@ -9,8 +9,8 @@ type yn = Yes | No
 
 let out_channel = open_out "/dev/null"
 let io_channel = open_in "game_inputs.txt"
-(*let out_channel = Pervasives.stdout
-let io_channel = Pervasives.stdin*)
+let out_channel = Pervasives.stdout
+let io_channel = Pervasives.stdin
 
 (* prints and readl replace print_string and read_line so that the io
  * channel can be easily switched for testing *)
