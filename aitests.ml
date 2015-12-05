@@ -15,7 +15,6 @@ let phyWat1 = {name="PHYSWAT"; move_type=TWater; status_effect=MNormal;
                      status_probability=100; accuracy=100; damage=50; max_pp=35;
                       effect=MNone; pp=35; move_category=EPhysical}
 
-
 let phyGra2 = {name="PHYSGRA"; move_type=TGrass; status_effect=MNormal;
                      status_probability=100; accuracy=100; damage=50; max_pp=35;
                       effect=MNone; pp=35; move_category=EPhysical}
@@ -26,6 +25,7 @@ let spGra1 = {name="SPECGRA"; move_type=TGrass; status_effect=MNormal;
 
 let statusSlp1 = {name="STATUSSLP"; move_type=TNormal; status_effect=MSleep;
                      status_probability=100; accuracy=100; damage=0; max_pp=35;
+                     effect=MNone; pp=35; move_category=EPhysical}
 
 let phyWat1 = {name="PHYSWAT"; move_type=TWater; status_effect=MNormal;
                      status_probability=100; accuracy=100; damage=20; max_pp=35;
