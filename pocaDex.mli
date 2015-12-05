@@ -20,10 +20,9 @@ val get_different_pocamon: pocamon list -> pocamon
  * [get_poca_with_moves pocaname movelist] returns the pocamon designated by 
  * [pocaname] with the moves designated in [movelist]
  *
- * Precondtion: [movelist] must contains valid, uppercase move names 
- *              the size of [movelist] <= 4  and > 0
+ * Precondtion: the size of [movelist] <= 4  and > 0
  *              [pocaname] is a valid pocamon name      *)
-val get_poca_with_moves: string -> string list -> pocamon
+val get_poca_with_moves: string -> move list -> pocamon
 
 (* FOR TESTING PURPOSES ONLY 
  * [get_move movename] returns the move designated by [movename] 

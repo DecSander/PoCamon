@@ -3468,23 +3468,19 @@ let rec get_different_pocamon p_list : pocamon =
   then new_poca
   else get_different_pocamon p_list
 
-(* precondtion: move_lst contains valid move names 
- *              the size of move_lst is of length <= 4 
+(* precondtion: the size of move_lst is of length <= 4 
  *              pocaname is a valid pocamon name *)
-let get_poca_with_moves (pocaname: string) (move_lst: string list) =  
+let get_poca_with_moves (pocaname: string) (move_lst: move list) =  
   let dexmon = get_pocamon pocaname in
   let pType = (type_of_string (fst dexmon.poca_type),
              type_of_string (snd dexmon.poca_type)) in
   let new_stats = update_stats dexmon.stats in
   let base_stat_mods = { attack = 0; defense = 0; sp_defense = 0; 
                          sp_attack = 0; speed = 0 } in
-  let rec moves = function
-  | [] -> []
-  | h::t -> get_move h :: moves t in
 
   { name = pocaname;
     status = SNormal;
-    moves = moves move_lst; 
+    moves = move_lst; 
     poca_type = pType ;
     health  = new_stats.max_hp;
     stats = new_stats ;
