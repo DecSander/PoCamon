@@ -8,15 +8,14 @@ type ai_player = P1 | P2
 * the current game state and returns the next action that the AI wants to
 * take given the current state of the game. Uses the minimax algorithm.
 *)
-val get_ai_action : ai_player -> game_state -> battle_status -> fAction
+val get_ai_action : game_state -> battle_status -> fAction
 
 
 (*
  * For a given game state, this method returns what the AI believes to be the
  * best pocamon to beat the opponent (user)
  *)
-val get_switch_poca_mm: player_state -> player_state -> bool
-  -> game_state -> battle_status -> int -> pocamon
+val get_switch_poca_mm: game_state -> battle_status -> pocamon
 
 (* Helper functions exposed for unit testing, uncomment to run tests *)
 val get_player_score: player_state -> float

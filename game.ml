@@ -258,7 +258,7 @@ let check_faint trainer_list initial_state g_state b_status: (game_state * train
         then choose_new_pocamon g_state g_state.player_two (Pocamon_List 0),
              trainer_list
         else let new_poca =
-          get_switch_poca_mm g_state.player_one g_state.player_two (None, None) false g_state b_status 7 in
+          get_switch_poca_mm g_state b_status in
           fst (switch_pocamon new_poca g_state.player_two g_state true),
               trainer_list
       else if (is_elite g_state.player_two.is_computer) then
@@ -374,7 +374,7 @@ let rec run_game_turn trainer_list initial_state g_state b_status : game_state =
     let p2_action =
       match g_state.player_two.active_pocamon.charging with
       | None -> if not (is_human g_state.player_two.is_computer) then
-          get_ai_action P2 g_state b_status
+          get_ai_action g_state b_status
           else get_player_action g_state g_state.player_two Out
       | Some m -> wfe2 "'s move is powering up!"; FCharge m in
     apply_fight_sequence g_state p1_action p2_action, p1_action, p2_action in
