@@ -21,4 +21,5 @@ val get_switch_poca_mm: game_state -> battle_status -> pocamon
 val get_player_score: player_state -> float
 val game_score: game_state -> float
 val expectation: move -> move
-val mini_max: game_state -> battle_status -> bool -> (fAction option * fAction option) -> int -> float
+val mini_max: game_state -> battle_status -> bool ->
+  (fAction option * fAction option) -> int -> float
