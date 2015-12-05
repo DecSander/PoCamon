@@ -43,13 +43,16 @@ TEST_UNIT "Try to find all moves" =
 
 TEST "normal get move name" = (get_move "POUND").name = "POUND"
 TEST "normal get move move_type" = (get_move "POUND").move_type = TNormal
-TEST "normal get move status_effect" = (get_move "POUND").status_effect = MNormal
-TEST "normal get move status_probability" = (get_move "POUND").status_probability = 100
+TEST "normal get move status_effect" =
+  (get_move "POUND").status_effect = MNormal
+TEST "normal get move status_probability" =
+  (get_move "POUND").status_probability = 100
 TEST "normal get move accuracy" = (get_move "POUND").accuracy = 100
 TEST "normal get move damage" = (get_move "POUND").damage = 40
 TEST "normal get move max_pp" = (get_move "POUND").max_pp = 35
 TEST "normal get move pp" = (get_move "POUND").pp = 35
-TEST "normal get move move_category" = (get_move "POUND").move_category = EPhysical
+TEST "normal get move move_category" =
+  (get_move "POUND").move_category = EPhysical
 TEST "normal get move move_category" = (get_move "POUND").effect = MNone
 TEST "normal get move" = (get_move "POUND") =
   { name="POUND";
@@ -155,7 +158,7 @@ TEST "Yes in middle" = process_selection "jkyeskl" = None
 
 
 (******************************************************************************)
-(** Unit tests for fight *******************************************************)
+(** Unit tests for fight ******************************************************)
 (******************************************************************************)
 open Types
 open Fight
@@ -443,7 +446,6 @@ TEST "attack_immunity off" =
 TEST "health down" =
   (charge_no_hit_finished.player_two.active_pocamon.health < 200)
 TEST "attack missed" = ((get_attack_status info.p2_move_status).missed)
-
 (******************************************************************************)
 (** Unit tests for AI *******************************************************)
 (******************************************************************************)
