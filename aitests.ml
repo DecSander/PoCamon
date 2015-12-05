@@ -141,6 +141,11 @@ TEST "Test uses STAB move over non-STAB" =
                    player_two={player_two with active_pocamon=poca3}} in
   get_ai_action stab_game battle_status = FMove phyGra1
 
+let player_two' = {player_two with pocamon_list=[poca1]; active_pocamon=pocaBad}
+let simple_game' = {simple_game with player_two=player_two'}
+TEST "No good moves, should switch" = 
+get_ai_action simple_game' battle_status = FSwitch poca1
+
 
 TEST "Test uses quick attack if need speed to win" =
   let quick_game =
@@ -150,8 +155,3 @@ TEST "Test uses quick attack if need speed to win" =
 
 TEST "Super Effective Move with other move orders" =
 get_ai_action game_with_different_moves battle_status = FMove phyNor1
-
-let player_two' = {player_two with pocamon_list=[poca1]; active_pocamon=pocaBad}
-let simple_game' = {simple_game with player_two=player_two'}
-TEST "No good moves, should Switch" =
-get_ai_action simple_game' battle_status = FSwitch poca1

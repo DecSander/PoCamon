@@ -120,12 +120,22 @@ let is_elite = function
 let is_rival = function
   | Rival -> true | _ -> false
 
+(* From http://stackoverflow.com/questions/10068713/string-to-list-of-char *)
+let explode s :char list =
+  let rec exp i l =
+    if i < 0 then l else exp (i - 1) (s.[i] :: l) in
+  exp ((String.length s) - 1) []
+
+let sanitize s :string = List.fold_right (fun x y -> x ^ y)
+      (List.map  (fun x -> if x > 'z' || x < 'A' then "" else String.make 1 x)
+    (explode s)) ""
+
 let gen_initial_state () : game_state =
     (* Must request players name and whether to play against a computer *)
     print_size_screen ();
     print_start "What is your name, player one?";
     prints "\n|> ";
-    let player_one_name = readl io_channel in
+    let player_one_name = sanitize (readl io_channel) in
     let against_ai = get_against_ai () in
     let player_two_name = if is_elite against_ai then
         (List.hd trainers).name
