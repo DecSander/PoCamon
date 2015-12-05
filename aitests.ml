@@ -18,7 +18,7 @@ let phyGra1 = {name="PHYSGRA"; move_type=TGrass; status_effect=MNormal;
                       effect=MNone; pp=35; move_category=EPhysical}
 
 let poca1 = get_poca_with_moves "VENUSAUR" [phyNor1; phyWat1; phyGra1 ]
-let poca2 = get_poca_with_moves "STARMIE"  [phyWat1; phyNor1; phyGra1]
+let poca2 = get_poca_with_moves "STARMIE"  [phyWat1; phyNor1;]
 
 let player_one: player_state = {name="player one"; active_pocamon = poca2;
           pocamon_list = []; is_computer = Human }
