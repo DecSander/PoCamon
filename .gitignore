@@ -1,3 +1,7 @@
 _build/*
 _cs3110/*
 *.cmi
+*.o
+log.txt
+src.zip
+vclog.txt

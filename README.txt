@@ -21,11 +21,17 @@ You can compile and run the game yourself by:
 cs3110 compile -p str game.ml
 cs3110 run game.ml
 
+To compile using native Ocaml methods into a standalone executable, run:
+ocamlfind ocamlopt -o pocamon -linkpkg \-package str,unix \types.mli fight.mli fight.ml io.mli io.ml ai.mli ai.ml pocaDex.mli pocaDex.ml game.mli game.ml
+
+
+=======
 Contributors:
 Troy Joseph https://github.com/troyjoseph
 Jesse Lupica https://github.com/jesselupica
-Jimmy Stoyell https://github.com/JamesSto
+James Stoyell https://github.com/JamesSto
 Declan Sander https://github.com/DecSander
+
 
 How To Play
 
