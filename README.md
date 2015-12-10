@@ -14,6 +14,15 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
 
 ```
 
+#### Contributors:
+Troy Joseph https://github.com/troyjoseph
+
+Jesse Lupica https://github.com/jesselupica
+
+James Stoyell https://github.com/JamesSto
+
+Declan Sander https://github.com/DecSander
+
 
 # Use
 
@@ -72,17 +81,8 @@ NOTE:
 
 There is no types.ml, only types.mli
 
-# Contributors:
-Troy Joseph https://github.com/troyjoseph
-
-Jesse Lupica https://github.com/jesselupica
-
-James Stoyell https://github.com/JamesSto
-
-Declan Sander https://github.com/DecSander
-
-
 # Credits:
+
 
 ASCII Art generated using: http://www.glassgiant.com/ascii/
 
@@ -100,4 +100,8 @@ Move and pokemon data retrieved from:
 Much information about game mechanics from:
   http://bulbapedia.bulbagarden.net
   http://pokemon.wikia.com
+
+
+
+
 
