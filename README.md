@@ -1,4 +1,4 @@
-'''
+```
                               .;:**'
                               `
   .:XHHHHk.              db.   .;;.     dH  MX
@@ -12,7 +12,7 @@ QMMMMb  'MMX        NMMMMP !MX'  M~   MMM MMM  .oo. XMMM 'MMM
       'MMM.                                             IMX
        ~M!M                                             IMP
 
-'''
+```
 
 
 # Use
@@ -74,8 +74,11 @@ There is no types.ml, only types.mli
 
 # Contributors:
 Troy Joseph https://github.com/troyjoseph
+
 Jesse Lupica https://github.com/jesselupica
+
 James Stoyell https://github.com/JamesSto
+
 Declan Sander https://github.com/DecSander
 
 
