@@ -27,7 +27,9 @@ Declan Sander https://github.com/DecSander
 # Use
 
 You can compile and run the game yourself by:
+
 cs3110 compile -p str game.ml
+
 cs3110 run game.ml
 
 To compile using native Ocaml methods into a standalone executable, run:
