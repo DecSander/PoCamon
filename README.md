@@ -34,7 +34,7 @@ cs3110 run game.ml
 
 To compile using native Ocaml methods into a standalone executable, run:
 
-ocamlfind ocamlopt -o pocamon -linkpkg \-package str,unix \types.mli fight.mli fight.ml io.mli io.ml ai.mli ai.ml pocaDex.mli pocaDex.ml game.mli game.ml
+ocamlfind ocamlopt -o pocamon -linkpkg \\-package str,unix \types.mli fight.mli fight.ml io.mli io.ml ai.mli ai.ml pocaDex.mli pocaDex.ml game.mli game.ml
 
 
 # How To Play
