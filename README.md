@@ -36,6 +36,14 @@ To compile using native Ocaml methods into a standalone executable, run:
 
 ```ocamlfind ocamlopt -o pocamon -linkpkg \-package str,unix \types.mli fight.mli fight.ml io.mli io.ml ai.mli ai.ml pocaDex.mli pocaDex.ml game.mli game.ml```
 
+Using Ocamlbuild:
+
+```ocamlbuild game.native -cflags -I,/path/to/ocaml/library -libs str,unix```
+
+```Then run ./game.native
+
+The cflags may not be necessary for some systems depending on what the default library paths are
+
 
 # How To Play
 
