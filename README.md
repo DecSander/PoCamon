@@ -40,7 +40,7 @@ Using Ocamlbuild:
 
 ```ocamlbuild game.native -cflags -I,/path/to/ocaml/library -libs str,unix```
 
-```Then run ./game.native
+Then run ./game.native
 
 The cflags may not be necessary for some systems depending on what the default library paths are
 
